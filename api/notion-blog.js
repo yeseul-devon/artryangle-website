@@ -1,42 +1,52 @@
-expor || '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't default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+export default async function handler(req, res) {
+  const NOTION_TOKEN = process.env.NOTION_TOKEN;
+  const NOTION_DB_ID = process.env.NOTION_DB_ID;
 
-  const NOTION_TOKEN = process.env.NOTION_TOKEN || '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';
-  const NOTION_DB_ID = process.env.NOTION_DB_ID || '33ce6b4eecd880619e4fdbfb00855312';
+  if (!NOTION_TOKEN || !NOTION_DB_ID) {
+    return res.status(500).json({ error: 'Missing environment variables', posts: [] });
+  }
 
   try {
-    const notionRes = await fetch(
-      'https://api.notion.com/v1/databases/' + NOTION_DB_ID + '/query',
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + NOTION_TOKEN,
-          'Notion-Version': '2022-06-28',
-          'Content-Type': 'application/json',
+    const response = await fetch(`https://api.notion.com/v1/databases/${NOTION_DB_ID}/query`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${NOTION_TOKEN}`,
+        'Content-Type': 'application/json',
+        'Notion-Version': '2022-06-28'
+      },
+      body: JSON.stringify({
+        filter: {
+          property: 'published',
+          checkbox: { equals: true }
         },
-        body: JSON.stringify({
-          filter: { property: '공개', checkbox: { equals: true } },
-          sorts: [{ property: '작성일', direction: 'descending' }],
-          page_size: 50,
-        }),
-      }
-    );
-    const data = await notionRes.json();
-    if (data.object === 'error') {
-      return res.status(500).json({ error: data.message });
+        sorts: [
+          { property: 'date', direction: 'descending' }
+        ]
+      })
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      return res.status(response.status).json({ error: errData.message, posts: [] });
     }
-    const posts = (data.results || []).map((page) => ({
-      id: page.id,
-      title: page.properties['이름']?.title?.[0]?.plain_text || '',
-      summary: page.properties['요약']?.rich_text?.[0]?.plain_text || '',
-      category: page.properties['카테고리']?.select?.name || '',
-      date: page.properties['작성일']?.date?.start || '',
-      url: page.url,
-    }));
-    return res.status(200).json({ posts });
+
+    const data = await response.json();
+
+    const posts = data.results.map(page => {
+      const props = page.properties;
+      return {
+        id: page.id,
+        title: props.title?.title?.[0]?.plain_text || props.Name?.title?.[0]?.plain_text || '',
+        date: props.date?.date?.start || '',
+        tag: props.tag?.select?.name || props.category?.select?.name || '',
+        excerpt: props.excerpt?.rich_text?.[0]?.plain_text || props.description?.rich_text?.[0]?.plain_text || '',
+        slug: props.slug?.rich_text?.[0]?.plain_text || page.id
+      };
+    });
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.status(200).json({ posts });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message, posts: [] });
   }
 }
