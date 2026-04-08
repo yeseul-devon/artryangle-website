@@ -294,17 +294,11 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
         <div><div class="stat-num">200+</div><div class="stat-label">교육 참가자</div></div>
       </div>
     </div>
-    <div class="hero-collage">
-      <div class="collage-grid">
-        <div class="collage-item ci-1"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/2.jpg" alt="강연"></div>
-        <div class="collage-item ci-2"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" alt="프로필"></div>
-        <div class="collage-item ci-3"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/1.jpg" alt="수상"></div>
-        <div class="collage-item ci-4"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/6.jpg" alt="MC"></div>
-        <div class="collage-item ci-5"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/5.jpg" alt="강연2"></div>
-        <div class="collage-item ci-6"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/8.jpg" alt="활동"></div>
-        <div class="collage-item ci-7"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/9.jpg" alt="활동2"></div>
-      </div>
-      <div class="collage-overlay"></div>
+    <!-- Hero 우측: 로고 -->
+    <div style="display:flex;align-items:center;justify-content:center;z-index:1">
+      <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png"
+           alt="아트라이앵글 로고"
+           style="width:100%;max-width:480px;height:auto;object-fit:contain;">
     </div>
   </div>
 
@@ -324,8 +318,15 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
       </ul>
     </div>
     <div class="about-img-wrap">
-      <div class="about-img">
-        <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" alt="송예슬">
+      <!-- 1~9 콜라주 -->
+      <div style="width:100%;aspect-ratio:3/4;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:4px;overflow:hidden;border-radius:2px;">
+        <div style="overflow:hidden;grid-column:1/3;grid-row:1/2;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/2.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:3/4;grid-row:1/3;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/1.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:1/2;grid-row:2/3;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/6.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:2/3;grid-row:2/3;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:1/2;grid-row:3/4;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/4.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:2/3;grid-row:3/4;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/5.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:3/4;grid-row:3/4;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/7.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
       </div>
       <div class="about-badge">
         <div class="about-badge-num">50+</div>
