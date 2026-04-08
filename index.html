@@ -46,8 +46,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .blog-modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:300;align-items:center;justify-content:center;padding:2rem;}.blog-modal-overlay.open{display:flex;}
 .blog-modal{background:var(--white);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;border-radius:6px;padding:3rem;position:relative;}
 .blog-modal-close{position:absolute;top:1rem;right:1.5rem;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--g600);}.blog-modal-close:hover{color:var(--teal);}
-.blog-modal .btg{margin-bottom:.5rem;}.blog-modal .bti{font-size:1.3rem;margin-bottom:1rem;}.blog-modal .bme{margin-bottom:1.5rem;}.blog-modal .blog-body{font-size:.95rem;line-height:2;color:var(--g600);}
-.blog-modal .blog-link{display:inline-block;margin-top:1.5rem;color:var(--teal);font-size:.88rem;text-decoration:none;font-weight:500;}.blog-modal .blog-link:hover{text-decoration:underline;}
+.blog-modal .btg{margin-bottom:.5rem;}.blog-modal .bti{font-size:1.3rem;margin-bottom:.5rem;}.blog-modal .bme{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--g200);}
+.blog-modal .blog-body{font-size:.95rem;line-height:2;color:var(--g600);}
+.blog-modal .blog-body h2{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--navy-dark);margin:2rem 0 .8rem;}
+.blog-modal .blog-body h3{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--navy-dark);margin:1.8rem 0 .6rem;}
+.blog-modal .blog-body h4{font-size:.95rem;font-weight:700;color:var(--navy-dark);margin:1.5rem 0 .5rem;}
+.blog-modal .blog-body p{margin-bottom:1rem;}
+.blog-modal .blog-body ul,.blog-modal .blog-body ol{margin:1rem 0;padding-left:1.5rem;}
+.blog-modal .blog-body li{margin-bottom:.4rem;}
+.blog-modal .blog-body blockquote{border-left:3px solid var(--teal);padding:.8rem 1.2rem;margin:1.2rem 0;background:var(--g100);border-radius:0 4px 4px 0;font-style:italic;color:var(--navy-dark);}
+.blog-modal .blog-body pre{background:var(--navy-dark);color:var(--teal-light);padding:1.2rem;border-radius:4px;overflow-x:auto;margin:1rem 0;font-size:.85rem;line-height:1.6;}
+.blog-modal .blog-body code{background:var(--g100);padding:.15rem .4rem;border-radius:3px;font-size:.88em;}
+.blog-modal .blog-body pre code{background:none;padding:0;}
+.blog-modal .blog-body figure{margin:1.5rem 0;text-align:center;}
+.blog-modal .blog-body figure img{max-width:100%;border-radius:4px;}
+.blog-modal .blog-body figcaption{font-size:.8rem;color:var(--g400);margin-top:.5rem;}
+.blog-modal .blog-body hr{border:none;border-top:1px solid var(--g200);margin:2rem 0;}
+.blog-modal .blog-body .callout{background:var(--teal-light);padding:1rem 1.2rem;border-radius:4px;margin:1rem 0;}
+.blog-modal .blog-body a{color:var(--teal);text-decoration:underline;}
+.blog-modal .blog-body .video-wrap{position:relative;padding-bottom:56.25%;height:0;margin:1.5rem 0;}.blog-modal .blog-body .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:4px;}
+.blog-loading{text-align:center;padding:2rem;color:var(--g400);}
 /* ▼ 변경6: 교육/워크숍 펼침 */
 .edu-toggle{cursor:pointer;user-select:none;}.edu-toggle .edu-arrow{display:inline-block;transition:transform .3s;font-size:.8rem;margin-left:.5rem;}.edu-toggle.open .edu-arrow{transform:rotate(180deg);}
 .edu-detail{max-height:0;overflow:hidden;transition:max-height .4s ease;}.edu-detail.open{max-height:500px;}
@@ -109,15 +127,15 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}.f
 
 <div id="blog-page" class="page"><section class="sec" style="background:var(--navy-dark);color:var(--white);padding-bottom:4rem;"><div class="sey" style="color:var(--teal)">Blog</div><h2 class="st" style="color:var(--white)">예술경영 인사이트</h2><p class="sd" style="color:rgba(255,255,255,.6)">문화예술경영컨설턴트 송예슬이 전하는 예술과 비즈니스의 교차점</p></section><section class="sec"><div id="bf" class="bg"><div class="be">글을 불러오는 중...</div></div></section></div>
 
-<div id="contact-page" class="page"><div class="cw"><div class="cl"><div class="sey" style="color:var(--teal)">Contact</div><h2 class="st" style="color:var(--white);margin-bottom:2rem;">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2><p style="color:rgba(255,255,255,.6);margin-bottom:.5rem;">Email</p><p style="color:var(--white);margin-bottom:1.5rem;">yeseul@artryangle.com</p><p style="color:rgba(255,255,255,.6);margin-bottom:.5rem;">Location</p><p style="color:var(--white);">서울특별시</p><div class="sns-w" style="margin-top:2rem;"><a href="https://instagram.com/yeahseul_ss" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @yeahseul_ss</a><a href="https://instagram.com/artryangle" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @artryangle</a></div></div><div class="cr"><h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;">문의하기</h3><p style="font-size:.9rem;color:var(--g600);margin-bottom:2rem;">무료 초기 상담을 신청하시면 48시간 내에 연락드립니다.</p><form class="cf" onsubmit="event.preventDefault();showToast('문의가 전송되었습니다!');"><div class="fg"><label class="fl">이름</label><input class="fi" placeholder="홍길동"></div><div class="fg"><label class="fl">이메일</label><input class="fi" type="email" placeholder="example@email.com"></div><div class="fg"><label class="fl">문의 내용</label><textarea class="ft2" placeholder="궁금한 점이나 상담 내용을 자유롭게 작성해 주세요."></textarea></div><button class="fb" type="submit">문의 보내기</button></form></div></div></div>
+<div id="contact-page" class="page"><div class="cw"><div class="cl"><div class="sey" style="color:var(--teal)">Contact</div><h2 class="st" style="color:var(--white);margin-bottom:2rem;">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2><p style="color:rgba(255,255,255,.6);margin-bottom:.5rem;">Email</p><p style="color:var(--white);margin-bottom:1.5rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a233f293f2f361a3b282e28233b343d363f74393537">[email&#160;protected]</a></p><p style="color:rgba(255,255,255,.6);margin-bottom:.5rem;">Location</p><p style="color:var(--white);">서울특별시</p><div class="sns-w" style="margin-top:2rem;"><a href="https://instagram.com/yeahseul_ss" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @yeahseul_ss</a><a href="https://instagram.com/artryangle" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @artryangle</a></div></div><div class="cr"><h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;">문의하기</h3><p style="font-size:.9rem;color:var(--g600);margin-bottom:2rem;">무료 초기 상담을 신청하시면 48시간 내에 연락드립니다.</p><form class="cf" onsubmit="event.preventDefault();showToast('문의가 전송되었습니다!');"><div class="fg"><label class="fl">이름</label><input class="fi" placeholder="홍길동"></div><div class="fg"><label class="fl">이메일</label><input class="fi" type="email" placeholder="example@email.com"></div><div class="fg"><label class="fl">문의 내용</label><textarea class="ft2" placeholder="궁금한 점이나 상담 내용을 자유롭게 작성해 주세요."></textarea></div><button class="fb" type="submit">문의 보내기</button></form></div></div></div>
 
 <!-- ▼ 변경5: 블로그 본문 모달 -->
 <div class="blog-modal-overlay" id="blogModal" onclick="if(event.target===this)closeBlogModal()"><div class="blog-modal"><button class="blog-modal-close" onclick="closeBlogModal()">✕</button><div id="blogModalContent"></div></div></div>
 
-<footer><div class="ftg"><div><div class="ftl">아트라이앵글</div><p class="ftd">예술의 가치를 비즈니스로 만드는 전문가.<br>문화예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p><div class="sns-w" style="margin-top:1rem;"><a href="https://instagram.com/yeahseul_ss" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @yeahseul_ss</a><a href="https://instagram.com/artryangle" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @artryangle</a></div></div><div><div class="ftct">Navigation</div><ul class="ftlk"><li><a onclick="go('about')">About</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('portfolio')">Portfolio</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div><div><div class="ftct">Contact</div><ul class="ftlk"><li><a href="mailto:yeseul@artryangle.com">yeseul@artryangle.com</a></li><li><a>서울특별시</a></li></ul></div></div><div class="ftb"><span>© 2025 아트라이앵글 Artryangle. All rights reserved.</span></div></footer>
+<footer><div class="ftg"><div><div class="ftl">아트라이앵글</div><p class="ftd">예술의 가치를 비즈니스로 만드는 전문가.<br>문화예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p><div class="sns-w" style="margin-top:1rem;"><a href="https://instagram.com/yeahseul_ss" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @yeahseul_ss</a><a href="https://instagram.com/artryangle" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @artryangle</a></div></div><div><div class="ftct">Navigation</div><ul class="ftlk"><li><a onclick="go('about')">About</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('portfolio')">Portfolio</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div><div><div class="ftct">Contact</div><ul class="ftlk"><li><a href="/cdn-cgi/l/email-protection#59203c2a3c2c3519382b2d2b2038373e353c773a3634"><span class="__cf_email__" data-cfemail="e69f839583938aa6879492949f8788818a83c885898b">[email&#160;protected]</span></a></li><li><a>서울특별시</a></li></ul></div></div><div class="ftb"><span>© 2025 아트라이앵글 Artryangle. All rights reserved.</span></div></footer>
 
 <div id="toast" class="toast"></div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const S='https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/';
 // About 섹션 콜라주 생성
 (function(){const g=document.getElementById('ab-collage');for(let i=1;i<=9;i++){const img=document.createElement('img');img.src=S+i+'.jpg';img.alt='아트라이앵글 '+i;img.loading='lazy';g.appendChild(img);}})();
@@ -132,16 +150,32 @@ function toggleEdu(el){el.classList.toggle('open');const detail=el.parentElement
 let blogPosts=[];
 function openBlogModal(idx){
   const p=blogPosts[idx];if(!p)return;
-  const html=`
+  const modal=document.getElementById('blogModal');
+  const mc=document.getElementById('blogModalContent');
+  // Show modal with loading state
+  mc.innerHTML=`
     ${p.tag?`<div class="btg">${p.tag}</div>`:''}
     <div class="bti">${p.title}</div>
     <div class="bme">${p.date||''}</div>
-    <div class="blog-body">${p.excerpt?`<p>${p.excerpt}</p>`:''}</div>
-    ${p.notion_url?`<a class="blog-link" href="${p.notion_url}" target="_blank">노션에서 전체 보기 →</a>`:''}
+    <div class="blog-body"><div class="blog-loading">본문을 불러오는 중...</div></div>
   `;
-  document.getElementById('blogModalContent').innerHTML=html;
-  document.getElementById('blogModal').classList.add('open');
+  modal.classList.add('open');
   document.body.style.overflow='hidden';
+  // Fetch full content
+  fetch('/api/notion-page?id='+p.id)
+    .then(r=>r.json())
+    .then(d=>{
+      const body=mc.querySelector('.blog-body');
+      if(d.html){
+        body.innerHTML=d.html;
+      } else if(d.error){
+        body.innerHTML='<p>'+( p.excerpt||'')+'</p><p style="color:var(--g400);margin-top:1rem;font-size:.85rem;">전체 본문을 불러올 수 없습니다.</p>';
+      }
+    })
+    .catch(()=>{
+      const body=mc.querySelector('.blog-body');
+      body.innerHTML='<p>'+(p.excerpt||'')+'</p>';
+    });
 }
 function closeBlogModal(){
   document.getElementById('blogModal').classList.remove('open');
@@ -164,12 +198,4 @@ const svcCards=document.querySelectorAll('#home-page .sg .sc');
 [1,2,3,4].forEach((n,i)=>{if(svcCards[i]&&c['svc'+n+'_title']){svcCards[i].querySelector('.sct').textContent=c['svc'+n+'_title'];svcCards[i].querySelector('.scd').textContent=c['svc'+n+'_desc'];}});
 // 포트폴리오
 const pfCards=document.querySelectorAll('#home-page .pg .pc');
-[1,2,3,4,5,6].forEach((n,i)=>{if(pfCards[i]&&c['pf'+n+'_title']){pfCards[i].querySelector('.ptag').textContent=c['pf'+n+'_tag'];pfCards[i].querySelector('.pti').textContent=c['pf'+n+'_title'];pfCards[i].querySelector('.pde').textContent=c['pf'+n+'_desc'];}});
-// 파트너
-if(c.partners){const cg=document.querySelector('#home-page .cg');if(cg)cg.innerHTML=c.partners.split(',').map(p=>'<span class="ct">'+p.trim()+'</span>').join('');}
-}catch(e){console.log('No admin content loaded');}}
-loadSiteContent();
-loadBlog();
-</script>
-</body>
-</html>
+[1,2,3,4,5,6].forEach((n,i)=>{if(pfCards[i]&&c['pf'+n+'_title']){pfCards[i].querySelector('.ptag').textContent=c['pf'+n+'_tag'];pfCards[i].querySelector('.pti').textContent=c
