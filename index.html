@@ -5,229 +5,252 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아트라이앵글 | 예술경영컨설턴트 송예슬</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 :root {
-  --black:#0a0a0a;--white:#fafafa;--gold:#b8965a;--gold-light:#d4b07a;
-  --gray-100:#f5f5f3;--gray-200:#e8e8e4;--gray-500:#888880;--gray-700:#444440;
-  --serif:'Noto Serif KR',serif;--sans:'Noto Sans KR',sans-serif;
+  --teal:#2AABAA;
+  --teal-dark:#1d8a89;
+  --teal-light:#e6f7f7;
+  --navy:#1e3a5f;
+  --navy-dark:#122540;
+  --white:#ffffff;
+  --off-white:#f7f9f9;
+  --gray-100:#f0f4f4;
+  --gray-200:#dde6e6;
+  --gray-400:#9ab0b0;
+  --gray-600:#4a6464;
+  --gray-800:#1e3232;
+  --serif:'Noto Serif KR',serif;
+  --sans:'Noto Sans KR',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden;}
+body{font-family:var(--sans);background:var(--white);color:var(--gray-800);overflow-x:hidden;font-size:16px;line-height:1.7;}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,250,250,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
-.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;letter-spacing:.15em;color:var(--black);text-decoration:none;cursor:pointer;}
-.nav-logo span{color:var(--gold);}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:72px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
+.nav-logo{display:flex;align-items:center;gap:.8rem;cursor:pointer;text-decoration:none;}
+.nav-logo img{height:36px;width:auto;}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nav-links a{font-size:.8rem;letter-spacing:.1em;color:var(--gray-700);text-decoration:none;text-transform:uppercase;transition:color .2s;cursor:pointer;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{padding:.5rem 1.2rem;background:var(--black);color:var(--white)!important;border-radius:2px;transition:background .2s!important;}
-.nav-cta:hover{background:var(--gold)!important;}
-.admin-btn{padding:.4rem 1rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:.72rem!important;}
+.nav-links a{font-size:.82rem;letter-spacing:.08em;color:var(--gray-600);text-decoration:none;text-transform:uppercase;transition:color .2s;cursor:pointer;font-weight:500;}
+.nav-links a:hover{color:var(--teal);}
+.nav-cta{padding:.5rem 1.4rem;background:var(--teal);color:var(--white)!important;border-radius:3px;transition:background .2s!important;}
+.nav-cta:hover{background:var(--teal-dark)!important;}
+.admin-btn{padding:.4rem 1rem;border:1px solid var(--teal);color:var(--teal)!important;border-radius:3px;font-size:.75rem!important;}
 
-.page{display:none;padding-top:80px;min-height:100vh;}
+.page{display:none;padding-top:72px;min-height:100vh;}
 .page.active{display:block;}
 
 /* HERO */
-#home-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;padding-top:80px;position:relative;overflow:hidden;}
-#home-hero::before{content:'ARTRYANGLE';position:absolute;right:-2rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:var(--serif);font-size:8rem;font-weight:700;color:var(--gray-200);letter-spacing:.3em;pointer-events:none;white-space:nowrap;}
-.hero-eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
-.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
-.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;}
-.hero-title em{font-style:normal;color:var(--gold);}
-.hero-sub{font-size:1rem;line-height:1.8;color:var(--gray-700);margin-bottom:3rem;max-width:400px;}
+#home-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 5rem;padding-top:72px;background:var(--white);gap:4rem;}
+.hero-eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;font-weight:500;}
+.hero-eyebrow::before{content:'';width:36px;height:2px;background:var(--teal);}
+.hero-title{font-family:var(--serif);font-size:clamp(2.4rem,3.8vw,3.8rem);font-weight:700;line-height:1.25;margin-bottom:1.4rem;color:var(--navy-dark);}
+.hero-title em{font-style:normal;color:var(--teal);}
+.hero-sub{font-size:1.05rem;line-height:1.85;color:var(--gray-600);margin-bottom:2.5rem;max-width:420px;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-primary{padding:.9rem 2.2rem;background:var(--black);color:var(--white);text-decoration:none;font-size:.82rem;letter-spacing:.1em;border-radius:2px;transition:background .2s;cursor:pointer;border:none;}
-.btn-primary:hover{background:var(--gold);}
-.btn-outline{padding:.9rem 2.2rem;border:1px solid var(--black);color:var(--black);text-decoration:none;font-size:.82rem;letter-spacing:.1em;border-radius:2px;transition:all .2s;cursor:pointer;background:none;}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.hero-stats{display:flex;gap:3rem;margin-top:4rem;}
-.stat-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--gold);}
-.stat-label{font-size:.72rem;letter-spacing:.1em;color:var(--gray-500);margin-top:.2rem;}
-.hero-image{display:flex;justify-content:flex-end;align-items:center;position:relative;z-index:1;}
-.hero-image-frame{width:380px;height:480px;position:relative;overflow:hidden;background:var(--gray-200);}
-.hero-image-frame::after{content:'';position:absolute;top:1.2rem;left:1.2rem;right:-1.2rem;bottom:-1.2rem;border:1px solid var(--gold);z-index:-1;}
-.hero-image-frame img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.btn-primary{padding:.85rem 2rem;background:var(--teal);color:var(--white);font-size:.88rem;letter-spacing:.06em;border-radius:3px;transition:background .2s;cursor:pointer;border:none;font-family:var(--sans);font-weight:500;}
+.btn-primary:hover{background:var(--teal-dark);}
+.btn-outline{padding:.85rem 2rem;border:2px solid var(--navy);color:var(--navy);font-size:.88rem;letter-spacing:.06em;border-radius:3px;transition:all .2s;cursor:pointer;background:none;font-family:var(--sans);font-weight:500;}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--gray-200);}
+.stat-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--teal);}
+.stat-label{font-size:.75rem;letter-spacing:.06em;color:var(--gray-400);margin-top:.2rem;}
 
-.sec{padding:7rem 4rem;}
-.sec-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.sec-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;line-height:1.3;margin-bottom:1rem;}
-.sec-desc{font-size:.95rem;line-height:1.9;color:var(--gray-700);max-width:480px;}
+/* COLLAGE */
+.hero-collage{position:relative;width:100%;height:560px;}
+.collage-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:6px;width:100%;height:100%;border-radius:4px;overflow:hidden;}
+.collage-item{overflow:hidden;position:relative;}
+.collage-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;}
+.collage-item:hover img{transform:scale(1.05);}
+.ci-1{grid-column:1/3;grid-row:1/2;}
+.ci-2{grid-column:3/4;grid-row:1/3;}
+.ci-3{grid-column:1/2;grid-row:2/3;}
+.ci-4{grid-column:2/3;grid-row:2/3;}
+.ci-5{grid-column:1/2;grid-row:3/4;}
+.ci-6{grid-column:2/3;grid-row:3/4;}
+.ci-7{grid-column:3/4;grid-row:3/4;}
+.collage-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,171,170,.08),rgba(30,58,95,.05));}
+
+/* SECTIONS */
+.sec{padding:6rem 5rem;}
+.sec-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem;font-weight:600;}
+.sec-title{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.3;margin-bottom:1.2rem;color:var(--navy-dark);}
+.sec-desc{font-size:1rem;line-height:1.9;color:var(--gray-600);max-width:560px;}
+.sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
+.link-all{font-size:.82rem;letter-spacing:.06em;color:var(--teal);text-decoration:none;cursor:pointer;font-weight:500;}
 
 /* ABOUT */
 #home-about{background:var(--gray-100);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
-.about-list{list-style:none;margin-top:2rem;}
-.about-list li{display:flex;align-items:flex-start;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--gray-200);font-size:.88rem;color:var(--gray-700);}
-.about-list li::before{content:'—';color:var(--gold);flex-shrink:0;}
-.about-img{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--gray-200);}
+.about-list{list-style:none;margin-top:1.8rem;}
+.about-list li{display:flex;align-items:flex-start;gap:.9rem;padding:.75rem 0;border-bottom:1px solid var(--gray-200);font-size:.95rem;color:var(--gray-600);line-height:1.6;}
+.about-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:.6rem;}
+.about-list li strong{color:var(--navy);font-weight:600;}
+.about-img-wrap{position:relative;}
+.about-img{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--gray-200);}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
-.about-badge{position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--black);color:var(--white);padding:1.5rem 2rem;}
-.about-badge-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);}
-.about-badge-text{font-size:.72rem;letter-spacing:.1em;margin-top:.3rem;color:var(--gray-200);}
+.about-badge{position:absolute;bottom:-1rem;left:-1rem;background:var(--navy);color:var(--white);padding:1.4rem 1.8rem;border-radius:2px;}
+.about-badge-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--teal);}
+.about-badge-text{font-size:.72rem;letter-spacing:.1em;margin-top:.2rem;color:var(--gray-200);}
 
-/* PHOTO GALLERY */
-#home-gallery{background:var(--white);padding:5rem 4rem;}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
-.gallery-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--gray-200);cursor:pointer;}
-.gallery-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;}
+/* GALLERY */
+#home-gallery{background:var(--white);}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:2.5rem;}
+.gallery-item{position:relative;overflow:hidden;background:var(--gray-200);cursor:pointer;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;display:block;}
 .gallery-item:hover img{transform:scale(1.05);}
-.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:flex-end;padding:1.2rem;}
-.gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.45);}
-.gallery-caption{color:var(--white);font-size:.78rem;letter-spacing:.05em;opacity:0;transition:opacity .3s;line-height:1.5;}
+.gallery-overlay{position:absolute;inset:0;background:rgba(30,58,95,0);transition:background .3s;display:flex;align-items:flex-end;padding:1rem;}
+.gallery-item:hover .gallery-overlay{background:rgba(30,58,95,.5);}
+.gallery-caption{color:var(--white);font-size:.78rem;letter-spacing:.04em;opacity:0;transition:opacity .3s;line-height:1.5;}
 .gallery-item:hover .gallery-caption{opacity:1;}
-.gallery-item.tall{aspect-ratio:3/4;}
-.gallery-item.wide{grid-column:span 2;}
+.gi-tall{aspect-ratio:3/4;}
+.gi-wide{grid-column:span 2;aspect-ratio:16/7;}
+.gi-sq{aspect-ratio:1;}
 
 /* SERVICES */
-.sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
-.link-all{font-size:.78rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;cursor:pointer;}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--gray-200);border:1.5px solid var(--gray-200);}
-.svc-card{background:var(--white);padding:2.5rem 2rem;cursor:pointer;transition:background .3s;position:relative;}
-.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s;}
-.svc-card:hover{background:var(--black);}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--gray-200);}
+.svc-card{background:var(--white);padding:2.5rem 2rem;cursor:pointer;transition:background .3s;position:relative;overflow:hidden;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal);transition:width .4s;}
+.svc-card:hover{background:var(--navy);}
+.svc-card:hover .svc-num{color:rgba(255,255,255,.1);}
 .svc-card:hover .svc-title,.svc-card:hover .svc-desc,.svc-card:hover .svc-link{color:var(--white);}
 .svc-card:hover::after{width:100%;}
-.svc-num{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--gray-200);line-height:1;margin-bottom:1.5rem;}
-.svc-card:hover .svc-num{color:var(--gray-700);}
-.svc-title{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin-bottom:.8rem;}
-.svc-desc{font-size:.82rem;line-height:1.8;color:var(--gray-700);}
-.svc-link{display:inline-block;margin-top:1.5rem;font-size:.75rem;letter-spacing:.1em;color:var(--gold);}
+.svc-num{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--gray-200);line-height:1;margin-bottom:1.5rem;transition:color .3s;}
+.svc-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;margin-bottom:.7rem;color:var(--navy);transition:color .3s;}
+.svc-desc{font-size:.88rem;line-height:1.8;color:var(--gray-600);transition:color .3s;}
+.svc-link{display:inline-block;margin-top:1.2rem;font-size:.78rem;letter-spacing:.06em;color:var(--teal);font-weight:500;transition:color .3s;}
 
 /* PORTFOLIO */
-.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;margin-top:2rem;}
-.port-card{background:var(--black);padding:2.5rem;cursor:pointer;transition:background .3s;}
-.port-card:hover{background:#111;}
-.port-tag{display:inline-block;padding:.3rem .8rem;border:1px solid var(--gold);color:var(--gold);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;}
-.port-title{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.5;color:var(--white);margin-bottom:.8rem;}
-.port-desc{font-size:.8rem;line-height:1.8;color:#888;}
-.port-arrow{display:inline-block;margin-top:1.5rem;font-size:.75rem;color:var(--gold);}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.1);margin-top:2rem;}
+.port-card{background:var(--navy-dark);padding:2.5rem;cursor:pointer;transition:background .3s;border:1px solid rgba(255,255,255,.06);}
+.port-card:hover{background:rgba(42,171,170,.1);}
+.port-tag{display:inline-block;padding:.3rem .8rem;border:1px solid var(--teal);color:var(--teal);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;border-radius:2px;}
+.port-title{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.55;color:var(--white);margin-bottom:.8rem;}
+.port-desc{font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.55);}
+.port-arrow{display:inline-block;margin-top:1.2rem;font-size:.78rem;color:var(--teal);font-weight:500;}
 
 /* TESTIMONIALS */
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
-.test-card{border:1px solid #333;padding:2.5rem;position:relative;}
-.test-card::before{content:'"';font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.3;position:absolute;top:-.5rem;left:1.5rem;line-height:1;}
-.test-text{font-size:.88rem;line-height:2;color:#ccc;margin-top:1rem;}
-.test-author{display:flex;align-items:center;gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #333;}
-.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--white);font-size:.9rem;}
-.test-name{font-size:.85rem;font-weight:600;}
-.test-role{font-size:.72rem;color:#888;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.test-card{border:1px solid rgba(255,255,255,.12);padding:2.5rem;position:relative;background:rgba(255,255,255,.04);border-radius:3px;}
+.test-card::before{content:'"';font-family:var(--serif);font-size:5rem;color:var(--teal);opacity:.25;position:absolute;top:-.8rem;left:1.5rem;line-height:1;}
+.test-text{font-size:.92rem;line-height:2;color:rgba(255,255,255,.75);margin-top:1rem;}
+.test-author{display:flex;align-items:center;gap:1rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--white);font-size:.9rem;flex-shrink:0;}
+.test-name{font-size:.88rem;font-weight:600;color:var(--white);}
+.test-role{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:.1rem;}
 
 /* BLOG */
-.blog-hero{background:var(--black);color:var(--white);padding:5rem 4rem 4rem;}
-.blog-list{padding:4rem;}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.blog-card{background:var(--white);border:1px solid var(--gray-200);padding:0;cursor:pointer;transition:border-color .3s;overflow:hidden;}
-.blog-card:hover{border-color:var(--gold);}
+.blog-hero{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 4rem;}
+.blog-list{padding:4rem 5rem;}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.blog-card{background:var(--white);border:1px solid var(--gray-200);cursor:pointer;transition:border-color .3s,box-shadow .3s;border-radius:3px;overflow:hidden;}
+.blog-card:hover{border-color:var(--teal);box-shadow:0 4px 20px rgba(42,171,170,.1);}
 .blog-card-body{padding:1.8rem;}
-.blog-tag{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
-.blog-title{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:.8rem;color:var(--black);}
-.blog-excerpt{font-size:.8rem;line-height:1.8;color:var(--gray-500);}
-.blog-meta{font-size:.72rem;color:var(--gray-500);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-200);display:flex;justify-content:space-between;}
-.blog-empty{text-align:center;padding:4rem;color:var(--gray-500);}
+.blog-tag{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;font-weight:600;}
+.blog-title{font-family:var(--serif);font-size:1.02rem;font-weight:700;line-height:1.55;margin-bottom:.7rem;color:var(--navy-dark);}
+.blog-excerpt{font-size:.88rem;line-height:1.8;color:var(--gray-400);}
+.blog-meta{font-size:.75rem;color:var(--gray-400);margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--gray-100);display:flex;justify-content:space-between;}
+.blog-empty{text-align:center;padding:4rem;color:var(--gray-400);}
 
 /* BLOG DETAIL */
-#blog-detail-page{padding-top:80px;}
-.blog-detail-hero{background:var(--black);color:var(--white);padding:5rem 4rem 4rem;}
-.blog-detail-body{max-width:780px;margin:0 auto;padding:4rem 2rem;}
-.blog-detail-content{font-size:1rem;line-height:2;color:var(--gray-700);}
-.blog-detail-content p{margin-bottom:1.5rem;}
-.blog-detail-content h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;}
-.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;letter-spacing:.1em;color:var(--gold);cursor:pointer;margin-bottom:2rem;background:none;border:none;}
+#blog-detail-page{padding-top:72px;}
+.blog-detail-hero{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 4rem;}
+.blog-detail-body{max-width:760px;margin:0 auto;padding:4rem 2rem;}
+.blog-detail-content{font-size:1.02rem;line-height:2;color:var(--gray-600);}
+.blog-detail-content p{margin-bottom:1.6rem;}
+.blog-detail-content h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;color:var(--navy-dark);}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--teal);cursor:pointer;margin-bottom:2rem;background:none;border:none;font-family:var(--sans);}
 
 /* CONTACT */
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 80px);}
-.contact-left{background:var(--black);color:var(--white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
-.contact-right{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
-.contact-form{display:flex;flex-direction:column;gap:1.5rem;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 72px);}
+.contact-left{background:var(--navy-dark);color:var(--white);padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center;}
+.contact-right{padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center;background:var(--off-white);}
+.contact-form{display:flex;flex-direction:column;gap:1.4rem;}
 .form-group{display:flex;flex-direction:column;gap:.5rem;}
-.form-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);}
-.form-input,.form-textarea{padding:.9rem 1rem;border:1px solid var(--gray-200);background:var(--white);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s;border-radius:2px;}
-.form-input:focus,.form-textarea:focus{border-color:var(--gold);}
+.form-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-600);font-weight:600;}
+.form-input,.form-textarea{padding:.9rem 1.1rem;border:1.5px solid var(--gray-200);background:var(--white);font-family:var(--sans);font-size:.95rem;outline:none;transition:border-color .2s;border-radius:3px;color:var(--gray-800);}
+.form-input:focus,.form-textarea:focus{border-color:var(--teal);}
 .form-textarea{resize:vertical;min-height:140px;}
-.form-submit{padding:1rem 2rem;background:var(--black);color:var(--white);border:none;font-family:var(--sans);font-size:.85rem;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:background .2s;}
-.form-submit:hover{background:var(--gold);}
-.contact-info-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
-.contact-info-val{font-size:.9rem;color:#ccc;}
+.form-submit{padding:1rem 2rem;background:var(--teal);color:var(--white);border:none;font-family:var(--sans);font-size:.9rem;font-weight:600;letter-spacing:.06em;cursor:pointer;border-radius:3px;transition:background .2s;}
+.form-submit:hover{background:var(--teal-dark);}
 
 /* TOAST */
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--black);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--gold);font-size:.85rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--teal);font-size:.88rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;border-radius:2px;}
 .toast.show{opacity:1;transform:translateY(0);}
 
 /* ADMIN */
-#admin-page{padding-top:80px;background:var(--gray-100);min-height:100vh;}
-.admin-login{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 80px);}
-.admin-login-box{background:var(--white);padding:3rem;width:100%;max-width:400px;border:1px solid var(--gray-200);}
-.admin-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 80px);}
-.admin-sidebar{background:var(--black);color:var(--white);padding:2rem 0;position:relative;}
-.admin-sidebar-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 1.5rem;margin-bottom:1rem;}
-.admin-menu-item{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.5rem;cursor:pointer;font-size:.85rem;color:#aaa;transition:all .2s;}
-.admin-menu-item:hover,.admin-menu-item.active{background:#1a1a1a;color:var(--white);}
-.admin-menu-item.active{border-left:2px solid var(--gold);}
+#admin-page{padding-top:72px;background:var(--gray-100);min-height:100vh;}
+.admin-login{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 72px);}
+.admin-login-box{background:var(--white);padding:3rem;width:100%;max-width:400px;border:1px solid var(--gray-200);border-radius:4px;}
+.admin-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 72px);}
+.admin-sidebar{background:var(--navy-dark);color:var(--white);padding:2rem 0;position:relative;}
+.admin-sidebar-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);padding:0 1.5rem;margin-bottom:1rem;}
+.admin-menu-item{display:flex;align-items:center;gap:.8rem;padding:.85rem 1.5rem;cursor:pointer;font-size:.88rem;color:rgba(255,255,255,.55);transition:all .2s;}
+.admin-menu-item:hover,.admin-menu-item.active{background:rgba(42,171,170,.1);color:var(--white);}
+.admin-menu-item.active{border-left:2px solid var(--teal);}
 .admin-content{padding:2.5rem;}
 .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
-.admin-page-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;}
-.admin-table{width:100%;border-collapse:collapse;background:var(--white);}
-.admin-table th{background:var(--black);color:var(--white);padding:.8rem 1rem;text-align:left;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;}
-.admin-table td{padding:.9rem 1rem;border-bottom:1px solid var(--gray-200);font-size:.85rem;vertical-align:middle;}
+.admin-page-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy-dark);}
+.admin-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:3px;overflow:hidden;}
+.admin-table th{background:var(--navy-dark);color:var(--white);padding:.85rem 1.1rem;text-align:left;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;}
+.admin-table td{padding:.95rem 1.1rem;border-bottom:1px solid var(--gray-100);font-size:.88rem;vertical-align:middle;color:var(--gray-800);}
 .admin-table tr:hover td{background:var(--gray-100);}
-.badge{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.68rem;}
-.badge-pub{background:#e8f5e9;color:#2e7d32;}
+.badge{display:inline-block;padding:.25rem .75rem;border-radius:20px;font-size:.7rem;}
+.badge-pub{background:#e0f4f4;color:var(--teal-dark);}
 .badge-draft{background:#fff3e0;color:#e65100;}
-.admin-action-btn{padding:.3rem .8rem;font-size:.72rem;border:none;cursor:pointer;border-radius:2px;margin-right:.3rem;transition:all .2s;}
-.btn-edit{background:var(--black);color:var(--white);}
-.btn-edit:hover{background:var(--gold);}
+.admin-action-btn{padding:.35rem .85rem;font-size:.75rem;border:none;cursor:pointer;border-radius:3px;margin-right:.3rem;transition:all .2s;}
+.btn-edit{background:var(--navy);color:var(--white);}
+.btn-edit:hover{background:var(--teal);}
 .btn-delete{background:#fee;color:#c00;}
 .btn-delete:hover{background:#c00;color:#fff;}
 .admin-contacts-list{display:flex;flex-direction:column;gap:1rem;}
-.contact-item{background:var(--white);padding:1.5rem;border:1px solid var(--gray-200);}
-.contact-item-header{display:flex;justify-content:space-between;margin-bottom:.5rem;}
-.contact-item-name{font-weight:600;font-size:.9rem;}
-.contact-item-date{font-size:.75rem;color:var(--gray-500);}
-.contact-item-email{font-size:.8rem;color:var(--gold);margin-bottom:.5rem;}
-.contact-item-msg{font-size:.85rem;line-height:1.7;color:var(--gray-700);}
-.editor-wrap{background:var(--white);border:1px solid var(--gray-200);padding:2rem;}
+.contact-item{background:var(--white);padding:1.5rem;border:1px solid var(--gray-200);border-radius:3px;}
+.contact-item-header{display:flex;justify-content:space-between;margin-bottom:.4rem;}
+.contact-item-name{font-weight:700;font-size:.92rem;color:var(--navy-dark);}
+.contact-item-date{font-size:.75rem;color:var(--gray-400);}
+.contact-item-email{font-size:.82rem;color:var(--teal);margin-bottom:.5rem;}
+.contact-item-msg{font-size:.88rem;line-height:1.75;color:var(--gray-600);}
+.editor-wrap{background:var(--white);border:1px solid var(--gray-200);padding:2rem;border-radius:4px;}
 .editor-field{margin-bottom:1.5rem;}
-.editor-label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);margin-bottom:.5rem;display:block;}
-.editor-input{width:100%;padding:.8rem 1rem;border:1px solid var(--gray-200);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s;border-radius:2px;}
-.editor-input:focus{border-color:var(--gold);}
-.editor-textarea{width:100%;padding:1rem;border:1px solid var(--gray-200);font-family:var(--sans);font-size:.9rem;min-height:400px;resize:vertical;outline:none;line-height:1.8;border-radius:2px;}
-.editor-textarea:focus{border-color:var(--gold);}
-.editor-select{width:100%;padding:.8rem 1rem;border:1px solid var(--gray-200);font-family:var(--sans);font-size:.9rem;outline:none;border-radius:2px;background:var(--white);}
+.editor-label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-600);margin-bottom:.5rem;display:block;font-weight:600;}
+.editor-input,.editor-select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--gray-200);font-family:var(--sans);font-size:.92rem;outline:none;transition:border-color .2s;border-radius:3px;color:var(--gray-800);}
+.editor-input:focus,.editor-select:focus{border-color:var(--teal);}
+.editor-textarea{width:100%;padding:1rem;border:1.5px solid var(--gray-200);font-family:var(--sans);font-size:.92rem;min-height:400px;resize:vertical;outline:none;line-height:1.85;border-radius:3px;color:var(--gray-800);}
+.editor-textarea:focus{border-color:var(--teal);}
 .editor-actions{display:flex;gap:1rem;margin-top:1.5rem;}
 .toggle-wrap{display:flex;align-items:center;gap:.8rem;}
 .toggle{width:44px;height:24px;background:var(--gray-200);border-radius:12px;position:relative;cursor:pointer;transition:background .2s;}
-.toggle.on{background:var(--gold);}
+.toggle.on{background:var(--teal);}
 .toggle::after{content:'';width:18px;height:18px;background:var(--white);border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .2s;}
 .toggle.on::after{transform:translateX(20px);}
 
 /* FOOTER */
-footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid #222;}
-.footer-logo{font-family:var(--serif);font-size:1.2rem;font-weight:700;letter-spacing:.15em;margin-bottom:1rem;}
-.footer-logo span{color:var(--gold);}
-.footer-desc{font-size:.82rem;line-height:1.9;color:#888;}
-.footer-col-title{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-logo img{height:40px;width:auto;margin-bottom:1.2rem;filter:brightness(0) invert(1);}
+.footer-desc{font-size:.88rem;line-height:1.9;color:rgba(255,255,255,.5);}
+.footer-col-title{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem;font-weight:600;}
 .footer-links{list-style:none;}
 .footer-links li{margin-bottom:.8rem;}
-.footer-links a{font-size:.82rem;color:#888;text-decoration:none;cursor:pointer;transition:color .2s;}
+.footer-links a{font-size:.88rem;color:rgba(255,255,255,.5);text-decoration:none;cursor:pointer;transition:color .2s;}
 .footer-links a:hover{color:var(--white);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;font-size:.72rem;color:#555;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;font-size:.75rem;color:rgba(255,255,255,.3);}
 .newsletter-form{display:flex;margin-top:1.5rem;}
-.newsletter-form input{flex:1;padding:.7rem 1rem;background:#111;border:1px solid #333;border-right:none;color:var(--white);font-size:.82rem;outline:none;}
-.newsletter-form button{padding:.7rem 1.2rem;background:var(--gold);color:var(--white);border:none;cursor:pointer;font-size:.78rem;}
+.newsletter-form input{flex:1;padding:.75rem 1rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-right:none;color:var(--white);font-size:.88rem;outline:none;font-family:var(--sans);}
+.newsletter-form input::placeholder{color:rgba(255,255,255,.3);}
+.newsletter-form button{padding:.75rem 1.2rem;background:var(--teal);color:var(--white);border:none;cursor:pointer;font-size:.82rem;font-family:var(--sans);transition:background .2s;}
+.newsletter-form button:hover{background:var(--teal-dark);}
 
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem;}
+@media(max-width:960px){
+  nav{padding:0 1.5rem;}
   .nav-links{display:none;}
-  #home-hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}
-  .hero-image{display:none;}
-  #home-hero::before{display:none;}
-  .sec,.blog-list,#home-about,#home-gallery{padding:4rem 1.5rem;}
-  #home-about{grid-template-columns:1fr;}
+  #home-hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem;gap:3rem;}
+  .sec,.blog-list,#home-about,#home-gallery,footer,.blog-hero,.blog-detail-hero{padding-left:1.5rem;padding-right:1.5rem;}
+  #home-about{grid-template-columns:1fr;gap:3rem;}
   .services-grid{grid-template-columns:1fr 1fr;}
-  .port-grid,.test-grid,.blog-grid,.gallery-grid{grid-template-columns:1fr;}
-  .gallery-item.wide{grid-column:span 1;}
-  .footer-grid{grid-template-columns:1fr;gap:2rem;}
+  .port-grid,.test-grid,.blog-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gi-wide{grid-column:span 2;}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem;}
   .contact-wrap{grid-template-columns:1fr;}
   .admin-wrap{grid-template-columns:1fr;}
   .admin-sidebar{display:none;}
@@ -237,7 +260,9 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="goPage('home')">ART<span>▲</span>RYANGLE</span>
+  <span class="nav-logo" onclick="goPage('home')">
+    <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png" alt="아트라이앵글" onerror="this.style.display='none'">
+  </span>
   <ul class="nav-links">
     <li><a onclick="goPage('home')">홈</a></li>
     <li><a onclick="scrollToSec('home-about')">About</a></li>
@@ -254,9 +279,8 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
 
 <!-- ===== HOME ===== -->
 <div id="home-page" class="page active">
-
   <div id="home-hero">
-    <div style="z-index:1">
+    <div>
       <div class="hero-eyebrow">Arts Management Consultant</div>
       <h1 class="hero-title">예술의 가치를<br><em>비즈니스로</em></h1>
       <p class="hero-sub">연세대학교 Global MBA · 문화예술경영컨설턴트<br>당신의 예술적 비전을 현실로 만드세요.</p>
@@ -270,10 +294,17 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
         <div><div class="stat-num">200+</div><div class="stat-label">교육 참가자</div></div>
       </div>
     </div>
-    <div class="hero-image">
-      <div class="hero-image-frame">
-        <img id="hero-main-img" src="" alt="송예슬" onerror="this.style.display='none'">
+    <div class="hero-collage">
+      <div class="collage-grid">
+        <div class="collage-item ci-1"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/2.jpg" alt="강연"></div>
+        <div class="collage-item ci-2"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" alt="프로필"></div>
+        <div class="collage-item ci-3"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/1.jpg" alt="수상"></div>
+        <div class="collage-item ci-4"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/6.jpg" alt="MC"></div>
+        <div class="collage-item ci-5"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/5.jpg" alt="강연2"></div>
+        <div class="collage-item ci-6"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/8.jpg" alt="활동"></div>
+        <div class="collage-item ci-7"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/9.jpg" alt="활동2"></div>
       </div>
+      <div class="collage-overlay"></div>
     </div>
   </div>
 
@@ -286,30 +317,20 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
       <ul class="about-list">
         <li>연세대학교 경영전문대학원 <strong>Global MBA</strong> 졸업</li>
         <li>성신여자대학교 예술경영학 학사</li>
-        <li>아트라이앵글 대표 · 문화예술기획 50+ 프로젝트</li>
+        <li>아트라이앵글 대표 · 문화예술기획 <strong>50+ 프로젝트</strong></li>
         <li>허난설헌 문화제, K-Wave Dance Festival 등 대형 축제 기획·총괄</li>
         <li>세종학당재단 한국문화 교육 (그리스, 코스타리카, 중국)</li>
         <li>전문 MC/아나운서 · 한국무용 전문 무용수 (15년)</li>
       </ul>
     </div>
-    <div style="position:relative">
-      <div class="about-img" id="about-img-wrap">
-        <img id="about-main-img" src="" alt="송예슬" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+    <div class="about-img-wrap">
+      <div class="about-img">
+        <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" alt="송예슬">
       </div>
       <div class="about-badge">
         <div class="about-badge-num">50+</div>
         <div class="about-badge-text">Projects Completed</div>
       </div>
-    </div>
-  </div>
-
-  <!-- PHOTO GALLERY -->
-  <div id="home-gallery" class="sec" style="background:var(--white)">
-    <div class="sec-eyebrow">Gallery</div>
-    <h2 class="sec-title">현장에서</h2>
-    <p class="sec-desc">강연, 축제 기획, 문화예술 현장에서의 활동들</p>
-    <div class="gallery-grid" id="gallery-grid">
-      <!-- JS로 채워짐 -->
     </div>
   </div>
 
@@ -319,22 +340,68 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
       <div><div class="sec-eyebrow">Services</div><h2 class="sec-title">제공하는 서비스</h2></div>
     </div>
     <div class="services-grid">
-      <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">예술경영 컨설팅</div><div class="svc-desc">예술단체의 조직, 재정, 전략을 종합적으로 분석하고 성장 방향을 제시합니다.</div><span class="svc-link">자세히 보기 →</span></div>
-      <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">비즈니스 코칭</div><div class="svc-desc">예술가 개인의 커리어 전략과 비즈니스 역량 강화를 위한 1:1 코칭입니다.</div><span class="svc-link">자세히 보기 →</span></div>
-      <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">프로젝트 기획</div><div class="svc-desc">전시, 공연, 축제 등 예술 프로젝트의 전략적 기획과 실행을 지원합니다.</div><span class="svc-link">자세히 보기 →</span></div>
-      <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">교육/워크숍</div><div class="svc-desc">예술경영, 아트마케팅, 펀딩 전략 등 실용적인 교육 프로그램을 운영합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">예술경영 컨설팅</div><div class="svc-desc">예술단체의 조직, 재정, 전략을 종합적으로 분석하고 지속 가능한 성장 방향을 제시합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">비즈니스 코칭</div><div class="svc-desc">예술가 개인의 커리어 전략과 비즈니스 역량 강화를 위한 1:1 맞춤형 코칭입니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">프로젝트 기획</div><div class="svc-desc">전시, 공연, 축제 등 예술 프로젝트의 전략적 기획부터 실행까지 전 과정을 지원합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">교육/워크숍</div><div class="svc-desc">예술경영, 아트마케팅, 펀딩 전략 등 현장 중심의 실용적인 교육 프로그램을 운영합니다.</div><span class="svc-link">자세히 보기 →</span></div>
     </div>
   </div>
 
   <!-- PORTFOLIO -->
-  <div id="home-portfolio" class="sec" style="background:var(--black);color:var(--white)">
+  <div id="home-portfolio" class="sec" style="background:var(--navy-dark);">
     <div class="sec-header">
       <div><div class="sec-eyebrow">Portfolio</div><h2 class="sec-title" style="color:var(--white)">주요 프로젝트</h2></div>
+      <span class="link-all" style="color:var(--teal)">50+ Projects</span>
     </div>
     <div class="port-grid">
-      <div class="port-card"><span class="port-tag">Festival</span><div class="port-title">허난설헌 문화제 (5회 연속 기획)</div><div class="port-desc">조선시대 여류 시인 허난설헌을 기리는 문화제를 5회 연속으로 기획·총괄한 장기 프로젝트.</div><span class="port-arrow">자세히 보기 →</span></div>
-      <div class="port-card"><span class="port-tag">Festival</span><div class="port-title">K-Wave Dance Festival (한강)</div><div class="port-desc">한강에서 펼쳐진 글로벌 공연 및 문화교류 프로그램 기획·운영.</div><span class="port-arrow">자세히 보기 →</span></div>
-      <div class="port-card"><span class="port-tag">Education</span><div class="port-title">세종학당 한국문화 교육</div><div class="port-desc">그리스, 코스타리카, 중국 등 세계 각지에서 한국무용 및 문화 교육 프로그램 진행.</div><span class="port-arrow">자세히 보기 →</span></div>
+      <div class="port-card">
+        <span class="port-tag">Festival</span>
+        <div class="port-title">허난설헌 문화제 총괄기획·운영</div>
+        <div class="port-desc">경기광주 대표 문화축제를 다년간 총괄 기획·운영. 2024·2025년 연속 메인 기획사로 선정되어 지역 문화예술 생태계 활성화에 기여.</div>
+        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">광주시문화재단 · 2024–2025</div>
+      </div>
+      <div class="port-card">
+        <span class="port-tag">Festival</span>
+        <div class="port-title">K-Wave Dance Festival 국제교류 총괄</div>
+        <div class="port-desc">한강 세빛둥둥섬에서 개최된 국제 댄스 페스티벌의 국제교류 총괄 및 운영. 2023·2024·2025년 3년 연속 조직위원회 위촉. 한국현대무용진흥원 주관 Golden Wave 수상.</div>
+        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">한국현대무용진흥회 · 2023–2025</div>
+      </div>
+      <div class="port-card">
+        <span class="port-tag">Education</span>
+        <div class="port-title">세종학당 한국문화교육 해외파견</div>
+        <div class="port-desc">문화체육관광부 산하 세종학당재단 파견 무용강사로 그리스, 코스타리카, 키르기스스탄, 몽골 등 해외 세종학당에서 한국무용 및 K-문화 교육 진행.</div>
+        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">세종학당재단 · 2024</div>
+      </div>
+      <div class="port-card">
+        <span class="port-tag">Performance</span>
+        <div class="port-title">광주문화재단 3주년 시민축제 'Life &amp; Live'</div>
+        <div class="port-desc">광주문화재단 3주년 기념 대규모 시민축제 총괄 기획·운영. 지역 주민과 예술가가 함께하는 문화향유 프로그램으로 높은 만족도 달성.</div>
+        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">광주시문화재단 · 2023</div>
+      </div>
+      <div class="port-card">
+        <span class="port-tag">Education</span>
+        <div class="port-title">세종문화재단 일상예술가(STAR) 양성사업</div>
+        <div class="port-desc">세종문화재단 문화예술교육 양성사업 1기·2기 연속 계약. 일반 시민이 일상 속 예술가로 성장할 수 있도록 교육 프로그램 기획 및 운영.</div>
+        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">세종문화재단 · 2024–2025</div>
+      </div>
+      <div class="port-card">
+        <span class="port-tag">Production</span>
+        <div class="port-title">어린이 환경뮤지컬 [지구시계수리공]</div>
+        <div class="port-desc">환경과 예술을 융합한 어린이 창작 뮤지컬 총괄 제작. 탄소중립 메시지를 담은 공연으로 2026 경기광주 환경문화부문 시장표창 수상으로 이어진 대표 프로젝트.</div>
+        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">아트라이앵글 자체제작 · 2026 (진행중)</div>
+      </div>
+    </div>
+
+    <!-- CLIENTS -->
+    <div style="margin-top:5rem">
+      <div class="sec-eyebrow">Clients &amp; Partners</div>
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:2.5rem">함께한 기관 및 파트너</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem">
+        ${['광주시문화재단','광명문화재단','세종문화재단','경기아트센터','문화체육관광부','서울관광재단','한국관광공사','연세대학교','한국현대무용진흥회','K-Wave Dance Festival','희양도시 행복광주','UNENDING'].map(c=>`
+        <div style="padding:.6rem 1.4rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default"
+          onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'"
+          onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">${c}</div>`).join('')}
+      </div>
     </div>
   </div>
 
@@ -350,7 +417,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </div>
 
   <!-- TESTIMONIALS -->
-  <div class="sec" style="background:linear-gradient(160deg,#0a0a0a,#1a1510);color:var(--white)">
+  <div class="sec" style="background:var(--navy-dark)">
     <div class="sec-eyebrow">Testimonials</div>
     <h2 class="sec-title" style="color:var(--white)">함께한 분들의 이야기</h2>
     <div class="test-grid">
@@ -361,17 +428,17 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </div>
 
   <!-- CTA -->
-  <div class="sec" style="background:var(--gray-100);text-align:center;padding:8rem 4rem">
-    <div class="sec-eyebrow" style="justify-content:center;display:flex">Contact</div>
-    <h2 class="sec-title">예술의 가치를 비즈니스로<br>만들 준비가 되셨나요?</h2>
-    <p class="sec-desc" style="max-width:500px;margin:1rem auto 3rem;text-align:center">무료 초기 상담을 통해 귀하의 예술적 비전을 현실로 만들어 드립니다.</p>
-    <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청하기</button>
+  <div class="sec" style="background:var(--teal-light);text-align:center;padding:7rem 5rem">
+    <div class="sec-eyebrow" style="display:flex;justify-content:center">Contact</div>
+    <h2 class="sec-title" style="margin-bottom:1rem">예술의 가치를 비즈니스로<br>만들 준비가 되셨나요?</h2>
+    <p style="font-size:1rem;line-height:1.9;color:var(--gray-600);max-width:480px;margin:0 auto 2.5rem">무료 초기 상담을 통해 귀하의 예술적 비전을 현실로 만들어 드립니다.</p>
+    <button class="btn-primary" style="font-size:.95rem;padding:1rem 2.5rem" onclick="goPage('contact')">무료 상담 신청하기</button>
   </div>
 
   <footer>
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">ART<span>▲</span>RYANGLE</div>
+        <div class="footer-logo"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png" alt="아트라이앵글"></div>
         <p class="footer-desc">예술의 가치를 비즈니스로 만드는 전문가.<br>문화예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p>
         <div class="newsletter-form"><input type="email" placeholder="이메일 주소"><button>구독</button></div>
       </div>
@@ -382,6 +449,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
           <li><a onclick="scrollToSec('home-services')">Services</a></li>
           <li><a onclick="scrollToSec('home-portfolio')">Portfolio</a></li>
           <li><a onclick="goPage('blog')">Blog</a></li>
+          <li><a onclick="goPage('contact')">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -393,7 +461,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 아트라이앵글 Art Triangle. All rights reserved.</span>
+      <span>© 2025 아트라이앵글 Artryangle. All rights reserved.</span>
     </div>
   </footer>
 </div>
@@ -402,13 +470,11 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
 <div id="blog-page" class="page">
   <div class="blog-hero">
     <div class="sec-eyebrow">Blog</div>
-    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--white);margin-top:.5rem">예술경영 인사이트</h1>
-    <p style="margin-top:1rem;color:#aaa;font-size:.95rem;max-width:500px;line-height:1.8">문화예술경영컨설턴트 송예슬이 매주 전하는 예술과 비즈니스의 교차점</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">예술경영 인사이트</h1>
+    <p style="margin-top:1rem;color:rgba(255,255,255,.6);font-size:.98rem;max-width:500px;line-height:1.85">문화예술경영컨설턴트 송예슬이 매주 전하는 예술과 비즈니스의 교차점</p>
   </div>
   <div class="blog-list">
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem" id="blog-filter-btns">
-      <button class="btn-primary" data-cat="all">전체</button>
-    </div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem" id="blog-filter-btns"></div>
     <div class="blog-grid" id="blog-grid">
       <div class="blog-empty" style="grid-column:1/-1">블로그 글을 불러오는 중...</div>
     </div>
@@ -420,8 +486,8 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   <div class="blog-detail-hero">
     <button class="back-btn" onclick="goPage('blog')">← 블로그로 돌아가기</button>
     <div class="sec-eyebrow" id="detail-category"></div>
-    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,3rem);font-weight:700;color:var(--white);margin-top:.5rem;max-width:700px;line-height:1.3" id="detail-title"></h1>
-    <div style="margin-top:1.5rem;font-size:.8rem;color:#888" id="detail-date"></div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--white);margin-top:.5rem;max-width:700px;line-height:1.3" id="detail-title"></h1>
+    <div style="margin-top:1.5rem;font-size:.82rem;color:rgba(255,255,255,.45)" id="detail-date"></div>
   </div>
   <div class="blog-detail-body">
     <div class="blog-detail-content" id="detail-content"></div>
@@ -433,17 +499,15 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   <div class="contact-wrap">
     <div class="contact-left">
       <div class="sec-eyebrow">Contact</div>
-      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2>
-      <div style="margin-top:3rem">
-        <div class="contact-info-label">Email</div>
-        <div class="contact-info-val" style="margin-bottom:1.5rem">yeseul@artryangle.com</div>
-        <div class="contact-info-label">Location</div>
-        <div class="contact-info-val">서울특별시</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.35">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2>
+      <div style="margin-top:3rem;display:flex;flex-direction:column;gap:1.5rem">
+        <div><div style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;font-weight:600">Email</div><div style="font-size:.95rem;color:rgba(255,255,255,.7)">yeseul@artryangle.com</div></div>
+        <div><div style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;font-weight:600">Location</div><div style="font-size:.95rem;color:rgba(255,255,255,.7)">서울특별시</div></div>
       </div>
     </div>
     <div class="contact-right">
-      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem">문의하기</h3>
-      <p style="font-size:.85rem;color:var(--gray-500);margin-bottom:2rem">무료 초기 상담을 신청하시면 48시간 내에 연락드립니다.</p>
+      <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:700;margin-bottom:.5rem;color:var(--navy-dark)">문의하기</h3>
+      <p style="font-size:.92rem;color:var(--gray-400);margin-bottom:2rem;line-height:1.7">무료 초기 상담을 신청하시면 48시간 내에 연락드립니다.</p>
       <div class="contact-form">
         <div class="form-group"><label class="form-label">이름</label><input class="form-input" id="c-name" placeholder="홍길동"></div>
         <div class="form-group"><label class="form-label">이메일</label><input class="form-input" id="c-email" type="email" placeholder="example@email.com"></div>
@@ -458,24 +522,24 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
 <div id="admin-page" class="page">
   <div class="admin-login" id="admin-login">
     <div class="admin-login-box">
-      <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem">관리자 로그인</div>
-      <div style="font-size:.82rem;color:var(--gray-500);margin-bottom:2rem">아트라이앵글 콘텐츠 관리 시스템</div>
-      <div class="form-group" style="margin-bottom:1rem"><label class="form-label">비밀번호</label><input class="form-input" type="password" id="admin-pw" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')adminLogin()"></div>
+      <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.4rem;color:var(--navy-dark)">관리자 로그인</div>
+      <div style="font-size:.85rem;color:var(--gray-400);margin-bottom:2rem">아트라이앵글 콘텐츠 관리 시스템</div>
+      <div class="form-group" style="margin-bottom:1.2rem"><label class="form-label">비밀번호</label><input class="form-input" type="password" id="admin-pw" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')adminLogin()"></div>
       <button class="btn-primary" style="width:100%" onclick="adminLogin()">로그인</button>
     </div>
   </div>
   <div class="admin-wrap" id="admin-dashboard" style="display:none">
     <div class="admin-sidebar">
-      <div style="padding:1.5rem;border-bottom:1px solid #222;margin-bottom:1rem">
-        <div style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white)">ART<span style="color:var(--gold)">▲</span>RYANGLE</div>
-        <div style="font-size:.72rem;color:#666;margin-top:.3rem">관리자</div>
+      <div style="padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1rem">
+        <div style="font-size:.95rem;font-weight:700;color:var(--white)">아트라이앵글</div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.3rem">관리자 대시보드</div>
       </div>
       <div class="admin-sidebar-title">콘텐츠</div>
       <div class="admin-menu-item active" onclick="adminTab('posts')" id="tab-posts">📝 블로그 글</div>
       <div class="admin-menu-item" onclick="adminTab('new-post')" id="tab-new-post">✏️ 새 글 작성</div>
       <div class="admin-menu-item" onclick="adminTab('contacts')" id="tab-contacts">📬 문의함</div>
-      <div style="padding:1.5rem;position:absolute;bottom:0;width:100%;border-top:1px solid #222">
-        <div style="font-size:.75rem;color:#666;cursor:pointer" onclick="adminLogout()">← 사이트로 돌아가기</div>
+      <div style="padding:1.5rem;position:absolute;bottom:0;width:100%;border-top:1px solid rgba(255,255,255,.08)">
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);cursor:pointer;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'" onclick="adminLogout()">← 사이트로 돌아가기</div>
       </div>
     </div>
     <div class="admin-content">
@@ -486,7 +550,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
         </div>
         <table class="admin-table">
           <thead><tr><th>제목</th><th>카테고리</th><th>상태</th><th>작성일</th><th>관리</th></tr></thead>
-          <tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">글을 불러오는 중...</td></tr></tbody>
+          <tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;padding:2.5rem;color:var(--gray-400)">글을 불러오는 중...</td></tr></tbody>
         </table>
       </div>
       <div id="admin-new-post" style="display:none">
@@ -504,7 +568,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
           <div class="editor-field">
             <div class="toggle-wrap">
               <div class="toggle" id="pub-toggle" onclick="togglePub()"></div>
-              <span id="pub-label" style="font-size:.85rem;color:var(--gray-700)">임시저장 (비공개)</span>
+              <span id="pub-label" style="font-size:.88rem;color:var(--gray-600)">임시저장 (비공개)</span>
             </div>
           </div>
           <div class="editor-actions">
@@ -526,124 +590,50 @@ const SUPA_URL='https://kwhrwbnfwoybdmdzmmko.supabase.co';
 const ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
 const SVC_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTU4NTA4OCwiZXhwIjoyMDkxMTYxMDg4fQ.-jDnuqH14gVYer1sV8GgAdZcrQG4xs222EJBfZr1y-I';
 const ADMIN_PW='artryangle2024';
+let isAdmin=false,pubState=false,allPosts=[];
 
-let isAdmin=false, pubState=false, allPosts=[];
-
-// 사진들 — 업로드된 이미지를 base64로 저장
-const BASE = 'https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/';
-const PHOTOS = [
-  { src: BASE+'1.jpg', caption:'시상식 표창장 수상', tag:'tall' },
-  { src: BASE+'2.jpg', caption:'소셜벤처 Meet Up Festival 강연', tag:'wide' },
-  { src: BASE+'3.jpg', caption:'아트라이앵글 대표 송예슬', tag:'' },
-  { src: BASE+'4.jpg', caption:'연세 GMBA — The Art of Running Entertainment Biz', tag:'' },
-  { src: BASE+'5.jpg', caption:'강연 현장', tag:'' },
-  { src: BASE+'6.jpg', caption:'문화예술 행사 MC 진행', tag:'tall' },
-  { src: BASE+'7.jpg', caption:'문화예술 프로젝트 현장', tag:'' },
-  { src: BASE+'8.jpg', caption:'문화예술 기획 활동', tag:'' },
-  { src: BASE+'9.jpg', caption:'아트라이앵글 활동', tag:'' },
-];
-
-// Hero & About 이미지 = 3.jpg (공식 프로필)
-const PROFILE_IMG = BASE + '3.jpg';
-document.getElementById('hero-main-img').src = PROFILE_IMG;
-document.getElementById('about-main-img').src = PROFILE_IMG;
-
-function renderGallery() {
-  const grid = document.getElementById('gallery-grid');
-  if(!grid) return;
-  grid.innerHTML = PHOTOS.map(p => `
-    <div class="gallery-item ${p.tag}">
-      <img src="${p.src}" alt="${p.caption}" loading="lazy">
-      <div class="gallery-overlay"><div class="gallery-caption">${p.caption}</div></div>
-    </div>`).join('');
-}
-renderGallery();
-
-// API
 async function api(path,method='GET',body=null,admin=false){
-  const res=await fetch(SUPA_URL+'/rest/v1/'+path,{
-    method,
-    headers:{'Content-Type':'application/json','apikey':admin?SVC_KEY:ANON_KEY,'Authorization':'Bearer '+(admin?SVC_KEY:ANON_KEY),'Prefer':method==='POST'?'return=representation':''},
-    body:body?JSON.stringify(body):null
-  });
+  const res=await fetch(SUPA_URL+'/rest/v1/'+path,{method,headers:{'Content-Type':'application/json','apikey':admin?SVC_KEY:ANON_KEY,'Authorization':'Bearer '+(admin?SVC_KEY:ANON_KEY),'Prefer':method==='POST'?'return=representation':''},body:body?JSON.stringify(body):null});
   if(!res.ok){const e=await res.text();throw new Error(e);}
   return res.status===204?null:res.json();
 }
-
 function goPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(name+'-page').classList.add('active');
   window.scrollTo(0,0);
-  if(name==='blog') loadBlog();
-  if(name==='home') loadHomeBlog();
-  if(name==='admin'&&isAdmin) showDashboard();
+  if(name==='blog')loadBlog();
+  if(name==='home')loadHomeBlog();
+  if(name==='admin'&&isAdmin)showDashboard();
 }
-
-function scrollToSec(id){
-  goPage('home');
-  setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});},100);
-}
-
-function toast(msg,dur=3000){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),dur);
-}
-
+function scrollToSec(id){goPage('home');setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});},100);}
+function toast(msg,dur=3000){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}
 async function loadHomeBlog(){
   try{
     const posts=await api('posts?published=eq.true&order=created_at.desc&limit=3');
     const grid=document.getElementById('home-blog-grid');
     if(!posts||!posts.length){grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">아직 게시된 글이 없습니다.</div>';return;}
-    grid.innerHTML=posts.map(p=>`
-      <div class="blog-card" onclick="openPost('${p.id}')">
-        <div class="blog-card-body">
-          <div class="blog-tag">${p.category||'예술경영'}</div>
-          <div class="blog-title">${p.title}</div>
-          <div class="blog-excerpt">${p.excerpt||''}</div>
-          <div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div>
-        </div>
-      </div>`).join('');
+    grid.innerHTML=posts.map(p=>`<div class="blog-card" onclick="openPost('${p.id}')"><div class="blog-card-body"><div class="blog-tag">${p.category||'예술경영'}</div><div class="blog-title">${p.title}</div><div class="blog-excerpt">${p.excerpt||''}</div><div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div></div></div>`).join('');
   }catch(e){console.error(e);}
 }
-
 async function loadBlog(){
   try{
     const posts=await api('posts?published=eq.true&order=created_at.desc');
-    allPosts=posts||[];
-    renderBlogFilter();
-    renderBlogGrid(allPosts);
+    allPosts=posts||[];renderBlogFilter();renderBlogGrid(allPosts);
   }catch(e){document.getElementById('blog-grid').innerHTML='<div class="blog-empty" style="grid-column:1/-1">글을 불러오지 못했습니다.</div>';}
 }
-
 function renderBlogFilter(){
   const cats=['전체',...new Set(allPosts.map(p=>p.category).filter(Boolean))];
-  document.getElementById('blog-filter-btns').innerHTML=cats.map(c=>`
-    <button class="${c==='전체'?'btn-primary':'btn-outline'}" onclick="filterBlog('${c}')" data-cat="${c}">${c}</button>`).join('');
+  document.getElementById('blog-filter-btns').innerHTML=cats.map(c=>`<button class="${c==='전체'?'btn-primary':'btn-outline'}" onclick="filterBlog('${c}')" data-cat="${c}">${c}</button>`).join('');
 }
-
 function filterBlog(cat){
-  document.querySelectorAll('#blog-filter-btns button').forEach(b=>{
-    b.className=b.dataset.cat===cat?'btn-primary':'btn-outline';
-  });
-  const filtered=cat==='전체'?allPosts:allPosts.filter(p=>p.category===cat);
-  renderBlogGrid(filtered);
+  document.querySelectorAll('#blog-filter-btns button').forEach(b=>{b.className=b.dataset.cat===cat?'btn-primary':'btn-outline';});
+  renderBlogGrid(cat==='전체'?allPosts:allPosts.filter(p=>p.category===cat));
 }
-
 function renderBlogGrid(posts){
   const grid=document.getElementById('blog-grid');
   if(!posts.length){grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">해당 카테고리의 글이 없습니다.</div>';return;}
-  grid.innerHTML=posts.map(p=>`
-    <div class="blog-card" onclick="openPost('${p.id}')">
-      <div class="blog-card-body">
-        <div class="blog-tag">${p.category||'예술경영'}</div>
-        <div class="blog-title">${p.title}</div>
-        <div class="blog-excerpt">${p.excerpt||''}</div>
-        <div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div>
-      </div>
-    </div>`).join('');
+  grid.innerHTML=posts.map(p=>`<div class="blog-card" onclick="openPost('${p.id}')"><div class="blog-card-body"><div class="blog-tag">${p.category||'예술경영'}</div><div class="blog-title">${p.title}</div><div class="blog-excerpt">${p.excerpt||''}</div><div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div></div></div>`).join('');
 }
-
 async function openPost(id){
   try{
     const posts=await api('posts?id=eq.'+id+'&published=eq.true');
@@ -656,138 +646,57 @@ async function openPost(id){
     goPage('blog-detail');
   }catch(e){toast('글을 불러오지 못했습니다.');}
 }
-
 async function submitContact(){
   const name=document.getElementById('c-name').value.trim();
   const email=document.getElementById('c-email').value.trim();
   const msg=document.getElementById('c-msg').value.trim();
   if(!name||!email||!msg){toast('모든 항목을 입력해주세요.');return;}
-  try{
-    await api('contacts','POST',{name,email,message:msg});
-    toast('문의가 전송되었습니다. 48시간 내에 연락드릴게요 😊');
-    document.getElementById('c-name').value='';
-    document.getElementById('c-email').value='';
-    document.getElementById('c-msg').value='';
-  }catch(e){toast('전송에 실패했습니다. 이메일로 직접 연락해주세요.');}
+  try{await api('contacts','POST',{name,email,message:msg});toast('문의가 전송되었습니다. 48시간 내에 연락드릴게요 😊');document.getElementById('c-name').value='';document.getElementById('c-email').value='';document.getElementById('c-msg').value='';}
+  catch(e){toast('전송에 실패했습니다. 이메일로 직접 연락해주세요.');}
 }
-
-function adminLogin(){
-  if(document.getElementById('admin-pw').value===ADMIN_PW){isAdmin=true;showDashboard();}
-  else toast('비밀번호가 틀렸습니다.');
-}
-function showDashboard(){
-  document.getElementById('admin-login').style.display='none';
-  document.getElementById('admin-dashboard').style.display='grid';
-  adminTab('posts');
-}
+function adminLogin(){if(document.getElementById('admin-pw').value===ADMIN_PW){isAdmin=true;showDashboard();}else toast('비밀번호가 틀렸습니다.');}
+function showDashboard(){document.getElementById('admin-login').style.display='none';document.getElementById('admin-dashboard').style.display='grid';adminTab('posts');}
 function adminLogout(){isAdmin=false;goPage('home');}
 function adminTab(tab){
-  ['posts','new-post','contacts'].forEach(t=>{
-    const el=document.getElementById('admin-'+t);if(el)el.style.display='none';
-    const ti=document.getElementById('tab-'+t);if(ti)ti.classList.remove('active');
-  });
+  ['posts','new-post','contacts'].forEach(t=>{const el=document.getElementById('admin-'+t);if(el)el.style.display='none';const ti=document.getElementById('tab-'+t);if(ti)ti.classList.remove('active');});
   document.getElementById('admin-'+tab).style.display='block';
   const ti=document.getElementById('tab-'+tab);if(ti)ti.classList.add('active');
-  if(tab==='posts')loadAdminPosts();
-  if(tab==='new-post')resetEditor();
-  if(tab==='contacts')loadContacts();
+  if(tab==='posts')loadAdminPosts();if(tab==='new-post')resetEditor();if(tab==='contacts')loadContacts();
 }
 async function loadAdminPosts(){
   try{
     const posts=await api('posts?order=created_at.desc','GET',null,true);
     const tbody=document.getElementById('posts-tbody');
-    if(!posts||!posts.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">작성된 글이 없습니다.</td></tr>';return;}
-    tbody.innerHTML=posts.map(p=>`
-      <tr>
-        <td style="font-weight:500">${p.title}</td>
-        <td>${p.category||'-'}</td>
-        <td><span class="badge ${p.published?'badge-pub':'badge-draft'}">${p.published?'공개':'임시저장'}</span></td>
-        <td>${fmtDate(p.created_at)}</td>
-        <td>
-          <button class="admin-action-btn btn-edit" onclick="editPost('${p.id}')">수정</button>
-          <button class="admin-action-btn btn-delete" onclick="deletePost('${p.id}')">삭제</button>
-        </td>
-      </tr>`).join('');
+    if(!posts||!posts.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-400)">작성된 글이 없습니다.</td></tr>';return;}
+    tbody.innerHTML=posts.map(p=>`<tr><td style="font-weight:500;color:var(--navy-dark)">${p.title}</td><td>${p.category||'-'}</td><td><span class="badge ${p.published?'badge-pub':'badge-draft'}">${p.published?'공개':'임시저장'}</span></td><td>${fmtDate(p.created_at)}</td><td><button class="admin-action-btn btn-edit" onclick="editPost('${p.id}')">수정</button><button class="admin-action-btn btn-delete" onclick="deletePost('${p.id}')">삭제</button></td></tr>`).join('');
   }catch(e){toast('글 목록을 불러오지 못했습니다.');}
 }
-function resetEditor(){
-  document.getElementById('edit-id').value='';
-  document.getElementById('edit-title').value='';
-  document.getElementById('edit-excerpt').value='';
-  document.getElementById('edit-content').value='';
-  document.getElementById('edit-category').value='예술경영';
-  pubState=false;
-  document.getElementById('pub-toggle').className='toggle';
-  document.getElementById('pub-label').textContent='임시저장 (비공개)';
-  document.getElementById('editor-title').textContent='새 글 작성';
-}
+function resetEditor(){document.getElementById('edit-id').value='';document.getElementById('edit-title').value='';document.getElementById('edit-excerpt').value='';document.getElementById('edit-content').value='';document.getElementById('edit-category').value='예술경영';pubState=false;document.getElementById('pub-toggle').className='toggle';document.getElementById('pub-label').textContent='임시저장 (비공개)';document.getElementById('editor-title').textContent='새 글 작성';}
 async function editPost(id){
   try{
-    const posts=await api('posts?id=eq.'+id,'GET',null,true);
-    if(!posts||!posts.length)return;
-    const p=posts[0];
-    document.getElementById('edit-id').value=p.id;
-    document.getElementById('edit-title').value=p.title;
-    document.getElementById('edit-excerpt').value=p.excerpt||'';
-    document.getElementById('edit-content').value=p.content;
-    document.getElementById('edit-category').value=p.category||'예술경영';
-    pubState=p.published;
-    document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');
-    document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';
-    document.getElementById('editor-title').textContent='글 수정';
-    adminTab('new-post');
-    document.getElementById('tab-new-post').classList.add('active');
+    const posts=await api('posts?id=eq.'+id,'GET',null,true);if(!posts||!posts.length)return;const p=posts[0];
+    document.getElementById('edit-id').value=p.id;document.getElementById('edit-title').value=p.title;document.getElementById('edit-excerpt').value=p.excerpt||'';document.getElementById('edit-content').value=p.content;document.getElementById('edit-category').value=p.category||'예술경영';
+    pubState=p.published;document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';document.getElementById('editor-title').textContent='글 수정';
+    adminTab('new-post');document.getElementById('tab-new-post').classList.add('active');
   }catch(e){toast('글을 불러오지 못했습니다.');}
 }
 async function savePost(){
-  const id=document.getElementById('edit-id').value;
-  const title=document.getElementById('edit-title').value.trim();
-  const excerpt=document.getElementById('edit-excerpt').value.trim();
-  const content=document.getElementById('edit-content').value.trim();
-  const category=document.getElementById('edit-category').value;
+  const id=document.getElementById('edit-id').value;const title=document.getElementById('edit-title').value.trim();const excerpt=document.getElementById('edit-excerpt').value.trim();const content=document.getElementById('edit-content').value.trim();const category=document.getElementById('edit-category').value;
   if(!title||!content){toast('제목과 본문을 입력해주세요.');return;}
-  const data={title,excerpt,content,category,published:pubState,updated_at:new Date().toISOString()};
-  try{
-    if(id)await api('posts?id=eq.'+id,'PATCH',data,true);
-    else await api('posts','POST',data,true);
-    toast(pubState?'글이 공개되었습니다! 🎉':'임시저장되었습니다.');
-    adminTab('posts');
-  }catch(e){toast('저장에 실패했습니다.');}
+  try{if(id)await api('posts?id=eq.'+id,'PATCH',{title,excerpt,content,category,published:pubState,updated_at:new Date().toISOString()},true);else await api('posts','POST',{title,excerpt,content,category,published:pubState},true);toast(pubState?'글이 공개되었습니다! 🎉':'임시저장되었습니다.');adminTab('posts');}
+  catch(e){toast('저장에 실패했습니다.');}
 }
-async function deletePost(id){
-  if(!confirm('정말 삭제하시겠습니까?'))return;
-  try{await api('posts?id=eq.'+id,'DELETE',null,true);toast('삭제되었습니다.');loadAdminPosts();}
-  catch(e){toast('삭제에 실패했습니다.');}
-}
-function togglePub(){
-  pubState=!pubState;
-  document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');
-  document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';
-}
+async function deletePost(id){if(!confirm('정말 삭제하시겠습니까?'))return;try{await api('posts?id=eq.'+id,'DELETE',null,true);toast('삭제되었습니다.');loadAdminPosts();}catch(e){toast('삭제에 실패했습니다.');}}
+function togglePub(){pubState=!pubState;document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';}
 async function loadContacts(){
   try{
-    const contacts=await api('contacts?order=created_at.desc','GET',null,true);
-    const list=document.getElementById('contacts-list');
-    if(!contacts||!contacts.length){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--gray-500)">아직 문의가 없습니다.</div>';return;}
-    list.innerHTML=contacts.map(c=>`
-      <div class="contact-item">
-        <div class="contact-item-header"><div class="contact-item-name">${c.name}</div><div class="contact-item-date">${fmtDate(c.created_at)}</div></div>
-        <div class="contact-item-email">${c.email}</div>
-        <div class="contact-item-msg">${c.message}</div>
-      </div>`).join('');
+    const contacts=await api('contacts?order=created_at.desc','GET',null,true);const list=document.getElementById('contacts-list');
+    if(!contacts||!contacts.length){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--gray-400)">아직 문의가 없습니다.</div>';return;}
+    list.innerHTML=contacts.map(c=>`<div class="contact-item"><div class="contact-item-header"><div class="contact-item-name">${c.name}</div><div class="contact-item-date">${fmtDate(c.created_at)}</div></div><div class="contact-item-email">${c.email}</div><div class="contact-item-msg">${c.message}</div></div>`).join('');
   }catch(e){toast('문의를 불러오지 못했습니다.');}
 }
 function fmtDate(d){const dt=new Date(d);return `${dt.getFullYear()}년 ${dt.getMonth()+1}월 ${dt.getDate()}일`;}
-
 loadHomeBlog();
-</script>
-
-<!-- 이미지 로더: 업로드된 사진들을 base64로 변환 -->
-<script>
-(function(){
-  const imgs = document.querySelectorAll('img[data-upload]');
-  // 실제 배포시엔 Supabase Storage URL로 교체
-})();
 </script>
 </body>
 </html>
