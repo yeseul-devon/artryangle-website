@@ -7,20 +7,11 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 :root {
-  --teal:#2AABAA;
-  --teal-dark:#1d8a89;
-  --teal-light:#e6f7f7;
-  --navy:#1e3a5f;
-  --navy-dark:#122540;
-  --white:#ffffff;
-  --off-white:#f7f9f9;
-  --gray-100:#f0f4f4;
-  --gray-200:#dde6e6;
-  --gray-400:#9ab0b0;
-  --gray-600:#4a6464;
-  --gray-800:#1e3232;
-  --serif:'Noto Serif KR',serif;
-  --sans:'Noto Sans KR',sans-serif;
+  --teal:#2AABAA;--teal-dark:#1d8a89;--teal-light:#e6f7f7;
+  --navy:#1e3a5f;--navy-dark:#122540;
+  --white:#ffffff;--off-white:#f7f9f9;
+  --gray-100:#f0f4f4;--gray-200:#dde6e6;--gray-400:#9ab0b0;--gray-600:#4a6464;--gray-800:#1e3232;
+  --serif:'Noto Serif KR',serif;--sans:'Noto Sans KR',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -28,12 +19,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--gray-800);overf
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:72px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
-.nav-logo{display:flex;align-items:center;gap:.8rem;cursor:pointer;text-decoration:none;}
+.nav-logo{display:flex;align-items:center;cursor:pointer;}
 .nav-logo img{height:36px;width:auto;}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
 .nav-links a{font-size:.82rem;letter-spacing:.08em;color:var(--gray-600);text-decoration:none;text-transform:uppercase;transition:color .2s;cursor:pointer;font-weight:500;}
 .nav-links a:hover{color:var(--teal);}
-.nav-cta{padding:.5rem 1.4rem;background:var(--teal);color:var(--white)!important;border-radius:3px;transition:background .2s!important;}
+.nav-cta{padding:.5rem 1.4rem;background:var(--teal);color:var(--white)!important;border-radius:3px;}
 .nav-cta:hover{background:var(--teal-dark)!important;}
 .admin-btn{padding:.4rem 1rem;border:1px solid var(--teal);color:var(--teal)!important;border-radius:3px;font-size:.75rem!important;}
 
@@ -41,7 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .page.active{display:block;}
 
 /* HERO */
-#home-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 5rem;padding-top:72px;background:var(--white);gap:4rem;}
+#home-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 5rem;padding-top:72px;gap:4rem;}
 .hero-eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;font-weight:500;}
 .hero-eyebrow::before{content:'';width:36px;height:2px;background:var(--teal);}
 .hero-title{font-family:var(--serif);font-size:clamp(2.4rem,3.8vw,3.8rem);font-weight:700;line-height:1.25;margin-bottom:1.4rem;color:var(--navy-dark);}
@@ -55,21 +46,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--gray-200);}
 .stat-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--teal);}
 .stat-label{font-size:.75rem;letter-spacing:.06em;color:var(--gray-400);margin-top:.2rem;}
-
-/* COLLAGE */
-.hero-collage{position:relative;width:100%;height:560px;}
-.collage-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:6px;width:100%;height:100%;border-radius:4px;overflow:hidden;}
-.collage-item{overflow:hidden;position:relative;}
-.collage-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;}
-.collage-item:hover img{transform:scale(1.05);}
-.ci-1{grid-column:1/3;grid-row:1/2;}
-.ci-2{grid-column:3/4;grid-row:1/3;}
-.ci-3{grid-column:1/2;grid-row:2/3;}
-.ci-4{grid-column:2/3;grid-row:2/3;}
-.ci-5{grid-column:1/2;grid-row:3/4;}
-.ci-6{grid-column:2/3;grid-row:3/4;}
-.ci-7{grid-column:3/4;grid-row:3/4;}
-.collage-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,171,170,.08),rgba(30,58,95,.05));}
 
 /* SECTIONS */
 .sec{padding:6rem 5rem;}
@@ -86,25 +62,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .about-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:.6rem;}
 .about-list li strong{color:var(--navy);font-weight:600;}
 .about-img-wrap{position:relative;}
-.about-img{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--gray-200);}
-.about-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
 .about-badge{position:absolute;bottom:-1rem;left:-1rem;background:var(--navy);color:var(--white);padding:1.4rem 1.8rem;border-radius:2px;}
 .about-badge-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--teal);}
 .about-badge-text{font-size:.72rem;letter-spacing:.1em;margin-top:.2rem;color:var(--gray-200);}
-
-/* GALLERY */
-#home-gallery{background:var(--white);}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:2.5rem;}
-.gallery-item{position:relative;overflow:hidden;background:var(--gray-200);cursor:pointer;}
-.gallery-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;display:block;}
-.gallery-item:hover img{transform:scale(1.05);}
-.gallery-overlay{position:absolute;inset:0;background:rgba(30,58,95,0);transition:background .3s;display:flex;align-items:flex-end;padding:1rem;}
-.gallery-item:hover .gallery-overlay{background:rgba(30,58,95,.5);}
-.gallery-caption{color:var(--white);font-size:.78rem;letter-spacing:.04em;opacity:0;transition:opacity .3s;line-height:1.5;}
-.gallery-item:hover .gallery-caption{opacity:1;}
-.gi-tall{aspect-ratio:3/4;}
-.gi-wide{grid-column:span 2;aspect-ratio:16/7;}
-.gi-sq{aspect-ratio:1;}
 
 /* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--gray-200);}
@@ -119,6 +79,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .svc-desc{font-size:.88rem;line-height:1.8;color:var(--gray-600);transition:color .3s;}
 .svc-link{display:inline-block;margin-top:1.2rem;font-size:.78rem;letter-spacing:.06em;color:var(--teal);font-weight:500;transition:color .3s;}
 
+/* SERVICE DETAIL PAGE */
+.svc-detail-hero{padding:5rem 5rem 4rem;color:var(--white);}
+.svc-detail-body{max-width:900px;margin:0 auto;padding:5rem 2rem;}
+.svc-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.svc-feature-card{background:var(--white);border:1px solid var(--gray-200);padding:2rem;border-radius:3px;transition:border-color .3s,box-shadow .3s;}
+.svc-feature-card:hover{border-color:var(--teal);box-shadow:0 4px 20px rgba(42,171,170,.1);}
+.svc-feature-icon{font-size:2rem;margin-bottom:1rem;}
+.svc-feature-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--navy-dark);margin-bottom:.6rem;}
+.svc-feature-desc{font-size:.88rem;line-height:1.8;color:var(--gray-600);}
+.svc-process{margin-top:4rem;}
+.svc-process-title{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--navy-dark);margin-bottom:2rem;}
+.svc-step{display:flex;gap:1.5rem;margin-bottom:1.5rem;align-items:flex-start;}
+.svc-step-num{width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;}
+.svc-step-content{}
+.svc-step-title{font-weight:700;color:var(--navy-dark);margin-bottom:.3rem;font-size:.95rem;}
+.svc-step-desc{font-size:.88rem;color:var(--gray-600);line-height:1.7;}
+.svc-cta-band{background:var(--teal-light);padding:4rem 5rem;text-align:center;margin-top:5rem;}
+
 /* PORTFOLIO */
 .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.1);margin-top:2rem;}
 .port-card{background:var(--navy-dark);padding:2.5rem;cursor:pointer;transition:background .3s;border:1px solid rgba(255,255,255,.06);}
@@ -126,17 +104,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .port-tag{display:inline-block;padding:.3rem .8rem;border:1px solid var(--teal);color:var(--teal);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;border-radius:2px;}
 .port-title{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.55;color:var(--white);margin-bottom:.8rem;}
 .port-desc{font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.55);}
-.port-arrow{display:inline-block;margin-top:1.2rem;font-size:.78rem;color:var(--teal);font-weight:500;}
-
-/* TESTIMONIALS */
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
-.test-card{border:1px solid rgba(255,255,255,.12);padding:2.5rem;position:relative;background:rgba(255,255,255,.04);border-radius:3px;}
-.test-card::before{content:'"';font-family:var(--serif);font-size:5rem;color:var(--teal);opacity:.25;position:absolute;top:-.8rem;left:1.5rem;line-height:1;}
-.test-text{font-size:.92rem;line-height:2;color:rgba(255,255,255,.75);margin-top:1rem;}
-.test-author{display:flex;align-items:center;gap:1rem;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);}
-.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--white);font-size:.9rem;flex-shrink:0;}
-.test-name{font-size:.88rem;font-weight:600;color:var(--white);}
-.test-role{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:.1rem;}
 
 /* BLOG */
 .blog-hero{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 4rem;}
@@ -170,8 +137,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .form-input,.form-textarea{padding:.9rem 1.1rem;border:1.5px solid var(--gray-200);background:var(--white);font-family:var(--sans);font-size:.95rem;outline:none;transition:border-color .2s;border-radius:3px;color:var(--gray-800);}
 .form-input:focus,.form-textarea:focus{border-color:var(--teal);}
 .form-textarea{resize:vertical;min-height:140px;}
-.form-submit{padding:1rem 2rem;background:var(--teal);color:var(--white);border:none;font-family:var(--sans);font-size:.9rem;font-weight:600;letter-spacing:.06em;cursor:pointer;border-radius:3px;transition:background .2s;}
+.form-submit{padding:1rem 2rem;background:var(--teal);color:var(--white);border:none;font-family:var(--sans);font-size:.9rem;font-weight:600;cursor:pointer;border-radius:3px;transition:background .2s;}
 .form-submit:hover{background:var(--teal-dark);}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:2px;transform:scale(.92);transition:transform .3s;}
+.lightbox.open img{transform:scale(1);}
+.lb-close{position:absolute;top:1.5rem;right:2rem;color:var(--white);font-size:2rem;cursor:pointer;opacity:.7;transition:opacity .2s;background:none;border:none;}
+.lb-close:hover{opacity:1;}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);color:var(--white);font-size:2rem;cursor:pointer;background:rgba(255,255,255,.1);border:none;padding:.8rem 1rem;border-radius:2px;transition:background .2s;}
+.lb-prev:hover,.lb-next:hover{background:rgba(42,171,170,.5);}
+.lb-prev{left:1.5rem;}
+.lb-next{right:1.5rem;}
+.lb-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:.82rem;letter-spacing:.1em;}
+
+/* SNS ICONS */
+.sns-wrap{display:flex;gap:.8rem;margin-top:1.5rem;align-items:center;}
+.sns-btn{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border:1px solid rgba(255,255,255,.2);border-radius:24px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;transition:all .2s;cursor:pointer;}
+.sns-btn:hover{border-color:var(--teal);color:var(--white);background:rgba(42,171,170,.15);}
+.sns-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+.sns-btn-label{font-size:.75rem;letter-spacing:.04em;}
+
+/* HERO SNS (다크배경 아닌 곳용) */
+.sns-btn-light{border-color:var(--gray-200);color:var(--gray-600);}
+.sns-btn-light:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
 
 /* TOAST */
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--teal);font-size:.88rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;border-radius:2px;}
@@ -233,27 +224,22 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
 .footer-links li{margin-bottom:.8rem;}
 .footer-links a{font-size:.88rem;color:rgba(255,255,255,.5);text-decoration:none;cursor:pointer;transition:color .2s;}
 .footer-links a:hover{color:var(--white);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;font-size:.75rem;color:rgba(255,255,255,.3);}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:2rem;font-size:.75rem;color:rgba(255,255,255,.3);}
 .newsletter-form{display:flex;margin-top:1.5rem;}
 .newsletter-form input{flex:1;padding:.75rem 1rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-right:none;color:var(--white);font-size:.88rem;outline:none;font-family:var(--sans);}
 .newsletter-form input::placeholder{color:rgba(255,255,255,.3);}
-.newsletter-form button{padding:.75rem 1.2rem;background:var(--teal);color:var(--white);border:none;cursor:pointer;font-size:.82rem;font-family:var(--sans);transition:background .2s;}
-.newsletter-form button:hover{background:var(--teal-dark);}
+.newsletter-form button{padding:.75rem 1.2rem;background:var(--teal);color:var(--white);border:none;cursor:pointer;font-size:.82rem;}
 
 @media(max-width:960px){
-  nav{padding:0 1.5rem;}
-  .nav-links{display:none;}
-  #home-hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem;gap:3rem;}
-  .sec,.blog-list,#home-about,#home-gallery,footer,.blog-hero,.blog-detail-hero{padding-left:1.5rem;padding-right:1.5rem;}
-  #home-about{grid-template-columns:1fr;gap:3rem;}
+  nav{padding:0 1.5rem;}.nav-links{display:none;}
+  #home-hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem;}
+  .sec,#home-about,footer,.blog-hero,.blog-detail-hero,.blog-list,.svc-detail-hero{padding-left:1.5rem;padding-right:1.5rem;}
+  #home-about{grid-template-columns:1fr;}
   .services-grid{grid-template-columns:1fr 1fr;}
-  .port-grid,.test-grid,.blog-grid{grid-template-columns:1fr;}
-  .gallery-grid{grid-template-columns:1fr 1fr;}
-  .gi-wide{grid-column:span 2;}
+  .port-grid,.blog-grid,.svc-feature-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;gap:2.5rem;}
   .contact-wrap{grid-template-columns:1fr;}
-  .admin-wrap{grid-template-columns:1fr;}
-  .admin-sidebar{display:none;}
+  .admin-wrap{grid-template-columns:1fr;}.admin-sidebar{display:none;}
 }
 </style>
 </head>
@@ -277,6 +263,15 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
 
 <div class="toast" id="toast"></div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="lbClose(event)">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1);event.stopPropagation()">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1);event.stopPropagation()">&#8250;</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
 <!-- ===== HOME ===== -->
 <div id="home-page" class="page active">
   <div id="home-hero">
@@ -293,12 +288,21 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
         <div><div class="stat-num">10+</div><div class="stat-label">년 현장 경력</div></div>
         <div><div class="stat-num">200+</div><div class="stat-label">교육 참가자</div></div>
       </div>
+      <!-- SNS 링크 -->
+      <div class="sns-wrap">
+        <a href="https://www.instagram.com/yeahseul_ss/" target="_blank" class="sns-btn sns-btn-light">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span class="sns-btn-label">@yeahseul_ss</span>
+        </a>
+        <a href="https://www.instagram.com/artryangle/" target="_blank" class="sns-btn sns-btn-light">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span class="sns-btn-label">@artryangle</span>
+        </a>
+      </div>
     </div>
-    <!-- Hero 우측: 로고 -->
+    <!-- 로고 -->
     <div style="display:flex;align-items:center;justify-content:center;z-index:1">
-      <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png"
-           alt="아트라이앵글 로고"
-           style="width:100%;max-width:480px;height:auto;object-fit:contain;">
+      <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png" alt="아트라이앵글 로고" style="width:100%;max-width:480px;height:auto;object-fit:contain;">
     </div>
   </div>
 
@@ -318,20 +322,17 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
       </ul>
     </div>
     <div class="about-img-wrap">
-      <!-- 1~9 콜라주 -->
+      <!-- 콜라주 -->
       <div style="width:100%;aspect-ratio:3/4;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:4px;overflow:hidden;border-radius:2px;">
-        <div style="overflow:hidden;grid-column:1/3;grid-row:1/2;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/2.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="overflow:hidden;grid-column:3/4;grid-row:1/3;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/1.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="overflow:hidden;grid-column:1/2;grid-row:2/3;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/6.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="overflow:hidden;grid-column:2/3;grid-row:2/3;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="overflow:hidden;grid-column:1/2;grid-row:3/4;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/4.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="overflow:hidden;grid-column:2/3;grid-row:3/4;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/5.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-        <div style="overflow:hidden;grid-column:3/4;grid-row:3/4;"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/7.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:1/3;grid-row:1/2;cursor:zoom-in" onclick="openLb(0)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/2.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:3/4;grid-row:1/3;cursor:zoom-in" onclick="openLb(1)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/1.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:1/2;grid-row:2/3;cursor:zoom-in" onclick="openLb(2)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/6.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:2/3;grid-row:2/3;cursor:zoom-in" onclick="openLb(3)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:1/2;grid-row:3/4;cursor:zoom-in" onclick="openLb(4)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/4.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:2/3;grid-row:3/4;cursor:zoom-in" onclick="openLb(5)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/5.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;grid-column:3/4;grid-row:3/4;cursor:zoom-in" onclick="openLb(6)"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/7.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
       </div>
-      <div class="about-badge">
-        <div class="about-badge-num">50+</div>
-        <div class="about-badge-text">Projects Completed</div>
-      </div>
+      <div class="about-badge"><div class="about-badge-num">50+</div><div class="about-badge-text">Projects Completed</div></div>
     </div>
   </div>
 
@@ -341,67 +342,62 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
       <div><div class="sec-eyebrow">Services</div><h2 class="sec-title">제공하는 서비스</h2></div>
     </div>
     <div class="services-grid">
-      <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">예술경영 컨설팅</div><div class="svc-desc">예술단체의 조직, 재정, 전략을 종합적으로 분석하고 지속 가능한 성장 방향을 제시합니다.</div><span class="svc-link">자세히 보기 →</span></div>
-      <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">비즈니스 코칭</div><div class="svc-desc">예술가 개인의 커리어 전략과 비즈니스 역량 강화를 위한 1:1 맞춤형 코칭입니다.</div><span class="svc-link">자세히 보기 →</span></div>
-      <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">프로젝트 기획</div><div class="svc-desc">전시, 공연, 축제 등 예술 프로젝트의 전략적 기획부터 실행까지 전 과정을 지원합니다.</div><span class="svc-link">자세히 보기 →</span></div>
-      <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">교육/워크숍</div><div class="svc-desc">예술경영, 아트마케팅, 펀딩 전략 등 현장 중심의 실용적인 교육 프로그램을 운영합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card" onclick="goPage('svc-consulting')">
+        <div class="svc-num">01</div>
+        <div class="svc-title">예술경영 컨설팅</div>
+        <div class="svc-desc">현장실무·사업운영·Global MBA의 체계적 역량을 바탕으로 예술단체의 성장 전략을 제시합니다.</div>
+        <span class="svc-link">자세히 보기 →</span>
+      </div>
+      <div class="svc-card" onclick="goPage('svc-coaching')">
+        <div class="svc-num">02</div>
+        <div class="svc-title">비즈니스 코칭</div>
+        <div class="svc-desc">예술고 무용과 출신의 섬세한 예술적 감수성으로 예술가의 커리어와 비즈니스를 함께 코칭합니다.</div>
+        <span class="svc-link">자세히 보기 →</span>
+      </div>
+      <div class="svc-card" onclick="goPage('svc-planning')">
+        <div class="svc-num">03</div>
+        <div class="svc-title">프로젝트 기획</div>
+        <div class="svc-desc">공연, 전시, 축제, 교육까지 — 대중성·예술성·교육성을 모두 잡은 문화콘텐츠 기획을 실행합니다.</div>
+        <span class="svc-link">자세히 보기 →</span>
+      </div>
+      <div class="svc-card" onclick="goPage('svc-education')">
+        <div class="svc-num">04</div>
+        <div class="svc-title">교육/워크숍</div>
+        <div class="svc-desc">예술경영 독서모임, 기획 스터디 등 실무와 이론을 함께 성장시키는 커뮤니티를 운영합니다.</div>
+        <span class="svc-link">자세히 보기 →</span>
+      </div>
     </div>
   </div>
 
   <!-- PORTFOLIO -->
-  <div id="home-portfolio" class="sec" style="background:var(--navy-dark);">
+  <div id="home-portfolio" class="sec" style="background:var(--navy-dark)">
     <div class="sec-header">
       <div><div class="sec-eyebrow">Portfolio</div><h2 class="sec-title" style="color:var(--white)">주요 프로젝트</h2></div>
       <span class="link-all" style="color:var(--teal)">50+ Projects</span>
     </div>
     <div class="port-grid">
-      <div class="port-card">
-        <span class="port-tag">Festival</span>
-        <div class="port-title">허난설헌 문화제 총괄기획·운영</div>
-        <div class="port-desc">경기광주 대표 문화축제를 다년간 총괄 기획·운영. 2024·2025년 연속 메인 기획사로 선정되어 지역 문화예술 생태계 활성화에 기여.</div>
-        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">광주시문화재단 · 2024–2025</div>
-      </div>
-      <div class="port-card">
-        <span class="port-tag">Festival</span>
-        <div class="port-title">K-Wave Dance Festival 국제교류 총괄</div>
-        <div class="port-desc">한강 세빛둥둥섬에서 개최된 국제 댄스 페스티벌의 국제교류 총괄 및 운영. 2023·2024·2025년 3년 연속 조직위원회 위촉. 한국현대무용진흥원 주관 Golden Wave 수상.</div>
-        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">한국현대무용진흥회 · 2023–2025</div>
-      </div>
-      <div class="port-card">
-        <span class="port-tag">Education</span>
-        <div class="port-title">세종학당 한국문화교육 해외파견</div>
-        <div class="port-desc">문화체육관광부 산하 세종학당재단 파견 무용강사로 그리스, 코스타리카, 키르기스스탄, 몽골 등 해외 세종학당에서 한국무용 및 K-문화 교육 진행.</div>
-        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">세종학당재단 · 2024</div>
-      </div>
-      <div class="port-card">
-        <span class="port-tag">Performance</span>
-        <div class="port-title">광주문화재단 3주년 시민축제 'Life &amp; Live'</div>
-        <div class="port-desc">광주문화재단 3주년 기념 대규모 시민축제 총괄 기획·운영. 지역 주민과 예술가가 함께하는 문화향유 프로그램으로 높은 만족도 달성.</div>
-        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">광주시문화재단 · 2023</div>
-      </div>
-      <div class="port-card">
-        <span class="port-tag">Education</span>
-        <div class="port-title">세종문화재단 일상예술가(STAR) 양성사업</div>
-        <div class="port-desc">세종문화재단 문화예술교육 양성사업 1기·2기 연속 계약. 일반 시민이 일상 속 예술가로 성장할 수 있도록 교육 프로그램 기획 및 운영.</div>
-        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">세종문화재단 · 2024–2025</div>
-      </div>
-      <div class="port-card">
-        <span class="port-tag">Production</span>
-        <div class="port-title">어린이 환경뮤지컬 [지구시계수리공]</div>
-        <div class="port-desc">환경과 예술을 융합한 어린이 창작 뮤지컬 총괄 제작. 탄소중립 메시지를 담은 공연으로 2026 경기광주 환경문화부문 시장표창 수상으로 이어진 대표 프로젝트.</div>
-        <div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">아트라이앵글 자체제작 · 2026 (진행중)</div>
-      </div>
+      <div class="port-card"><span class="port-tag">Festival</span><div class="port-title">허난설헌 문화제 총괄기획·운영</div><div class="port-desc">경기광주 대표 문화축제 2024·2025년 연속 메인 기획사로 선정.</div><div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">광주시문화재단 · 2024–2025</div></div>
+      <div class="port-card"><span class="port-tag">Festival</span><div class="port-title">K-Wave Dance Festival 국제교류 총괄</div><div class="port-desc">한강 세빛둥둥섬 국제 댄스 페스티벌 3년 연속 총괄. Golden Wave 수상.</div><div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">한국현대무용진흥회 · 2023–2025</div></div>
+      <div class="port-card"><span class="port-tag">Education</span><div class="port-title">세종학당 한국문화교육 해외파견</div><div class="port-desc">그리스, 코스타리카, 키르기스스탄, 몽골 세종학당 파견 강사.</div><div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">세종학당재단 · 2024</div></div>
+      <div class="port-card"><span class="port-tag">Performance</span><div class="port-title">광주문화재단 3주년 'Life &amp; Live'</div><div class="port-desc">광주문화재단 3주년 기념 대규모 시민축제 총괄 기획·운영.</div><div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">광주시문화재단 · 2023</div></div>
+      <div class="port-card"><span class="port-tag">Education</span><div class="port-title">세종문화재단 일상예술가(STAR) 양성</div><div class="port-desc">1기·2기 연속 계약. 시민이 일상 속 예술가로 성장하는 교육 설계.</div><div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">세종문화재단 · 2024–2025</div></div>
+      <div class="port-card"><span class="port-tag">Production</span><div class="port-title">어린이 환경뮤지컬 [지구시계수리공]</div><div class="port-desc">환경×예술 융합 창작뮤지컬 총괄 제작. 2026 경기광주 환경문화부문 시장표창.</div><div style="margin-top:1rem;font-size:.75rem;color:var(--teal)">아트라이앵글 자체제작 · 2026 진행중</div></div>
     </div>
-
-    <!-- CLIENTS -->
     <div style="margin-top:5rem">
       <div class="sec-eyebrow">Clients &amp; Partners</div>
-      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:2.5rem">함께한 기관 및 파트너</h3>
-      <div style="display:flex;flex-wrap:wrap;gap:1rem">
-        ${['광주시문화재단','광명문화재단','세종문화재단','경기아트센터','문화체육관광부','서울관광재단','한국관광공사','연세대학교','한국현대무용진흥회','K-Wave Dance Festival','희양도시 행복광주','UNENDING'].map(c=>`
-        <div style="padding:.6rem 1.4rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default"
-          onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'"
-          onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">${c}</div>`).join('')}
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:2rem">함께한 기관 및 파트너</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:.8rem">
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">광주시문화재단</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">광명문화재단</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">세종문화재단</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">경기아트센터</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">문화체육관광부</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">서울관광재단</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">한국관광공사</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">연세대학교</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">한국현대무용진흥회</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">K-Wave Dance Festival</div>
+        <div style="padding:.55rem 1.2rem;border:1px solid rgba(42,171,170,.3);color:rgba(255,255,255,.7);font-size:.82rem;border-radius:3px;transition:all .2s;cursor:default" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='rgba(42,171,170,.3)';this.style.color='rgba(255,255,255,.7)'">UNENDING</div>
       </div>
     </div>
   </div>
@@ -414,17 +410,6 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
     </div>
     <div class="blog-grid" id="home-blog-grid">
       <div class="blog-empty" style="grid-column:1/-1">블로그 글을 불러오는 중...</div>
-    </div>
-  </div>
-
-  <!-- TESTIMONIALS -->
-  <div class="sec" style="background:var(--navy-dark)">
-    <div class="sec-eyebrow">Testimonials</div>
-    <h2 class="sec-title" style="color:var(--white)">함께한 분들의 이야기</h2>
-    <div class="test-grid">
-      <div class="test-card"><div class="test-text">예술가로서만 생각했던 제 활동에 비즈니스적 관점을 갖게 되었습니다. 컨설팅 이후 실제 수익 구조가 안정되었어요.</div><div class="test-author"><div class="test-avatar">A</div><div><div class="test-name">A 작가</div><div class="test-role">미술 작가</div></div></div></div>
-      <div class="test-card"><div class="test-text">공연 기획부터 마케팅까지 전반적인 전략을 함께 수립했습니다. 전문성과 현장 감각을 동시에 갖춘 컨설턴트입니다.</div><div class="test-author"><div class="test-avatar">B</div><div><div class="test-name">B 단체</div><div class="test-role">공연예술단체</div></div></div></div>
-      <div class="test-card"><div class="test-text">독서모임을 통해 같은 고민을 하는 동료들을 만났고, 예술경영에 대한 시각이 완전히 달라졌습니다.</div><div class="test-author"><div class="test-avatar">C</div><div><div class="test-name">C</div><div class="test-role">예술경영 전공 대학원생</div></div></div></div>
     </div>
   </div>
 
@@ -441,6 +426,17 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
       <div>
         <div class="footer-logo"><img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png" alt="아트라이앵글"></div>
         <p class="footer-desc">예술의 가치를 비즈니스로 만드는 전문가.<br>문화예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p>
+        <!-- SNS -->
+        <div class="sns-wrap">
+          <a href="https://www.instagram.com/yeahseul_ss/" target="_blank" class="sns-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span class="sns-btn-label">개인 @yeahseul_ss</span>
+          </a>
+          <a href="https://www.instagram.com/artryangle/" target="_blank" class="sns-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span class="sns-btn-label">회사 @artryangle</span>
+          </a>
+        </div>
         <div class="newsletter-form"><input type="email" placeholder="이메일 주소"><button>구독</button></div>
       </div>
       <div>
@@ -461,10 +457,317 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 아트라이앵글 Artryangle. All rights reserved.</span>
-    </div>
+    <div class="footer-bottom"><span>© 2025 아트라이앵글 Artryangle. All rights reserved.</span></div>
   </footer>
+</div>
+
+<!-- ===== SERVICE: 예술경영 컨설팅 ===== -->
+<div id="svc-consulting-page" class="page">
+  <div class="svc-detail-hero" style="background:var(--navy-dark)">
+    <button class="back-btn" onclick="goPage('home');setTimeout(()=>scrollToSec('home-services'),100)">← 서비스로 돌아가기</button>
+    <div class="sec-eyebrow">Services 01</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">예술경영 컨설팅</h1>
+    <p style="margin-top:1rem;color:rgba(255,255,255,.65);font-size:1rem;max-width:560px;line-height:1.85">현장실무 + 사업운영 + Global MBA의 체계적 기준을 바탕으로<br>예술단체와 기관의 지속 가능한 성장 전략을 함께 수립합니다.</p>
+  </div>
+  <div class="svc-detail-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem">
+      <div>
+        <div class="sec-eyebrow">Why Artryangle</div>
+        <h2 class="sec-title">현장에서 검증된<br>전략적 컨설팅</h2>
+        <p style="font-size:.98rem;line-height:1.9;color:var(--gray-600)">단순한 이론이 아닙니다. 10년 이상 직접 축제를 기획하고, 기관을 운영하며 겪은 현장의 언어로 컨설팅합니다. 여기에 연세대학교 Global MBA에서 습득한 경영 전략·재무·마케팅의 체계적 프레임워크를 결합해, 예술현장에 실제로 작동하는 솔루션을 제안합니다.</p>
+      </div>
+      <div style="background:var(--teal-light);padding:2.5rem;border-radius:4px;border-left:4px solid var(--teal)">
+        <p style="font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy-dark);line-height:1.7">"예술의 언어와 비즈니스의 논리,<br>둘 다 구사할 수 있어야<br>진짜 컨설팅이 가능합니다."</p>
+        <p style="margin-top:1rem;font-size:.85rem;color:var(--teal-dark);font-weight:600">— 송예슬, 아트라이앵글 대표</p>
+      </div>
+    </div>
+
+    <div class="svc-feature-grid">
+      <div class="svc-feature-card">
+        <div class="svc-feature-icon">🎯</div>
+        <div class="svc-feature-title">조직·전략 진단</div>
+        <div class="svc-feature-desc">예술단체의 현재 조직구조, 사업 방향성, 재정 상태를 종합적으로 분석하고 핵심 문제를 도출합니다.</div>
+      </div>
+      <div class="svc-feature-card">
+        <div class="svc-feature-icon">📊</div>
+        <div class="svc-feature-title">브랜드·마케팅 전략</div>
+        <div class="svc-feature-desc">예술단체만의 정체성을 발굴하고 대중과 연결되는 브랜드 커뮤니케이션 전략을 수립합니다.</div>
+      </div>
+      <div class="svc-feature-card">
+        <div class="svc-feature-icon">💰</div>
+        <div class="svc-feature-title">펀딩·수익 모델</div>
+        <div class="svc-feature-desc">정부 지원사업 기획서 작성부터 자체 수익모델 설계까지, 지속 가능한 재정 구조를 함께 만듭니다.</div>
+      </div>
+    </div>
+
+    <div class="svc-process">
+      <div class="svc-process-title">컨설팅 프로세스</div>
+      <div class="svc-step"><div class="svc-step-num">01</div><div class="svc-step-content"><div class="svc-step-title">무료 초기 상담</div><div class="svc-step-desc">현재 상황과 고민을 자유롭게 나눕니다. 방향성 설정과 필요한 컨설팅 범위를 파악합니다.</div></div></div>
+      <div class="svc-step"><div class="svc-step-num">02</div><div class="svc-step-content"><div class="svc-step-title">현황 분석 및 진단</div><div class="svc-step-desc">조직, 사업, 재정, 브랜드 현황을 데이터와 인터뷰 기반으로 심층 분석합니다.</div></div></div>
+      <div class="svc-step"><div class="svc-step-num">03</div><div class="svc-step-content"><div class="svc-step-title">전략 수립 및 보고</div><div class="svc-step-desc">분석을 바탕으로 단기·중장기 전략 로드맵을 작성하고 실행 가이드를 제공합니다.</div></div></div>
+      <div class="svc-step"><div class="svc-step-num">04</div><div class="svc-step-content"><div class="svc-step-title">실행 지원 및 팔로우업</div><div class="svc-step-desc">전략 실행 과정에서 발생하는 문제를 함께 해결하며 지속적으로 지원합니다.</div></div></div>
+    </div>
+
+    <div class="svc-cta-band" style="border-radius:4px">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy-dark);margin-bottom:.8rem">지금 바로 상담을 시작해보세요</h3>
+      <p style="font-size:.95rem;color:var(--gray-600);margin-bottom:1.5rem">무료 초기 상담 신청 시 48시간 내에 연락드립니다.</p>
+      <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICE: 비즈니스 코칭 ===== -->
+<div id="svc-coaching-page" class="page">
+  <div class="svc-detail-hero" style="background:linear-gradient(135deg,var(--navy-dark),#1a4a40)">
+    <button class="back-btn" onclick="goPage('home');setTimeout(()=>scrollToSec('home-services'),100)">← 서비스로 돌아가기</button>
+    <div class="sec-eyebrow">Services 02</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">비즈니스 코칭</h1>
+    <p style="margin-top:1rem;color:rgba(255,255,255,.65);font-size:1rem;max-width:560px;line-height:1.85">예술가만이 예술가를 진정으로 이해합니다.<br>안양예술고등학교 한국무용과 출신의 감수성으로, 당신의 예술적 비전을 현실로 만드는 1:1 코칭입니다.</p>
+  </div>
+  <div class="svc-detail-body">
+    <div style="background:var(--teal-light);border-radius:4px;padding:3rem;margin-bottom:4rem;border-left:4px solid var(--teal)">
+      <div class="sec-eyebrow">예술가가 예술가를 코칭한다</div>
+      <h2 style="font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--navy-dark);margin:1rem 0">단순한 비즈니스 코치가 아닙니다</h2>
+      <p style="font-size:.98rem;line-height:1.9;color:var(--gray-600)">안양예술고등학교 무용과(한국무용 전공)를 수석 입학·졸업하고, 15년간 전문 무용수로 활동하며 예술가가 현장에서 겪는 고민을 누구보다 잘 압니다. 커리어의 불안정성, 작품과 생계 사이의 갈등, 자신의 예술을 어떻게 비즈니스로 연결할지 — 이 모든 것을 경험한 사람이 코치로 함께합니다. 여기에 Global MBA의 체계적인 비즈니스 역량이 더해져, 예술가의 언어로 전략적 해법을 제시합니다.</p>
+    </div>
+
+    <div class="svc-feature-grid">
+      <div class="svc-feature-card">
+        <div class="svc-feature-icon">🎭</div>
+        <div class="svc-feature-title">커리어 전략 설계</div>
+        <div class="svc-feature-desc">예술가로서의 정체성과 강점을 발굴하고, 지속 가능한 커리어 로드맵을 함께 그립니다.</div>
+      </div>
+      <div class="svc-feature-card">
+        <div class="svc-feature-icon">💼</div>
+        <div class="svc-feature-title">수익화 전략</div>
+        <div class="svc-feature-desc">공연·강의·콘텐츠·굿즈 등 다양한 수익 채널을 발굴하고 예술가만의 비즈니스 모델을 설계합니다.</div>
+      </div>
+      <div class="svc-feature-card">
+        <div class="svc-feature-icon">📱</div>
+        <div class="svc-feature-title">퍼스널 브랜딩</div>
+        <div class="svc-feature-desc">SNS, 포트폴리오, 자기소개서까지 — 예술가로서의 브랜드를 일관되고 매력적으로 구축합니다.</div>
+      </div>
+    </div>
+
+    <div class="svc-process" style="margin-top:3rem">
+      <div class="svc-process-title">코칭 방식</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div style="background:var(--gray-100);padding:2rem;border-radius:4px">
+          <div style="font-size:1.5rem;margin-bottom:.8rem">🗓️</div>
+          <div style="font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;font-size:.95rem">1:1 정기 세션</div>
+          <div style="font-size:.88rem;color:var(--gray-600);line-height:1.7">월 2~4회, 회당 60분. 온라인 또는 오프라인으로 진행하며 매 세션 구체적인 과제와 피드백을 제공합니다.</div>
+        </div>
+        <div style="background:var(--gray-100);padding:2rem;border-radius:4px">
+          <div style="font-size:1.5rem;margin-bottom:.8rem">📋</div>
+          <div style="font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;font-size:.95rem">맞춤형 커리큘럼</div>
+          <div style="font-size:.88rem;color:var(--gray-600);line-height:1.7">예술가의 현재 상황과 목표에 따라 완전히 개인화된 코칭 플랜을 설계합니다. 획일화된 프로그램은 없습니다.</div>
+        </div>
+        <div style="background:var(--gray-100);padding:2rem;border-radius:4px">
+          <div style="font-size:1.5rem;margin-bottom:.8rem">💬</div>
+          <div style="font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;font-size:.95rem">세션 외 지원</div>
+          <div style="font-size:.88rem;color:var(--gray-600);line-height:1.7">세션 사이에도 메시지로 소통 가능. 긴급한 결정이나 고민이 생겼을 때 빠르게 피드백 받을 수 있습니다.</div>
+        </div>
+        <div style="background:var(--gray-100);padding:2rem;border-radius:4px">
+          <div style="font-size:1.5rem;margin-bottom:.8rem">📈</div>
+          <div style="font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;font-size:.95rem">성과 기반 피드백</div>
+          <div style="font-size:.88rem;color:var(--gray-600);line-height:1.7">구체적인 목표 수치를 설정하고 매달 진행 상황을 점검합니다. 막연한 코칭이 아닌 측정 가능한 변화를 만듭니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-cta-band" style="border-radius:4px">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy-dark);margin-bottom:.8rem">예술가의 언어로 함께 성장합니다</h3>
+      <p style="font-size:.95rem;color:var(--gray-600);margin-bottom:1.5rem">첫 상담은 무료입니다. 지금 바로 연락해보세요.</p>
+      <button class="btn-primary" onclick="goPage('contact')">코칭 상담 신청 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICE: 프로젝트 기획 ===== -->
+<div id="svc-planning-page" class="page">
+  <div class="svc-detail-hero" style="background:linear-gradient(135deg,#0d2035,#122540)">
+    <button class="back-btn" onclick="goPage('home');setTimeout(()=>scrollToSec('home-services'),100)">← 서비스로 돌아가기</button>
+    <div class="sec-eyebrow">Services 03</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">프로젝트 기획</h1>
+    <p style="margin-top:1rem;color:rgba(255,255,255,.65);font-size:1rem;max-width:600px;line-height:1.85">쉬운 예술을 실현하는 문화콘텐츠 기획사, 아트라이앵글.<br>대중성 · 예술성 · 교육성을 모두 잡은 기획으로 사람들의 삶에 영감을 전달합니다.</p>
+  </div>
+  <div class="svc-detail-body">
+
+    <!-- 4대 사업분야 -->
+    <div style="margin-bottom:4rem">
+      <div class="sec-eyebrow">사업분야</div>
+      <h2 class="sec-title">공연 · 전시 · 축제 · 교육<br>문화예술의 전 영역을 기획합니다</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem">
+        <div style="padding:2rem 1.5rem;background:var(--teal);color:var(--white);border-radius:4px;text-align:center">
+          <div style="font-size:2rem;margin-bottom:.8rem">🎭</div>
+          <div style="font-family:var(--serif);font-weight:700;font-size:1rem;margin-bottom:.5rem">공연기획</div>
+          <div style="font-size:.82rem;opacity:.85;line-height:1.6">한국무용 공연<br>거리공연 기획<br>MC·아티스트 섭외</div>
+        </div>
+        <div style="padding:2rem 1.5rem;background:var(--navy);color:var(--white);border-radius:4px;text-align:center">
+          <div style="font-size:2rem;margin-bottom:.8rem">🎪</div>
+          <div style="font-family:var(--serif);font-weight:700;font-size:1rem;margin-bottom:.5rem">축제기획</div>
+          <div style="font-size:.82rem;opacity:.85;line-height:1.6">글로벌 축제<br>지역 축제<br>섭외·운영 전반</div>
+        </div>
+        <div style="padding:2rem 1.5rem;background:var(--teal-dark);color:var(--white);border-radius:4px;text-align:center">
+          <div style="font-size:2rem;margin-bottom:.8rem">📚</div>
+          <div style="font-family:var(--serif);font-weight:700;font-size:1rem;margin-bottom:.5rem">교육기획</div>
+          <div style="font-size:.82rem;opacity:.85;line-height:1.6">문화예술교육 프로그램<br>예술가·유아·일반인 대상<br>교육자 양성</div>
+        </div>
+        <div style="padding:2rem 1.5rem;background:var(--navy-dark);color:var(--white);border-radius:4px;text-align:center">
+          <div style="font-size:2rem;margin-bottom:.8rem">🎬</div>
+          <div style="font-family:var(--serif);font-weight:700;font-size:1rem;margin-bottom:.5rem">영상기획</div>
+          <div style="font-size:.82rem;opacity:.85;line-height:1.6">지역 홍보영상<br>아티스트 콜라보<br>영상 제작</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 핵심가치 -->
+    <div style="background:var(--gray-100);padding:3rem;border-radius:4px;margin-bottom:4rem">
+      <div class="sec-eyebrow">핵심가치</div>
+      <h2 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy-dark);margin:1rem 0 2rem">교육성 · 대중성 · 예술성을 바탕으로<br>사람들의 삶에 영감과 가치를 더합니다</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem">
+        <div><div style="color:var(--teal);font-weight:700;margin-bottom:.6rem;font-size:.95rem">+ 교육성</div><div style="font-size:.88rem;color:var(--gray-600);line-height:1.8">예술을 통해 참가자들에게 새로운 지식과 기술을 습득할 기회를 제공합니다. 사고력과 창의력을 키우는 것이 우리의 철학입니다.</div></div>
+        <div><div style="color:var(--teal);font-weight:700;margin-bottom:.6rem;font-size:.95rem">+ 대중성</div><div style="font-size:.88rem;color:var(--gray-600);line-height:1.8">누구나 예술과 문화를 쉽게 접할 수 있어야 합니다. 다양한 프로그램으로 모든 사람이 예술을 경험할 수 있도록 합니다.</div></div>
+        <div><div style="color:var(--teal);font-weight:700;margin-bottom:.6rem;font-size:.95rem">+ 예술성</div><div style="font-size:.88rem;color:var(--gray-600);line-height:1.8">예술의 힘을 믿습니다. 예술을 통해 사회적 메시지를 전달하고 사람들에게 새로운 시각과 인사이트를 제공합니다.</div></div>
+      </div>
+    </div>
+
+    <!-- 슬로건 -->
+    <div style="background:var(--navy-dark);padding:3rem;border-radius:4px;margin-bottom:4rem;text-align:center">
+      <div class="sec-eyebrow" style="display:flex;justify-content:center">슬로건</div>
+      <h2 style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--white);margin:1rem 0 .5rem">'NBDA <span style="color:var(--teal)">(No Big Deal And)</span>'</h2>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto;line-height:1.8">어떤 일이든 별거 아니라고 생각하고 차근차근 해결하면 불가능한 일이 없다는 믿음. 긍정적이고 도전적인 마인드로 모든 프로젝트에 임합니다.</p>
+    </div>
+
+    <!-- 협력 분야 -->
+    <div style="margin-bottom:4rem">
+      <div class="sec-eyebrow">협력 분야</div>
+      <h2 class="sec-title">다양한 분야와의 협업으로<br>문화예술의 영역을 확대합니다</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem">
+        <div style="flex:1;min-width:160px;padding:1.5rem;border:1px solid var(--gray-200);border-radius:4px;transition:border-color .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--gray-200)'"><div style="font-weight:700;color:var(--teal);margin-bottom:.5rem;font-size:.9rem">지역</div><div style="font-size:.82rem;color:var(--gray-600);line-height:1.7">지역 문화예술 발전을 위한 콘텐츠 제안 및 협력, 지역 축제·행사 컨설팅</div></div>
+        <div style="flex:1;min-width:160px;padding:1.5rem;border:1px solid var(--gray-200);border-radius:4px;transition:border-color .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--gray-200)'"><div style="font-weight:700;color:var(--teal);margin-bottom:.5rem;font-size:.9rem">글로벌</div><div style="font-size:.82rem;color:var(--gray-600);line-height:1.7">관광상품 개발, 외국인 모객협력, 외국인 대상 축제 기획</div></div>
+        <div style="flex:1;min-width:160px;padding:1.5rem;border:1px solid var(--gray-200);border-radius:4px;transition:border-color .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--gray-200)'"><div style="font-weight:700;color:var(--teal);margin-bottom:.5rem;font-size:.9rem">테크</div><div style="font-size:.82rem;color:var(--gray-600);line-height:1.7">기획자·소비자 문화예술적 효용 극대화, 장르융합 새로운 시도</div></div>
+        <div style="flex:1;min-width:160px;padding:1.5rem;border:1px solid var(--gray-200);border-radius:4px;transition:border-color .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--gray-200)'"><div style="font-weight:700;color:var(--teal);margin-bottom:.5rem;font-size:.9rem">예술단체</div><div style="font-size:.82rem;color:var(--gray-600);line-height:1.7">장르 융합 및 새로운 시도를 통한 예술적 실험과 성장 지원</div></div>
+        <div style="flex:1;min-width:160px;padding:1.5rem;border:1px solid var(--gray-200);border-radius:4px;transition:border-color .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--gray-200)'"><div style="font-weight:700;color:var(--teal);margin-bottom:.5rem;font-size:.9rem">교육</div><div style="font-size:.82rem;color:var(--gray-600);line-height:1.7">문화예술교육 프로그램 개발 및 운영</div></div>
+      </div>
+    </div>
+
+    <div class="svc-cta-band" style="border-radius:4px">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy-dark);margin-bottom:.8rem">프로젝트를 함께 기획해봐요</h3>
+      <p style="font-size:.95rem;color:var(--gray-600);margin-bottom:1.5rem">규모에 관계없이 모든 문의를 환영합니다.</p>
+      <button class="btn-primary" onclick="goPage('contact')">기획 문의하기 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICE: 교육/워크숍 ===== -->
+<div id="svc-education-page" class="page">
+  <div class="svc-detail-hero" style="background:linear-gradient(135deg,#0f2a1e,var(--navy-dark))">
+    <button class="back-btn" onclick="goPage('home');setTimeout(()=>scrollToSec('home-services'),100)">← 서비스로 돌아가기</button>
+    <div class="sec-eyebrow">Services 04</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">교육 / 워크숍</h1>
+    <p style="margin-top:1rem;color:rgba(255,255,255,.65);font-size:1rem;max-width:560px;line-height:1.85">예술경영을 함께 공부하고 성장하는 커뮤니티.<br>독서모임과 기획 스터디로 이론과 실무를 동시에 쌓습니다.</p>
+  </div>
+  <div class="svc-detail-body">
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:4rem">
+      <!-- 독서모임 -->
+      <div style="border:2px solid var(--teal);border-radius:4px;padding:2.5rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:1.2rem;right:1.2rem;background:var(--teal);color:var(--white);font-size:.7rem;padding:.25rem .7rem;border-radius:20px;font-weight:600">모집 예정</div>
+        <div style="font-size:2rem;margin-bottom:1rem">📖</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy-dark);margin-bottom:.8rem">예술경영 독서모임</h3>
+        <p style="font-size:.9rem;color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">예술경영 필독서를 함께 읽고 토론하며 시각을 넓히는 12주 과정. 같은 고민을 가진 동료들과 함께 성장합니다.</p>
+        <div style="display:flex;flex-direction:column;gap:.6rem">
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--teal);font-weight:600">기간</span>12주 (월 2회)</div>
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--teal);font-weight:600">대상</span>예술경영에 관심 있는 누구나</div>
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--teal);font-weight:600">방식</span>오프라인 소그룹 (10명 내외)</div>
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--teal);font-weight:600">내용</span>예술경영 이론, 사례 분석, 토론</div>
+        </div>
+      </div>
+
+      <!-- 기획 스터디 -->
+      <div style="border:2px solid var(--navy);border-radius:4px;padding:2.5rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:1.2rem;right:1.2rem;background:var(--navy);color:var(--white);font-size:.7rem;padding:.25rem .7rem;border-radius:20px;font-weight:600">준비 중</div>
+        <div style="font-size:2rem;margin-bottom:1rem">✏️</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy-dark);margin-bottom:.8rem">문화기획 실무 스터디</h3>
+        <p style="font-size:.9rem;color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">실제 기획서를 작성하고 피드백받는 실전 중심 스터디. 이론이 아닌 현장에서 바로 쓸 수 있는 기획 역량을 키웁니다.</p>
+        <div style="display:flex;flex-direction:column;gap:.6rem">
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--navy);font-weight:600">기간</span>8주 집중 과정</div>
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--navy);font-weight:600">대상</span>기획 실무를 배우고 싶은 분</div>
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--navy);font-weight:600">방식</span>소그룹 워크숍 + 1:1 피드백</div>
+          <div style="font-size:.85rem;color:var(--gray-600);display:flex;gap:.8rem"><span style="color:var(--navy);font-weight:600">내용</span>기획서 작성, 예산 설계, 발표</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 커리큘럼 예시 -->
+    <div style="background:var(--gray-100);padding:3rem;border-radius:4px;margin-bottom:4rem">
+      <div class="sec-eyebrow">독서모임 커리큘럼 예시</div>
+      <h2 style="font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--navy-dark);margin:1rem 0 2rem">12주 예술경영 독서모임</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="background:var(--white);padding:1.2rem 1.5rem;border-radius:3px;border-left:3px solid var(--teal)"><div style="font-size:.75rem;color:var(--teal);font-weight:600;margin-bottom:.3rem">1–2주</div><div style="font-size:.88rem;color:var(--navy-dark);font-weight:500">예술경영의 이해 — 예술과 비즈니스의 만남</div></div>
+        <div style="background:var(--white);padding:1.2rem 1.5rem;border-radius:3px;border-left:3px solid var(--teal)"><div style="font-size:.75rem;color:var(--teal);font-weight:600;margin-bottom:.3rem">3–4주</div><div style="font-size:.88rem;color:var(--navy-dark);font-weight:500">문화예술 마케팅 — 대중과 연결하는 전략</div></div>
+        <div style="background:var(--white);padding:1.2rem 1.5rem;border-radius:3px;border-left:3px solid var(--teal)"><div style="font-size:.75rem;color:var(--teal);font-weight:600;margin-bottom:.3rem">5–6주</div><div style="font-size:.88rem;color:var(--navy-dark);font-weight:500">펀딩과 재정 — 지속 가능한 예술 생태계</div></div>
+        <div style="background:var(--white);padding:1.2rem 1.5rem;border-radius:3px;border-left:3px solid var(--teal)"><div style="font-size:.75rem;color:var(--teal);font-weight:600;margin-bottom:.3rem">7–8주</div><div style="font-size:.88rem;color:var(--navy-dark);font-weight:500">브랜딩 — 예술가·단체의 정체성 설계</div></div>
+        <div style="background:var(--white);padding:1.2rem 1.5rem;border-radius:3px;border-left:3px solid var(--teal)"><div style="font-size:.75rem;color:var(--teal);font-weight:600;margin-bottom:.3rem">9–10주</div><div style="font-size:.88rem;color:var(--navy-dark);font-weight:500">글로벌 케이스 스터디 — 해외 문화예술 사례</div></div>
+        <div style="background:var(--white);padding:1.2rem 1.5rem;border-radius:3px;border-left:3px solid var(--teal)"><div style="font-size:.75rem;color:var(--teal);font-weight:600;margin-bottom:.3rem">11–12주</div><div style="font-size:.88rem;color:var(--navy-dark);font-weight:500">나만의 기획 발표 — 실전 프레젠테이션</div></div>
+      </div>
+    </div>
+
+    <!-- 기업/기관 강의 -->
+    <div style="margin-bottom:4rem">
+      <div class="sec-eyebrow">기업 · 기관 강의</div>
+      <h2 class="sec-title">맞춤형 특강도 운영합니다</h2>
+      <p style="font-size:.98rem;line-height:1.9;color:var(--gray-600);max-width:600px">기관·기업 단체 대상 문화예술경영, 아트마케팅, 창의력 워크숍 등 목적에 맞는 맞춤형 강의를 제공합니다. 세종학당, 소셜벤처 밋업 페스티벌 등 다양한 기관에서 강의를 진행한 경험을 바탕으로 실질적인 내용을 전달합니다.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem">
+        <span style="padding:.5rem 1.2rem;background:var(--teal-light);color:var(--teal-dark);font-size:.82rem;border-radius:20px;font-weight:500">예술경영 입문</span>
+        <span style="padding:.5rem 1.2rem;background:var(--teal-light);color:var(--teal-dark);font-size:.82rem;border-radius:20px;font-weight:500">아트마케팅</span>
+        <span style="padding:.5rem 1.2rem;background:var(--teal-light);color:var(--teal-dark);font-size:.82rem;border-radius:20px;font-weight:500">문화기획 실무</span>
+        <span style="padding:.5rem 1.2rem;background:var(--teal-light);color:var(--teal-dark);font-size:.82rem;border-radius:20px;font-weight:500">창의적 사고 워크숍</span>
+        <span style="padding:.5rem 1.2rem;background:var(--teal-light);color:var(--teal-dark);font-size:.82rem;border-radius:20px;font-weight:500">펀딩 전략</span>
+        <span style="padding:.5rem 1.2rem;background:var(--teal-light);color:var(--teal-dark);font-size:.82rem;border-radius:20px;font-weight:500">글로벌 문화 이해</span>
+      </div>
+    </div>
+
+    <div class="svc-cta-band" style="border-radius:4px">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy-dark);margin-bottom:.8rem">함께 배우고 성장하는 커뮤니티에 참여하세요</h3>
+      <p style="font-size:.95rem;color:var(--gray-600);margin-bottom:2rem">아래 폼으로 신청하시면 개강 시 가장 먼저 연락드립니다.</p>
+
+      <!-- 신청 폼 -->
+      <div style="background:var(--white);border-radius:4px;padding:2.5rem;max-width:560px;margin:0 auto;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+        <h4 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--navy-dark);margin-bottom:1.5rem">📝 교육 프로그램 사전 신청</h4>
+        <div style="display:flex;flex-direction:column;gap:1.2rem">
+          <div class="form-group">
+            <label class="form-label">이름 *</label>
+            <input class="form-input" id="edu-name" placeholder="홍길동">
+          </div>
+          <div class="form-group">
+            <label class="form-label">이메일 *</label>
+            <input class="form-input" id="edu-email" type="email" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">연락처</label>
+            <input class="form-input" id="edu-phone" placeholder="010-0000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">관심 프로그램 *</label>
+            <select class="form-input" id="edu-program" style="cursor:pointer">
+              <option value="">선택해주세요</option>
+              <option value="독서모임">예술경영 독서모임</option>
+              <option value="기획스터디">문화기획 실무 스터디</option>
+              <option value="기업강의">기업·기관 맞춤형 강의</option>
+              <option value="기타">기타 (아래에 작성)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">자기소개 및 신청 동기</label>
+            <textarea class="form-textarea" id="edu-message" placeholder="간단한 자기소개와 신청 동기를 적어주세요." style="min-height:100px"></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;justify-content:center;padding:1rem" onclick="submitEdu()">신청하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== BLOG LIST ===== -->
@@ -476,9 +779,7 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
   </div>
   <div class="blog-list">
     <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem" id="blog-filter-btns"></div>
-    <div class="blog-grid" id="blog-grid">
-      <div class="blog-empty" style="grid-column:1/-1">블로그 글을 불러오는 중...</div>
-    </div>
+    <div class="blog-grid" id="blog-grid"><div class="blog-empty" style="grid-column:1/-1">글을 불러오는 중...</div></div>
   </div>
 </div>
 
@@ -490,9 +791,7 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
     <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--white);margin-top:.5rem;max-width:700px;line-height:1.3" id="detail-title"></h1>
     <div style="margin-top:1.5rem;font-size:.82rem;color:rgba(255,255,255,.45)" id="detail-date"></div>
   </div>
-  <div class="blog-detail-body">
-    <div class="blog-detail-content" id="detail-content"></div>
-  </div>
+  <div class="blog-detail-body"><div class="blog-detail-content" id="detail-content"></div></div>
 </div>
 
 <!-- ===== CONTACT ===== -->
@@ -540,42 +839,24 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}
       <div class="admin-menu-item" onclick="adminTab('new-post')" id="tab-new-post">✏️ 새 글 작성</div>
       <div class="admin-menu-item" onclick="adminTab('contacts')" id="tab-contacts">📬 문의함</div>
       <div style="padding:1.5rem;position:absolute;bottom:0;width:100%;border-top:1px solid rgba(255,255,255,.08)">
-        <div style="font-size:.78rem;color:rgba(255,255,255,.35);cursor:pointer;transition:color .2s" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.35)'" onclick="adminLogout()">← 사이트로 돌아가기</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.35);cursor:pointer;transition:color .2s" onclick="adminLogout()">← 사이트로 돌아가기</div>
       </div>
     </div>
     <div class="admin-content">
       <div id="admin-posts">
-        <div class="admin-header">
-          <div class="admin-page-title">블로그 글 관리</div>
-          <button class="btn-primary" onclick="adminTab('new-post')">+ 새 글 작성</button>
-        </div>
-        <table class="admin-table">
-          <thead><tr><th>제목</th><th>카테고리</th><th>상태</th><th>작성일</th><th>관리</th></tr></thead>
-          <tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;padding:2.5rem;color:var(--gray-400)">글을 불러오는 중...</td></tr></tbody>
-        </table>
+        <div class="admin-header"><div class="admin-page-title">블로그 글 관리</div><button class="btn-primary" onclick="adminTab('new-post')">+ 새 글 작성</button></div>
+        <table class="admin-table"><thead><tr><th>제목</th><th>카테고리</th><th>상태</th><th>작성일</th><th>관리</th></tr></thead><tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;padding:2.5rem;color:var(--gray-400)">글을 불러오는 중...</td></tr></tbody></table>
       </div>
       <div id="admin-new-post" style="display:none">
         <div class="admin-header"><div class="admin-page-title" id="editor-title">새 글 작성</div></div>
         <div class="editor-wrap">
           <input type="hidden" id="edit-id">
           <div class="editor-field"><label class="editor-label">제목</label><input class="editor-input" id="edit-title" placeholder="글 제목을 입력하세요"></div>
-          <div class="editor-field"><label class="editor-label">카테고리</label>
-            <select class="editor-select" id="edit-category">
-              <option>예술경영</option><option>아트마케팅</option><option>스터디 일지</option><option>펀딩 전략</option><option>컨설팅 이야기</option>
-            </select>
-          </div>
+          <div class="editor-field"><label class="editor-label">카테고리</label><select class="editor-select" id="edit-category"><option>예술경영</option><option>아트마케팅</option><option>스터디 일지</option><option>펀딩 전략</option><option>컨설팅 이야기</option></select></div>
           <div class="editor-field"><label class="editor-label">요약</label><input class="editor-input" id="edit-excerpt" placeholder="글의 핵심 내용을 한두 문장으로 요약하세요"></div>
           <div class="editor-field"><label class="editor-label">본문</label><textarea class="editor-textarea" id="edit-content" placeholder="본문을 작성하세요."></textarea></div>
-          <div class="editor-field">
-            <div class="toggle-wrap">
-              <div class="toggle" id="pub-toggle" onclick="togglePub()"></div>
-              <span id="pub-label" style="font-size:.88rem;color:var(--gray-600)">임시저장 (비공개)</span>
-            </div>
-          </div>
-          <div class="editor-actions">
-            <button class="btn-primary" onclick="savePost()">저장하기</button>
-            <button class="btn-outline" onclick="adminTab('posts')">취소</button>
-          </div>
+          <div class="editor-field"><div class="toggle-wrap"><div class="toggle" id="pub-toggle" onclick="togglePub()"></div><span id="pub-label" style="font-size:.88rem;color:var(--gray-600)">임시저장 (비공개)</span></div></div>
+          <div class="editor-actions"><button class="btn-primary" onclick="savePost()">저장하기</button><button class="btn-outline" onclick="adminTab('posts')">취소</button></div>
         </div>
       </div>
       <div id="admin-contacts" style="display:none">
@@ -598,6 +879,7 @@ async function api(path,method='GET',body=null,admin=false){
   if(!res.ok){const e=await res.text();throw new Error(e);}
   return res.status===204?null:res.json();
 }
+
 function goPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(name+'-page').classList.add('active');
@@ -608,6 +890,7 @@ function goPage(name){
 }
 function scrollToSec(id){goPage('home');setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});},100);}
 function toast(msg,dur=3000){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}
+
 async function loadHomeBlog(){
   try{
     const posts=await api('posts?published=eq.true&order=created_at.desc&limit=3');
@@ -697,6 +980,16 @@ async function loadContacts(){
   }catch(e){toast('문의를 불러오지 못했습니다.');}
 }
 function fmtDate(d){const dt=new Date(d);return `${dt.getFullYear()}년 ${dt.getMonth()+1}월 ${dt.getDate()}일`;}
+
+// LIGHTBOX
+const LB_IMGS=['https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/2.jpg','https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/1.jpg','https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/6.jpg','https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/3.jpg','https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/4.jpg','https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/5.jpg','https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/7.jpg'];
+let lbIdx=0;
+function openLb(idx){lbIdx=idx;document.getElementById('lb-img').src=LB_IMGS[lbIdx];document.getElementById('lb-counter').textContent=`${lbIdx+1} / ${LB_IMGS.length}`;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function lbClose(e){if(e.target===document.getElementById('lightbox'))closeLb();}
+function lbNav(dir){lbIdx=(lbIdx+dir+LB_IMGS.length)%LB_IMGS.length;const img=document.getElementById('lb-img');img.style.opacity='0';setTimeout(()=>{img.src=LB_IMGS[lbIdx];img.style.opacity='1';document.getElementById('lb-counter').textContent=`${lbIdx+1} / ${LB_IMGS.length}`;},150);}
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);if(e.key==='Escape')closeLb();});
+
 loadHomeBlog();
 </script>
 </body>
