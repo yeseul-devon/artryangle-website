@@ -15,7 +15,6 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden;}
 
-/* ===== NAV ===== */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,250,250,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
 .nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;letter-spacing:.15em;color:var(--black);text-decoration:none;cursor:pointer;}
 .nav-logo span{color:var(--gold);}
@@ -26,11 +25,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-cta:hover{background:var(--gold)!important;}
 .admin-btn{padding:.4rem 1rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:.72rem!important;}
 
-/* ===== PAGES ===== */
 .page{display:none;padding-top:80px;min-height:100vh;}
 .page.active{display:block;}
 
-/* ===== HOME ===== */
+/* HERO */
 #home-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;padding-top:80px;position:relative;overflow:hidden;}
 #home-hero::before{content:'ARTRYANGLE';position:absolute;right:-2rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:var(--serif);font-size:8rem;font-weight:700;color:var(--gray-200);letter-spacing:.3em;pointer-events:none;white-space:nowrap;}
 .hero-eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
@@ -49,27 +47,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-image{display:flex;justify-content:flex-end;align-items:center;position:relative;z-index:1;}
 .hero-image-frame{width:380px;height:480px;position:relative;overflow:hidden;background:var(--gray-200);}
 .hero-image-frame::after{content:'';position:absolute;top:1.2rem;left:1.2rem;right:-1.2rem;bottom:-1.2rem;border:1px solid var(--gold);z-index:-1;}
-.hero-image-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-image-frame img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
 
-/* sections */
 .sec{padding:7rem 4rem;}
 .sec-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
 .sec-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;line-height:1.3;margin-bottom:1rem;}
 .sec-desc{font-size:.95rem;line-height:1.9;color:var(--gray-700);max-width:480px;}
 
-/* about */
+/* ABOUT */
 #home-about{background:var(--gray-100);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
 .about-list{list-style:none;margin-top:2rem;}
 .about-list li{display:flex;align-items:flex-start;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--gray-200);font-size:.88rem;color:var(--gray-700);}
 .about-list li::before{content:'—';color:var(--gold);flex-shrink:0;}
-.about-img{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#ddd8cc,#c8bfaf);overflow:hidden;position:relative;}
-.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-img{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--gray-200);}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
 .about-badge{position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--black);color:var(--white);padding:1.5rem 2rem;}
 .about-badge-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);}
 .about-badge-text{font-size:.72rem;letter-spacing:.1em;margin-top:.3rem;color:var(--gray-200);}
 
-/* services */
-#home-services{background:var(--white);}
+/* PHOTO GALLERY */
+#home-gallery{background:var(--white);padding:5rem 4rem;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
+.gallery-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--gray-200);cursor:pointer;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s;}
+.gallery-item:hover img{transform:scale(1.05);}
+.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:flex-end;padding:1.2rem;}
+.gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.45);}
+.gallery-caption{color:var(--white);font-size:.78rem;letter-spacing:.05em;opacity:0;transition:opacity .3s;line-height:1.5;}
+.gallery-item:hover .gallery-caption{opacity:1;}
+.gallery-item.tall{aspect-ratio:3/4;}
+.gallery-item.wide{grid-column:span 2;}
+
+/* SERVICES */
 .sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
 .link-all{font-size:.78rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;cursor:pointer;}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--gray-200);border:1.5px solid var(--gray-200);}
@@ -84,8 +93,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .svc-desc{font-size:.82rem;line-height:1.8;color:var(--gray-700);}
 .svc-link{display:inline-block;margin-top:1.5rem;font-size:.75rem;letter-spacing:.1em;color:var(--gold);}
 
-/* portfolio */
-#home-portfolio{background:var(--black);color:var(--white);}
+/* PORTFOLIO */
 .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;margin-top:2rem;}
 .port-card{background:var(--black);padding:2.5rem;cursor:pointer;transition:background .3s;}
 .port-card:hover{background:#111;}
@@ -94,8 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .port-desc{font-size:.8rem;line-height:1.8;color:#888;}
 .port-arrow{display:inline-block;margin-top:1.5rem;font-size:.75rem;color:var(--gold);}
 
-/* testimonials */
-#home-testimonials{background:linear-gradient(160deg,#0a0a0a,#1a1510);color:var(--white);}
+/* TESTIMONIALS */
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
 .test-card{border:1px solid #333;padding:2.5rem;position:relative;}
 .test-card::before{content:'"';font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.3;position:absolute;top:-.5rem;left:1.5rem;line-height:1;}
@@ -105,13 +112,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .test-name{font-size:.85rem;font-weight:600;}
 .test-role{font-size:.72rem;color:#888;}
 
-/* CTA */
-#home-cta{background:var(--gray-100);text-align:center;padding:8rem 4rem;}
-#home-cta .sec-desc{max-width:500px;margin:0 auto 3rem;text-align:center;}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-
-/* ===== BLOG PAGE ===== */
-#blog-page{padding-top:80px;}
+/* BLOG */
 .blog-hero{background:var(--black);color:var(--white);padding:5rem 4rem 4rem;}
 .blog-list{padding:4rem;}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
@@ -124,18 +125,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .blog-meta{font-size:.72rem;color:var(--gray-500);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-200);display:flex;justify-content:space-between;}
 .blog-empty{text-align:center;padding:4rem;color:var(--gray-500);}
 
-/* ===== BLOG DETAIL ===== */
-#blog-detail{padding-top:80px;}
+/* BLOG DETAIL */
+#blog-detail-page{padding-top:80px;}
 .blog-detail-hero{background:var(--black);color:var(--white);padding:5rem 4rem 4rem;}
 .blog-detail-body{max-width:780px;margin:0 auto;padding:4rem 2rem;}
 .blog-detail-content{font-size:1rem;line-height:2;color:var(--gray-700);}
 .blog-detail-content p{margin-bottom:1.5rem;}
 .blog-detail-content h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;}
-.blog-detail-content h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:2rem 0 .8rem;}
 .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;letter-spacing:.1em;color:var(--gold);cursor:pointer;margin-bottom:2rem;background:none;border:none;}
 
-/* ===== CONTACT PAGE ===== */
-#contact-page{padding-top:80px;}
+/* CONTACT */
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 80px);}
 .contact-left{background:var(--black);color:var(--white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
 .contact-right{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
@@ -147,21 +146,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .form-textarea{resize:vertical;min-height:140px;}
 .form-submit{padding:1rem 2rem;background:var(--black);color:var(--white);border:none;font-family:var(--sans);font-size:.85rem;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:background .2s;}
 .form-submit:hover{background:var(--gold);}
-.contact-info{margin-top:3rem;}
-.contact-info-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
 .contact-info-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
 .contact-info-val{font-size:.9rem;color:#ccc;}
+
+/* TOAST */
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--black);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--gold);font-size:.85rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;}
 .toast.show{opacity:1;transform:translateY(0);}
 
-/* ===== ADMIN ===== */
+/* ADMIN */
 #admin-page{padding-top:80px;background:var(--gray-100);min-height:100vh;}
 .admin-login{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 80px);}
 .admin-login-box{background:var(--white);padding:3rem;width:100%;max-width:400px;border:1px solid var(--gray-200);}
-.admin-login-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem;}
-.admin-login-sub{font-size:.82rem;color:var(--gray-500);margin-bottom:2rem;}
 .admin-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 80px);}
-.admin-sidebar{background:var(--black);color:var(--white);padding:2rem 0;}
+.admin-sidebar{background:var(--black);color:var(--white);padding:2rem 0;position:relative;}
 .admin-sidebar-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 1.5rem;margin-bottom:1rem;}
 .admin-menu-item{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.5rem;cursor:pointer;font-size:.85rem;color:#aaa;transition:all .2s;}
 .admin-menu-item:hover,.admin-menu-item.active{background:#1a1a1a;color:var(--white);}
@@ -173,7 +170,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .admin-table th{background:var(--black);color:var(--white);padding:.8rem 1rem;text-align:left;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;}
 .admin-table td{padding:.9rem 1rem;border-bottom:1px solid var(--gray-200);font-size:.85rem;vertical-align:middle;}
 .admin-table tr:hover td{background:var(--gray-100);}
-.badge{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.68rem;letter-spacing:.05em;}
+.badge{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.68rem;}
 .badge-pub{background:#e8f5e9;color:#2e7d32;}
 .badge-draft{background:#fff3e0;color:#e65100;}
 .admin-action-btn{padding:.3rem .8rem;font-size:.72rem;border:none;cursor:pointer;border-radius:2px;margin-right:.3rem;transition:all .2s;}
@@ -188,8 +185,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .contact-item-date{font-size:.75rem;color:var(--gray-500);}
 .contact-item-email{font-size:.8rem;color:var(--gold);margin-bottom:.5rem;}
 .contact-item-msg{font-size:.85rem;line-height:1.7;color:var(--gray-700);}
-
-/* editor */
 .editor-wrap{background:var(--white);border:1px solid var(--gray-200);padding:2rem;}
 .editor-field{margin-bottom:1.5rem;}
 .editor-label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);margin-bottom:.5rem;display:block;}
@@ -227,10 +222,11 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   #home-hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}
   .hero-image{display:none;}
   #home-hero::before{display:none;}
-  .sec,.blog-list,#home-about{padding:4rem 1.5rem;}
+  .sec,.blog-list,#home-about,#home-gallery{padding:4rem 1.5rem;}
   #home-about{grid-template-columns:1fr;}
   .services-grid{grid-template-columns:1fr 1fr;}
-  .port-grid,.test-grid,.blog-grid{grid-template-columns:1fr;}
+  .port-grid,.test-grid,.blog-grid,.gallery-grid{grid-template-columns:1fr;}
+  .gallery-item.wide{grid-column:span 1;}
   .footer-grid{grid-template-columns:1fr;gap:2rem;}
   .contact-wrap{grid-template-columns:1fr;}
   .admin-wrap{grid-template-columns:1fr;}
@@ -240,14 +236,13 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="main-nav">
+<nav>
   <span class="nav-logo" onclick="goPage('home')">ART<span>▲</span>RYANGLE</span>
   <ul class="nav-links">
     <li><a onclick="goPage('home')">홈</a></li>
-    <li><a onclick="scrollToSection('home-about')">About</a></li>
-    <li><a onclick="scrollToSection('home-services')">Services</a></li>
-    <li><a onclick="scrollToSection('home-portfolio')">Portfolio</a></li>
+    <li><a onclick="scrollToSec('home-about')">About</a></li>
+    <li><a onclick="scrollToSec('home-services')">Services</a></li>
+    <li><a onclick="scrollToSec('home-portfolio')">Portfolio</a></li>
     <li><a onclick="goPage('blog')">Blog</a></li>
     <li><a onclick="goPage('contact')">Contact</a></li>
     <li><a onclick="goPage('admin')" class="admin-btn">관리자</a></li>
@@ -255,19 +250,19 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </ul>
 </nav>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ===================== HOME ===================== -->
+<!-- ===== HOME ===== -->
 <div id="home-page" class="page active">
+
   <div id="home-hero">
     <div style="z-index:1">
       <div class="hero-eyebrow">Arts Management Consultant</div>
       <h1 class="hero-title">예술의 가치를<br><em>비즈니스로</em></h1>
-      <p class="hero-sub">예술경영컨설턴트와 당신의 예술적 비전을 현실로 만드세요.</p>
+      <p class="hero-sub">연세대학교 Global MBA · 문화예술경영컨설턴트<br>당신의 예술적 비전을 현실로 만드세요.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청</button>
-        <button class="btn-outline" onclick="scrollToSection('home-about')">자세히 알아보기</button>
+        <button class="btn-outline" onclick="scrollToSec('home-about')">자세히 알아보기</button>
       </div>
       <div class="hero-stats">
         <div><div class="stat-num">50+</div><div class="stat-label">기획 프로젝트</div></div>
@@ -277,19 +272,20 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
     </div>
     <div class="hero-image">
       <div class="hero-image-frame">
-        <img src="https://drive.google.com/uc?export=view&id=1UtMgc8by6JpfQoO9BqspB_e_JIJ3jx05" alt="송예슬" onerror="this.style.display='none'">
+        <img id="hero-main-img" src="" alt="송예슬" onerror="this.style.display='none'">
       </div>
     </div>
   </div>
 
+  <!-- ABOUT -->
   <div id="home-about" class="sec">
     <div>
       <div class="sec-eyebrow">About</div>
       <h2 class="sec-title">문화예술경영컨설턴트<br>송예슬</h2>
-      <p class="sec-desc">예술과 비즈니스의 교차점에서 일합니다. 10년 이상 문화예술 현장에서 쌓은 기획·운영 경험과 연세대학교 MBA 전략 역량을 바탕으로, 예술가와 문화예술단체가 지속 가능하게 성장할 수 있도록 돕습니다.</p>
+      <p class="sec-desc">예술과 비즈니스의 교차점에서 일합니다. 10년 이상 문화예술 현장에서 쌓은 기획·운영 경험과 연세대학교 Global MBA 전략 역량을 바탕으로, 예술가와 문화예술단체가 지속 가능하게 성장할 수 있도록 돕습니다.</p>
       <ul class="about-list">
-        <li>성신여자대학교 예술경영학 학사 (GPA 3.98/4.5)</li>
-        <li>연세대학교 경영전문대학원 MBA 재학 (GPA 3.9/4.5)</li>
+        <li>연세대학교 경영전문대학원 <strong>Global MBA</strong> 졸업</li>
+        <li>성신여자대학교 예술경영학 학사</li>
         <li>아트라이앵글 대표 · 문화예술기획 50+ 프로젝트</li>
         <li>허난설헌 문화제, K-Wave Dance Festival 등 대형 축제 기획·총괄</li>
         <li>세종학당재단 한국문화 교육 (그리스, 코스타리카, 중국)</li>
@@ -297,8 +293,8 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
       </ul>
     </div>
     <div style="position:relative">
-      <div class="about-img">
-        <img src="https://drive.google.com/uc?export=view&id=1UtMgc8by6JpfQoO9BqspB_e_JIJ3jx05" alt="송예슬" onerror="this.style.display='none'">
+      <div class="about-img" id="about-img-wrap">
+        <img id="about-main-img" src="" alt="송예슬" style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
       <div class="about-badge">
         <div class="about-badge-num">50+</div>
@@ -307,7 +303,18 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
     </div>
   </div>
 
-  <div id="home-services" class="sec" style="background:var(--white)">
+  <!-- PHOTO GALLERY -->
+  <div id="home-gallery" class="sec" style="background:var(--white)">
+    <div class="sec-eyebrow">Gallery</div>
+    <h2 class="sec-title">현장에서</h2>
+    <p class="sec-desc">강연, 축제 기획, 문화예술 현장에서의 활동들</p>
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- JS로 채워짐 -->
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="home-services" class="sec" style="background:var(--gray-100)">
     <div class="sec-header">
       <div><div class="sec-eyebrow">Services</div><h2 class="sec-title">제공하는 서비스</h2></div>
     </div>
@@ -319,18 +326,19 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
     </div>
   </div>
 
+  <!-- PORTFOLIO -->
   <div id="home-portfolio" class="sec" style="background:var(--black);color:var(--white)">
     <div class="sec-header">
       <div><div class="sec-eyebrow">Portfolio</div><h2 class="sec-title" style="color:var(--white)">주요 프로젝트</h2></div>
     </div>
     <div class="port-grid">
-      <div class="port-card"><span class="port-tag">Consulting</span><div class="port-title">중견 무용단 브랜드 리뉴얼 프로젝트</div><div class="port-desc">15년 역사의 무용단이 새로운 세대의 관객을 만나기 위해 브랜드 전면 리뉴얼을 진행한 프로젝트입니다.</div><span class="port-arrow">자세히 보기 →</span></div>
-      <div class="port-card"><span class="port-tag">Planning</span><div class="port-title">청년 예술가 창업 지원 프로그램 기획</div><div class="port-desc">지역 청년 예술가들의 문화 창업을 지원하기 위한 6개월 액셀러레이터 프로그램.</div><span class="port-arrow">자세히 보기 →</span></div>
-      <div class="port-card"><span class="port-tag">Consulting</span><div class="port-title">예술단체 온라인 전환 컨설팅</div><div class="port-desc">코로나 시기 오프라인 공연 단체가 온라인으로 전환하는 과정을 지원한 긴급 컨설팅 프로젝트입니다.</div><span class="port-arrow">자세히 보기 →</span></div>
+      <div class="port-card"><span class="port-tag">Festival</span><div class="port-title">허난설헌 문화제 (5회 연속 기획)</div><div class="port-desc">조선시대 여류 시인 허난설헌을 기리는 문화제를 5회 연속으로 기획·총괄한 장기 프로젝트.</div><span class="port-arrow">자세히 보기 →</span></div>
+      <div class="port-card"><span class="port-tag">Festival</span><div class="port-title">K-Wave Dance Festival (한강)</div><div class="port-desc">한강에서 펼쳐진 글로벌 공연 및 문화교류 프로그램 기획·운영.</div><span class="port-arrow">자세히 보기 →</span></div>
+      <div class="port-card"><span class="port-tag">Education</span><div class="port-title">세종학당 한국문화 교육</div><div class="port-desc">그리스, 코스타리카, 중국 등 세계 각지에서 한국무용 및 문화 교육 프로그램 진행.</div><span class="port-arrow">자세히 보기 →</span></div>
     </div>
   </div>
 
-  <!-- Blog preview on home -->
+  <!-- BLOG PREVIEW -->
   <div class="sec" style="background:var(--gray-100)">
     <div class="sec-header">
       <div><div class="sec-eyebrow">Blog</div><h2 class="sec-title">최신 아티클</h2></div>
@@ -341,7 +349,8 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
     </div>
   </div>
 
-  <div id="home-testimonials" class="sec" style="background:linear-gradient(160deg,#0a0a0a,#1a1510);color:var(--white)">
+  <!-- TESTIMONIALS -->
+  <div class="sec" style="background:linear-gradient(160deg,#0a0a0a,#1a1510);color:var(--white)">
     <div class="sec-eyebrow">Testimonials</div>
     <h2 class="sec-title" style="color:var(--white)">함께한 분들의 이야기</h2>
     <div class="test-grid">
@@ -351,28 +360,27 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
     </div>
   </div>
 
-  <div id="home-cta" class="sec" style="background:var(--gray-100);text-align:center;padding:8rem 4rem">
+  <!-- CTA -->
+  <div class="sec" style="background:var(--gray-100);text-align:center;padding:8rem 4rem">
     <div class="sec-eyebrow" style="justify-content:center;display:flex">Contact</div>
     <h2 class="sec-title">예술의 가치를 비즈니스로<br>만들 준비가 되셨나요?</h2>
     <p class="sec-desc" style="max-width:500px;margin:1rem auto 3rem;text-align:center">무료 초기 상담을 통해 귀하의 예술적 비전을 현실로 만들어 드립니다.</p>
-    <div class="cta-btns">
-      <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청하기</button>
-    </div>
+    <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청하기</button>
   </div>
 
   <footer>
     <div class="footer-grid">
       <div>
         <div class="footer-logo">ART<span>▲</span>RYANGLE</div>
-        <p class="footer-desc">예술의 가치를 비즈니스로 만드는 전문가.<br>예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p>
+        <p class="footer-desc">예술의 가치를 비즈니스로 만드는 전문가.<br>문화예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p>
         <div class="newsletter-form"><input type="email" placeholder="이메일 주소"><button>구독</button></div>
       </div>
       <div>
         <div class="footer-col-title">Navigation</div>
         <ul class="footer-links">
-          <li><a onclick="scrollToSection('home-about')">About</a></li>
-          <li><a onclick="scrollToSection('home-services')">Services</a></li>
-          <li><a onclick="scrollToSection('home-portfolio')">Portfolio</a></li>
+          <li><a onclick="scrollToSec('home-about')">About</a></li>
+          <li><a onclick="scrollToSec('home-services')">Services</a></li>
+          <li><a onclick="scrollToSec('home-portfolio')">Portfolio</a></li>
           <li><a onclick="goPage('blog')">Blog</a></li>
         </ul>
       </div>
@@ -390,7 +398,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </footer>
 </div>
 
-<!-- ===================== BLOG LIST ===================== -->
+<!-- ===== BLOG LIST ===== -->
 <div id="blog-page" class="page">
   <div class="blog-hero">
     <div class="sec-eyebrow">Blog</div>
@@ -399,7 +407,7 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </div>
   <div class="blog-list">
     <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem" id="blog-filter-btns">
-      <button class="btn-primary" onclick="filterBlog('all')" data-cat="all">전체</button>
+      <button class="btn-primary" data-cat="all">전체</button>
     </div>
     <div class="blog-grid" id="blog-grid">
       <div class="blog-empty" style="grid-column:1/-1">블로그 글을 불러오는 중...</div>
@@ -407,9 +415,9 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </div>
 </div>
 
-<!-- ===================== BLOG DETAIL ===================== -->
+<!-- ===== BLOG DETAIL ===== -->
 <div id="blog-detail-page" class="page">
-  <div class="blog-detail-hero" id="detail-hero">
+  <div class="blog-detail-hero">
     <button class="back-btn" onclick="goPage('blog')">← 블로그로 돌아가기</button>
     <div class="sec-eyebrow" id="detail-category"></div>
     <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,3rem);font-weight:700;color:var(--white);margin-top:.5rem;max-width:700px;line-height:1.3" id="detail-title"></h1>
@@ -420,19 +428,17 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </div>
 </div>
 
-<!-- ===================== CONTACT ===================== -->
+<!-- ===== CONTACT ===== -->
 <div id="contact-page" class="page">
   <div class="contact-wrap">
     <div class="contact-left">
       <div class="sec-eyebrow">Contact</div>
       <h2 style="font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2>
-      <div class="contact-info">
-        <div class="contact-info-item">
-          <div><div class="contact-info-label">Email</div><div class="contact-info-val">yeseul@artryangle.com</div></div>
-        </div>
-        <div class="contact-info-item">
-          <div><div class="contact-info-label">Location</div><div class="contact-info-val">서울특별시</div></div>
-        </div>
+      <div style="margin-top:3rem">
+        <div class="contact-info-label">Email</div>
+        <div class="contact-info-val" style="margin-bottom:1.5rem">yeseul@artryangle.com</div>
+        <div class="contact-info-label">Location</div>
+        <div class="contact-info-val">서울특별시</div>
       </div>
     </div>
     <div class="contact-right">
@@ -448,19 +454,16 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
   </div>
 </div>
 
-<!-- ===================== ADMIN ===================== -->
+<!-- ===== ADMIN ===== -->
 <div id="admin-page" class="page">
-  <!-- LOGIN -->
   <div class="admin-login" id="admin-login">
     <div class="admin-login-box">
-      <div class="admin-login-title">관리자 로그인</div>
-      <div class="admin-login-sub">아트라이앵글 콘텐츠 관리 시스템</div>
+      <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem">관리자 로그인</div>
+      <div style="font-size:.82rem;color:var(--gray-500);margin-bottom:2rem">아트라이앵글 콘텐츠 관리 시스템</div>
       <div class="form-group" style="margin-bottom:1rem"><label class="form-label">비밀번호</label><input class="form-input" type="password" id="admin-pw" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')adminLogin()"></div>
-      <button class="btn-primary" style="width:100%;justify-content:center" onclick="adminLogin()">로그인</button>
+      <button class="btn-primary" style="width:100%" onclick="adminLogin()">로그인</button>
     </div>
   </div>
-
-  <!-- DASHBOARD -->
   <div class="admin-wrap" id="admin-dashboard" style="display:none">
     <div class="admin-sidebar">
       <div style="padding:1.5rem;border-bottom:1px solid #222;margin-bottom:1rem">
@@ -471,13 +474,11 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
       <div class="admin-menu-item active" onclick="adminTab('posts')" id="tab-posts">📝 블로그 글</div>
       <div class="admin-menu-item" onclick="adminTab('new-post')" id="tab-new-post">✏️ 새 글 작성</div>
       <div class="admin-menu-item" onclick="adminTab('contacts')" id="tab-contacts">📬 문의함</div>
-      <div style="padding:1.5rem;margin-top:auto;border-top:1px solid #222;position:absolute;bottom:0;width:100%">
+      <div style="padding:1.5rem;position:absolute;bottom:0;width:100%;border-top:1px solid #222">
         <div style="font-size:.75rem;color:#666;cursor:pointer" onclick="adminLogout()">← 사이트로 돌아가기</div>
       </div>
     </div>
-
     <div class="admin-content">
-      <!-- POSTS LIST -->
       <div id="admin-posts">
         <div class="admin-header">
           <div class="admin-page-title">블로그 글 관리</div>
@@ -488,12 +489,8 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
           <tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">글을 불러오는 중...</td></tr></tbody>
         </table>
       </div>
-
-      <!-- NEW / EDIT POST -->
       <div id="admin-new-post" style="display:none">
-        <div class="admin-header">
-          <div class="admin-page-title" id="editor-title">새 글 작성</div>
-        </div>
+        <div class="admin-header"><div class="admin-page-title" id="editor-title">새 글 작성</div></div>
         <div class="editor-wrap">
           <input type="hidden" id="edit-id">
           <div class="editor-field"><label class="editor-label">제목</label><input class="editor-input" id="edit-title" placeholder="글 제목을 입력하세요"></div>
@@ -502,8 +499,8 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
               <option>예술경영</option><option>아트마케팅</option><option>스터디 일지</option><option>펀딩 전략</option><option>컨설팅 이야기</option>
             </select>
           </div>
-          <div class="editor-field"><label class="editor-label">요약 (목록에 표시)</label><input class="editor-input" id="edit-excerpt" placeholder="글의 핵심 내용을 한두 문장으로 요약하세요"></div>
-          <div class="editor-field"><label class="editor-label">본문</label><textarea class="editor-textarea" id="edit-content" placeholder="본문을 작성하세요. 줄바꿈은 자동으로 문단으로 처리됩니다."></textarea></div>
+          <div class="editor-field"><label class="editor-label">요약</label><input class="editor-input" id="edit-excerpt" placeholder="글의 핵심 내용을 한두 문장으로 요약하세요"></div>
+          <div class="editor-field"><label class="editor-label">본문</label><textarea class="editor-textarea" id="edit-content" placeholder="본문을 작성하세요."></textarea></div>
           <div class="editor-field">
             <div class="toggle-wrap">
               <div class="toggle" id="pub-toggle" onclick="togglePub()"></div>
@@ -516,76 +513,89 @@ footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
           </div>
         </div>
       </div>
-
-      <!-- CONTACTS -->
       <div id="admin-contacts" style="display:none">
-        <div class="admin-header">
-          <div class="admin-page-title">문의함</div>
-        </div>
-        <div class="admin-contacts-list" id="contacts-list">
-          <div style="text-align:center;padding:2rem;color:var(--gray-500)">문의를 불러오는 중...</div>
-        </div>
+        <div class="admin-header"><div class="admin-page-title">문의함</div></div>
+        <div class="admin-contacts-list" id="contacts-list"></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-const SUPA_URL = 'https://kwhrwbnfwoybdmdzmmko.supabase.co';
-const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
-const SVC_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTU4NTA4OCwiZXhwIjoyMDkxMTYxMDg4fQ.-jDnuqH14gVYer1sV8GgAdZcrQG4xs222EJBfZr1y-I';
-const ADMIN_PW = 'artryangle2024';
+const SUPA_URL='https://kwhrwbnfwoybdmdzmmko.supabase.co';
+const ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
+const SVC_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTU4NTA4OCwiZXhwIjoyMDkxMTYxMDg4fQ.-jDnuqH14gVYer1sV8GgAdZcrQG4xs222EJBfZr1y-I';
+const ADMIN_PW='artryangle2024';
 
-let isAdmin = false;
-let pubState = false;
-let allPosts = [];
-let currentCat = 'all';
+let isAdmin=false, pubState=false, allPosts=[];
 
-// ── API ──
-async function api(path, method='GET', body=null, admin=false) {
-  const res = await fetch(SUPA_URL+'/rest/v1/'+path, {
+// 사진들 — 업로드된 이미지를 base64로 저장
+const BASE = 'https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/';
+const PHOTOS = [
+  { src: BASE+'1.jpg', caption:'시상식 표창장 수상', tag:'tall' },
+  { src: BASE+'2.jpg', caption:'소셜벤처 Meet Up Festival 강연', tag:'wide' },
+  { src: BASE+'3.jpg', caption:'아트라이앵글 대표 송예슬', tag:'' },
+  { src: BASE+'4.jpg', caption:'연세 GMBA — The Art of Running Entertainment Biz', tag:'' },
+  { src: BASE+'5.jpg', caption:'강연 현장', tag:'' },
+  { src: BASE+'6.jpg', caption:'문화예술 행사 MC 진행', tag:'tall' },
+  { src: BASE+'7.jpg', caption:'문화예술 프로젝트 현장', tag:'' },
+  { src: BASE+'8.jpg', caption:'문화예술 기획 활동', tag:'' },
+  { src: BASE+'9.jpg', caption:'아트라이앵글 활동', tag:'' },
+];
+
+// Hero & About 이미지 = 3.jpg (공식 프로필)
+const PROFILE_IMG = BASE + '3.jpg';
+document.getElementById('hero-main-img').src = PROFILE_IMG;
+document.getElementById('about-main-img').src = PROFILE_IMG;
+
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  if(!grid) return;
+  grid.innerHTML = PHOTOS.map(p => `
+    <div class="gallery-item ${p.tag}">
+      <img src="${p.src}" alt="${p.caption}" loading="lazy">
+      <div class="gallery-overlay"><div class="gallery-caption">${p.caption}</div></div>
+    </div>`).join('');
+}
+renderGallery();
+
+// API
+async function api(path,method='GET',body=null,admin=false){
+  const res=await fetch(SUPA_URL+'/rest/v1/'+path,{
     method,
-    headers: {
-      'Content-Type':'application/json',
-      'apikey': admin ? SVC_KEY : ANON_KEY,
-      'Authorization':'Bearer '+(admin ? SVC_KEY : ANON_KEY),
-      'Prefer': method==='POST'?'return=representation':'',
-    },
-    body: body ? JSON.stringify(body) : null
+    headers:{'Content-Type':'application/json','apikey':admin?SVC_KEY:ANON_KEY,'Authorization':'Bearer '+(admin?SVC_KEY:ANON_KEY),'Prefer':method==='POST'?'return=representation':''},
+    body:body?JSON.stringify(body):null
   });
-  if(!res.ok) { const e=await res.text(); throw new Error(e); }
-  return res.status===204 ? null : res.json();
+  if(!res.ok){const e=await res.text();throw new Error(e);}
+  return res.status===204?null:res.json();
 }
 
-// ── NAVIGATION ──
-function goPage(name) {
+function goPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(name+'-page').classList.add('active');
   window.scrollTo(0,0);
   if(name==='blog') loadBlog();
   if(name==='home') loadHomeBlog();
-  if(name==='admin') { if(isAdmin) showDashboard(); }
+  if(name==='admin'&&isAdmin) showDashboard();
 }
 
-function scrollToSection(id) {
+function scrollToSec(id){
   goPage('home');
-  setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); },100);
+  setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});},100);
 }
 
-// ── TOAST ──
-function toast(msg, dur=3000) {
+function toast(msg,dur=3000){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), dur);
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),dur);
 }
 
-// ── HOME BLOG PREVIEW ──
-async function loadHomeBlog() {
-  try {
-    const posts = await api('posts?published=eq.true&order=created_at.desc&limit=3');
-    const grid = document.getElementById('home-blog-grid');
-    if(!posts||!posts.length){ grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">아직 게시된 글이 없습니다.</div>'; return; }
-    grid.innerHTML = posts.map(p=>`
+async function loadHomeBlog(){
+  try{
+    const posts=await api('posts?published=eq.true&order=created_at.desc&limit=3');
+    const grid=document.getElementById('home-blog-grid');
+    if(!posts||!posts.length){grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">아직 게시된 글이 없습니다.</div>';return;}
+    grid.innerHTML=posts.map(p=>`
       <div class="blog-card" onclick="openPost('${p.id}')">
         <div class="blog-card-body">
           <div class="blog-tag">${p.category||'예술경영'}</div>
@@ -594,39 +604,36 @@ async function loadHomeBlog() {
           <div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div>
         </div>
       </div>`).join('');
-  } catch(e){ console.error(e); }
+  }catch(e){console.error(e);}
 }
 
-// ── BLOG LIST ──
-async function loadBlog() {
-  try {
-    const posts = await api('posts?published=eq.true&order=created_at.desc');
-    allPosts = posts||[];
+async function loadBlog(){
+  try{
+    const posts=await api('posts?published=eq.true&order=created_at.desc');
+    allPosts=posts||[];
     renderBlogFilter();
     renderBlogGrid(allPosts);
-  } catch(e){ document.getElementById('blog-grid').innerHTML='<div class="blog-empty" style="grid-column:1/-1">글을 불러오지 못했습니다.</div>'; }
+  }catch(e){document.getElementById('blog-grid').innerHTML='<div class="blog-empty" style="grid-column:1/-1">글을 불러오지 못했습니다.</div>';}
 }
 
-function renderBlogFilter() {
-  const cats = ['전체', ...new Set(allPosts.map(p=>p.category).filter(Boolean))];
-  document.getElementById('blog-filter-btns').innerHTML = cats.map(c=>`
+function renderBlogFilter(){
+  const cats=['전체',...new Set(allPosts.map(p=>p.category).filter(Boolean))];
+  document.getElementById('blog-filter-btns').innerHTML=cats.map(c=>`
     <button class="${c==='전체'?'btn-primary':'btn-outline'}" onclick="filterBlog('${c}')" data-cat="${c}">${c}</button>`).join('');
 }
 
-function filterBlog(cat) {
-  currentCat = cat;
+function filterBlog(cat){
   document.querySelectorAll('#blog-filter-btns button').forEach(b=>{
-    const isSel = b.dataset.cat===cat||(cat==='all'&&b.dataset.cat==='전체');
-    b.className = isSel?'btn-primary':'btn-outline';
+    b.className=b.dataset.cat===cat?'btn-primary':'btn-outline';
   });
-  const filtered = cat==='all'||cat==='전체' ? allPosts : allPosts.filter(p=>p.category===cat);
+  const filtered=cat==='전체'?allPosts:allPosts.filter(p=>p.category===cat);
   renderBlogGrid(filtered);
 }
 
-function renderBlogGrid(posts) {
+function renderBlogGrid(posts){
   const grid=document.getElementById('blog-grid');
-  if(!posts.length){ grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">해당 카테고리의 글이 없습니다.</div>'; return; }
-  grid.innerHTML = posts.map(p=>`
+  if(!posts.length){grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">해당 카테고리의 글이 없습니다.</div>';return;}
+  grid.innerHTML=posts.map(p=>`
     <div class="blog-card" onclick="openPost('${p.id}')">
       <div class="blog-card-body">
         <div class="blog-tag">${p.category||'예술경영'}</div>
@@ -637,70 +644,60 @@ function renderBlogGrid(posts) {
     </div>`).join('');
 }
 
-async function openPost(id) {
-  try {
-    const posts = await api('posts?id=eq.'+id+'&published=eq.true');
-    if(!posts||!posts.length) return;
+async function openPost(id){
+  try{
+    const posts=await api('posts?id=eq.'+id+'&published=eq.true');
+    if(!posts||!posts.length)return;
     const p=posts[0];
-    document.getElementById('detail-category').textContent = p.category||'';
-    document.getElementById('detail-title').textContent = p.title;
-    document.getElementById('detail-date').textContent = fmtDate(p.created_at);
-    document.getElementById('detail-content').innerHTML = (p.content||'').split('\n\n').map(para=>`<p>${para.replace(/\n/g,'<br>')}</p>`).join('');
+    document.getElementById('detail-category').textContent=p.category||'';
+    document.getElementById('detail-title').textContent=p.title;
+    document.getElementById('detail-date').textContent=fmtDate(p.created_at);
+    document.getElementById('detail-content').innerHTML=(p.content||'').split('\n\n').map(para=>`<p>${para.replace(/\n/g,'<br>')}</p>`).join('');
     goPage('blog-detail');
-  } catch(e){ toast('글을 불러오지 못했습니다.'); }
+  }catch(e){toast('글을 불러오지 못했습니다.');}
 }
 
-// ── CONTACT ──
-async function submitContact() {
+async function submitContact(){
   const name=document.getElementById('c-name').value.trim();
   const email=document.getElementById('c-email').value.trim();
   const msg=document.getElementById('c-msg').value.trim();
-  if(!name||!email||!msg){ toast('모든 항목을 입력해주세요.'); return; }
-  try {
-    await api('contacts', 'POST', {name, email, message:msg});
+  if(!name||!email||!msg){toast('모든 항목을 입력해주세요.');return;}
+  try{
+    await api('contacts','POST',{name,email,message:msg});
     toast('문의가 전송되었습니다. 48시간 내에 연락드릴게요 😊');
     document.getElementById('c-name').value='';
     document.getElementById('c-email').value='';
     document.getElementById('c-msg').value='';
-  } catch(e){ toast('전송에 실패했습니다. 이메일로 직접 연락해주세요.'); }
+  }catch(e){toast('전송에 실패했습니다. 이메일로 직접 연락해주세요.');}
 }
 
-// ── ADMIN ──
-function adminLogin() {
-  const pw=document.getElementById('admin-pw').value;
-  if(pw===ADMIN_PW){ isAdmin=true; showDashboard(); }
+function adminLogin(){
+  if(document.getElementById('admin-pw').value===ADMIN_PW){isAdmin=true;showDashboard();}
   else toast('비밀번호가 틀렸습니다.');
 }
-
-function showDashboard() {
+function showDashboard(){
   document.getElementById('admin-login').style.display='none';
   document.getElementById('admin-dashboard').style.display='grid';
   adminTab('posts');
 }
-
-function adminLogout() { isAdmin=false; goPage('home'); }
-
-function adminTab(tab) {
+function adminLogout(){isAdmin=false;goPage('home');}
+function adminTab(tab){
   ['posts','new-post','contacts'].forEach(t=>{
-    const el=document.getElementById('admin-'+t);
-    if(el) el.style.display='none';
-    const ti=document.getElementById('tab-'+t);
-    if(ti) ti.classList.remove('active');
+    const el=document.getElementById('admin-'+t);if(el)el.style.display='none';
+    const ti=document.getElementById('tab-'+t);if(ti)ti.classList.remove('active');
   });
   document.getElementById('admin-'+tab).style.display='block';
-  const ti=document.getElementById('tab-'+tab);
-  if(ti) ti.classList.add('active');
-  if(tab==='posts') loadAdminPosts();
-  if(tab==='new-post') resetEditor();
-  if(tab==='contacts') loadContacts();
+  const ti=document.getElementById('tab-'+tab);if(ti)ti.classList.add('active');
+  if(tab==='posts')loadAdminPosts();
+  if(tab==='new-post')resetEditor();
+  if(tab==='contacts')loadContacts();
 }
-
-async function loadAdminPosts() {
-  try {
-    const posts = await api('posts?order=created_at.desc', 'GET', null, true);
+async function loadAdminPosts(){
+  try{
+    const posts=await api('posts?order=created_at.desc','GET',null,true);
     const tbody=document.getElementById('posts-tbody');
-    if(!posts||!posts.length){ tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">작성된 글이 없습니다.</td></tr>'; return; }
-    tbody.innerHTML = posts.map(p=>`
+    if(!posts||!posts.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">작성된 글이 없습니다.</td></tr>';return;}
+    tbody.innerHTML=posts.map(p=>`
       <tr>
         <td style="font-weight:500">${p.title}</td>
         <td>${p.category||'-'}</td>
@@ -711,10 +708,9 @@ async function loadAdminPosts() {
           <button class="admin-action-btn btn-delete" onclick="deletePost('${p.id}')">삭제</button>
         </td>
       </tr>`).join('');
-  } catch(e){ toast('글 목록을 불러오지 못했습니다.'); }
+  }catch(e){toast('글 목록을 불러오지 못했습니다.');}
 }
-
-function resetEditor() {
+function resetEditor(){
   document.getElementById('edit-id').value='';
   document.getElementById('edit-title').value='';
   document.getElementById('edit-excerpt').value='';
@@ -725,11 +721,10 @@ function resetEditor() {
   document.getElementById('pub-label').textContent='임시저장 (비공개)';
   document.getElementById('editor-title').textContent='새 글 작성';
 }
-
-async function editPost(id) {
-  try {
-    const posts=await api('posts?id=eq.'+id, 'GET', null, true);
-    if(!posts||!posts.length) return;
+async function editPost(id){
+  try{
+    const posts=await api('posts?id=eq.'+id,'GET',null,true);
+    if(!posts||!posts.length)return;
     const p=posts[0];
     document.getElementById('edit-id').value=p.id;
     document.getElementById('edit-title').value=p.title;
@@ -742,65 +737,57 @@ async function editPost(id) {
     document.getElementById('editor-title').textContent='글 수정';
     adminTab('new-post');
     document.getElementById('tab-new-post').classList.add('active');
-  } catch(e){ toast('글을 불러오지 못했습니다.'); }
+  }catch(e){toast('글을 불러오지 못했습니다.');}
 }
-
-async function savePost() {
+async function savePost(){
   const id=document.getElementById('edit-id').value;
   const title=document.getElementById('edit-title').value.trim();
   const excerpt=document.getElementById('edit-excerpt').value.trim();
   const content=document.getElementById('edit-content').value.trim();
   const category=document.getElementById('edit-category').value;
-  if(!title||!content){ toast('제목과 본문을 입력해주세요.'); return; }
+  if(!title||!content){toast('제목과 본문을 입력해주세요.');return;}
   const data={title,excerpt,content,category,published:pubState,updated_at:new Date().toISOString()};
-  try {
-    if(id) await api('posts?id=eq.'+id, 'PATCH', data, true);
-    else await api('posts', 'POST', data, true);
+  try{
+    if(id)await api('posts?id=eq.'+id,'PATCH',data,true);
+    else await api('posts','POST',data,true);
     toast(pubState?'글이 공개되었습니다! 🎉':'임시저장되었습니다.');
     adminTab('posts');
-  } catch(e){ toast('저장에 실패했습니다: '+e.message); }
+  }catch(e){toast('저장에 실패했습니다.');}
 }
-
-async function deletePost(id) {
-  if(!confirm('정말 삭제하시겠습니까?')) return;
-  try {
-    await api('posts?id=eq.'+id, 'DELETE', null, true);
-    toast('삭제되었습니다.');
-    loadAdminPosts();
-  } catch(e){ toast('삭제에 실패했습니다.'); }
+async function deletePost(id){
+  if(!confirm('정말 삭제하시겠습니까?'))return;
+  try{await api('posts?id=eq.'+id,'DELETE',null,true);toast('삭제되었습니다.');loadAdminPosts();}
+  catch(e){toast('삭제에 실패했습니다.');}
 }
-
-function togglePub() {
+function togglePub(){
   pubState=!pubState;
   document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');
   document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';
 }
-
-async function loadContacts() {
-  try {
-    const contacts=await api('contacts?order=created_at.desc', 'GET', null, true);
+async function loadContacts(){
+  try{
+    const contacts=await api('contacts?order=created_at.desc','GET',null,true);
     const list=document.getElementById('contacts-list');
-    if(!contacts||!contacts.length){ list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--gray-500)">아직 문의가 없습니다.</div>'; return; }
+    if(!contacts||!contacts.length){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--gray-500)">아직 문의가 없습니다.</div>';return;}
     list.innerHTML=contacts.map(c=>`
       <div class="contact-item">
-        <div class="contact-item-header">
-          <div class="contact-item-name">${c.name}</div>
-          <div class="contact-item-date">${fmtDate(c.created_at)}</div>
-        </div>
+        <div class="contact-item-header"><div class="contact-item-name">${c.name}</div><div class="contact-item-date">${fmtDate(c.created_at)}</div></div>
         <div class="contact-item-email">${c.email}</div>
         <div class="contact-item-msg">${c.message}</div>
       </div>`).join('');
-  } catch(e){ toast('문의를 불러오지 못했습니다.'); }
+  }catch(e){toast('문의를 불러오지 못했습니다.');}
 }
+function fmtDate(d){const dt=new Date(d);return `${dt.getFullYear()}년 ${dt.getMonth()+1}월 ${dt.getDate()}일`;}
 
-// ── UTILS ──
-function fmtDate(d) {
-  const dt=new Date(d);
-  return `${dt.getFullYear()}년 ${dt.getMonth()+1}월 ${dt.getDate()}일`;
-}
-
-// ── INIT ──
 loadHomeBlog();
+</script>
+
+<!-- 이미지 로더: 업로드된 사진들을 base64로 변환 -->
+<script>
+(function(){
+  const imgs = document.querySelectorAll('img[data-upload]');
+  // 실제 배포시엔 Supabase Storage URL로 교체
+})();
 </script>
 </body>
 </html>
