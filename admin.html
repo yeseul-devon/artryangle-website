@@ -9,8 +9,6 @@
 :root{--teal:#2AABAA;--teal-dark:#1d8a89;--navy:#1e3a5f;--navy-dark:#122540;--white:#fff;--g100:#f0f4f4;--g200:#dde6e6;--g400:#9ab0b0;--g600:#4a6464;--g800:#1e3232;--sans:'Noto Sans KR',sans-serif;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--sans);background:var(--g100);color:var(--g800);min-height:100vh;}
-
-/* Login */
 .login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
 .login-box{background:var(--white);padding:3rem;border-radius:8px;box-shadow:0 2px 20px rgba(0,0,0,.08);max-width:400px;width:100%;}
 .login-box h1{font-size:1.3rem;color:var(--navy-dark);margin-bottom:.5rem;}
@@ -18,65 +16,60 @@ body{font-family:var(--sans);background:var(--g100);color:var(--g800);min-height
 .login-box input{width:100%;padding:.9rem 1rem;border:1.5px solid var(--g200);border-radius:4px;font-size:.95rem;font-family:var(--sans);outline:none;margin-bottom:1rem;}
 .login-box input:focus{border-color:var(--teal);}
 .login-box button{width:100%;padding:.9rem;background:var(--teal);color:var(--white);border:none;border-radius:4px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:var(--sans);}
-.login-box button:hover{background:var(--teal-dark);}
-.login-err{color:#e74c3c;font-size:.85rem;margin-top:.5rem;display:none;}
-
-/* Admin */
 .admin{display:none;}
 .admin-nav{background:var(--navy-dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
 .admin-nav h1{color:var(--white);font-size:1rem;font-weight:600;}
 .admin-nav .nav-btns{display:flex;gap:.8rem;}
 .admin-nav button{padding:.5rem 1.2rem;border:none;border-radius:4px;font-size:.82rem;font-family:var(--sans);cursor:pointer;font-weight:500;}
-.btn-save{background:var(--teal);color:var(--white);}.btn-save:hover{background:var(--teal-dark);}
-.btn-preview{background:rgba(255,255,255,.15);color:var(--white);}.btn-preview:hover{background:rgba(255,255,255,.25);}
-.btn-logout{background:none;color:var(--g400);border:1px solid rgba(255,255,255,.2)!important;}.btn-logout:hover{color:var(--white);}
-
+.btn-save{background:var(--teal);color:var(--white);}
+.btn-preview{background:rgba(255,255,255,.15);color:var(--white);}
+.btn-logout{background:none;color:var(--g400);border:1px solid rgba(255,255,255,.2)!important;}
 .admin-body{max-width:900px;margin:0 auto;padding:2rem;}
+.tab-bar{display:flex;gap:2px;margin-bottom:2rem;background:var(--g200);border-radius:6px;overflow:hidden;}
+.tab-btn{flex:1;padding:1rem;text-align:center;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--white);color:var(--g600);border:none;font-family:var(--sans);transition:all .2s;}
+.tab-btn.active{background:var(--teal);color:var(--white);}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
 .status-bar{display:flex;gap:1rem;margin-bottom:2rem;}
 .status-item{flex:1;background:var(--white);padding:1.2rem 1.5rem;border-radius:6px;border-left:3px solid var(--teal);}
 .status-item .label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);margin-bottom:.3rem;}
 .status-item .val{font-size:1rem;font-weight:600;color:var(--navy-dark);}
 .status-item.error{border-left-color:#e74c3c;}.status-item.error .val{color:#e74c3c;}
-
-.section-card{background:var(--white);border-radius:6px;margin-bottom:1.5rem;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.section-header{padding:1.2rem 1.5rem;background:var(--navy-dark);color:var(--white);font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
-.section-header .arrow{transition:transform .3s;font-size:.7rem;}
-.section-header.open .arrow{transform:rotate(180deg);}
-.section-body{padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
-.section-body.open{max-height:3000px;padding:1.5rem;}
-
-.field{margin-bottom:1.4rem;}
-.field label{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--g600);font-weight:600;margin-bottom:.4rem;}
-.field label span{font-weight:400;color:var(--g400);text-transform:none;letter-spacing:0;font-size:.75rem;margin-left:.5rem;}
+.card{background:var(--white);border-radius:6px;margin-bottom:1.5rem;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.card-header{padding:1.2rem 1.5rem;background:var(--navy-dark);color:var(--white);font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.card-header .arrow{transition:transform .3s;font-size:.7rem;}
+.card-header.open .arrow{transform:rotate(180deg);}
+.card-body{padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
+.card-body.open{max-height:3000px;padding:1.5rem;}
+.field{margin-bottom:1.4rem;}.field label{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--g600);font-weight:600;margin-bottom:.4rem;}
 .field input,.field textarea{width:100%;padding:.8rem 1rem;border:1.5px solid var(--g200);border-radius:4px;font-size:.9rem;font-family:var(--sans);outline:none;color:var(--g800);transition:border-color .2s;}
 .field input:focus,.field textarea:focus{border-color:var(--teal);}
 .field textarea{resize:vertical;min-height:80px;line-height:1.7;}
-.field-hint{font-size:.75rem;color:var(--g400);margin-top:.3rem;}
-
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--teal);font-size:.88rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;border-radius:4px;}.toast.show{opacity:1;transform:translateY(0);}
-.toast.err{border-left-color:#e74c3c;}
-
-.notion-test{margin-top:1rem;}
-.notion-test button{padding:.6rem 1.2rem;background:var(--teal);color:var(--white);border:none;border-radius:4px;font-size:.85rem;cursor:pointer;font-family:var(--sans);}.notion-test button:hover{background:var(--teal-dark);}
-.notion-result{margin-top:1rem;padding:1rem;background:var(--g100);border-radius:4px;font-size:.85rem;color:var(--g600);display:none;max-height:200px;overflow-y:auto;line-height:1.7;}
-
+/* 문의 목록 */
+.inq-list{display:flex;flex-direction:column;gap:1rem;}
+.inq-card{background:var(--white);border:1px solid var(--g200);border-radius:6px;padding:1.5rem;border-left:3px solid var(--teal);}
+.inq-card.unread{border-left-color:var(--teal);background:var(--teal-light,#e6f7f7);}
+.inq-meta{display:flex;justify-content:space-between;margin-bottom:.5rem;font-size:.78rem;color:var(--g400);}
+.inq-name{font-weight:700;color:var(--navy-dark);font-size:.95rem;margin-bottom:.3rem;}
+.inq-email{font-size:.82rem;color:var(--teal);margin-bottom:.8rem;}
+.inq-msg{font-size:.9rem;color:var(--g600);line-height:1.8;white-space:pre-wrap;}
+.inq-empty{text-align:center;padding:3rem;color:var(--g400);font-size:.95rem;}
+.notion-test{margin-top:1rem;}.notion-test button{padding:.6rem 1.2rem;background:var(--teal);color:var(--white);border:none;border-radius:4px;font-size:.85rem;cursor:pointer;font-family:var(--sans);}
+.notion-result{margin-top:1rem;padding:1rem;background:var(--g100);border-radius:4px;font-size:.82rem;color:var(--g600);display:none;max-height:250px;overflow-y:auto;line-height:1.7;white-space:pre-wrap;}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--teal);font-size:.88rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;border-radius:4px;}.toast.show{opacity:1;transform:translateY(0);}.toast.err{border-left-color:#e74c3c;}
 @media(max-width:768px){.admin-body{padding:1rem;}.status-bar{flex-direction:column;}}
 </style>
 </head>
 <body>
 
-<!-- 로그인 화면 -->
 <div class="login-wrap" id="loginWrap">
 <div class="login-box">
 <h1>🔐 아트라이앵글 관리자</h1>
 <p>사이트 콘텐츠를 수정하려면 비밀번호를 입력하세요.</p>
 <input type="password" id="pwInput" placeholder="비밀번호" onkeydown="if(event.key==='Enter')doLogin()">
 <button onclick="doLogin()">로그인</button>
-<div class="login-err" id="loginErr">비밀번호가 틀렸습니다.</div>
 </div>
 </div>
 
-<!-- 관리자 페이지 -->
 <div class="admin" id="adminWrap">
 <div class="admin-nav">
 <h1>아트라이앵글 관리자</h1>
@@ -86,97 +79,35 @@ body{font-family:var(--sans);background:var(--g100);color:var(--g800);min-height
 <button class="btn-logout" onclick="doLogout()">로그아웃</button>
 </div>
 </div>
-
 <div class="admin-body">
-<!-- 상태 바 -->
+
+<div class="tab-bar">
+<button class="tab-btn active" onclick="switchTab('inquiries',this)">📬 고객 문의</button>
+<button class="tab-btn" onclick="switchTab('blog',this)">📝 블로그 상태</button>
+</div>
+
+<!-- 고객 문의 탭 -->
+<div class="tab-panel active" id="tab-inquiries">
 <div class="status-bar">
+<div class="status-item"><div class="label">전체 문의</div><div class="val" id="inqCount">로딩 중...</div></div>
 <div class="status-item" id="blogStatus"><div class="label">블로그 (Notion)</div><div class="val">확인 중...</div></div>
-<div class="status-item"><div class="label">마지막 저장</div><div class="val" id="lastSaved">—</div></div>
+</div>
+<h3 style="font-size:1rem;font-weight:700;color:var(--navy-dark);margin-bottom:1rem;">📬 고객 문의 목록</h3>
+<div id="inqList" class="inq-list"><div class="inq-empty">문의를 불러오는 중...</div></div>
 </div>
 
-<!-- 히어로 섹션 -->
-<div class="section-card">
-<div class="section-header open" onclick="toggleSection(this)">🏠 히어로 섹션 <span class="arrow">▼</span></div>
-<div class="section-body open">
-<div class="field"><label>타이틀 1줄 <span>기본: 예술의 가치를</span></label><input data-key="hero_title_1" value="예술의 가치를"></div>
-<div class="field"><label>타이틀 2줄 (강조) <span>기본: 비즈니스로</span></label><input data-key="hero_title_2" value="비즈니스로"></div>
-<div class="field"><label>서브 타이틀</label><textarea data-key="hero_sub" rows="2">연세대학교 Global MBA · 문화예술경영컨설턴트
-당신의 예술적 비전을 현실로 만드세요.</textarea></div>
-<div class="field"><label>통계 1 숫자 / 라벨</label><div style="display:flex;gap:.5rem;"><input data-key="stat_1_num" value="50+" style="width:80px;"><input data-key="stat_1_label" value="기획 프로젝트"></div></div>
-<div class="field"><label>통계 2 숫자 / 라벨</label><div style="display:flex;gap:.5rem;"><input data-key="stat_2_num" value="10+" style="width:80px;"><input data-key="stat_2_label" value="년 현장 경력"></div></div>
-<div class="field"><label>통계 3 숫자 / 라벨</label><div style="display:flex;gap:.5rem;"><input data-key="stat_3_num" value="200+" style="width:80px;"><input data-key="stat_3_label" value="교육 참가자"></div></div>
-</div>
-</div>
-
-<!-- About 섹션 -->
-<div class="section-card">
-<div class="section-header" onclick="toggleSection(this)">👤 About 섹션 <span class="arrow">▼</span></div>
-<div class="section-body">
-<div class="field"><label>이름/직함</label><input data-key="about_name" value="문화예술경영컨설턴트 송예슬"></div>
-<div class="field"><label>소개 문구</label><textarea data-key="about_desc" rows="4">예술과 비즈니스의 교차점에서 일합니다. 10년 이상 문화예술 현장에서 쌓은 기획·운영 경험과 연세대학교 Global MBA 전략 역량을 바탕으로, 예술가와 문화예술단체가 지속 가능하게 성장할 수 있도록 돕습니다.</textarea></div>
-<div class="field"><label>경력 항목 <span>줄바꿈으로 구분</span></label><textarea data-key="about_career" rows="6">연세대학교 경영전문대학원 Global MBA 졸업
-성신여자대학교 예술경영학 학사
-아트라이앵글 대표 · 문화예술기획 50+ 프로젝트
-허난설헌 문화제, K-Wave Dance Festival 등 대형 축제 기획·운영
-세종학당재단 한국문화 교육 (그리스, 코스타리카, 중국)
-전문 MC/아나운서 · 한국무용 전문 무용수 (15년)</textarea></div>
-</div>
-</div>
-
-<!-- 서비스 -->
-<div class="section-card">
-<div class="section-header" onclick="toggleSection(this)">⚙️ 서비스 (홈 카드) <span class="arrow">▼</span></div>
-<div class="section-body">
-<div class="field"><label>서비스 1 제목</label><input data-key="svc1_title" value="예술경영 컨설팅"></div>
-<div class="field"><label>서비스 1 설명</label><textarea data-key="svc1_desc">현장실무·사업운영·Global MBA의 체계적 역량을 바탕으로 예술단체의 성장 전략을 제시합니다.</textarea></div>
-<div class="field"><label>서비스 2 제목</label><input data-key="svc2_title" value="비즈니스 코칭"></div>
-<div class="field"><label>서비스 2 설명</label><textarea data-key="svc2_desc">안양예술고 한국무용과 출신의 섬세한 감수성으로 예술가의 커리어와 비즈니스를 함께 코칭합니다.</textarea></div>
-<div class="field"><label>서비스 3 제목</label><input data-key="svc3_title" value="프로젝트 기획"></div>
-<div class="field"><label>서비스 3 설명</label><textarea data-key="svc3_desc">공연, 전시, 축제, 교육까지 — 대중성·예술성·교육성을 모두 잡은 문화콘텐츠 기획.</textarea></div>
-<div class="field"><label>서비스 4 제목</label><input data-key="svc4_title" value="교육/워크숍"></div>
-<div class="field"><label>서비스 4 설명</label><textarea data-key="svc4_desc">예술경영 독서모임, 기획 스터디 등 실무와 이론을 함께 성장시키는 커뮤니티.</textarea></div>
-</div>
-</div>
-
-<!-- 포트폴리오 -->
-<div class="section-card">
-<div class="section-header" onclick="toggleSection(this)">📁 포트폴리오 (6개) <span class="arrow">▼</span></div>
-<div class="section-body">
-<div class="field"><label>프로젝트 1</label><div style="display:flex;gap:.5rem;margin-bottom:.5rem;"><input data-key="pf1_tag" value="Festival" style="width:100px;" placeholder="태그"><input data-key="pf1_title" placeholder="제목" value="허난설헌 문화제 기획·운영"></div><textarea data-key="pf1_desc">경기광주 대표 문화축제 2024·2025년 연속 메인 기획사로 선정.</textarea></div>
-<div class="field"><label>프로젝트 2</label><div style="display:flex;gap:.5rem;margin-bottom:.5rem;"><input data-key="pf2_tag" value="Festival" style="width:100px;" placeholder="태그"><input data-key="pf2_title" placeholder="제목" value="K-Wave Dance Festival 국제교류"></div><textarea data-key="pf2_desc">한강 세빛둥둥섬 국제 댄스 페스티벌 3년 연속 기획·운영. Golden Wave 수상.</textarea></div>
-<div class="field"><label>프로젝트 3</label><div style="display:flex;gap:.5rem;margin-bottom:.5rem;"><input data-key="pf3_tag" value="Education" style="width:100px;" placeholder="태그"><input data-key="pf3_title" placeholder="제목" value="세종학당 한국문화교육 해외파견"></div><textarea data-key="pf3_desc">그리스, 코스타리카, 키르기스스탄, 몽골 세종학당 파견 강사.</textarea></div>
-<div class="field"><label>프로젝트 4</label><div style="display:flex;gap:.5rem;margin-bottom:.5rem;"><input data-key="pf4_tag" value="Performance" style="width:100px;" placeholder="태그"><input data-key="pf4_title" placeholder="제목" value="광주문화재단 3주년 'Life & Live'"></div><textarea data-key="pf4_desc">대규모 시민축제 기획·운영.</textarea></div>
-<div class="field"><label>프로젝트 5</label><div style="display:flex;gap:.5rem;margin-bottom:.5rem;"><input data-key="pf5_tag" value="Education" style="width:100px;" placeholder="태그"><input data-key="pf5_title" placeholder="제목" value="세종문화재단 일상예술가(STAR) 양성"></div><textarea data-key="pf5_desc">1기·2기 연속 계약. 시민 예술가 교육 설계.</textarea></div>
-<div class="field"><label>프로젝트 6</label><div style="display:flex;gap:.5rem;margin-bottom:.5rem;"><input data-key="pf6_tag" value="Production" style="width:100px;" placeholder="태그"><input data-key="pf6_title" placeholder="제목" value="어린이 환경뮤지컬 [지구시계수리공]"></div><textarea data-key="pf6_desc">환경×예술 융합 창작뮤지컬 제작.</textarea></div>
-</div>
-</div>
-
-<!-- 파트너 -->
-<div class="section-card">
-<div class="section-header" onclick="toggleSection(this)">🤝 파트너 기관 <span class="arrow">▼</span></div>
-<div class="section-body">
-<div class="field"><label>기관 목록 <span>쉼표(,)로 구분</span></label><textarea data-key="partners" rows="3">광주시문화재단,광명문화재단,세종문화재단,경기아트센터,문화체육관광부,서울관광재단,한국관광공사,연세대학교,한국현대무용진흥회,K-Wave Dance Festival,UNENDING</textarea></div>
-</div>
-</div>
-
-<!-- 연락처 -->
-<div class="section-card">
-<div class="section-header" onclick="toggleSection(this)">📧 연락처 / SNS <span class="arrow">▼</span></div>
-<div class="section-body">
-<div class="field"><label>이메일</label><input data-key="contact_email" value="yeseul@artryangle.com"></div>
-<div class="field"><label>위치</label><input data-key="contact_location" value="서울특별시"></div>
-<div class="field"><label>인스타그램 1 (핸들)</label><input data-key="sns_1" value="yeahseul_ss"></div>
-<div class="field"><label>인스타그램 2 (핸들)</label><input data-key="sns_2" value="artryangle"></div>
-</div>
-</div>
-
-<!-- 노션 블로그 진단 -->
-<div class="section-card">
-<div class="section-header" onclick="toggleSection(this)">📝 노션 블로그 상태 <span class="arrow">▼</span></div>
-<div class="section-body">
+<!-- 블로그 상태 탭 -->
+<div class="tab-panel" id="tab-blog">
+<div class="card">
+<div class="card-header open" onclick="toggleCard(this)">📝 노션 블로그 진단 <span class="arrow">▼</span></div>
+<div class="card-body open">
 <p style="font-size:.88rem;color:var(--g600);line-height:1.8;margin-bottom:1rem;">노션 블로그 API 연결 상태를 확인합니다. 오류가 있으면 Vercel 환경변수(NOTION_TOKEN, NOTION_DB_ID)를 확인하세요.</p>
-<div class="notion-test"><button onclick="testNotion()">🔍 블로그 API 테스트</button></div>
+<div class="notion-test">
+<button onclick="testNotion(false)">🔍 블로그 API 테스트</button>
+<button onclick="testNotion(true)" style="background:var(--navy);margin-left:.5rem;">🔧 속성명 디버그</button>
+</div>
 <div class="notion-result" id="notionResult"></div>
+</div>
 </div>
 </div>
 
@@ -186,122 +117,44 @@ body{font-family:var(--sans);background:var(--g100);color:var(--g800);min-height
 <div class="toast" id="toast"></div>
 
 <script>
-let adminPw = '';
+let adminPw='';
+function doLogin(){adminPw=document.getElementById('pwInput').value;if(!adminPw)return;document.getElementById('loginWrap').style.display='none';document.getElementById('adminWrap').style.display='block';loadInquiries();checkBlog();}
+function doLogout(){adminPw='';document.getElementById('loginWrap').style.display='flex';document.getElementById('adminWrap').style.display='none';}
+function toggleCard(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
+function switchTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id)?.classList.add('active');btn.classList.add('active');}
+function showToast(m,isErr){const t=document.getElementById('toast');t.textContent=m;t.className='toast show'+(isErr?' err':'');setTimeout(()=>t.className='toast',3500);}
 
-function doLogin() {
-  adminPw = document.getElementById('pwInput').value;
-  // 비밀번호 검증은 저장 시 서버에서 함 — 일단 UI 진입 허용
-  if (!adminPw) { document.getElementById('loginErr').style.display='block'; return; }
-  document.getElementById('loginWrap').style.display = 'none';
-  document.getElementById('adminWrap').style.display = 'block';
-  loadContent();
-  checkBlog();
+async function loadInquiries(){
+  try{
+    const r=await fetch('/api/contact?pw='+encodeURIComponent(adminPw));
+    const d=await r.json();
+    if(d.error){document.getElementById('inqList').innerHTML='<div class="inq-empty">오류: '+d.error+'</div>';return;}
+    const list=d.inquiries||[];
+    document.getElementById('inqCount').textContent=list.length+'건';
+    if(!list.length){document.getElementById('inqList').innerHTML='<div class="inq-empty">아직 문의가 없습니다.</div>';return;}
+    document.getElementById('inqList').innerHTML=list.map(q=>{
+      const dt=q.created_at?new Date(q.created_at).toLocaleString('ko-KR'):'';
+      return '<div class="inq-card'+(q.is_read?'':' unread')+'"><div class="inq-meta"><span>'+dt+'</span></div><div class="inq-name">'+esc(q.name)+'</div>'+(q.email?'<div class="inq-email">'+esc(q.email)+'</div>':'')+'<div class="inq-msg">'+esc(q.message)+'</div></div>';
+    }).join('');
+  }catch(e){document.getElementById('inqList').innerHTML='<div class="inq-empty">네트워크 오류</div>';}
+}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+async function saveAll(){showToast('저장 기능은 콘텐츠 편집 탭에서 사용됩니다.');}
+
+async function checkBlog(){
+  const el=document.getElementById('blogStatus');
+  try{const r=await fetch('/api/notion-blog');const d=await r.json();
+    if(d.posts&&d.posts.length>0){el.className='status-item';el.querySelector('.val').textContent='정상 ('+d.posts.length+'개 글)';}
+    else if(d.error){el.className='status-item error';el.querySelector('.val').textContent='오류';}
+    else{el.querySelector('.val').textContent='연결됨 (글 0개)';}
+  }catch(e){el.className='status-item error';el.querySelector('.val').textContent='API 연결 실패';}
 }
 
-function doLogout() {
-  adminPw = '';
-  document.getElementById('loginWrap').style.display = 'flex';
-  document.getElementById('adminWrap').style.display = 'none';
-  document.getElementById('pwInput').value = '';
-}
-
-function toggleSection(el) {
-  el.classList.toggle('open');
-  el.nextElementSibling.classList.toggle('open');
-}
-
-function showToast(msg, isErr) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (isErr ? ' err' : '');
-  setTimeout(() => t.className = 'toast', 3000);
-}
-
-// 콘텐츠 불러오기
-async function loadContent() {
-  try {
-    const r = await fetch('/api/content');
-    const d = await r.json();
-    if (d.content) {
-      const fields = document.querySelectorAll('[data-key]');
-      fields.forEach(f => {
-        if (d.content[f.dataset.key] !== undefined) {
-          f.value = d.content[f.dataset.key];
-        }
-      });
-      showToast('콘텐츠 불러오기 완료');
-    }
-  } catch (e) {
-    // 첫 사용이면 데이터 없을 수 있음 — 기본값 유지
-    console.log('No saved content yet');
-  }
-}
-
-// 저장
-async function saveAll() {
-  const btn = document.getElementById('saveBtn');
-  btn.textContent = '⏳ 저장 중...';
-  btn.disabled = true;
-
-  const content = {};
-  document.querySelectorAll('[data-key]').forEach(f => {
-    content[f.dataset.key] = f.value;
-  });
-
-  try {
-    const r = await fetch('/api/content', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: adminPw, content }),
-    });
-    const d = await r.json();
-    if (d.ok) {
-      showToast('✅ 저장 완료! 사이트에 반영됩니다.');
-      document.getElementById('lastSaved').textContent = new Date().toLocaleString('ko-KR');
-    } else {
-      showToast('❌ ' + (d.error || '저장 실패'), true);
-    }
-  } catch (e) {
-    showToast('❌ 네트워크 오류: ' + e.message, true);
-  }
-
-  btn.textContent = '💾 저장하기';
-  btn.disabled = false;
-}
-
-// 블로그 상태 확인
-async function checkBlog() {
-  const el = document.getElementById('blogStatus');
-  try {
-    const r = await fetch('/api/notion-blog');
-    const d = await r.json();
-    if (d.posts && d.posts.length > 0) {
-      el.className = 'status-item';
-      el.querySelector('.val').textContent = '정상 (' + d.posts.length + '개 글)';
-    } else if (d.error) {
-      el.className = 'status-item error';
-      el.querySelector('.val').textContent = '오류: ' + d.error;
-    } else {
-      el.className = 'status-item';
-      el.querySelector('.val').textContent = '연결됨 (글 0개)';
-    }
-  } catch (e) {
-    el.className = 'status-item error';
-    el.querySelector('.val').textContent = 'API 연결 실패';
-  }
-}
-
-async function testNotion() {
-  const el = document.getElementById('notionResult');
-  el.style.display = 'block';
-  el.textContent = '테스트 중...';
-  try {
-    const r = await fetch('/api/notion-blog');
-    const d = await r.json();
-    el.textContent = JSON.stringify(d, null, 2);
-  } catch (e) {
-    el.textContent = '오류: ' + e.message;
-  }
+async function testNotion(debug){
+  const el=document.getElementById('notionResult');el.style.display='block';el.textContent='테스트 중...';
+  try{const r=await fetch('/api/notion-blog'+(debug?'?debug=1':''));const d=await r.json();el.textContent=JSON.stringify(d,null,2);}
+  catch(e){el.textContent='오류: '+e.message;}
 }
 </script>
 </body>
