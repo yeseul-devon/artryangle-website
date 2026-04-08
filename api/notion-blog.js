@@ -1,6 +1,5 @@
-export default async function handler(req, res) {
+expor || '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't default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
