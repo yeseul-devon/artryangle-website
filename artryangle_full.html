@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아트라이앵글 | 예술경영컨설턴트 송예슬</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+:root {
+  --black:#0a0a0a;--white:#fafafa;--gold:#b8965a;--gold-light:#d4b07a;
+  --gray-100:#f5f5f3;--gray-200:#e8e8e4;--gray-500:#888880;--gray-700:#444440;
+  --serif:'Noto Serif KR',serif;--sans:'Noto Sans KR',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden;}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,250,250,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;letter-spacing:.15em;color:var(--black);text-decoration:none;cursor:pointer;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{font-size:.8rem;letter-spacing:.1em;color:var(--gray-700);text-decoration:none;text-transform:uppercase;transition:color .2s;cursor:pointer;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{padding:.5rem 1.2rem;background:var(--black);color:var(--white)!important;border-radius:2px;transition:background .2s!important;}
+.nav-cta:hover{background:var(--gold)!important;}
+.admin-btn{padding:.4rem 1rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:.72rem!important;}
+
+/* ===== PAGES ===== */
+.page{display:none;padding-top:80px;min-height:100vh;}
+.page.active{display:block;}
+
+/* ===== HOME ===== */
+#home-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;padding-top:80px;position:relative;overflow:hidden;}
+#home-hero::before{content:'ARTRYANGLE';position:absolute;right:-2rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:var(--serif);font-size:8rem;font-weight:700;color:var(--gray-200);letter-spacing:.3em;pointer-events:none;white-space:nowrap;}
+.hero-eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
+.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;}
+.hero-title em{font-style:normal;color:var(--gold);}
+.hero-sub{font-size:1rem;line-height:1.8;color:var(--gray-700);margin-bottom:3rem;max-width:400px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{padding:.9rem 2.2rem;background:var(--black);color:var(--white);text-decoration:none;font-size:.82rem;letter-spacing:.1em;border-radius:2px;transition:background .2s;cursor:pointer;border:none;}
+.btn-primary:hover{background:var(--gold);}
+.btn-outline{padding:.9rem 2.2rem;border:1px solid var(--black);color:var(--black);text-decoration:none;font-size:.82rem;letter-spacing:.1em;border-radius:2px;transition:all .2s;cursor:pointer;background:none;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;}
+.stat-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--gold);}
+.stat-label{font-size:.72rem;letter-spacing:.1em;color:var(--gray-500);margin-top:.2rem;}
+.hero-image{display:flex;justify-content:flex-end;align-items:center;position:relative;z-index:1;}
+.hero-image-frame{width:380px;height:480px;position:relative;overflow:hidden;background:var(--gray-200);}
+.hero-image-frame::after{content:'';position:absolute;top:1.2rem;left:1.2rem;right:-1.2rem;bottom:-1.2rem;border:1px solid var(--gold);z-index:-1;}
+.hero-image-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* sections */
+.sec{padding:7rem 4rem;}
+.sec-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.sec-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;line-height:1.3;margin-bottom:1rem;}
+.sec-desc{font-size:.95rem;line-height:1.9;color:var(--gray-700);max-width:480px;}
+
+/* about */
+#home-about{background:var(--gray-100);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.about-list{list-style:none;margin-top:2rem;}
+.about-list li{display:flex;align-items:flex-start;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--gray-200);font-size:.88rem;color:var(--gray-700);}
+.about-list li::before{content:'—';color:var(--gold);flex-shrink:0;}
+.about-img{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#ddd8cc,#c8bfaf);overflow:hidden;position:relative;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-badge{position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--black);color:var(--white);padding:1.5rem 2rem;}
+.about-badge-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);}
+.about-badge-text{font-size:.72rem;letter-spacing:.1em;margin-top:.3rem;color:var(--gray-200);}
+
+/* services */
+#home-services{background:var(--white);}
+.sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
+.link-all{font-size:.78rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;cursor:pointer;}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--gray-200);border:1.5px solid var(--gray-200);}
+.svc-card{background:var(--white);padding:2.5rem 2rem;cursor:pointer;transition:background .3s;position:relative;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s;}
+.svc-card:hover{background:var(--black);}
+.svc-card:hover .svc-title,.svc-card:hover .svc-desc,.svc-card:hover .svc-link{color:var(--white);}
+.svc-card:hover::after{width:100%;}
+.svc-num{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--gray-200);line-height:1;margin-bottom:1.5rem;}
+.svc-card:hover .svc-num{color:var(--gray-700);}
+.svc-title{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin-bottom:.8rem;}
+.svc-desc{font-size:.82rem;line-height:1.8;color:var(--gray-700);}
+.svc-link{display:inline-block;margin-top:1.5rem;font-size:.75rem;letter-spacing:.1em;color:var(--gold);}
+
+/* portfolio */
+#home-portfolio{background:var(--black);color:var(--white);}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;margin-top:2rem;}
+.port-card{background:var(--black);padding:2.5rem;cursor:pointer;transition:background .3s;}
+.port-card:hover{background:#111;}
+.port-tag{display:inline-block;padding:.3rem .8rem;border:1px solid var(--gold);color:var(--gold);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;}
+.port-title{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.5;color:var(--white);margin-bottom:.8rem;}
+.port-desc{font-size:.8rem;line-height:1.8;color:#888;}
+.port-arrow{display:inline-block;margin-top:1.5rem;font-size:.75rem;color:var(--gold);}
+
+/* testimonials */
+#home-testimonials{background:linear-gradient(160deg,#0a0a0a,#1a1510);color:var(--white);}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.test-card{border:1px solid #333;padding:2.5rem;position:relative;}
+.test-card::before{content:'"';font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.3;position:absolute;top:-.5rem;left:1.5rem;line-height:1;}
+.test-text{font-size:.88rem;line-height:2;color:#ccc;margin-top:1rem;}
+.test-author{display:flex;align-items:center;gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #333;}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--white);font-size:.9rem;}
+.test-name{font-size:.85rem;font-weight:600;}
+.test-role{font-size:.72rem;color:#888;}
+
+/* CTA */
+#home-cta{background:var(--gray-100);text-align:center;padding:8rem 4rem;}
+#home-cta .sec-desc{max-width:500px;margin:0 auto 3rem;text-align:center;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+/* ===== BLOG PAGE ===== */
+#blog-page{padding-top:80px;}
+.blog-hero{background:var(--black);color:var(--white);padding:5rem 4rem 4rem;}
+.blog-list{padding:4rem;}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.blog-card{background:var(--white);border:1px solid var(--gray-200);padding:0;cursor:pointer;transition:border-color .3s;overflow:hidden;}
+.blog-card:hover{border-color:var(--gold);}
+.blog-card-body{padding:1.8rem;}
+.blog-tag{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.blog-title{font-family:var(--serif);font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:.8rem;color:var(--black);}
+.blog-excerpt{font-size:.8rem;line-height:1.8;color:var(--gray-500);}
+.blog-meta{font-size:.72rem;color:var(--gray-500);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-200);display:flex;justify-content:space-between;}
+.blog-empty{text-align:center;padding:4rem;color:var(--gray-500);}
+
+/* ===== BLOG DETAIL ===== */
+#blog-detail{padding-top:80px;}
+.blog-detail-hero{background:var(--black);color:var(--white);padding:5rem 4rem 4rem;}
+.blog-detail-body{max-width:780px;margin:0 auto;padding:4rem 2rem;}
+.blog-detail-content{font-size:1rem;line-height:2;color:var(--gray-700);}
+.blog-detail-content p{margin-bottom:1.5rem;}
+.blog-detail-content h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;}
+.blog-detail-content h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:2rem 0 .8rem;}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;letter-spacing:.1em;color:var(--gold);cursor:pointer;margin-bottom:2rem;background:none;border:none;}
+
+/* ===== CONTACT PAGE ===== */
+#contact-page{padding-top:80px;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 80px);}
+.contact-left{background:var(--black);color:var(--white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.contact-right{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.contact-form{display:flex;flex-direction:column;gap:1.5rem;}
+.form-group{display:flex;flex-direction:column;gap:.5rem;}
+.form-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);}
+.form-input,.form-textarea{padding:.9rem 1rem;border:1px solid var(--gray-200);background:var(--white);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s;border-radius:2px;}
+.form-input:focus,.form-textarea:focus{border-color:var(--gold);}
+.form-textarea{resize:vertical;min-height:140px;}
+.form-submit{padding:1rem 2rem;background:var(--black);color:var(--white);border:none;font-family:var(--sans);font-size:.85rem;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:background .2s;}
+.form-submit:hover{background:var(--gold);}
+.contact-info{margin-top:3rem;}
+.contact-info-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
+.contact-info-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.contact-info-val{font-size:.9rem;color:#ccc;}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--black);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--gold);font-size:.85rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ===== ADMIN ===== */
+#admin-page{padding-top:80px;background:var(--gray-100);min-height:100vh;}
+.admin-login{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 80px);}
+.admin-login-box{background:var(--white);padding:3rem;width:100%;max-width:400px;border:1px solid var(--gray-200);}
+.admin-login-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem;}
+.admin-login-sub{font-size:.82rem;color:var(--gray-500);margin-bottom:2rem;}
+.admin-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 80px);}
+.admin-sidebar{background:var(--black);color:var(--white);padding:2rem 0;}
+.admin-sidebar-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 1.5rem;margin-bottom:1rem;}
+.admin-menu-item{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.5rem;cursor:pointer;font-size:.85rem;color:#aaa;transition:all .2s;}
+.admin-menu-item:hover,.admin-menu-item.active{background:#1a1a1a;color:var(--white);}
+.admin-menu-item.active{border-left:2px solid var(--gold);}
+.admin-content{padding:2.5rem;}
+.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+.admin-page-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;}
+.admin-table{width:100%;border-collapse:collapse;background:var(--white);}
+.admin-table th{background:var(--black);color:var(--white);padding:.8rem 1rem;text-align:left;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;}
+.admin-table td{padding:.9rem 1rem;border-bottom:1px solid var(--gray-200);font-size:.85rem;vertical-align:middle;}
+.admin-table tr:hover td{background:var(--gray-100);}
+.badge{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.68rem;letter-spacing:.05em;}
+.badge-pub{background:#e8f5e9;color:#2e7d32;}
+.badge-draft{background:#fff3e0;color:#e65100;}
+.admin-action-btn{padding:.3rem .8rem;font-size:.72rem;border:none;cursor:pointer;border-radius:2px;margin-right:.3rem;transition:all .2s;}
+.btn-edit{background:var(--black);color:var(--white);}
+.btn-edit:hover{background:var(--gold);}
+.btn-delete{background:#fee;color:#c00;}
+.btn-delete:hover{background:#c00;color:#fff;}
+.admin-contacts-list{display:flex;flex-direction:column;gap:1rem;}
+.contact-item{background:var(--white);padding:1.5rem;border:1px solid var(--gray-200);}
+.contact-item-header{display:flex;justify-content:space-between;margin-bottom:.5rem;}
+.contact-item-name{font-weight:600;font-size:.9rem;}
+.contact-item-date{font-size:.75rem;color:var(--gray-500);}
+.contact-item-email{font-size:.8rem;color:var(--gold);margin-bottom:.5rem;}
+.contact-item-msg{font-size:.85rem;line-height:1.7;color:var(--gray-700);}
+
+/* editor */
+.editor-wrap{background:var(--white);border:1px solid var(--gray-200);padding:2rem;}
+.editor-field{margin-bottom:1.5rem;}
+.editor-label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-700);margin-bottom:.5rem;display:block;}
+.editor-input{width:100%;padding:.8rem 1rem;border:1px solid var(--gray-200);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s;border-radius:2px;}
+.editor-input:focus{border-color:var(--gold);}
+.editor-textarea{width:100%;padding:1rem;border:1px solid var(--gray-200);font-family:var(--sans);font-size:.9rem;min-height:400px;resize:vertical;outline:none;line-height:1.8;border-radius:2px;}
+.editor-textarea:focus{border-color:var(--gold);}
+.editor-select{width:100%;padding:.8rem 1rem;border:1px solid var(--gray-200);font-family:var(--sans);font-size:.9rem;outline:none;border-radius:2px;background:var(--white);}
+.editor-actions{display:flex;gap:1rem;margin-top:1.5rem;}
+.toggle-wrap{display:flex;align-items:center;gap:.8rem;}
+.toggle{width:44px;height:24px;background:var(--gray-200);border-radius:12px;position:relative;cursor:pointer;transition:background .2s;}
+.toggle.on{background:var(--gold);}
+.toggle::after{content:'';width:18px;height:18px;background:var(--white);border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .2s;}
+.toggle.on::after{transform:translateX(20px);}
+
+/* FOOTER */
+footer{background:var(--black);color:var(--white);padding:5rem 4rem 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid #222;}
+.footer-logo{font-family:var(--serif);font-size:1.2rem;font-weight:700;letter-spacing:.15em;margin-bottom:1rem;}
+.footer-logo span{color:var(--gold);}
+.footer-desc{font-size:.82rem;line-height:1.9;color:#888;}
+.footer-col-title{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:.8rem;}
+.footer-links a{font-size:.82rem;color:#888;text-decoration:none;cursor:pointer;transition:color .2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;font-size:.72rem;color:#555;}
+.newsletter-form{display:flex;margin-top:1.5rem;}
+.newsletter-form input{flex:1;padding:.7rem 1rem;background:#111;border:1px solid #333;border-right:none;color:var(--white);font-size:.82rem;outline:none;}
+.newsletter-form button{padding:.7rem 1.2rem;background:var(--gold);color:var(--white);border:none;cursor:pointer;font-size:.78rem;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  #home-hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}
+  .hero-image{display:none;}
+  #home-hero::before{display:none;}
+  .sec,.blog-list,#home-about{padding:4rem 1.5rem;}
+  #home-about{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .port-grid,.test-grid,.blog-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:2rem;}
+  .contact-wrap{grid-template-columns:1fr;}
+  .admin-wrap{grid-template-columns:1fr;}
+  .admin-sidebar{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <span class="nav-logo" onclick="goPage('home')">ART<span>▲</span>RYANGLE</span>
+  <ul class="nav-links">
+    <li><a onclick="goPage('home')">홈</a></li>
+    <li><a onclick="scrollToSection('home-about')">About</a></li>
+    <li><a onclick="scrollToSection('home-services')">Services</a></li>
+    <li><a onclick="scrollToSection('home-portfolio')">Portfolio</a></li>
+    <li><a onclick="goPage('blog')">Blog</a></li>
+    <li><a onclick="goPage('contact')">Contact</a></li>
+    <li><a onclick="goPage('admin')" class="admin-btn">관리자</a></li>
+    <li><a onclick="goPage('contact')" class="nav-cta">상담 신청</a></li>
+  </ul>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ===================== HOME ===================== -->
+<div id="home-page" class="page active">
+  <div id="home-hero">
+    <div style="z-index:1">
+      <div class="hero-eyebrow">Arts Management Consultant</div>
+      <h1 class="hero-title">예술의 가치를<br><em>비즈니스로</em></h1>
+      <p class="hero-sub">예술경영컨설턴트와 당신의 예술적 비전을 현실로 만드세요.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청</button>
+        <button class="btn-outline" onclick="scrollToSection('home-about')">자세히 알아보기</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">30+</div><div class="stat-label">기획대행사 운영</div></div>
+        <div><div class="stat-num">5+</div><div class="stat-label">컨설팅 프로젝트</div></div>
+        <div><div class="stat-num">200+</div><div class="stat-label">교육 참가자</div></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-frame">
+        <img src="https://drive.google.com/uc?export=view&id=1UtMgc8by6JpfQoO9BqspB_e_JIJ3jx05" alt="송예슬" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <div id="home-about" class="sec">
+    <div>
+      <div class="sec-eyebrow">About</div>
+      <h2 class="sec-title">문화예술경영컨설턴트<br>송예슬</h2>
+      <p class="sec-desc">예술의 가치를 비즈니스로 만드는 전문가입니다. 문화예술단체와 예술가들이 지속 가능한 방식으로 자신의 예술적 비전을 실현할 수 있도록 함께합니다.</p>
+      <ul class="about-list">
+        <li>한국무용 전공 / 예술경영학 석사</li>
+        <li>MBA 학위 보유</li>
+        <li>기획대행사 4년 운영</li>
+        <li>문화예술기획 운영 50+ 프로젝트 경험</li>
+      </ul>
+    </div>
+    <div style="position:relative">
+      <div class="about-img">
+        <img src="https://drive.google.com/uc?export=view&id=1UtMgc8by6JpfQoO9BqspB_e_JIJ3jx05" alt="송예슬" onerror="this.style.display='none'">
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">50+</div>
+        <div class="about-badge-text">Projects Completed</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="home-services" class="sec" style="background:var(--white)">
+    <div class="sec-header">
+      <div><div class="sec-eyebrow">Services</div><h2 class="sec-title">제공하는 서비스</h2></div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">예술경영 컨설팅</div><div class="svc-desc">예술단체의 조직, 재정, 전략을 종합적으로 분석하고 성장 방향을 제시합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">비즈니스 코칭</div><div class="svc-desc">예술가 개인의 커리어 전략과 비즈니스 역량 강화를 위한 1:1 코칭입니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">프로젝트 기획</div><div class="svc-desc">전시, 공연, 축제 등 예술 프로젝트의 전략적 기획과 실행을 지원합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+      <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">교육/워크숍</div><div class="svc-desc">예술경영, 아트마케팅, 펀딩 전략 등 실용적인 교육 프로그램을 운영합니다.</div><span class="svc-link">자세히 보기 →</span></div>
+    </div>
+  </div>
+
+  <div id="home-portfolio" class="sec" style="background:var(--black);color:var(--white)">
+    <div class="sec-header">
+      <div><div class="sec-eyebrow">Portfolio</div><h2 class="sec-title" style="color:var(--white)">주요 프로젝트</h2></div>
+    </div>
+    <div class="port-grid">
+      <div class="port-card"><span class="port-tag">Consulting</span><div class="port-title">중견 무용단 브랜드 리뉴얼 프로젝트</div><div class="port-desc">15년 역사의 무용단이 새로운 세대의 관객을 만나기 위해 브랜드 전면 리뉴얼을 진행한 프로젝트입니다.</div><span class="port-arrow">자세히 보기 →</span></div>
+      <div class="port-card"><span class="port-tag">Planning</span><div class="port-title">청년 예술가 창업 지원 프로그램 기획</div><div class="port-desc">지역 청년 예술가들의 문화 창업을 지원하기 위한 6개월 액셀러레이터 프로그램.</div><span class="port-arrow">자세히 보기 →</span></div>
+      <div class="port-card"><span class="port-tag">Consulting</span><div class="port-title">예술단체 온라인 전환 컨설팅</div><div class="port-desc">코로나 시기 오프라인 공연 단체가 온라인으로 전환하는 과정을 지원한 긴급 컨설팅 프로젝트입니다.</div><span class="port-arrow">자세히 보기 →</span></div>
+    </div>
+  </div>
+
+  <!-- Blog preview on home -->
+  <div class="sec" style="background:var(--gray-100)">
+    <div class="sec-header">
+      <div><div class="sec-eyebrow">Blog</div><h2 class="sec-title">최신 아티클</h2></div>
+      <span class="link-all" onclick="goPage('blog')">전체 보기 →</span>
+    </div>
+    <div class="blog-grid" id="home-blog-grid">
+      <div class="blog-empty" style="grid-column:1/-1">블로그 글을 불러오는 중...</div>
+    </div>
+  </div>
+
+  <div id="home-testimonials" class="sec" style="background:linear-gradient(160deg,#0a0a0a,#1a1510);color:var(--white)">
+    <div class="sec-eyebrow">Testimonials</div>
+    <h2 class="sec-title" style="color:var(--white)">함께한 분들의 이야기</h2>
+    <div class="test-grid">
+      <div class="test-card"><div class="test-text">예술가로서만 생각했던 제 활동에 비즈니스적 관점을 갖게 되었습니다. 컨설팅 이후 실제 수익 구조가 안정되었어요.</div><div class="test-author"><div class="test-avatar">A</div><div><div class="test-name">A 작가</div><div class="test-role">미술 작가</div></div></div></div>
+      <div class="test-card"><div class="test-text">공연 기획부터 마케팅까지 전반적인 전략을 함께 수립했습니다. 전문성과 현장 감각을 동시에 갖춘 컨설턴트입니다.</div><div class="test-author"><div class="test-avatar">B</div><div><div class="test-name">B 단체</div><div class="test-role">공연예술단체</div></div></div></div>
+      <div class="test-card"><div class="test-text">독서모임을 통해 같은 고민을 하는 동료들을 만났고, 예술경영에 대한 시각이 완전히 달라졌습니다.</div><div class="test-author"><div class="test-avatar">C</div><div><div class="test-name">C</div><div class="test-role">예술경영 전공 대학원생</div></div></div></div>
+    </div>
+  </div>
+
+  <div id="home-cta" class="sec" style="background:var(--gray-100);text-align:center;padding:8rem 4rem">
+    <div class="sec-eyebrow" style="justify-content:center;display:flex">Contact</div>
+    <h2 class="sec-title">예술의 가치를 비즈니스로<br>만들 준비가 되셨나요?</h2>
+    <p class="sec-desc" style="max-width:500px;margin:1rem auto 3rem;text-align:center">무료 초기 상담을 통해 귀하의 예술적 비전을 현실로 만들어 드립니다.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="goPage('contact')">무료 상담 신청하기</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">ART<span>▲</span>RYANGLE</div>
+        <p class="footer-desc">예술의 가치를 비즈니스로 만드는 전문가.<br>예술경영컨설턴트 송예슬과 함께<br>당신의 예술적 비전을 현실로 만드세요.</p>
+        <div class="newsletter-form"><input type="email" placeholder="이메일 주소"><button>구독</button></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a onclick="scrollToSection('home-about')">About</a></li>
+          <li><a onclick="scrollToSection('home-services')">Services</a></li>
+          <li><a onclick="scrollToSection('home-portfolio')">Portfolio</a></li>
+          <li><a onclick="goPage('blog')">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:yeseul@artryangle.com">yeseul@artryangle.com</a></li>
+          <li><a>서울특별시</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 아트라이앵글 Art Triangle. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== BLOG LIST ===================== -->
+<div id="blog-page" class="page">
+  <div class="blog-hero">
+    <div class="sec-eyebrow">Blog</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--white);margin-top:.5rem">예술경영 인사이트</h1>
+    <p style="margin-top:1rem;color:#aaa;font-size:.95rem;max-width:500px;line-height:1.8">문화예술경영컨설턴트 송예슬이 매주 전하는 예술과 비즈니스의 교차점</p>
+  </div>
+  <div class="blog-list">
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem" id="blog-filter-btns">
+      <button class="btn-primary" onclick="filterBlog('all')" data-cat="all">전체</button>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      <div class="blog-empty" style="grid-column:1/-1">블로그 글을 불러오는 중...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BLOG DETAIL ===================== -->
+<div id="blog-detail-page" class="page">
+  <div class="blog-detail-hero" id="detail-hero">
+    <button class="back-btn" onclick="goPage('blog')">← 블로그로 돌아가기</button>
+    <div class="sec-eyebrow" id="detail-category"></div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,3rem);font-weight:700;color:var(--white);margin-top:.5rem;max-width:700px;line-height:1.3" id="detail-title"></h1>
+    <div style="margin-top:1.5rem;font-size:.8rem;color:#888" id="detail-date"></div>
+  </div>
+  <div class="blog-detail-body">
+    <div class="blog-detail-content" id="detail-content"></div>
+  </div>
+</div>
+
+<!-- ===================== CONTACT ===================== -->
+<div id="contact-page" class="page">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <div class="sec-eyebrow">Contact</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--white);margin-top:.5rem;line-height:1.3">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2>
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div><div class="contact-info-label">Email</div><div class="contact-info-val">yeseul@artryangle.com</div></div>
+        </div>
+        <div class="contact-info-item">
+          <div><div class="contact-info-label">Location</div><div class="contact-info-val">서울특별시</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:.5rem">문의하기</h3>
+      <p style="font-size:.85rem;color:var(--gray-500);margin-bottom:2rem">무료 초기 상담을 신청하시면 48시간 내에 연락드립니다.</p>
+      <div class="contact-form">
+        <div class="form-group"><label class="form-label">이름</label><input class="form-input" id="c-name" placeholder="홍길동"></div>
+        <div class="form-group"><label class="form-label">이메일</label><input class="form-input" id="c-email" type="email" placeholder="example@email.com"></div>
+        <div class="form-group"><label class="form-label">문의 내용</label><textarea class="form-textarea" id="c-msg" placeholder="궁금한 점이나 상담 내용을 자유롭게 작성해 주세요."></textarea></div>
+        <button class="form-submit" onclick="submitContact()">문의 보내기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ADMIN ===================== -->
+<div id="admin-page" class="page">
+  <!-- LOGIN -->
+  <div class="admin-login" id="admin-login">
+    <div class="admin-login-box">
+      <div class="admin-login-title">관리자 로그인</div>
+      <div class="admin-login-sub">아트라이앵글 콘텐츠 관리 시스템</div>
+      <div class="form-group" style="margin-bottom:1rem"><label class="form-label">비밀번호</label><input class="form-input" type="password" id="admin-pw" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')adminLogin()"></div>
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="adminLogin()">로그인</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-wrap" id="admin-dashboard" style="display:none">
+    <div class="admin-sidebar">
+      <div style="padding:1.5rem;border-bottom:1px solid #222;margin-bottom:1rem">
+        <div style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white)">ART<span style="color:var(--gold)">▲</span>RYANGLE</div>
+        <div style="font-size:.72rem;color:#666;margin-top:.3rem">관리자</div>
+      </div>
+      <div class="admin-sidebar-title">콘텐츠</div>
+      <div class="admin-menu-item active" onclick="adminTab('posts')" id="tab-posts">📝 블로그 글</div>
+      <div class="admin-menu-item" onclick="adminTab('new-post')" id="tab-new-post">✏️ 새 글 작성</div>
+      <div class="admin-menu-item" onclick="adminTab('contacts')" id="tab-contacts">📬 문의함</div>
+      <div style="padding:1.5rem;margin-top:auto;border-top:1px solid #222;position:absolute;bottom:0;width:100%">
+        <div style="font-size:.75rem;color:#666;cursor:pointer" onclick="adminLogout()">← 사이트로 돌아가기</div>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <!-- POSTS LIST -->
+      <div id="admin-posts">
+        <div class="admin-header">
+          <div class="admin-page-title">블로그 글 관리</div>
+          <button class="btn-primary" onclick="adminTab('new-post')">+ 새 글 작성</button>
+        </div>
+        <table class="admin-table">
+          <thead><tr><th>제목</th><th>카테고리</th><th>상태</th><th>작성일</th><th>관리</th></tr></thead>
+          <tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">글을 불러오는 중...</td></tr></tbody>
+        </table>
+      </div>
+
+      <!-- NEW / EDIT POST -->
+      <div id="admin-new-post" style="display:none">
+        <div class="admin-header">
+          <div class="admin-page-title" id="editor-title">새 글 작성</div>
+        </div>
+        <div class="editor-wrap">
+          <input type="hidden" id="edit-id">
+          <div class="editor-field"><label class="editor-label">제목</label><input class="editor-input" id="edit-title" placeholder="글 제목을 입력하세요"></div>
+          <div class="editor-field"><label class="editor-label">카테고리</label>
+            <select class="editor-select" id="edit-category">
+              <option>예술경영</option><option>아트마케팅</option><option>스터디 일지</option><option>펀딩 전략</option><option>컨설팅 이야기</option>
+            </select>
+          </div>
+          <div class="editor-field"><label class="editor-label">요약 (목록에 표시)</label><input class="editor-input" id="edit-excerpt" placeholder="글의 핵심 내용을 한두 문장으로 요약하세요"></div>
+          <div class="editor-field"><label class="editor-label">본문</label><textarea class="editor-textarea" id="edit-content" placeholder="본문을 작성하세요. 줄바꿈은 자동으로 문단으로 처리됩니다."></textarea></div>
+          <div class="editor-field">
+            <div class="toggle-wrap">
+              <div class="toggle" id="pub-toggle" onclick="togglePub()"></div>
+              <span id="pub-label" style="font-size:.85rem;color:var(--gray-700)">임시저장 (비공개)</span>
+            </div>
+          </div>
+          <div class="editor-actions">
+            <button class="btn-primary" onclick="savePost()">저장하기</button>
+            <button class="btn-outline" onclick="adminTab('posts')">취소</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACTS -->
+      <div id="admin-contacts" style="display:none">
+        <div class="admin-header">
+          <div class="admin-page-title">문의함</div>
+        </div>
+        <div class="admin-contacts-list" id="contacts-list">
+          <div style="text-align:center;padding:2rem;color:var(--gray-500)">문의를 불러오는 중...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPA_URL = 'https://kwhrwbnfwoybdmdzmmko.supabase.co';
+const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
+const SVC_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTU4NTA4OCwiZXhwIjoyMDkxMTYxMDg4fQ.-jDnuqH14gVYer1sV8GgAdZcrQG4xs222EJBfZr1y-I';
+const ADMIN_PW = 'artryangle2024';
+
+let isAdmin = false;
+let pubState = false;
+let allPosts = [];
+let currentCat = 'all';
+
+// ── API ──
+async function api(path, method='GET', body=null, admin=false) {
+  const res = await fetch(SUPA_URL+'/rest/v1/'+path, {
+    method,
+    headers: {
+      'Content-Type':'application/json',
+      'apikey': admin ? SVC_KEY : ANON_KEY,
+      'Authorization':'Bearer '+(admin ? SVC_KEY : ANON_KEY),
+      'Prefer': method==='POST'?'return=representation':'',
+    },
+    body: body ? JSON.stringify(body) : null
+  });
+  if(!res.ok) { const e=await res.text(); throw new Error(e); }
+  return res.status===204 ? null : res.json();
+}
+
+// ── NAVIGATION ──
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(name+'-page').classList.add('active');
+  window.scrollTo(0,0);
+  if(name==='blog') loadBlog();
+  if(name==='home') loadHomeBlog();
+  if(name==='admin') { if(isAdmin) showDashboard(); }
+}
+
+function scrollToSection(id) {
+  goPage('home');
+  setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); },100);
+}
+
+// ── TOAST ──
+function toast(msg, dur=3000) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), dur);
+}
+
+// ── HOME BLOG PREVIEW ──
+async function loadHomeBlog() {
+  try {
+    const posts = await api('posts?published=eq.true&order=created_at.desc&limit=3');
+    const grid = document.getElementById('home-blog-grid');
+    if(!posts||!posts.length){ grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">아직 게시된 글이 없습니다.</div>'; return; }
+    grid.innerHTML = posts.map(p=>`
+      <div class="blog-card" onclick="openPost('${p.id}')">
+        <div class="blog-card-body">
+          <div class="blog-tag">${p.category||'예술경영'}</div>
+          <div class="blog-title">${p.title}</div>
+          <div class="blog-excerpt">${p.excerpt||''}</div>
+          <div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div>
+        </div>
+      </div>`).join('');
+  } catch(e){ console.error(e); }
+}
+
+// ── BLOG LIST ──
+async function loadBlog() {
+  try {
+    const posts = await api('posts?published=eq.true&order=created_at.desc');
+    allPosts = posts||[];
+    renderBlogFilter();
+    renderBlogGrid(allPosts);
+  } catch(e){ document.getElementById('blog-grid').innerHTML='<div class="blog-empty" style="grid-column:1/-1">글을 불러오지 못했습니다.</div>'; }
+}
+
+function renderBlogFilter() {
+  const cats = ['전체', ...new Set(allPosts.map(p=>p.category).filter(Boolean))];
+  document.getElementById('blog-filter-btns').innerHTML = cats.map(c=>`
+    <button class="${c==='전체'?'btn-primary':'btn-outline'}" onclick="filterBlog('${c}')" data-cat="${c}">${c}</button>`).join('');
+}
+
+function filterBlog(cat) {
+  currentCat = cat;
+  document.querySelectorAll('#blog-filter-btns button').forEach(b=>{
+    const isSel = b.dataset.cat===cat||(cat==='all'&&b.dataset.cat==='전체');
+    b.className = isSel?'btn-primary':'btn-outline';
+  });
+  const filtered = cat==='all'||cat==='전체' ? allPosts : allPosts.filter(p=>p.category===cat);
+  renderBlogGrid(filtered);
+}
+
+function renderBlogGrid(posts) {
+  const grid=document.getElementById('blog-grid');
+  if(!posts.length){ grid.innerHTML='<div class="blog-empty" style="grid-column:1/-1">해당 카테고리의 글이 없습니다.</div>'; return; }
+  grid.innerHTML = posts.map(p=>`
+    <div class="blog-card" onclick="openPost('${p.id}')">
+      <div class="blog-card-body">
+        <div class="blog-tag">${p.category||'예술경영'}</div>
+        <div class="blog-title">${p.title}</div>
+        <div class="blog-excerpt">${p.excerpt||''}</div>
+        <div class="blog-meta"><span>${fmtDate(p.created_at)}</span><span>읽기 →</span></div>
+      </div>
+    </div>`).join('');
+}
+
+async function openPost(id) {
+  try {
+    const posts = await api('posts?id=eq.'+id+'&published=eq.true');
+    if(!posts||!posts.length) return;
+    const p=posts[0];
+    document.getElementById('detail-category').textContent = p.category||'';
+    document.getElementById('detail-title').textContent = p.title;
+    document.getElementById('detail-date').textContent = fmtDate(p.created_at);
+    document.getElementById('detail-content').innerHTML = (p.content||'').split('\n\n').map(para=>`<p>${para.replace(/\n/g,'<br>')}</p>`).join('');
+    goPage('blog-detail');
+  } catch(e){ toast('글을 불러오지 못했습니다.'); }
+}
+
+// ── CONTACT ──
+async function submitContact() {
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const msg=document.getElementById('c-msg').value.trim();
+  if(!name||!email||!msg){ toast('모든 항목을 입력해주세요.'); return; }
+  try {
+    await api('contacts', 'POST', {name, email, message:msg});
+    toast('문의가 전송되었습니다. 48시간 내에 연락드릴게요 😊');
+    document.getElementById('c-name').value='';
+    document.getElementById('c-email').value='';
+    document.getElementById('c-msg').value='';
+  } catch(e){ toast('전송에 실패했습니다. 이메일로 직접 연락해주세요.'); }
+}
+
+// ── ADMIN ──
+function adminLogin() {
+  const pw=document.getElementById('admin-pw').value;
+  if(pw===ADMIN_PW){ isAdmin=true; showDashboard(); }
+  else toast('비밀번호가 틀렸습니다.');
+}
+
+function showDashboard() {
+  document.getElementById('admin-login').style.display='none';
+  document.getElementById('admin-dashboard').style.display='grid';
+  adminTab('posts');
+}
+
+function adminLogout() { isAdmin=false; goPage('home'); }
+
+function adminTab(tab) {
+  ['posts','new-post','contacts'].forEach(t=>{
+    const el=document.getElementById('admin-'+t);
+    if(el) el.style.display='none';
+    const ti=document.getElementById('tab-'+t);
+    if(ti) ti.classList.remove('active');
+  });
+  document.getElementById('admin-'+tab).style.display='block';
+  const ti=document.getElementById('tab-'+tab);
+  if(ti) ti.classList.add('active');
+  if(tab==='posts') loadAdminPosts();
+  if(tab==='new-post') resetEditor();
+  if(tab==='contacts') loadContacts();
+}
+
+async function loadAdminPosts() {
+  try {
+    const posts = await api('posts?order=created_at.desc', 'GET', null, true);
+    const tbody=document.getElementById('posts-tbody');
+    if(!posts||!posts.length){ tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-500)">작성된 글이 없습니다.</td></tr>'; return; }
+    tbody.innerHTML = posts.map(p=>`
+      <tr>
+        <td style="font-weight:500">${p.title}</td>
+        <td>${p.category||'-'}</td>
+        <td><span class="badge ${p.published?'badge-pub':'badge-draft'}">${p.published?'공개':'임시저장'}</span></td>
+        <td>${fmtDate(p.created_at)}</td>
+        <td>
+          <button class="admin-action-btn btn-edit" onclick="editPost('${p.id}')">수정</button>
+          <button class="admin-action-btn btn-delete" onclick="deletePost('${p.id}')">삭제</button>
+        </td>
+      </tr>`).join('');
+  } catch(e){ toast('글 목록을 불러오지 못했습니다.'); }
+}
+
+function resetEditor() {
+  document.getElementById('edit-id').value='';
+  document.getElementById('edit-title').value='';
+  document.getElementById('edit-excerpt').value='';
+  document.getElementById('edit-content').value='';
+  document.getElementById('edit-category').value='예술경영';
+  pubState=false;
+  document.getElementById('pub-toggle').className='toggle';
+  document.getElementById('pub-label').textContent='임시저장 (비공개)';
+  document.getElementById('editor-title').textContent='새 글 작성';
+}
+
+async function editPost(id) {
+  try {
+    const posts=await api('posts?id=eq.'+id, 'GET', null, true);
+    if(!posts||!posts.length) return;
+    const p=posts[0];
+    document.getElementById('edit-id').value=p.id;
+    document.getElementById('edit-title').value=p.title;
+    document.getElementById('edit-excerpt').value=p.excerpt||'';
+    document.getElementById('edit-content').value=p.content;
+    document.getElementById('edit-category').value=p.category||'예술경영';
+    pubState=p.published;
+    document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');
+    document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';
+    document.getElementById('editor-title').textContent='글 수정';
+    adminTab('new-post');
+    document.getElementById('tab-new-post').classList.add('active');
+  } catch(e){ toast('글을 불러오지 못했습니다.'); }
+}
+
+async function savePost() {
+  const id=document.getElementById('edit-id').value;
+  const title=document.getElementById('edit-title').value.trim();
+  const excerpt=document.getElementById('edit-excerpt').value.trim();
+  const content=document.getElementById('edit-content').value.trim();
+  const category=document.getElementById('edit-category').value;
+  if(!title||!content){ toast('제목과 본문을 입력해주세요.'); return; }
+  const data={title,excerpt,content,category,published:pubState,updated_at:new Date().toISOString()};
+  try {
+    if(id) await api('posts?id=eq.'+id, 'PATCH', data, true);
+    else await api('posts', 'POST', data, true);
+    toast(pubState?'글이 공개되었습니다! 🎉':'임시저장되었습니다.');
+    adminTab('posts');
+  } catch(e){ toast('저장에 실패했습니다: '+e.message); }
+}
+
+async function deletePost(id) {
+  if(!confirm('정말 삭제하시겠습니까?')) return;
+  try {
+    await api('posts?id=eq.'+id, 'DELETE', null, true);
+    toast('삭제되었습니다.');
+    loadAdminPosts();
+  } catch(e){ toast('삭제에 실패했습니다.'); }
+}
+
+function togglePub() {
+  pubState=!pubState;
+  document.getElementById('pub-toggle').className='toggle'+(pubState?' on':'');
+  document.getElementById('pub-label').textContent=pubState?'공개':'임시저장 (비공개)';
+}
+
+async function loadContacts() {
+  try {
+    const contacts=await api('contacts?order=created_at.desc', 'GET', null, true);
+    const list=document.getElementById('contacts-list');
+    if(!contacts||!contacts.length){ list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--gray-500)">아직 문의가 없습니다.</div>'; return; }
+    list.innerHTML=contacts.map(c=>`
+      <div class="contact-item">
+        <div class="contact-item-header">
+          <div class="contact-item-name">${c.name}</div>
+          <div class="contact-item-date">${fmtDate(c.created_at)}</div>
+        </div>
+        <div class="contact-item-email">${c.email}</div>
+        <div class="contact-item-msg">${c.message}</div>
+      </div>`).join('');
+  } catch(e){ toast('문의를 불러오지 못했습니다.'); }
+}
+
+// ── UTILS ──
+function fmtDate(d) {
+  const dt=new Date(d);
+  return `${dt.getFullYear()}년 ${dt.getMonth()+1}월 ${dt.getDate()}일`;
+}
+
+// ── INIT ──
+loadHomeBlog();
+</script>
+</body>
+</html>
