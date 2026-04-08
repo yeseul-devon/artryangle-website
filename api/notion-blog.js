@@ -16,11 +16,11 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         filter: {
-          property: 'published',
+          property: '공개',
           checkbox: { equals: true }
         },
         sorts: [
-          { property: 'date', direction: 'descending' }
+          { property: '작성일', direction: 'descending' }
         ]
       })
     });
@@ -36,11 +36,11 @@ export default async function handler(req, res) {
       const props = page.properties;
       return {
         id: page.id,
-        title: props.title?.title?.[0]?.plain_text || props.Name?.title?.[0]?.plain_text || '',
-        date: props.date?.date?.start || '',
-        tag: props.tag?.select?.name || props.category?.select?.name || '',
-        excerpt: props.excerpt?.rich_text?.[0]?.plain_text || props.description?.rich_text?.[0]?.plain_text || '',
-        slug: props.slug?.rich_text?.[0]?.plain_text || page.id
+        title: props['이름']?.title?.[0]?.plain_text || '',
+        date: props['작성일']?.date?.start || '',
+        tag: props['카테고리']?.select?.name || '',
+        excerpt: props['요약']?.rich_text?.[0]?.plain_text || '',
+        slug: page.id
       };
     });
 
