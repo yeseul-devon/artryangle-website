@@ -41,7 +41,6 @@
   button { cursor: pointer; }
   a { color: inherit; }
 
-  /* ── LOGIN ── */
   .login-screen {
     min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
@@ -112,8 +111,18 @@
     background: #fdf0ee;
     border-left: 3px solid var(--danger);
   }
+  .forgot {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+  }
+  .forgot a {
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
 
-  /* ── APP LAYOUT ── */
   .app { display: none; min-height: 100vh; }
   .app.active { display: block; }
   .topbar {
@@ -167,7 +176,6 @@
   }
   .topbar .user button:hover { border-color: var(--ink); color: var(--ink); }
 
-  /* ── PAGES ── */
   .page { display: none; padding: 40px 32px 80px; max-width: 1200px; margin: 0 auto; }
   .page.active { display: block; }
   .page-header {
@@ -191,6 +199,8 @@
     color: var(--ink);
     transition: all .15s;
     letter-spacing: 0.03em;
+    text-decoration: none;
+    display: inline-block;
   }
   .btn:hover { background: var(--ink); color: var(--paper); }
   .btn.btn-fill { background: var(--ink); color: var(--paper); }
@@ -201,7 +211,6 @@
   .btn.btn-danger:hover { background: var(--danger); color: white; }
   .btn-sm { padding: 6px 12px; font-size: 12px; }
 
-  /* ── POSTS LIST ── */
   .toolbar {
     display: flex; gap: 12px; margin-bottom: 24px;
     align-items: center;
@@ -267,7 +276,6 @@
   }
   .empty-state p { margin-bottom: 16px; }
 
-  /* ── EDITOR ── */
   .editor {
     display: grid;
     grid-template-columns: 1fr 320px;
@@ -326,9 +334,8 @@
     padding-top: 16px;
     border-top: 1px solid var(--line-soft);
   }
-  .editor-actions .btn { width: 100%; }
+  .editor-actions .btn { width: 100%; text-align: center; }
 
-  /* ── SITE CONTENT ── */
   .content-list {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -361,7 +368,6 @@
     text-align: right;
   }
 
-  /* ── INQUIRIES ── */
   .inquiry-card {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -387,7 +393,6 @@
     margin-top: 12px;
   }
 
-  /* ── TOAST ── */
   .toast {
     position: fixed;
     top: 80px; right: 32px;
@@ -404,7 +409,6 @@
   .toast.error { background: var(--danger); }
   .toast.success { background: var(--success); }
 
-  /* Loading */
   .loading { padding: 40px; text-align: center; color: var(--ink-soft); }
 
   @media (max-width: 900px) {
@@ -421,7 +425,6 @@
 </head>
 <body>
 
-<!-- ═══ 로그인 화면 ═══ -->
 <div id="loginScreen" class="login-screen">
   <div class="login-box">
     <div class="brand">아트라이앵글</div>
@@ -437,11 +440,13 @@
       </div>
       <button type="submit" class="btn-primary" id="loginBtn">로그인</button>
       <div id="loginError" class="error-msg" style="display:none;"></div>
+      <div class="forgot">
+        <a id="resetLink">비밀번호를 잊으셨나요?</a>
+      </div>
     </form>
   </div>
 </div>
 
-<!-- ═══ 메인 앱 ═══ -->
 <div id="app" class="app">
   <div class="topbar">
     <div class="brand">아트라이앵글<span>Admin</span></div>
@@ -456,7 +461,6 @@
     </div>
   </div>
 
-  <!-- ── 아티클 목록 ── -->
   <div id="page-posts" class="page active">
     <div class="page-header">
       <h1>아티클</h1>
@@ -482,7 +486,6 @@
     </div>
   </div>
 
-  <!-- ── 아티클 편집 ── -->
   <div id="page-editor" class="page">
     <div class="page-header">
       <h1 id="editorTitle">아티클 편집</h1>
@@ -548,7 +551,6 @@
     </div>
   </div>
 
-  <!-- ── 사이트 콘텐츠 ── -->
   <div id="page-content" class="page">
     <div class="page-header">
       <h1>사이트 콘텐츠</h1>
@@ -564,7 +566,6 @@
     </div>
   </div>
 
-  <!-- ── 문의 ── -->
   <div id="page-inquiries" class="page">
     <div class="page-header">
       <h1>받은 문의</h1>
@@ -580,23 +581,16 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ════════════════════════════════════════════════════
-// 초기화 & 인증
+// Supabase 연결 (키 직접 박힘 - anon 키는 공개해도 안전)
 // ════════════════════════════════════════════════════
-let supabase = null;
+const SUPABASE_URL = 'https://kwhrwbnfwoybdmdzmmko.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 let currentUser = null;
 let allPosts = [];
 let editingPostId = null;
-
-async function initSupabase() {
-  try {
-    const cfg = await fetch('/api/config').then(r => r.json());
-    supabase = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
-    return true;
-  } catch (e) {
-    console.error('Supabase 초기화 실패', e);
-    return false;
-  }
-}
 
 async function checkAuth() {
   const { data: { session } } = await supabase.auth.getSession();
@@ -624,7 +618,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   btn.disabled = false; btn.textContent = '로그인';
   if (error) {
-    errEl.textContent = error.message.includes('Invalid')
+    errEl.textContent = error.message.includes('Invalid') || error.message.includes('credentials')
       ? '이메일 또는 비밀번호가 잘못되었습니다.'
       : '로그인 실패: ' + error.message;
     errEl.style.display = 'block';
@@ -633,14 +627,24 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   await checkAuth();
 });
 
+document.getElementById('resetLink').addEventListener('click', async () => {
+  const email = document.getElementById('email').value.trim();
+  if (!email) {
+    alert('먼저 이메일을 입력해주세요.');
+    return;
+  }
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + '/admin'
+  });
+  if (error) { alert('재설정 요청 실패: ' + error.message); return; }
+  alert(email + ' 로 비밀번호 재설정 링크를 보냈습니다. 메일함을 확인해주세요.');
+});
+
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   await supabase.auth.signOut();
   location.reload();
 });
 
-// ════════════════════════════════════════════════════
-// 페이지 라우팅
-// ════════════════════════════════════════════════════
 document.querySelectorAll('.topbar nav button').forEach(btn => {
   btn.addEventListener('click', () => switchPage(btn.dataset.page));
 });
@@ -664,9 +668,6 @@ function goPosts() {
   });
 }
 
-// ════════════════════════════════════════════════════
-// 토스트 알림
-// ════════════════════════════════════════════════════
 function toast(msg, type = '') {
   const t = document.getElementById('toast');
   t.className = 'toast ' + type + ' show';
@@ -674,9 +675,6 @@ function toast(msg, type = '') {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ════════════════════════════════════════════════════
-// 아티클 목록
-// ════════════════════════════════════════════════════
 async function loadPosts() {
   const { data, error } = await supabase
     .from('posts')
@@ -685,7 +683,6 @@ async function loadPosts() {
   if (error) { toast('불러오기 실패: ' + error.message, 'error'); return; }
   allPosts = data || [];
 
-  // 카테고리 옵션 채우기
   const categories = [...new Set(allPosts.map(p => p.category).filter(Boolean))];
   const catSelect = document.getElementById('filterCategory');
   catSelect.innerHTML = '<option value="">모든 카테고리</option>' +
@@ -756,9 +753,6 @@ document.getElementById('searchInput').addEventListener('input', renderPosts);
 document.getElementById('filterStatus').addEventListener('change', renderPosts);
 document.getElementById('filterCategory').addEventListener('change', renderPosts);
 
-// ════════════════════════════════════════════════════
-// 아티클 편집
-// ════════════════════════════════════════════════════
 function showEditor(post = null) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-editor').classList.add('active');
@@ -821,7 +815,7 @@ function updatePreviewLink() {
 }
 function autoSlug() {
   const slugInput = document.getElementById('postSlug');
-  if (editingPostId) return; // 편집 중에는 자동 생성 안함
+  if (editingPostId) return;
   if (slugInput.dataset.touched) return;
   const title = document.getElementById('postTitle').value;
   slugInput.value = generateSlug(title);
@@ -882,7 +876,7 @@ async function savePost() {
 
   if (result.error) {
     if (result.error.message.includes('duplicate') || result.error.message.includes('unique')) {
-      toast('이미 사용 중인 슬러그입니다. 다른 슬러그를 입력해주세요.', 'error');
+      toast('이미 사용 중인 슬러그입니다.', 'error');
     } else {
       toast('저장 실패: ' + result.error.message, 'error');
     }
@@ -905,9 +899,6 @@ async function deletePost() {
   goPosts();
 }
 
-// ════════════════════════════════════════════════════
-// 사이트 콘텐츠
-// ════════════════════════════════════════════════════
 let contentSaveTimers = {};
 async function loadSiteContent() {
   const { data, error } = await supabase
@@ -977,9 +968,6 @@ async function addContentRow() {
   await loadSiteContent();
 }
 
-// ════════════════════════════════════════════════════
-// 문의
-// ════════════════════════════════════════════════════
 async function loadInquiries() {
   const { data, error } = await supabase
     .from('contact_inquiries')
@@ -1016,9 +1004,6 @@ async function markRead(id) {
   await loadInquiries();
 }
 
-// ════════════════════════════════════════════════════
-// 유틸
-// ════════════════════════════════════════════════════
 function escapeHtml(s) {
   return String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -1034,15 +1019,7 @@ async function loadAll() {
   await loadPosts();
 }
 
-// ════════════════════════════════════════════════════
-// 시작
-// ════════════════════════════════════════════════════
 (async () => {
-  const ok = await initSupabase();
-  if (!ok) {
-    document.body.innerHTML = '<div class="login-screen"><div class="login-box"><div class="brand">설정 오류</div><p style="text-align:center;color:var(--ink-soft);">Supabase 연결 실패. /api/config 가 작동 중인지 확인해주세요.</p></div></div>';
-    return;
-  }
   await checkAuth();
   supabase.auth.onAuthStateChange((_event, session) => {
     if (!session && currentUser) location.reload();
