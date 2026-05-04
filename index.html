@@ -180,21 +180,31 @@ function openBlogModal(idx){
 }
 function closeBlogModal(){document.getElementById('blogModal').classList.remove('open');document.body.style.overflow='';}
 
-// 블로그 로드 (8초 타임아웃)
+// 블로그 로드 - Supabase에서 직접 가져오기 + 페이지 이동 방식
 async function loadBlog(){
   const fail=m=>{document.getElementById('hb').innerHTML='<div class="be">'+m+'</div>';document.getElementById('bf').innerHTML='<div class="be">'+m+'</div>';};
   try{
     const ctrl=new AbortController();
     const timer=setTimeout(()=>ctrl.abort(),8000);
-    const r=await fetch('/api/notion-blog',{signal:ctrl.signal});
+    const SUPA_URL='https://kwhrwbnfwoybdmdzmmko.supabase.co';
+    const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
+    const r=await fetch(SUPA_URL+'/rest/v1/posts?published=eq.true&select=id,title,excerpt,slug,category,tags,created_at&order=created_at.desc',{
+      signal:ctrl.signal,
+      headers:{apikey:SUPA_KEY,Authorization:'Bearer '+SUPA_KEY}
+    });
     clearTimeout(timer);
     if(!r.ok){fail('블로그 연결 오류 ('+r.status+')');return;}
-    const d=await r.json();
-    if(d.error){fail(d.hint||d.error);return;}
-    const p=d.posts||[];blogPosts=p;
-    const c=(post,i)=>'<div class="bc" onclick="openBlogModal('+i+')"><div class="bcb">'+(post.tag?'<div class="btg">'+post.tag+'</div>':'')+'<div class="bti">'+post.title+'</div><div class="bex">'+(post.excerpt||'')+'</div><div class="bme">'+(post.date||'')+'</div></div></div>';
-    document.getElementById('hb').innerHTML=p.length?p.slice(0,3).map((x,i)=>c(x,i)).join(''):'<div class="be">아직 게시된 글이 없습니다.</div>';
-    document.getElementById('bf').innerHTML=p.length?p.map((x,i)=>c(x,i)).join(''):'<div class="be">아직 게시된 글이 없습니다.</div>';
+    const data=await r.json();
+    const p=Array.isArray(data)?data:[];blogPosts=p;
+    const fmtDate=iso=>iso?iso.split('T')[0]:'';
+    const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const c=(post)=>{
+      const slug=encodeURIComponent(post.slug||post.id);
+      const tag=(post.tags&&post.tags.length)?post.tags[0]:(post.category||'');
+      return '<a href="/blog/'+slug+'" class="bc" style="text-decoration:none;color:inherit;display:block;"><div class="bcb">'+(tag?'<div class="btg">'+esc(tag)+'</div>':'')+'<div class="bti">'+esc(post.title)+'</div><div class="bex">'+esc(post.excerpt||'')+'</div><div class="bme">'+fmtDate(post.created_at)+'</div></div></a>';
+    };
+    document.getElementById('hb').innerHTML=p.length?p.slice(0,3).map(c).join(''):'<div class="be">아직 게시된 글이 없습니다.</div>';
+    document.getElementById('bf').innerHTML=p.length?p.map(c).join(''):'<div class="be">아직 게시된 글이 없습니다.</div>';
   }catch(e){
     fail(e.name==='AbortError'?'블로그 로딩 시간 초과':'블로그를 불러올 수 없습니다.');
   }
