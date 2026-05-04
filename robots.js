@@ -1,0 +1,31 @@
+// /api/robots.js
+// 검색엔진 크롤러에게 사이트 구조 안내.
+// vercel.json: /robots.txt → /api/robots
+
+const SITE_URL = process.env.SITE_URL || 'https://www.artryangle.kr';
+
+module.exports = (req, res) => {
+  const body = `User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+
+# 한국 검색엔진
+User-agent: Yeti
+Allow: /
+Disallow: /admin
+
+User-agent: NaverBot
+Allow: /
+Disallow: /admin
+
+User-agent: Daumoa
+Allow: /
+Disallow: /admin
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`;
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.status(200).send(body);
+};

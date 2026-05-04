@@ -3,159 +3,1052 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>관리자 | 아트라이앵글</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-:root{--teal:#2AABAA;--teal-dark:#1d8a89;--navy:#1e3a5f;--navy-dark:#122540;--white:#fff;--g100:#f0f4f4;--g200:#dde6e6;--g400:#9ab0b0;--g600:#4a6464;--g800:#1e3232;--sans:'Noto Sans KR',sans-serif;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:var(--sans);background:var(--g100);color:var(--g800);min-height:100vh;}
-.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
-.login-box{background:var(--white);padding:3rem;border-radius:8px;box-shadow:0 2px 20px rgba(0,0,0,.08);max-width:400px;width:100%;}
-.login-box h1{font-size:1.3rem;color:var(--navy-dark);margin-bottom:.5rem;}
-.login-box p{font-size:.88rem;color:var(--g600);margin-bottom:2rem;}
-.login-box input{width:100%;padding:.9rem 1rem;border:1.5px solid var(--g200);border-radius:4px;font-size:.95rem;font-family:var(--sans);outline:none;margin-bottom:1rem;}
-.login-box input:focus{border-color:var(--teal);}
-.login-box button{width:100%;padding:.9rem;background:var(--teal);color:var(--white);border:none;border-radius:4px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:var(--sans);}
-.admin{display:none;}
-.admin-nav{background:var(--navy-dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.admin-nav h1{color:var(--white);font-size:1rem;font-weight:600;}
-.admin-nav .nav-btns{display:flex;gap:.8rem;}
-.admin-nav button{padding:.5rem 1.2rem;border:none;border-radius:4px;font-size:.82rem;font-family:var(--sans);cursor:pointer;font-weight:500;}
-.btn-save{background:var(--teal);color:var(--white);}
-.btn-preview{background:rgba(255,255,255,.15);color:var(--white);}
-.btn-logout{background:none;color:var(--g400);border:1px solid rgba(255,255,255,.2)!important;}
-.admin-body{max-width:900px;margin:0 auto;padding:2rem;}
-.tab-bar{display:flex;gap:2px;margin-bottom:2rem;background:var(--g200);border-radius:6px;overflow:hidden;}
-.tab-btn{flex:1;padding:1rem;text-align:center;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--white);color:var(--g600);border:none;font-family:var(--sans);transition:all .2s;}
-.tab-btn.active{background:var(--teal);color:var(--white);}
-.tab-panel{display:none;}.tab-panel.active{display:block;}
-.status-bar{display:flex;gap:1rem;margin-bottom:2rem;}
-.status-item{flex:1;background:var(--white);padding:1.2rem 1.5rem;border-radius:6px;border-left:3px solid var(--teal);}
-.status-item .label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);margin-bottom:.3rem;}
-.status-item .val{font-size:1rem;font-weight:600;color:var(--navy-dark);}
-.status-item.error{border-left-color:#e74c3c;}.status-item.error .val{color:#e74c3c;}
-.card{background:var(--white);border-radius:6px;margin-bottom:1.5rem;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
-.card-header{padding:1.2rem 1.5rem;background:var(--navy-dark);color:var(--white);font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
-.card-header .arrow{transition:transform .3s;font-size:.7rem;}
-.card-header.open .arrow{transform:rotate(180deg);}
-.card-body{padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
-.card-body.open{max-height:3000px;padding:1.5rem;}
-.field{margin-bottom:1.4rem;}.field label{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--g600);font-weight:600;margin-bottom:.4rem;}
-.field input,.field textarea{width:100%;padding:.8rem 1rem;border:1.5px solid var(--g200);border-radius:4px;font-size:.9rem;font-family:var(--sans);outline:none;color:var(--g800);transition:border-color .2s;}
-.field input:focus,.field textarea:focus{border-color:var(--teal);}
-.field textarea{resize:vertical;min-height:80px;line-height:1.7;}
-/* 문의 목록 */
-.inq-list{display:flex;flex-direction:column;gap:1rem;}
-.inq-card{background:var(--white);border:1px solid var(--g200);border-radius:6px;padding:1.5rem;border-left:3px solid var(--teal);}
-.inq-card.unread{border-left-color:var(--teal);background:var(--teal-light,#e6f7f7);}
-.inq-meta{display:flex;justify-content:space-between;margin-bottom:.5rem;font-size:.78rem;color:var(--g400);}
-.inq-name{font-weight:700;color:var(--navy-dark);font-size:.95rem;margin-bottom:.3rem;}
-.inq-email{font-size:.82rem;color:var(--teal);margin-bottom:.8rem;}
-.inq-msg{font-size:.9rem;color:var(--g600);line-height:1.8;white-space:pre-wrap;}
-.inq-empty{text-align:center;padding:3rem;color:var(--g400);font-size:.95rem;}
-.notion-test{margin-top:1rem;}.notion-test button{padding:.6rem 1.2rem;background:var(--teal);color:var(--white);border:none;border-radius:4px;font-size:.85rem;cursor:pointer;font-family:var(--sans);}
-.notion-result{margin-top:1rem;padding:1rem;background:var(--g100);border-radius:4px;font-size:.82rem;color:var(--g600);display:none;max-height:250px;overflow-y:auto;line-height:1.7;white-space:pre-wrap;}
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--teal);font-size:.88rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;border-radius:4px;}.toast.show{opacity:1;transform:translateY(0);}.toast.err{border-left-color:#e74c3c;}
-@media(max-width:768px){.admin-body{padding:1rem;}.status-bar{flex-direction:column;}}
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #6a6a6a;
+    --ink-muted: #9a9a9a;
+    --paper: #ffffff;
+    --paper-soft: #fafaf7;
+    --line: #e5e3dc;
+    --line-soft: #f0eee8;
+    --accent: #8b6f47;
+    --accent-soft: #f5f0e8;
+    --danger: #c0392b;
+    --success: #2d6a4f;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Pretendard', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper-soft);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+  button { cursor: pointer; }
+  a { color: inherit; }
+
+  /* ── LOGIN ── */
+  .login-screen {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .login-box {
+    width: 100%; max-width: 380px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 48px 40px;
+  }
+  .login-box .brand {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .login-box .subtitle {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    transition: border-color .2s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none;
+    border-color: var(--ink);
+  }
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: opacity .2s;
+  }
+  .btn-primary:hover:not(:disabled) { opacity: 0.85; }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+  .error-msg {
+    color: var(--danger);
+    font-size: 13px;
+    margin-top: 12px;
+    padding: 12px;
+    background: #fdf0ee;
+    border-left: 3px solid var(--danger);
+  }
+
+  /* ── APP LAYOUT ── */
+  .app { display: none; min-height: 100vh; }
+  .app.active { display: block; }
+  .topbar {
+    position: sticky; top: 0; z-index: 30;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .topbar .brand {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .topbar .brand span {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-left: 8px;
+  }
+  .topbar nav { display: flex; gap: 4px; flex: 1; justify-content: center; }
+  .topbar nav button {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-bottom: 2px solid transparent;
+    transition: all .15s;
+  }
+  .topbar nav button:hover { color: var(--ink); }
+  .topbar nav button.active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+    font-weight: 500;
+  }
+  .topbar .user {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .topbar .user button {
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .topbar .user button:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* ── PAGES ── */
+  .page { display: none; padding: 40px 32px 80px; max-width: 1200px; margin: 0 auto; }
+  .page.active { display: block; }
+  .page-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .page-header .actions { display: flex; gap: 12px; }
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    transition: all .15s;
+    letter-spacing: 0.03em;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.btn-fill { background: var(--ink); color: var(--paper); }
+  .btn.btn-fill:hover { background: var(--accent); border-color: var(--accent); }
+  .btn.btn-ghost { border-color: transparent; }
+  .btn.btn-ghost:hover { border-color: var(--line); background: transparent; color: var(--ink); }
+  .btn.btn-danger { border-color: var(--danger); color: var(--danger); }
+  .btn.btn-danger:hover { background: var(--danger); color: white; }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+  /* ── POSTS LIST ── */
+  .toolbar {
+    display: flex; gap: 12px; margin-bottom: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .toolbar input[type="search"] {
+    flex: 1; min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .toolbar select {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .posts-table {
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .posts-table .row {
+    display: grid;
+    grid-template-columns: 1fr 140px 100px 120px 200px;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line-soft);
+    gap: 16px;
+  }
+  .posts-table .row:last-child { border-bottom: none; }
+  .posts-table .row.head {
+    background: var(--paper-soft);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .post-title-cell { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .post-title-cell .ttl {
+    font-weight: 500;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .post-title-cell .slug {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-family: 'SF Mono', Menlo, monospace;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+  }
+  .badge.published { background: #e8f5ee; color: var(--success); }
+  .badge.draft     { background: #f5f0e8; color: var(--accent); }
+  .row-actions { display: flex; gap: 8px; justify-content: flex-end; }
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--ink-soft);
+  }
+  .empty-state p { margin-bottom: 16px; }
+
+  /* ── EDITOR ── */
+  .editor {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    align-items: start;
+  }
+  .editor-main {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 32px;
+  }
+  .editor-side {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 24px;
+    position: sticky;
+    top: 80px;
+  }
+  .editor-side h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-soft);
+    font-weight: 500;
+  }
+  textarea#contentEditor {
+    min-height: 500px;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+  }
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+  .help-text {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0;
+  }
+  .toggle label { font-size: 14px; cursor: pointer; }
+  .toggle input[type="checkbox"] { width: 40px; height: 22px; cursor: pointer; }
+
+  .editor-actions {
+    display: flex; gap: 8px; flex-direction: column;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .editor-actions .btn { width: 100%; }
+
+  /* ── SITE CONTENT ── */
+  .content-list {
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .content-row {
+    display: grid;
+    grid-template-columns: 220px 1fr 100px;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: center;
+  }
+  .content-row:last-child { border-bottom: none; }
+  .content-row .key {
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    word-break: break-all;
+  }
+  .content-row input, .content-row textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    background: var(--paper-soft);
+    font-size: 13px;
+  }
+  .content-row .save-status {
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-align: right;
+  }
+
+  /* ── INQUIRIES ── */
+  .inquiry-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 24px;
+    margin-bottom: 12px;
+  }
+  .inquiry-card.unread { border-left: 3px solid var(--accent); }
+  .inquiry-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .inquiry-name { font-weight: 500; }
+  .inquiry-email { font-size: 13px; color: var(--ink-soft); }
+  .inquiry-date { font-size: 12px; color: var(--ink-muted); }
+  .inquiry-msg {
+    white-space: pre-wrap;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    padding-top: 12px;
+    border-top: 1px solid var(--line-soft);
+    margin-top: 12px;
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    top: 80px; right: 32px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 20px;
+    font-size: 13px;
+    border-radius: 0;
+    transform: translateX(400px);
+    transition: transform .3s;
+    z-index: 100;
+  }
+  .toast.show { transform: translateX(0); }
+  .toast.error { background: var(--danger); }
+  .toast.success { background: var(--success); }
+
+  /* Loading */
+  .loading { padding: 40px; text-align: center; color: var(--ink-soft); }
+
+  @media (max-width: 900px) {
+    .editor { grid-template-columns: 1fr; }
+    .editor-side { position: static; }
+    .posts-table .row { grid-template-columns: 1fr; gap: 8px; }
+    .posts-table .row.head { display: none; }
+    .row-actions { justify-content: flex-start; }
+    .topbar { flex-wrap: wrap; padding: 12px 20px; }
+    .topbar nav { order: 3; flex-basis: 100%; justify-content: flex-start; overflow-x: auto; }
+    .content-row { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<div class="login-wrap" id="loginWrap">
-<div class="login-box">
-<h1>🔐 아트라이앵글 관리자</h1>
-<p>사이트 콘텐츠를 수정하려면 비밀번호를 입력하세요.</p>
-<input type="password" id="pwInput" placeholder="비밀번호" onkeydown="if(event.key==='Enter')doLogin()">
-<button onclick="doLogin()">로그인</button>
-</div>
-</div>
-
-<div class="admin" id="adminWrap">
-<div class="admin-nav">
-<h1>아트라이앵글 관리자</h1>
-<div class="nav-btns">
-<button class="btn-preview" onclick="window.open('/','_blank')">🔗 사이트 보기</button>
-<button class="btn-save" id="saveBtn" onclick="saveAll()">💾 저장하기</button>
-<button class="btn-logout" onclick="doLogout()">로그아웃</button>
-</div>
-</div>
-<div class="admin-body">
-
-<div class="tab-bar">
-<button class="tab-btn active" onclick="switchTab('inquiries',this)">📬 고객 문의</button>
-<button class="tab-btn" onclick="switchTab('blog',this)">📝 블로그 상태</button>
+<!-- ═══ 로그인 화면 ═══ -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
+    <div class="brand">아트라이앵글</div>
+    <div class="subtitle">관리자 로그인</div>
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">이메일</label>
+        <input type="email" id="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-primary" id="loginBtn">로그인</button>
+      <div id="loginError" class="error-msg" style="display:none;"></div>
+    </form>
+  </div>
 </div>
 
-<!-- 고객 문의 탭 -->
-<div class="tab-panel active" id="tab-inquiries">
-<div class="status-bar">
-<div class="status-item"><div class="label">전체 문의</div><div class="val" id="inqCount">로딩 중...</div></div>
-<div class="status-item" id="blogStatus"><div class="label">블로그 (Notion)</div><div class="val">확인 중...</div></div>
-</div>
-<h3 style="font-size:1rem;font-weight:700;color:var(--navy-dark);margin-bottom:1rem;">📬 고객 문의 목록</h3>
-<div id="inqList" class="inq-list"><div class="inq-empty">문의를 불러오는 중...</div></div>
+<!-- ═══ 메인 앱 ═══ -->
+<div id="app" class="app">
+  <div class="topbar">
+    <div class="brand">아트라이앵글<span>Admin</span></div>
+    <nav>
+      <button data-page="posts" class="active">아티클</button>
+      <button data-page="content">사이트 콘텐츠</button>
+      <button data-page="inquiries">문의</button>
+    </nav>
+    <div class="user">
+      <span id="userEmail"></span>
+      <button id="logoutBtn">로그아웃</button>
+    </div>
+  </div>
+
+  <!-- ── 아티클 목록 ── -->
+  <div id="page-posts" class="page active">
+    <div class="page-header">
+      <h1>아티클</h1>
+      <div class="actions">
+        <button class="btn btn-fill" onclick="showEditor()">+ 새 아티클</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input type="search" id="searchInput" placeholder="제목 또는 내용 검색…">
+      <select id="filterStatus">
+        <option value="">전체</option>
+        <option value="published">공개</option>
+        <option value="draft">비공개</option>
+      </select>
+      <select id="filterCategory">
+        <option value="">모든 카테고리</option>
+      </select>
+    </div>
+
+    <div id="postsList" class="posts-table">
+      <div class="loading">불러오는 중…</div>
+    </div>
+  </div>
+
+  <!-- ── 아티클 편집 ── -->
+  <div id="page-editor" class="page">
+    <div class="page-header">
+      <h1 id="editorTitle">아티클 편집</h1>
+      <div class="actions">
+        <button class="btn btn-ghost" onclick="goPosts()">← 목록</button>
+        <a class="btn" id="previewLink" href="#" target="_blank">미리보기</a>
+      </div>
+    </div>
+
+    <div class="editor">
+      <div class="editor-main">
+        <div class="field">
+          <label>제목 *</label>
+          <input type="text" id="postTitle" required>
+        </div>
+        <div class="field">
+          <label>슬러그 (URL) *</label>
+          <input type="text" id="postSlug" required pattern="[a-z0-9\-]+" placeholder="예: aging-is-everyones-future">
+          <p class="help-text">artryangle.kr/blog/<strong id="slugPreview">슬러그</strong> 형태로 표시돼. 영문 소문자, 숫자, 하이픈만 사용.</p>
+        </div>
+        <div class="field">
+          <label>요약 (검색 결과에 표시)</label>
+          <textarea id="postExcerpt" maxlength="160" placeholder="구글/네이버 검색 결과에 표시되는 짧은 설명. 1-2 문장."></textarea>
+          <p class="help-text"><span id="excerptCount">0</span> / 160자</p>
+        </div>
+        <div class="field">
+          <label>본문</label>
+          <textarea id="contentEditor" placeholder="마크다운 또는 HTML 사용 가능"></textarea>
+          <p class="help-text">마크다운 사용 가능: <code># 제목</code>, <code>**굵게**</code>, <code>*기울임*</code>, <code>[링크](url)</code>, <code>![이미지](url)</code></p>
+        </div>
+      </div>
+
+      <aside class="editor-side">
+        <h3>발행 설정</h3>
+        <div class="toggle">
+          <label for="postPublished">공개</label>
+          <input type="checkbox" id="postPublished">
+        </div>
+
+        <h3 style="margin-top: 24px;">분류</h3>
+        <div class="field">
+          <label>카테고리</label>
+          <input type="text" id="postCategory" list="categoryList" placeholder="예술경영">
+          <datalist id="categoryList"></datalist>
+        </div>
+        <div class="field">
+          <label>태그 (쉼표로 구분)</label>
+          <input type="text" id="postTags" placeholder="예술, 비즈니스, 컨설팅">
+        </div>
+
+        <h3 style="margin-top: 24px;">대표 이미지</h3>
+        <div class="field">
+          <input type="text" id="postCover" placeholder="이미지 URL">
+          <p class="help-text">검색 결과 및 SNS 공유 시 표시. 1200×630px 권장.</p>
+        </div>
+        <div id="coverPreview" style="margin-top:8px;"></div>
+
+        <div class="editor-actions">
+          <button class="btn btn-fill" id="saveBtn" onclick="savePost()">저장</button>
+          <button class="btn btn-danger" id="deleteBtn" onclick="deletePost()" style="display:none;">삭제</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ── 사이트 콘텐츠 ── -->
+  <div id="page-content" class="page">
+    <div class="page-header">
+      <h1>사이트 콘텐츠</h1>
+      <div class="actions">
+        <button class="btn" onclick="addContentRow()">+ 항목 추가</button>
+      </div>
+    </div>
+    <p style="color: var(--ink-soft); margin-bottom: 24px; font-size: 14px;">
+      홈페이지의 텍스트들 (소개, 서비스 설명, 포트폴리오 등). 변경 후 자동 저장됩니다.
+    </p>
+    <div id="contentList" class="content-list">
+      <div class="loading">불러오는 중…</div>
+    </div>
+  </div>
+
+  <!-- ── 문의 ── -->
+  <div id="page-inquiries" class="page">
+    <div class="page-header">
+      <h1>받은 문의</h1>
+    </div>
+    <div id="inquiriesList">
+      <div class="loading">불러오는 중…</div>
+    </div>
+  </div>
 </div>
 
-<!-- 블로그 상태 탭 -->
-<div class="tab-panel" id="tab-blog">
-<div class="card">
-<div class="card-header open" onclick="toggleCard(this)">📝 노션 블로그 진단 <span class="arrow">▼</span></div>
-<div class="card-body open">
-<p style="font-size:.88rem;color:var(--g600);line-height:1.8;margin-bottom:1rem;">노션 블로그 API 연결 상태를 확인합니다. 오류가 있으면 Vercel 환경변수(NOTION_TOKEN, NOTION_DB_ID)를 확인하세요.</p>
-<div class="notion-test">
-<button onclick="testNotion(false)">🔍 블로그 API 테스트</button>
-<button onclick="testNotion(true)" style="background:var(--navy);margin-left:.5rem;">🔧 속성명 디버그</button>
-</div>
-<div class="notion-result" id="notionResult"></div>
-</div>
-</div>
-</div>
+<div id="toast" class="toast"></div>
 
-</div>
-</div>
-
-<div class="toast" id="toast"></div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-let adminPw='';
-function doLogin(){adminPw=document.getElementById('pwInput').value;if(!adminPw)return;document.getElementById('loginWrap').style.display='none';document.getElementById('adminWrap').style.display='block';loadInquiries();checkBlog();}
-function doLogout(){adminPw='';document.getElementById('loginWrap').style.display='flex';document.getElementById('adminWrap').style.display='none';}
-function toggleCard(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
-function switchTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id)?.classList.add('active');btn.classList.add('active');}
-function showToast(m,isErr){const t=document.getElementById('toast');t.textContent=m;t.className='toast show'+(isErr?' err':'');setTimeout(()=>t.className='toast',3500);}
+// ════════════════════════════════════════════════════
+// 초기화 & 인증
+// ════════════════════════════════════════════════════
+let supabase = null;
+let currentUser = null;
+let allPosts = [];
+let editingPostId = null;
 
-async function loadInquiries(){
-  try{
-    const r=await fetch('/api/contact?pw='+encodeURIComponent(adminPw));
-    const d=await r.json();
-    if(d.error){document.getElementById('inqList').innerHTML='<div class="inq-empty">오류: '+d.error+'</div>';return;}
-    const list=d.inquiries||[];
-    document.getElementById('inqCount').textContent=list.length+'건';
-    if(!list.length){document.getElementById('inqList').innerHTML='<div class="inq-empty">아직 문의가 없습니다.</div>';return;}
-    document.getElementById('inqList').innerHTML=list.map(q=>{
-      const dt=q.created_at?new Date(q.created_at).toLocaleString('ko-KR'):'';
-      return '<div class="inq-card'+(q.is_read?'':' unread')+'"><div class="inq-meta"><span>'+dt+'</span></div><div class="inq-name">'+esc(q.name)+'</div>'+(q.email?'<div class="inq-email">'+esc(q.email)+'</div>':'')+'<div class="inq-msg">'+esc(q.message)+'</div></div>';
-    }).join('');
-  }catch(e){document.getElementById('inqList').innerHTML='<div class="inq-empty">네트워크 오류</div>';}
-}
-function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-
-async function saveAll(){showToast('저장 기능은 콘텐츠 편집 탭에서 사용됩니다.');}
-
-async function checkBlog(){
-  const el=document.getElementById('blogStatus');
-  try{const r=await fetch('/api/notion-blog');const d=await r.json();
-    if(d.posts&&d.posts.length>0){el.className='status-item';el.querySelector('.val').textContent='정상 ('+d.posts.length+'개 글)';}
-    else if(d.error){el.className='status-item error';el.querySelector('.val').textContent='오류';}
-    else{el.querySelector('.val').textContent='연결됨 (글 0개)';}
-  }catch(e){el.className='status-item error';el.querySelector('.val').textContent='API 연결 실패';}
+async function initSupabase() {
+  try {
+    const cfg = await fetch('/api/config').then(r => r.json());
+    supabase = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+    return true;
+  } catch (e) {
+    console.error('Supabase 초기화 실패', e);
+    return false;
+  }
 }
 
-async function testNotion(debug){
-  const el=document.getElementById('notionResult');el.style.display='block';el.textContent='테스트 중...';
-  try{const r=await fetch('/api/notion-blog'+(debug?'?debug=1':''));const d=await r.json();el.textContent=JSON.stringify(d,null,2);}
-  catch(e){el.textContent='오류: '+e.message;}
+async function checkAuth() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) {
+    currentUser = session.user;
+    document.getElementById('userEmail').textContent = currentUser.email;
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').classList.add('active');
+    await loadAll();
+  } else {
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('app').classList.remove('active');
+  }
 }
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const errEl = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = '로그인 중…';
+  errEl.style.display = 'none';
+
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  btn.disabled = false; btn.textContent = '로그인';
+  if (error) {
+    errEl.textContent = error.message.includes('Invalid')
+      ? '이메일 또는 비밀번호가 잘못되었습니다.'
+      : '로그인 실패: ' + error.message;
+    errEl.style.display = 'block';
+    return;
+  }
+  await checkAuth();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  location.reload();
+});
+
+// ════════════════════════════════════════════════════
+// 페이지 라우팅
+// ════════════════════════════════════════════════════
+document.querySelectorAll('.topbar nav button').forEach(btn => {
+  btn.addEventListener('click', () => switchPage(btn.dataset.page));
+});
+
+function switchPage(name) {
+  document.querySelectorAll('.topbar nav button').forEach(b => {
+    b.classList.toggle('active', b.dataset.page === name);
+  });
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) target.classList.add('active');
+  if (name === 'inquiries') loadInquiries();
+  if (name === 'content') loadSiteContent();
+}
+
+function goPosts() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-posts').classList.add('active');
+  document.querySelectorAll('.topbar nav button').forEach(b => {
+    b.classList.toggle('active', b.dataset.page === 'posts');
+  });
+}
+
+// ════════════════════════════════════════════════════
+// 토스트 알림
+// ════════════════════════════════════════════════════
+function toast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.className = 'toast ' + type + ' show';
+  t.textContent = msg;
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ════════════════════════════════════════════════════
+// 아티클 목록
+// ════════════════════════════════════════════════════
+async function loadPosts() {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .order('created_at', { ascending: false });
+  if (error) { toast('불러오기 실패: ' + error.message, 'error'); return; }
+  allPosts = data || [];
+
+  // 카테고리 옵션 채우기
+  const categories = [...new Set(allPosts.map(p => p.category).filter(Boolean))];
+  const catSelect = document.getElementById('filterCategory');
+  catSelect.innerHTML = '<option value="">모든 카테고리</option>' +
+    categories.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+  document.getElementById('categoryList').innerHTML =
+    categories.map(c => `<option value="${escapeHtml(c)}">`).join('');
+
+  renderPosts();
+}
+
+function renderPosts() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const status = document.getElementById('filterStatus').value;
+  const category = document.getElementById('filterCategory').value;
+
+  let filtered = allPosts;
+  if (search) {
+    filtered = filtered.filter(p =>
+      (p.title || '').toLowerCase().includes(search) ||
+      (p.excerpt || '').toLowerCase().includes(search) ||
+      (p.content || '').toLowerCase().includes(search) ||
+      (p.slug || '').toLowerCase().includes(search)
+    );
+  }
+  if (status === 'published') filtered = filtered.filter(p => p.published);
+  if (status === 'draft') filtered = filtered.filter(p => !p.published);
+  if (category) filtered = filtered.filter(p => p.category === category);
+
+  const list = document.getElementById('postsList');
+  if (!filtered.length) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <p>${allPosts.length === 0 ? '아직 아티클이 없습니다.' : '검색 결과가 없습니다.'}</p>
+        ${allPosts.length === 0 ? '<button class="btn" onclick="showEditor()">+ 첫 아티클 작성</button>' : ''}
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = `
+    <div class="row head">
+      <div>제목 / 슬러그</div>
+      <div>카테고리</div>
+      <div>상태</div>
+      <div>작성일</div>
+      <div></div>
+    </div>` + filtered.map(p => `
+    <div class="row">
+      <div class="post-title-cell">
+        <div class="ttl">${escapeHtml(p.title || '제목 없음')}</div>
+        <div class="slug">${escapeHtml(p.slug || '— 슬러그 없음')}</div>
+      </div>
+      <div style="font-size:13px;color:var(--ink-soft);">${escapeHtml(p.category || '-')}</div>
+      <div>
+        <span class="badge ${p.published ? 'published' : 'draft'}">
+          ${p.published ? '공개' : '비공개'}
+        </span>
+      </div>
+      <div style="font-size:13px;color:var(--ink-soft);">${formatDate(p.created_at)}</div>
+      <div class="row-actions">
+        ${p.published && p.slug ? `<a class="btn btn-sm btn-ghost" href="/blog/${encodeURIComponent(p.slug)}" target="_blank">보기</a>` : ''}
+        <button class="btn btn-sm" onclick="editPost('${p.id}')">편집</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('searchInput').addEventListener('input', renderPosts);
+document.getElementById('filterStatus').addEventListener('change', renderPosts);
+document.getElementById('filterCategory').addEventListener('change', renderPosts);
+
+// ════════════════════════════════════════════════════
+// 아티클 편집
+// ════════════════════════════════════════════════════
+function showEditor(post = null) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-editor').classList.add('active');
+
+  editingPostId = post ? post.id : null;
+  document.getElementById('editorTitle').textContent = post ? '아티클 편집' : '새 아티클';
+  document.getElementById('postTitle').value = post?.title || '';
+  document.getElementById('postSlug').value = post?.slug || '';
+  document.getElementById('postExcerpt').value = post?.excerpt || '';
+  document.getElementById('contentEditor').value = post?.content || '';
+  document.getElementById('postCategory').value = post?.category || '예술경영';
+  document.getElementById('postTags').value = (post?.tags || []).join(', ');
+  document.getElementById('postCover').value = post?.cover_url || '';
+  document.getElementById('postPublished').checked = !!post?.published;
+  document.getElementById('deleteBtn').style.display = post ? 'block' : 'none';
+
+  updateExcerptCount();
+  updateSlugPreview();
+  updateCoverPreview();
+  updatePreviewLink();
+}
+
+function editPost(id) {
+  const post = allPosts.find(p => p.id === id);
+  if (post) showEditor(post);
+}
+
+document.getElementById('postExcerpt').addEventListener('input', updateExcerptCount);
+document.getElementById('postSlug').addEventListener('input', () => { updateSlugPreview(); updatePreviewLink(); });
+document.getElementById('postCover').addEventListener('input', updateCoverPreview);
+document.getElementById('postTitle').addEventListener('input', autoSlug);
+
+function updateExcerptCount() {
+  const v = document.getElementById('postExcerpt').value;
+  document.getElementById('excerptCount').textContent = v.length;
+}
+function updateSlugPreview() {
+  document.getElementById('slugPreview').textContent =
+    document.getElementById('postSlug').value || '슬러그';
+}
+function updateCoverPreview() {
+  const url = document.getElementById('postCover').value.trim();
+  const box = document.getElementById('coverPreview');
+  box.innerHTML = url
+    ? `<img src="${escapeHtml(url)}" style="width:100%;border:1px solid var(--line);" onerror="this.style.display='none'">`
+    : '';
+}
+function updatePreviewLink() {
+  const slug = document.getElementById('postSlug').value.trim();
+  const link = document.getElementById('previewLink');
+  if (slug) {
+    link.href = '/blog/' + encodeURIComponent(slug);
+    link.style.opacity = 1;
+    link.style.pointerEvents = 'auto';
+  } else {
+    link.href = '#';
+    link.style.opacity = 0.4;
+    link.style.pointerEvents = 'none';
+  }
+}
+function autoSlug() {
+  const slugInput = document.getElementById('postSlug');
+  if (editingPostId) return; // 편집 중에는 자동 생성 안함
+  if (slugInput.dataset.touched) return;
+  const title = document.getElementById('postTitle').value;
+  slugInput.value = generateSlug(title);
+  updateSlugPreview();
+  updatePreviewLink();
+}
+document.getElementById('postSlug').addEventListener('input', () => {
+  document.getElementById('postSlug').dataset.touched = '1';
+});
+
+function generateSlug(title) {
+  return (title || '')
+    .toLowerCase()
+    .replace(/[^\w\s\uAC00-\uD7AF-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .substring(0, 60);
+}
+
+async function savePost() {
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true; btn.textContent = '저장 중…';
+
+  const tagsRaw = document.getElementById('postTags').value;
+  const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
+
+  const payload = {
+    title: document.getElementById('postTitle').value.trim(),
+    slug: document.getElementById('postSlug').value.trim().toLowerCase(),
+    excerpt: document.getElementById('postExcerpt').value.trim(),
+    content: document.getElementById('contentEditor').value,
+    category: document.getElementById('postCategory').value.trim() || '예술경영',
+    tags: tags.length ? tags : null,
+    cover_url: document.getElementById('postCover').value.trim() || null,
+    published: document.getElementById('postPublished').checked,
+    updated_at: new Date().toISOString()
+  };
+
+  if (!payload.title || !payload.slug) {
+    toast('제목과 슬러그는 필수입니다', 'error');
+    btn.disabled = false; btn.textContent = '저장';
+    return;
+  }
+  if (!/^[a-z0-9가-힣\-]+$/.test(payload.slug)) {
+    toast('슬러그는 소문자/숫자/한글/하이픈만 사용 가능', 'error');
+    btn.disabled = false; btn.textContent = '저장';
+    return;
+  }
+
+  let result;
+  if (editingPostId) {
+    result = await supabase.from('posts').update(payload).eq('id', editingPostId);
+  } else {
+    result = await supabase.from('posts').insert(payload);
+  }
+
+  btn.disabled = false; btn.textContent = '저장';
+
+  if (result.error) {
+    if (result.error.message.includes('duplicate') || result.error.message.includes('unique')) {
+      toast('이미 사용 중인 슬러그입니다. 다른 슬러그를 입력해주세요.', 'error');
+    } else {
+      toast('저장 실패: ' + result.error.message, 'error');
+    }
+    return;
+  }
+
+  toast('저장됨', 'success');
+  await loadPosts();
+  goPosts();
+}
+
+async function deletePost() {
+  if (!editingPostId) return;
+  const post = allPosts.find(p => p.id === editingPostId);
+  if (!confirm(`"${post?.title}" 을(를) 정말 삭제하시겠습니까?\n이 작업은 취소할 수 없어요.`)) return;
+  const { error } = await supabase.from('posts').delete().eq('id', editingPostId);
+  if (error) { toast('삭제 실패: ' + error.message, 'error'); return; }
+  toast('삭제됨', 'success');
+  await loadPosts();
+  goPosts();
+}
+
+// ════════════════════════════════════════════════════
+// 사이트 콘텐츠
+// ════════════════════════════════════════════════════
+let contentSaveTimers = {};
+async function loadSiteContent() {
+  const { data, error } = await supabase
+    .from('site_content')
+    .select('*')
+    .order('key');
+  if (error) { toast('불러오기 실패: ' + error.message, 'error'); return; }
+
+  const list = document.getElementById('contentList');
+  if (!data || !data.length) {
+    list.innerHTML = '<div class="empty-state"><p>아직 콘텐츠가 없습니다.</p></div>';
+    return;
+  }
+
+  list.innerHTML = data.map(item => {
+    const isLong = (item.value || '').length > 80;
+    return `
+      <div class="content-row" data-key="${escapeHtml(item.key)}">
+        <div class="key">${escapeHtml(item.key)}</div>
+        <div>${isLong
+          ? `<textarea data-key="${escapeHtml(item.key)}">${escapeHtml(item.value || '')}</textarea>`
+          : `<input type="text" data-key="${escapeHtml(item.key)}" value="${escapeHtml(item.value || '')}">`}</div>
+        <div class="save-status" data-status-key="${escapeHtml(item.key)}"></div>
+      </div>
+    `;
+  }).join('');
+
+  list.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.addEventListener('input', () => debouncedSaveContent(el));
+    }
+  });
+}
+
+function debouncedSaveContent(el) {
+  const key = el.dataset.key;
+  const status = document.querySelector(`[data-status-key="${CSS.escape(key)}"]`);
+  if (status) status.textContent = '입력 중…';
+  clearTimeout(contentSaveTimers[key]);
+  contentSaveTimers[key] = setTimeout(() => saveContentItem(key, el.value, status), 800);
+}
+
+async function saveContentItem(key, value, status) {
+  if (status) status.textContent = '저장 중…';
+  const { error } = await supabase
+    .from('site_content')
+    .update({ value })
+    .eq('key', key);
+  if (error) {
+    if (status) status.textContent = '실패';
+    toast('저장 실패: ' + error.message, 'error');
+    return;
+  }
+  if (status) {
+    status.textContent = '저장됨 ✓';
+    setTimeout(() => { if (status.textContent === '저장됨 ✓') status.textContent = ''; }, 2000);
+  }
+}
+
+async function addContentRow() {
+  const key = prompt('새 콘텐츠 키 (예: hero_title, about_intro):');
+  if (!key) return;
+  const value = prompt('값:') || '';
+  const { error } = await supabase.from('site_content').insert({ key, value });
+  if (error) { toast('추가 실패: ' + error.message, 'error'); return; }
+  toast('추가됨', 'success');
+  await loadSiteContent();
+}
+
+// ════════════════════════════════════════════════════
+// 문의
+// ════════════════════════════════════════════════════
+async function loadInquiries() {
+  const { data, error } = await supabase
+    .from('contact_inquiries')
+    .select('*')
+    .order('created_at', { ascending: false });
+  if (error) { toast('불러오기 실패: ' + error.message, 'error'); return; }
+
+  const list = document.getElementById('inquiriesList');
+  if (!data || !data.length) {
+    list.innerHTML = '<div class="empty-state"><p>아직 받은 문의가 없습니다.</p></div>';
+    return;
+  }
+
+  list.innerHTML = data.map(it => `
+    <div class="inquiry-card ${it.is_read ? '' : 'unread'}">
+      <div class="inquiry-head">
+        <div>
+          <div class="inquiry-name">${escapeHtml(it.name || '익명')}</div>
+          <div class="inquiry-email">${escapeHtml(it.email || '')}</div>
+        </div>
+        <div class="inquiry-date">
+          ${formatDate(it.created_at)}
+          ${!it.is_read ? '<button class="btn btn-sm btn-ghost" onclick="markRead(' + it.id + ')" style="margin-left:8px;">읽음 처리</button>' : ''}
+        </div>
+      </div>
+      <div class="inquiry-msg">${escapeHtml(it.message || '')}</div>
+    </div>
+  `).join('');
+}
+
+async function markRead(id) {
+  const { error } = await supabase.from('contact_inquiries').update({ is_read: true }).eq('id', id);
+  if (error) { toast('실패: ' + error.message, 'error'); return; }
+  await loadInquiries();
+}
+
+// ════════════════════════════════════════════════════
+// 유틸
+// ════════════════════════════════════════════════════
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+}
+
+async function loadAll() {
+  await loadPosts();
+}
+
+// ════════════════════════════════════════════════════
+// 시작
+// ════════════════════════════════════════════════════
+(async () => {
+  const ok = await initSupabase();
+  if (!ok) {
+    document.body.innerHTML = '<div class="login-screen"><div class="login-box"><div class="brand">설정 오류</div><p style="text-align:center;color:var(--ink-soft);">Supabase 연결 실패. /api/config 가 작동 중인지 확인해주세요.</p></div></div>';
+    return;
+  }
+  await checkAuth();
+  supabase.auth.onAuthStateChange((_event, session) => {
+    if (!session && currentUser) location.reload();
+  });
+})();
 </script>
+
 </body>
 </html>
