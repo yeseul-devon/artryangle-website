@@ -1,8 +1,7 @@
 {
   "rewrites": [
     { "source": "/blog/:slug", "destination": "/api/blog-post?slug=:slug" },
-    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
-    { "source": "/robots.txt", "destination": "/api/robots" }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap-feed" }
   ],
   "headers": [
     {
@@ -12,15 +11,10 @@
       ]
     },
     {
-      "source": "/api/sitemap",
+      "source": "/api/sitemap-feed",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" }
-      ]
-    },
-    {
-      "source": "/api/robots",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
       ]
     },
     {

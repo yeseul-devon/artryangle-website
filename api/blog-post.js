@@ -1,14 +1,39 @@
 // /api/blog-post.js
-// 개별 블로그 글 페이지를 SEO 친화적 HTML로 렌더링.
-// vercel.json: /blog/:slug → /api/blog-post?slug=:slug
-
-const { createClient } = require('@supabase/supabase-js');
+// 개별 블로그 글 페이지 - 외부 라이브러리 없이 fetch로 Supabase 직접 호출
 
 const SUPABASE_URL = 'https://kwhrwbnfwoybdmdzmmko.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
 const SITE_URL = 'https://www.artryangle.kr';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+async function fetchPost(slug) {
+  // 1차: slug 매칭
+  const url1 = `${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=*`;
+  const r1 = await fetch(url1, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+  if (r1.ok) {
+    const d = await r1.json();
+    if (d && d.length) return d[0];
+  }
+
+  // 2차 fallback: id 또는 notion_id
+  const url2 = `${SUPABASE_URL}/rest/v1/posts?or=(id.eq.${encodeURIComponent(slug)},notion_id.eq.${encodeURIComponent(slug)})&published=eq.true&select=*`;
+  const r2 = await fetch(url2, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+  if (r2.ok) {
+    const d = await r2.json();
+    if (d && d.length) return d[0];
+  }
+
+  return null;
+}
 
 const escapeHtml = (str) => {
   if (str === null || str === undefined) return '';
@@ -149,12 +174,7 @@ ${cover ? `<meta name="twitter:image" content="${cover}">` : ''}
 <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
 
 <style>
-  :root {
-    --ink: #1a1a1a; --ink-soft: #4a4a4a; --paper: #fafaf7;
-    --line: #e5e3dc; --accent: #8b6f47;
-    --serif: 'Cormorant Garamond', 'Pretendard', serif;
-    --sans: 'Pretendard', -apple-system, sans-serif;
-  }
+  :root { --ink: #1a1a1a; --ink-soft: #4a4a4a; --paper: #fafaf7; --line: #e5e3dc; --accent: #8b6f47; --serif: 'Cormorant Garamond', 'Pretendard', serif; --sans: 'Pretendard', -apple-system, sans-serif; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
@@ -256,22 +276,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    let { data: post } = await supabase
-      .from('posts')
-      .select('*')
-      .eq('slug', slug)
-      .eq('published', true)
-      .maybeSingle();
-
-    if (!post) {
-      const fallback = await supabase
-        .from('posts')
-        .select('*')
-        .or(`id.eq.${slug},notion_id.eq.${slug}`)
-        .eq('published', true)
-        .maybeSingle();
-      post = fallback.data;
-    }
+    const post = await fetchPost(slug);
 
     if (!post) {
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
