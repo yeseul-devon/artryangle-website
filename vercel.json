@@ -1,12 +1,12 @@
 {
   "rewrites": [
-    { "source": "/blog/:slug", "destination": "/api/blog/:slug" },
+    { "source": "/blog/:slug", "destination": "/api/blog-post?slug=:slug" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/robots.txt", "destination": "/api/robots" }
   ],
   "headers": [
     {
-      "source": "/api/blog/(.*)",
+      "source": "/api/blog-post",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=300, stale-while-revalidate=86400" }
       ]
