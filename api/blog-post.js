@@ -174,10 +174,10 @@ ${cover ? `<meta name="twitter:image" content="${cover}">` : ''}
 <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
 
 <style>
-  :root { --ink: #1a1a1a; --ink-soft: #4a4a4a; --paper: #fafaf7; --line: #e5e3dc; --accent: #8b6f47; --serif: 'Cormorant Garamond', 'Pretendard', serif; --sans: 'Pretendard', -apple-system, sans-serif; }
+  :root { --ink: #1a1a1a; --ink-soft: #4a4a4a; --paper: #fafaf7; --line: #e5e3dc; --accent: #8b6f47; --serif: 'Cormorant Garamond', 'Pretendard', serif; --sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.75; font-size: 17px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; word-break: keep-all; overflow-wrap: break-word; }
   .topnav { position: sticky; top: 0; z-index: 50; background: rgba(250, 250, 247, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
   .topnav a.logo { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
   .topnav .back { font-size: 14px; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
@@ -186,28 +186,61 @@ ${cover ? `<meta name="twitter:image" content="${cover}">` : ''}
   .meta { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--ink-soft); margin-bottom: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
   .meta .category { color: var(--accent); font-weight: 500; }
   .meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-soft); }
-  h1.title { font-family: var(--serif); font-size: clamp(32px, 5vw, 52px); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 32px; }
-  .excerpt { font-size: 19px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--line); font-weight: 300; }
+  h1.title { font-family: var(--serif); font-size: clamp(28px, 5vw, 52px); font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 32px; }
+  .excerpt { font-size: 19px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--line); font-weight: 400; }
   .cover { width: 100%; margin: 32px 0 56px; border-radius: 4px; overflow: hidden; }
   .cover img { width: 100%; height: auto; display: block; }
   .content { font-size: 17px; }
-  .content h2 { font-family: var(--serif); font-size: 30px; font-weight: 500; margin: 56px 0 20px; line-height: 1.3; }
-  .content h3 { font-size: 22px; font-weight: 600; margin: 40px 0 16px; }
-  .content p { margin-bottom: 24px; }
-  .content ul, .content ol { margin: 0 0 24px 24px; }
-  .content li { margin-bottom: 8px; }
-  .content blockquote { border-left: 3px solid var(--accent); padding: 4px 24px; margin: 32px 0; color: var(--ink-soft); font-style: italic; }
-  .content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-  .content img { max-width: 100%; height: auto; border-radius: 4px; margin: 32px 0; }
-  .content code { background: #efece4; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
-  .content pre { background: #1a1a1a; color: #e5e3dc; padding: 24px; border-radius: 6px; overflow-x: auto; margin: 32px 0; }
-  .content pre code { background: none; padding: 0; color: inherit; }
+  .content h2 { font-family: var(--serif); font-size: 30px; font-weight: 600; margin: 56px 0 20px; line-height: 1.3; color: var(--ink); }
+  .content h3 { font-size: 21px; font-weight: 600; margin: 40px 0 16px; line-height: 1.4; }
+  .content p { margin-bottom: 22px; }
+  .content strong { font-weight: 700; color: var(--ink); }
+  .content em { font-style: italic; }
+  .content ul, .content ol { margin: 0 0 24px 1.4em; padding-left: 0.2em; }
+  .content li { margin-bottom: 10px; line-height: 1.75; }
+  .content li > strong { color: var(--ink); }
+  .content blockquote { border-left: 3px solid var(--accent); padding: 8px 20px; margin: 32px 0; color: var(--ink-soft); font-style: italic; background: rgba(139, 111, 71, 0.05); border-radius: 0 4px 4px 0; }
+  .content blockquote p { margin-bottom: 0; }
+  .content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; word-break: break-all; }
+  .content img { max-width: 100%; height: auto; border-radius: 6px; margin: 32px 0; display: block; }
+  .content hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  .content code { background: #efece4; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; word-break: break-all; }
+  .content pre { background: #1a1a1a; color: #e5e3dc; padding: 24px; border-radius: 6px; overflow-x: auto; margin: 32px 0; font-size: 14px; }
+  .content pre code { background: none; padding: 0; color: inherit; word-break: normal; }
   .tags { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line); }
   .tag { display: inline-block; font-size: 12px; color: var(--ink-soft); padding: 4px 12px; border: 1px solid var(--line); border-radius: 100px; margin-right: 8px; margin-bottom: 8px; }
   .footer-back { max-width: 720px; margin: 0 auto; padding: 0 32px 80px; text-align: center; }
   .footer-back a { display: inline-block; padding: 14px 32px; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; font-size: 14px; letter-spacing: 0.05em; transition: all .2s; }
   .footer-back a:hover { background: var(--ink); color: var(--paper); }
-  @media (max-width: 640px) { .topnav { padding: 14px 20px; } article { padding: 48px 20px 80px; } .excerpt { font-size: 17px; } }
+  @media (max-width: 768px) {
+    body { font-size: 16.5px; line-height: 1.8; }
+    .topnav { padding: 12px 18px; }
+    .topnav a.logo { font-size: 19px; }
+    .topnav .back { font-size: 13px; }
+    article { padding: 36px 20px 64px; }
+    .meta { font-size: 11px; gap: 10px; margin-bottom: 18px; letter-spacing: 0.08em; }
+    h1.title { font-size: 26px; line-height: 1.3; margin-bottom: 20px; letter-spacing: -0.005em; }
+    .excerpt { font-size: 16px; line-height: 1.7; margin-bottom: 32px; padding-bottom: 24px; }
+    .cover { margin: 20px -20px 36px; border-radius: 0; }
+    .content { font-size: 16.5px; }
+    .content h2 { font-size: 22px; margin: 40px 0 14px; line-height: 1.35; }
+    .content h3 { font-size: 18px; margin: 28px 0 12px; }
+    .content p { margin-bottom: 18px; }
+    .content ul, .content ol { margin-left: 1.2em; }
+    .content li { margin-bottom: 8px; line-height: 1.75; }
+    .content blockquote { margin: 24px -4px; padding: 12px 18px; font-size: 16px; line-height: 1.75; }
+    .content img { margin: 24px -20px; max-width: calc(100% + 40px); width: calc(100% + 40px); border-radius: 0; }
+    .content hr { margin: 28px 0; }
+    .content pre { margin: 24px -20px; border-radius: 0; padding: 18px 20px; font-size: 13px; }
+    .tags { margin-top: 44px; padding-top: 24px; }
+    .footer-back { padding: 0 20px 56px; }
+    .footer-back a { padding: 12px 24px; font-size: 13px; }
+  }
+  @media (max-width: 420px) {
+    h1.title { font-size: 23px; }
+    .content h2 { font-size: 20px; }
+    .content h3 { font-size: 17px; }
+  }
 </style>
 </head>
 <body>
