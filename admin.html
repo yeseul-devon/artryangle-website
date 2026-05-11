@@ -528,8 +528,12 @@
         <h3 style="margin-top: 24px;">분류</h3>
         <div class="field">
           <label>카테고리</label>
-          <input type="text" id="postCategory" list="categoryList" placeholder="예술경영">
-          <datalist id="categoryList"></datalist>
+          <input type="text" id="postCategory" list="categoryList" placeholder="issue and trend">
+          <datalist id="categoryList">
+            <option value="issue and trend">
+            <option value="insight">
+          </datalist>
+          <p class="help-text">기본은 <code>issue and trend</code> / <code>insight</code>. 다른 카테고리도 자유롭게 적을 수 있어.</p>
         </div>
         <div class="field">
           <label>태그 (쉼표로 구분)</label>
@@ -683,12 +687,15 @@ async function loadPosts() {
   if (error) { toast('불러오기 실패: ' + error.message, 'error'); return; }
   allPosts = data || [];
 
-  const categories = [...new Set(allPosts.map(p => p.category).filter(Boolean))];
+  const PRIMARY = ['issue and trend', 'insight'];
+  const existing = [...new Set(allPosts.map(p => p.category).filter(Boolean))];
+  // 우선 카테고리는 항상 노출. 기존 카테고리는 뒤에 이어 붙임.
+  const ordered = [...PRIMARY, ...existing.filter(c => !PRIMARY.includes(c))];
   const catSelect = document.getElementById('filterCategory');
   catSelect.innerHTML = '<option value="">모든 카테고리</option>' +
-    categories.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    ordered.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
   document.getElementById('categoryList').innerHTML =
-    categories.map(c => `<option value="${escapeHtml(c)}">`).join('');
+    ordered.map(c => `<option value="${escapeHtml(c)}">`).join('');
 
   renderPosts();
 }
@@ -763,7 +770,7 @@ function showEditor(post = null) {
   document.getElementById('postSlug').value = post?.slug || '';
   document.getElementById('postExcerpt').value = post?.excerpt || '';
   document.getElementById('contentEditor').value = post?.content || '';
-  document.getElementById('postCategory').value = post?.category || '예술경영';
+  document.getElementById('postCategory').value = post?.category || 'issue and trend';
   document.getElementById('postTags').value = (post?.tags || []).join(', ');
   document.getElementById('postCover').value = post?.cover_url || '';
   document.getElementById('postPublished').checked = !!post?.published;
@@ -847,7 +854,7 @@ async function savePost() {
     slug: document.getElementById('postSlug').value.trim().toLowerCase(),
     excerpt: document.getElementById('postExcerpt').value.trim(),
     content: document.getElementById('contentEditor').value,
-    category: document.getElementById('postCategory').value.trim() || '예술경영',
+    category: document.getElementById('postCategory').value.trim() || 'issue and trend',
     tags: tags.length ? tags : null,
     cover_url: document.getElementById('postCover').value.trim() || null,
     published: document.getElementById('postPublished').checked,

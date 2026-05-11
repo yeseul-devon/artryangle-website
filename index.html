@@ -6,11 +6,15 @@
   <meta name="naver-site-verification" content="a0ab23277fd09588b906aae25c34cd1388485db5" />
     <meta name="google-site-verification" content="vGduQQgdIhsvP3-F49H9uciHaY-fQ_UOSN4T1OeHnA8" />
 <title>아트라이앵글 | 문화예술경영컨설턴트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-:root{--teal:#2AABAA;--teal-dark:#1d8a89;--teal-light:#e6f7f7;--navy:#1e3a5f;--navy-dark:#122540;--white:#fff;--off-white:#f7f9f9;--g100:#f0f4f4;--g200:#dde6e6;--g400:#9ab0b0;--g600:#4a6464;--g800:#1e3232;--serif:'Noto Serif KR',serif;--sans:'Noto Sans KR',sans-serif;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--white);color:var(--g800);overflow-x:hidden;font-size:16px;line-height:1.7;}
+:root{--teal:#2AABAA;--teal-dark:#1d8a89;--teal-light:#e6f7f7;--navy:#1e3a5f;--navy-dark:#122540;--white:#fff;--off-white:#f7f9f9;--g100:#f0f4f4;--g200:#dde6e6;--g400:#9ab0b0;--g600:#4a6464;--g800:#1e3232;--serif:'Noto Serif KR','Pretendard',serif;--sans:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:var(--sans);background:var(--white);color:var(--g800);overflow-x:hidden;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;word-break:keep-all;overflow-wrap:break-word;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:72px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--g200);}
 .nav-logo{cursor:pointer;display:flex;align-items:center;}.nav-logo img{height:40px;}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
@@ -70,7 +74,138 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .efw{background:var(--white);border:1px solid var(--g200);padding:3rem;border-radius:4px;max-width:600px;margin:3rem auto 0;}.eft{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--navy-dark);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
 footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}.ftg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1);}.ftl{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin-bottom:1.2rem;}.ftd{font-size:.88rem;line-height:1.9;color:rgba(255,255,255,.5);}.ftct{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem;font-weight:600;}.ftlk{list-style:none;}.ftlk li{margin-bottom:.8rem;}.ftlk a{font-size:.88rem;color:rgba(255,255,255,.5);text-decoration:none;cursor:pointer;transition:color .2s;}.ftlk a:hover{color:var(--white);}.ftb{display:flex;justify-content:space-between;padding-top:2rem;font-size:.75rem;color:rgba(255,255,255,.3);}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);padding:1rem 1.5rem;border-left:3px solid var(--teal);font-size:.88rem;z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;border-radius:2px;}.toast.show{opacity:1;transform:translateY(0);}.toast.err{border-left-color:#e74c3c;}
-@media(max-width:960px){nav{padding:0 1.5rem;}.nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);flex-direction:column;padding:2rem;gap:1.5rem;border-bottom:1px solid var(--g200);}.nav-links.open{display:flex;}.mob-btn{display:block;}.hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem;}.hero-logo-wrap img{max-height:260px;}.sec,.ab-sec,footer,.sdh,.sdb{padding-left:1.5rem;padding-right:1.5rem;}.ab-sec{grid-template-columns:1fr;gap:2rem;}.sg{grid-template-columns:1fr 1fr;}.pg,.bg,.sfg,.vg{grid-template-columns:1fr;}.ftg{grid-template-columns:1fr;gap:2.5rem;}.cw{grid-template-columns:1fr;}.blog-modal{padding:2rem;}}
+/* 블로그 카테고리 필터 */
+.bf-tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.2rem;}
+.bf-tab{padding:.55rem 1.2rem;border:1px solid var(--g200);border-radius:999px;background:var(--white);color:var(--g600);font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--sans);letter-spacing:-.01em;}
+.bf-tab:hover{border-color:var(--teal);color:var(--teal);}
+.bf-tab.active{background:var(--navy-dark);border-color:var(--navy-dark);color:var(--white);}
+/* ===== 모바일 (~768px) ===== */
+@media(max-width:768px){
+  html{font-size:15.5px;}
+  body{font-size:16px;line-height:1.75;}
+  nav{padding:0 1.2rem;height:64px;}
+  .nav-logo img{height:34px;}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.4rem 1.5rem 1.8rem;gap:1.2rem;border-bottom:1px solid var(--g200);box-shadow:0 8px 20px rgba(0,0,0,.04);}
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:1rem;padding:.4rem 0;letter-spacing:.04em;}
+  .mob-btn{display:block;font-size:1.7rem;padding:.3rem;}
+  .page{padding-top:64px;}
+  /* Hero */
+  .hero{grid-template-columns:1fr;padding:2.5rem 1.4rem 3rem;gap:2rem;min-height:auto;}
+  .hero-ey{font-size:.7rem;letter-spacing:.22em;margin-bottom:1rem;}
+  .hero-t{font-size:2rem;line-height:1.3;margin-bottom:1rem;}
+  .hero-sub{font-size:1rem;line-height:1.8;margin-bottom:1.8rem;max-width:100%;}
+  .hero-btns{gap:.7rem;}
+  .bp,.bo{padding:.8rem 1.6rem;font-size:.92rem;width:100%;text-align:center;}
+  .hero-stats{flex-wrap:wrap;gap:1.4rem 1.8rem;margin-top:2.2rem;padding-top:2rem;}
+  .hero-stats > div{flex:1 1 30%;min-width:90px;}
+  .sn{font-size:1.7rem;}
+  .sl{font-size:.7rem;}
+  .sns-w{flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;}
+  .sns-b{font-size:.78rem;padding:.45rem .9rem;}
+  .hero-logo-wrap{order:-1;}
+  .hero-logo-wrap img{max-height:200px;max-width:60%;}
+  /* Sections */
+  .sec,.ab-sec,footer,.sdh,.sdb{padding-left:1.4rem;padding-right:1.4rem;}
+  .sec{padding-top:3.6rem;padding-bottom:3.6rem;}
+  .sdh{padding-top:3rem;padding-bottom:2.2rem;}
+  .sdb{padding-top:3rem;padding-bottom:3rem;}
+  .sey{font-size:.68rem;letter-spacing:.22em;}
+  .st{font-size:1.55rem;line-height:1.35;margin-bottom:.8rem;}
+  .sd{font-size:.98rem;line-height:1.8;}
+  .shd{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:2rem;}
+  .la{font-size:.85rem;}
+  /* About */
+  .ab-sec{grid-template-columns:1fr;gap:2.4rem;}
+  .ab-list li{font-size:.95rem;padding:.7rem 0;line-height:1.65;}
+  .ab-badge{position:static;display:inline-block;margin-top:1rem;padding:1rem 1.3rem;}
+  .ab-badge-n{font-size:1.6rem;}
+  .ab-badge-t{font-size:.65rem;}
+  .ab-collage-wrap{margin-top:.5rem;}
+  /* Services grid */
+  .sg{grid-template-columns:1fr;gap:1px;}
+  .sc{padding:1.8rem 1.4rem;}
+  .scn{font-size:2.2rem;margin-bottom:.8rem;}
+  .sct{font-size:1.05rem;margin-bottom:.5rem;}
+  .scd{font-size:.92rem;line-height:1.75;}
+  /* Portfolio */
+  .pg{grid-template-columns:1fr;gap:1px;}
+  .pc{padding:1.8rem 1.4rem;}
+  .ptag{font-size:.65rem;padding:.25rem .7rem;margin-bottom:.9rem;}
+  .pti{font-size:1.02rem;line-height:1.5;margin-bottom:.6rem;}
+  .pde{font-size:.88rem;line-height:1.75;}
+  /* Clients */
+  .cg{gap:.5rem;}
+  .ct{padding:.45rem 1rem;font-size:.8rem;}
+  /* Blog */
+  .bg{grid-template-columns:1fr;gap:1rem;}
+  .bcb{padding:1.4rem;}
+  .btg{font-size:.65rem;margin-bottom:.55rem;}
+  .bti{font-size:1.02rem;line-height:1.5;margin-bottom:.6rem;}
+  .bex{font-size:.9rem;line-height:1.75;}
+  .bme{font-size:.74rem;margin-top:1rem;padding-top:.85rem;}
+  .bf-tabs{margin-bottom:1.8rem;gap:.45rem;}
+  .bf-tab{padding:.45rem .95rem;font-size:.8rem;}
+  /* Services detail */
+  .sfg{grid-template-columns:1fr!important;gap:1rem;margin-top:2rem;}
+  .sf{padding:1.6rem 1.4rem;}
+  .sfi{font-size:1.7rem;margin-bottom:.7rem;}
+  .sft{font-size:.98rem;}
+  .sfd{font-size:.9rem;line-height:1.75;}
+  .qu{padding:1.6rem 1.4rem;margin:2rem 0;}
+  .qu p{font-size:1rem;line-height:1.75;}
+  .scta{padding:2.4rem 1.4rem;margin-top:3rem;}
+  .vg{grid-template-columns:1fr;}
+  /* Contact */
+  .cw{grid-template-columns:1fr;}
+  .cl,.cr{padding:3rem 1.4rem;}
+  .cl .st{font-size:1.5rem;}
+  .fi,.ft2,.fs{padding:.85rem 1rem;font-size:1rem;}
+  .ft2{min-height:120px;}
+  /* Footer */
+  footer{padding:3.4rem 1.4rem 1.8rem;}
+  .ftg{grid-template-columns:1fr;gap:2.2rem;padding-bottom:2rem;}
+  .ftl{font-size:1.1rem;}
+  .ftd{font-size:.88rem;line-height:1.85;}
+  .ftb{flex-direction:column;gap:.6rem;padding-top:1.6rem;font-size:.72rem;text-align:center;}
+  /* Edu */
+  .efw{padding:1.8rem 1.4rem;margin-top:2.4rem;}
+  .eft{font-size:1.05rem;}
+  /* Modal */
+  .blog-modal-overlay{padding:0;align-items:flex-start;}
+  .blog-modal{padding:2.2rem 1.4rem 2.6rem;max-height:100vh;height:100vh;border-radius:0;}
+  .blog-modal .bti{font-size:1.2rem;line-height:1.4;}
+  .blog-modal .blog-body{font-size:.96rem;line-height:1.95;}
+  .blog-modal .blog-body h2{font-size:1.1rem;margin:1.6rem 0 .6rem;}
+  .blog-modal .blog-body h3{font-size:1rem;margin:1.4rem 0 .5rem;}
+  /* Toast */
+  .toast{bottom:1rem;right:1rem;left:1rem;font-size:.85rem;padding:.85rem 1.1rem;}
+  /* Stats badge fix */
+  .scn{color:var(--g200);}
+}
+/* ===== 작은 모바일 (~420px) ===== */
+@media(max-width:420px){
+  .hero-t{font-size:1.8rem;}
+  .st{font-size:1.4rem;}
+  .hero-stats{gap:1.2rem;}
+  .sn{font-size:1.5rem;}
+}
+/* ===== 태블릿 (769px~960px) ===== */
+@media(max-width:960px) and (min-width:769px){
+  nav{padding:0 2rem;}
+  .nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);flex-direction:column;padding:2rem;gap:1.5rem;border-bottom:1px solid var(--g200);}
+  .nav-links.open{display:flex;}
+  .mob-btn{display:block;}
+  .hero{grid-template-columns:1fr;padding:5rem 2rem 3rem;}
+  .hero-logo-wrap img{max-height:260px;}
+  .sec,.ab-sec,footer,.sdh,.sdb{padding-left:2rem;padding-right:2rem;}
+  .ab-sec{grid-template-columns:1fr;gap:2rem;}
+  .sg{grid-template-columns:1fr 1fr;}
+  .pg,.bg{grid-template-columns:1fr 1fr;}
+  .sfg,.vg{grid-template-columns:1fr 1fr;}
+  .ftg{grid-template-columns:1fr 1fr;gap:2.5rem;}
+  .cw{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -107,7 +242,7 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}.f
 
 <div id="portfolio-page" class="page"><section class="sec ps"><div class="sey" style="color:var(--teal)">Portfolio</div><h2 class="st" style="color:var(--white)">주요 프로젝트</h2><div class="pg"><div class="pc"><div class="ptag">Festival</div><div class="pti">허난설헌 문화제 기획·운영</div><div class="pde">경기광주 대표 문화축제 2024·2025년 연속.</div></div><div class="pc"><div class="ptag">Festival</div><div class="pti">K-Wave Dance Festival 국제교류</div><div class="pde">한강 세빛둥둥섬 3년 연속 기획·운영.</div></div><div class="pc"><div class="ptag">Education</div><div class="pti">세종학당 한국문화교육 해외파견</div><div class="pde">그리스, 코스타리카, 키르기스스탄, 몽골.</div></div><div class="pc"><div class="ptag">Performance</div><div class="pti">광주문화재단 3주년 'Life &amp; Live'</div><div class="pde">대규모 시민축제 기획·운영.</div></div><div class="pc"><div class="ptag">Education</div><div class="pti">세종문화재단 일상예술가(STAR) 양성</div><div class="pde">1기·2기 연속 계약.</div></div><div class="pc"><div class="ptag">Production</div><div class="pti">어린이 환경뮤지컬 [지구시계수리공]</div><div class="pde">환경×예술 창작뮤지컬.</div></div></div></section></div>
 
-<div id="blog-page" class="page"><section class="sec" style="background:var(--navy-dark);color:var(--white);padding-bottom:4rem;"><div class="sey" style="color:var(--teal)">Blog</div><h2 class="st" style="color:var(--white)">예술경영 인사이트</h2></section><section class="sec"><div id="bf" class="bg"><div class="be">글을 불러오는 중...</div></div></section></div>
+<div id="blog-page" class="page"><section class="sec" style="background:var(--navy-dark);color:var(--white);padding-bottom:4rem;"><div class="sey" style="color:var(--teal)">Blog</div><h2 class="st" style="color:var(--white)">예술경영 인사이트</h2></section><section class="sec"><div id="bf-tabs" class="bf-tabs"></div><div id="bf" class="bg"><div class="be">글을 불러오는 중...</div></div></section></div>
 
 <!--email_off-->
 <div id="contact-page" class="page"><div class="cw"><div class="cl"><div class="sey" style="color:var(--teal)">Contact</div><h2 class="st" style="color:var(--white);margin-bottom:2rem;">예술의 가치를<br>비즈니스로 만들<br>준비가 되셨나요?</h2><p style="color:rgba(255,255,255,.6);margin-bottom:.5rem;">Email</p><p style="color:var(--white);margin-bottom:1.5rem;" class="em-render"></p><p style="color:rgba(255,255,255,.6);margin-bottom:.5rem;">Location</p><p style="color:var(--white);">서울특별시</p><div class="sns-w" style="margin-top:2rem;"><a href="https://instagram.com/yeahseul_ss" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @yeahseul_ss</a><a href="https://instagram.com/artryangle" target="_blank" class="sns-b" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">📷 @artryangle</a></div></div><div class="cr"><h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy-dark);margin-bottom:.5rem;">문의하기</h3><p style="font-size:.9rem;color:var(--g600);margin-bottom:2rem;">무료 초기 상담을 신청하시면 48시간 내에 연락드립니다.</p><form class="cf" id="contactForm"><div class="fg"><label class="fl">이름 *</label><input class="fi" id="cf_name" placeholder="홍길동" required></div><div class="fg"><label class="fl">이메일</label><input class="fi" id="cf_email" type="email" placeholder="example&#64;email.com"></div><div class="fg"><label class="fl">문의 내용 *</label><textarea class="ft2" id="cf_msg" placeholder="궁금한 점이나 상담 내용을 자유롭게 작성해 주세요." required></textarea></div><button class="fb" type="submit" id="cf_btn">문의 보내기</button></form></div></div></div>
@@ -180,6 +315,51 @@ function openBlogModal(idx){
 }
 function closeBlogModal(){document.getElementById('blogModal').classList.remove('open');document.body.style.overflow='';}
 
+// 카테고리: 우선 노출하는 메인 카테고리 (관리자에서 추후 자유롭게 추가/수정 가능)
+const PRIMARY_CATEGORIES=['issue and trend','insight'];
+// DB값(또는 향후 표기)을 사용자에게 보여줄 라벨로 정규화
+function normalizeCat(c){
+  const v=String(c||'').toLowerCase().trim();
+  if(v==='weekly issue & trend'||v==='issue and trend'||v==='이슈 & 트렌드'||v==='이슈앤트렌드') return 'issue and trend';
+  if(v==='insight blog'||v==='insight'||v==='인사이트') return 'insight';
+  return c||'기타';
+}
+function prettyCat(c){
+  const k=normalizeCat(c);
+  if(k==='issue and trend') return 'Issue & Trend';
+  if(k==='insight') return 'Insight';
+  return k;
+}
+let bfFilter='all';
+function renderBfList(){
+  const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const fmtDate=iso=>iso?iso.split('T')[0]:'';
+  const filtered=bfFilter==='all'?blogPosts:blogPosts.filter(p=>normalizeCat(p.category)===bfFilter);
+  const c=(post)=>{
+    const slug=encodeURIComponent(post.slug||post.id);
+    const label=prettyCat(post.category);
+    return '<a href="/blog/'+slug+'" class="bc" style="text-decoration:none;color:inherit;display:block;"><div class="bcb">'+(label?'<div class="btg">'+esc(label)+'</div>':'')+'<div class="bti">'+esc(post.title)+'</div><div class="bex">'+esc(post.excerpt||'')+'</div><div class="bme">'+fmtDate(post.created_at)+'</div></div></a>';
+  };
+  document.getElementById('bf').innerHTML=filtered.length?filtered.map(c).join(''):'<div class="be">해당 카테고리에 글이 아직 없습니다.</div>';
+}
+function setBfFilter(key){
+  bfFilter=key;
+  document.querySelectorAll('#bf-tabs .bf-tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===key));
+  renderBfList();
+}
+function renderBfTabs(){
+  const tabsEl=document.getElementById('bf-tabs');if(!tabsEl)return;
+  const allCats=Array.from(new Set(blogPosts.map(p=>normalizeCat(p.category))));
+  // 우선 정렬: PRIMARY 먼저, 나머지 알파벳/가나다순
+  const others=allCats.filter(c=>!PRIMARY_CATEGORIES.includes(c)).sort();
+  const ordered=[...PRIMARY_CATEGORIES.filter(c=>allCats.includes(c)),...others];
+  // PRIMARY 두 카테고리는 글이 없어도 항상 노출
+  PRIMARY_CATEGORIES.forEach(pc=>{if(!ordered.includes(pc))ordered.unshift(pc);});
+  const finalOrdered=[...new Set([...PRIMARY_CATEGORIES,...ordered])];
+  const make=(key,label)=>'<button type="button" class="bf-tab'+(bfFilter===key?' active':'')+'" data-cat="'+key+'" onclick="setBfFilter(\''+key+'\')">'+label+'</button>';
+  tabsEl.innerHTML=make('all','전체')+finalOrdered.map(k=>make(k,prettyCat(k))).join('');
+}
+
 // 블로그 로드 - Supabase에서 직접 가져오기 + 페이지 이동 방식
 async function loadBlog(){
   const fail=m=>{document.getElementById('hb').innerHTML='<div class="be">'+m+'</div>';document.getElementById('bf').innerHTML='<div class="be">'+m+'</div>';};
@@ -200,11 +380,12 @@ async function loadBlog(){
     const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     const c=(post)=>{
       const slug=encodeURIComponent(post.slug||post.id);
-      const tag=(post.tags&&post.tags.length)?post.tags[0]:(post.category||'');
-      return '<a href="/blog/'+slug+'" class="bc" style="text-decoration:none;color:inherit;display:block;"><div class="bcb">'+(tag?'<div class="btg">'+esc(tag)+'</div>':'')+'<div class="bti">'+esc(post.title)+'</div><div class="bex">'+esc(post.excerpt||'')+'</div><div class="bme">'+fmtDate(post.created_at)+'</div></div></a>';
+      const label=prettyCat(post.category);
+      return '<a href="/blog/'+slug+'" class="bc" style="text-decoration:none;color:inherit;display:block;"><div class="bcb">'+(label?'<div class="btg">'+esc(label)+'</div>':'')+'<div class="bti">'+esc(post.title)+'</div><div class="bex">'+esc(post.excerpt||'')+'</div><div class="bme">'+fmtDate(post.created_at)+'</div></div></a>';
     };
     document.getElementById('hb').innerHTML=p.length?p.slice(0,3).map(c).join(''):'<div class="be">아직 게시된 글이 없습니다.</div>';
-    document.getElementById('bf').innerHTML=p.length?p.map(c).join(''):'<div class="be">아직 게시된 글이 없습니다.</div>';
+    renderBfTabs();
+    renderBfList();
   }catch(e){
     fail(e.name==='AbortError'?'블로그 로딩 시간 초과':'블로그를 불러올 수 없습니다.');
   }
