@@ -144,6 +144,8 @@ const renderPage = (post) => {
 
 <title>${title} | 아트라이앵글</title>
 <meta name="description" content="${summary}">
+<meta name="google-adsense-account" content="ca-pub-4523583722671291">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4523583722671291" crossorigin="anonymous"></script>
 <meta name="author" content="송예슬">
 ${tagsArr.length ? `<meta name="keywords" content="${escapeHtml(tagsArr.join(', '))}">` : ''}
 <link rel="canonical" href="${url}">
