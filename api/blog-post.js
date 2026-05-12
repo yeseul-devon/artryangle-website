@@ -170,16 +170,17 @@ ${cover ? `<meta name="twitter:image" content="${cover}">` : ''}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 
 <script type="application/ld+json">${JSON.stringify(ldJson)}</script>
 
 <style>
-  :root { --ink: #1a1a1a; --ink-soft: #4a4a4a; --paper: #fafaf7; --line: #e5e3dc; --accent: #8b6f47; --serif: 'Cormorant Garamond', 'Pretendard', serif; --sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --ink: #1a1a1a; --ink-soft: #4a4a4a; --paper: #fafaf7; --line: #e5e3dc; --accent: #8b6f47; --serif: 'Cormorant Garamond', 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', serif; --sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: inherit; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.75; font-size: 17px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; word-break: keep-all; overflow-wrap: break-word; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.75; font-size: 17px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; word-break: keep-all; overflow-wrap: break-word; hyphens: none; }
+  p, li, blockquote, h1, h2, h3, h4, h5, h6 { word-break: keep-all; overflow-wrap: break-word; }
   .topnav { position: sticky; top: 0; z-index: 50; background: rgba(250, 250, 247, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
   .topnav a.logo { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
   .topnav .back { font-size: 14px; color: var(--ink-soft); text-decoration: none; transition: color .2s; }

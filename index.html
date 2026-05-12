@@ -11,12 +11,14 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap">
 <style>
-:root{--teal:#2AABAA;--teal-dark:#1d8a89;--teal-light:#e6f7f7;--navy:#1e3a5f;--navy-dark:#122540;--white:#fff;--off-white:#f7f9f9;--g100:#f0f4f4;--g200:#dde6e6;--g400:#9ab0b0;--g600:#4a6464;--g800:#1e3232;--serif:'Noto Serif KR','Pretendard',serif;--sans:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{font-family:var(--sans);background:var(--white);color:var(--g800);overflow-x:hidden;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;word-break:keep-all;overflow-wrap:break-word;}
+:root{--teal:#2AABAA;--teal-dark:#1d8a89;--teal-light:#e6f7f7;--navy:#1e3a5f;--navy-dark:#122540;--white:#fff;--off-white:#f7f9f9;--g100:#f0f4f4;--g200:#dde6e6;--g400:#9ab0b0;--g600:#4a6464;--g800:#1e3232;--serif:'Noto Serif KR','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',serif;--sans:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:inherit;}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body,input,textarea,select,button{font-family:var(--sans);}
+body{background:var(--white);color:var(--g800);overflow-x:hidden;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;word-break:keep-all;overflow-wrap:break-word;hyphens:none;}
+p,li,div,span,a,h1,h2,h3,h4,h5,h6{word-break:keep-all;overflow-wrap:break-word;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:72px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--g200);}
 .nav-logo{cursor:pointer;display:flex;align-items:center;}.nav-logo img{height:40px;}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
@@ -51,7 +53,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .blog-modal{background:var(--white);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;border-radius:6px;padding:3rem;position:relative;}
 .blog-modal-close{position:absolute;top:1rem;right:1.5rem;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--g600);}.blog-modal-close:hover{color:var(--teal);}
 .blog-modal .btg{margin-bottom:.5rem;}.blog-modal .bti{font-size:1.3rem;margin-bottom:.5rem;}.blog-modal .bme{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--g200);}
-.blog-modal .blog-body{font-size:.95rem;line-height:2;color:var(--g600);}
+.blog-modal .blog-body{font-family:var(--sans);font-size:.95rem;line-height:2;color:var(--g600);word-break:keep-all;overflow-wrap:break-word;}
+.blog-modal .blog-body *{font-family:inherit;word-break:keep-all;overflow-wrap:break-word;}
 .blog-modal .blog-body h2{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--navy-dark);margin:2rem 0 .8rem;}
 .blog-modal .blog-body h3{font-size:1.05rem;font-weight:700;color:var(--navy-dark);margin:1.8rem 0 .6rem;}
 .blog-modal .blog-body p{margin-bottom:1rem;}
@@ -143,9 +146,13 @@ footer{background:var(--navy-dark);color:var(--white);padding:5rem 5rem 2rem;}.f
   .bg{grid-template-columns:1fr;gap:1rem;}
   .bcb{padding:1.4rem;}
   .btg{font-size:.65rem;margin-bottom:.55rem;}
-  .bti{font-size:1.02rem;line-height:1.5;margin-bottom:.6rem;}
-  .bex{font-size:.9rem;line-height:1.75;}
+  .bti{font-family:var(--sans);font-weight:700;font-size:1.05rem;line-height:1.55;margin-bottom:.6rem;letter-spacing:-.01em;}
+  .bex{font-size:.92rem;line-height:1.8;}
   .bme{font-size:.74rem;margin-top:1rem;padding-top:.85rem;}
+  /* 모바일에서는 카드 타이틀을 Pretendard로 통일 (한글 가독성) */
+  .pti,.sct,.sft,.vc h4{font-family:var(--sans)!important;letter-spacing:-.01em;}
+  .pti{font-weight:700;}
+  .blog-modal .bti{font-family:var(--sans);font-weight:700;letter-spacing:-.01em;}
   .bf-tabs{margin-bottom:1.8rem;gap:.45rem;}
   .bf-tab{padding:.45rem .95rem;font-size:.8rem;}
   /* Services detail */
