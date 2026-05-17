@@ -465,6 +465,7 @@
     <div class="page-header">
       <h1>아티클</h1>
       <div class="actions">
+        <button class="btn" id="syncNotionBtn" onclick="syncNotion()">↻ 노션 동기화</button>
         <button class="btn btn-fill" onclick="showEditor()">+ 새 아티클</button>
       </div>
     </div>
@@ -677,6 +678,30 @@ function toast(msg, type = '') {
   t.className = 'toast ' + type + ' show';
   t.textContent = msg;
   setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+async function syncNotion() {
+  const btn = document.getElementById('syncNotionBtn');
+  if (!btn) return;
+  const orig = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '동기화 중…';
+  try {
+    const r = await fetch('/api/notion-sync', { cache: 'no-store' });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok || !d.ok) {
+      toast('동기화 실패: ' + (d.error || r.status), 'error');
+    } else {
+      const rep = d.report || {};
+      toast(`동기화 완료 · 신규 ${rep.inserted||0} / 업데이트 ${rep.updated||0}`, 'success');
+      await loadPosts();
+    }
+  } catch (e) {
+    toast('동기화 오류: ' + (e.message || e), 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = orig;
+  }
 }
 
 async function loadPosts() {

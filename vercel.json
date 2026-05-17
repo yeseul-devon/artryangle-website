@@ -4,7 +4,7 @@
     { "source": "/sitemap.xml", "destination": "/api/sitemap-feed" }
   ],
   "crons": [
-    { "path": "/api/notion-sync", "schedule": "0 * * * *" }
+    { "path": "/api/notion-sync", "schedule": "0 0 * * *" }
   ],
   "headers": [
     {
