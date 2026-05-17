@@ -591,14 +591,14 @@
 const SUPABASE_URL = 'https://kwhrwbnfwoybdmdzmmko.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
 let allPosts = [];
 let editingPostId = null;
 
 async function checkAuth() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await sb.auth.getSession();
   if (session) {
     currentUser = session.user;
     document.getElementById('userEmail').textContent = currentUser.email;
@@ -620,7 +620,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   btn.disabled = true; btn.textContent = '로그인 중…';
   errEl.style.display = 'none';
 
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { error } = await sb.auth.signInWithPassword({ email, password });
   btn.disabled = false; btn.textContent = '로그인';
   if (error) {
     errEl.textContent = error.message.includes('Invalid') || error.message.includes('credentials')
@@ -638,7 +638,7 @@ document.getElementById('resetLink').addEventListener('click', async () => {
     alert('먼저 이메일을 입력해주세요.');
     return;
   }
-  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
     redirectTo: window.location.origin + '/admin'
   });
   if (error) { alert('재설정 요청 실패: ' + error.message); return; }
@@ -646,7 +646,7 @@ document.getElementById('resetLink').addEventListener('click', async () => {
 });
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-  await supabase.auth.signOut();
+  await sb.auth.signOut();
   location.reload();
 });
 
@@ -899,9 +899,9 @@ async function savePost() {
 
   let result;
   if (editingPostId) {
-    result = await supabase.from('posts').update(payload).eq('id', editingPostId);
+    result = await sb.from('posts').update(payload).eq('id', editingPostId);
   } else {
-    result = await supabase.from('posts').insert(payload);
+    result = await sb.from('posts').insert(payload);
   }
 
   btn.disabled = false; btn.textContent = '저장';
@@ -924,7 +924,7 @@ async function deletePost() {
   if (!editingPostId) return;
   const post = allPosts.find(p => p.id === editingPostId);
   if (!confirm(`"${post?.title}" 을(를) 정말 삭제하시겠습니까?\n이 작업은 취소할 수 없어요.`)) return;
-  const { error } = await supabase.from('posts').delete().eq('id', editingPostId);
+  const { error } = await sb.from('posts').delete().eq('id', editingPostId);
   if (error) { toast('삭제 실패: ' + error.message, 'error'); return; }
   toast('삭제됨', 'success');
   await loadPosts();
@@ -994,7 +994,7 @@ async function addContentRow() {
   const key = prompt('새 콘텐츠 키 (예: hero_title, about_intro):');
   if (!key) return;
   const value = prompt('값:') || '';
-  const { error } = await supabase.from('site_content').insert({ key, value });
+  const { error } = await sb.from('site_content').insert({ key, value });
   if (error) { toast('추가 실패: ' + error.message, 'error'); return; }
   toast('추가됨', 'success');
   await loadSiteContent();
@@ -1031,7 +1031,7 @@ async function loadInquiries() {
 }
 
 async function markRead(id) {
-  const { error } = await supabase.from('contact_inquiries').update({ is_read: true }).eq('id', id);
+  const { error } = await sb.from('contact_inquiries').update({ is_read: true }).eq('id', id);
   if (error) { toast('실패: ' + error.message, 'error'); return; }
   await loadInquiries();
 }
@@ -1053,7 +1053,7 @@ async function loadAll() {
 
 (async () => {
   await checkAuth();
-  supabase.auth.onAuthStateChange((_event, session) => {
+  sb.auth.onAuthStateChange((_event, session) => {
     if (!session && currentUser) location.reload();
   });
 })();
