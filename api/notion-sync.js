@@ -253,7 +253,7 @@ function makeExcerpt(md) {
   return t.length > 160 ? t.slice(0, 160) + '…' : t;
 }
 function makeSlug(notionId) {
-  const clean = String(notionId || '').replace(/-/g, '').slice(0, 12);
+  const clean = String(notionId || '').replace(/-/g, '').slice(0, 20);
   return 'post-' + clean;
 }
 
