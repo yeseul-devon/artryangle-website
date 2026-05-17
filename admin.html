@@ -411,6 +411,30 @@
 
   .loading { padding: 40px; text-align: center; color: var(--ink-soft); }
 
+  .pw-modal {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.5);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200;
+    padding: 24px;
+  }
+  .pw-modal.open { display: flex; }
+  .pw-modal-box {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 36px;
+    width: 100%; max-width: 380px;
+  }
+  .pw-modal-box h3 {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .pw-modal-box .pw-sub {
+    color: var(--ink-soft); font-size: 13px; margin-bottom: 24px;
+  }
+  .pw-modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
   @media (max-width: 900px) {
     .editor { grid-template-columns: 1fr; }
     .editor-side { position: static; }
@@ -457,6 +481,7 @@
     </nav>
     <div class="user">
       <span id="userEmail"></span>
+      <button id="changePwBtn" type="button">비번 변경</button>
       <button id="logoutBtn">로그아웃</button>
     </div>
   </div>
@@ -583,6 +608,28 @@
 
 <div id="toast" class="toast"></div>
 
+<div id="pwModal" class="pw-modal" role="dialog" aria-modal="true">
+  <div class="pw-modal-box">
+    <h3>비밀번호 변경</h3>
+    <div class="pw-sub">8자 이상으로 설정해주세요.</div>
+    <form id="pwForm">
+      <div class="field">
+        <label for="newPw">새 비밀번호</label>
+        <input type="password" id="newPw" minlength="8" autocomplete="new-password" required>
+      </div>
+      <div class="field">
+        <label for="newPw2">새 비밀번호 확인</label>
+        <input type="password" id="newPw2" minlength="8" autocomplete="new-password" required>
+      </div>
+      <div id="pwError" class="error-msg" style="display:none;"></div>
+      <div class="pw-modal-actions">
+        <button type="button" class="btn" id="pwCancel">취소</button>
+        <button type="submit" class="btn btn-fill" id="pwSubmit">변경</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ════════════════════════════════════════════════════
@@ -648,6 +695,44 @@ document.getElementById('resetLink').addEventListener('click', async () => {
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   await sb.auth.signOut();
   location.reload();
+});
+
+document.getElementById('changePwBtn').addEventListener('click', () => {
+  document.getElementById('newPw').value = '';
+  document.getElementById('newPw2').value = '';
+  const errEl = document.getElementById('pwError');
+  errEl.style.display = 'none';
+  document.getElementById('pwModal').classList.add('open');
+  setTimeout(() => document.getElementById('newPw').focus(), 50);
+});
+
+document.getElementById('pwCancel').addEventListener('click', () => {
+  document.getElementById('pwModal').classList.remove('open');
+});
+
+document.getElementById('pwModal').addEventListener('click', (e) => {
+  if (e.target.id === 'pwModal') document.getElementById('pwModal').classList.remove('open');
+});
+
+document.getElementById('pwForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const pw1 = document.getElementById('newPw').value;
+  const pw2 = document.getElementById('newPw2').value;
+  const errEl = document.getElementById('pwError');
+  const submitBtn = document.getElementById('pwSubmit');
+  errEl.style.display = 'none';
+  if (pw1.length < 8) { errEl.textContent = '8자 이상이어야 합니다.'; errEl.style.display = 'block'; return; }
+  if (pw1 !== pw2) { errEl.textContent = '두 비밀번호가 일치하지 않습니다.'; errEl.style.display = 'block'; return; }
+  submitBtn.disabled = true; submitBtn.textContent = '변경 중…';
+  const { error } = await sb.auth.updateUser({ password: pw1 });
+  submitBtn.disabled = false; submitBtn.textContent = '변경';
+  if (error) {
+    errEl.textContent = '변경 실패: ' + error.message;
+    errEl.style.display = 'block';
+    return;
+  }
+  document.getElementById('pwModal').classList.remove('open');
+  toast('비밀번호가 변경되었습니다', 'success');
 });
 
 document.querySelectorAll('.topbar nav button').forEach(btn => {
