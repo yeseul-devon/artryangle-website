@@ -491,9 +491,48 @@
       font-size: 13.5px;
       color: var(--text-mid);
       line-height: 1.7;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       max-width: 440px;
     }
+
+    /* 철학 필러 카드 3개 */
+    .philo-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .philo-pillar {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(92,181,173,0.18);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s, box-shadow 0.25s;
+    }
+    .philo-pillar:hover {
+      transform: translateY(-3px);
+      border-color: rgba(92,181,173,0.5);
+      box-shadow: 0 8px 20px rgba(45,122,112,0.08);
+    }
+    .philo-pillar-icon {
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .philo-pillar-title {
+      font-family: var(--font-serif);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .philo-pillar-desc {
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: var(--text-mid);
+    }
+
     .philo-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1741,6 +1780,9 @@
       .philo-image-col { height: 180px; }
       .philo-image-overlay { background: linear-gradient(to bottom, transparent, var(--cream) 90%); }
       .philo-content-col { padding: 24px 20px 28px; }
+      .philo-pillars { grid-template-columns: 1fr; gap: 8px; margin-bottom: 18px; }
+      .philo-pillar { padding: 12px 14px; text-align: left; display: flex; gap: 10px; align-items: flex-start; }
+      .philo-pillar-icon { margin-bottom: 0; flex-shrink: 0; margin-top: 2px; }
       .philo-stats { grid-template-columns: repeat(3, 1fr); }
       .philo-stat { padding: 0 12px; }
       .philo-stat:first-child { padding-left: 0; }
@@ -1905,6 +1947,23 @@
       예술과 비즈니스의 교차점에서, 현장 10년 경험과<br>
       Global MBA 전략 역량으로 지속 가능한 성장을 돕습니다.
     </p>
+    <div class="philo-pillars" data-reveal data-delay="3">
+      <div class="philo-pillar">
+        <div class="philo-pillar-icon" aria-hidden="true">🎭</div>
+        <div class="philo-pillar-title">현장성</div>
+        <p class="philo-pillar-desc">기획서가 아닌 현장에서 검증된 10년의 실전 감각</p>
+      </div>
+      <div class="philo-pillar">
+        <div class="philo-pillar-icon" aria-hidden="true">📊</div>
+        <div class="philo-pillar-title">데이터</div>
+        <p class="philo-pillar-desc">감이 아닌 관객 반응 데이터로 문화예술의 가치를 증명</p>
+      </div>
+      <div class="philo-pillar">
+        <div class="philo-pillar-icon" aria-hidden="true">🔗</div>
+        <div class="philo-pillar-title">연결</div>
+        <p class="philo-pillar-desc">예술단체·기업·공공기관의 교차점에서 지속 가능한 성장을 설계</p>
+      </div>
+    </div>
     <div class="philo-stats" data-reveal data-delay="4">
       <div class="philo-stat">
         <div class="philo-stat-num" data-count="50">0</div>
@@ -1967,7 +2026,7 @@
       <div>
         <p class="datarts-eyebrow" data-reveal>ARTRYANGLE_LAB · 신사업</p>
         <h2 class="datarts-h2" data-reveal data-delay="1">
-          data<span class="teal">arts</span>
+          <span class="teal">datarts</span>
         </h2>
         <div class="datarts-patent-badges" data-reveal data-delay="2">
           <a class="datarts-patent-badge" href="design-assets/main-patent.png" target="_blank" rel="noopener" aria-label="등록특허 제10-2944264호 원본 보기">
@@ -2108,7 +2167,7 @@
           <span class="service-tag">브랜드 마케팅</span>
           <span class="service-tag">펀딩·수익 모델</span>
         </div>
-        <a href="javascript:void(0)" class="service-link" onclick="openContactModal()">
+        <a href="#cta-section" class="service-link">
           상담 신청 <span class="arrow">→</span>
         </a>
       </div>
@@ -2127,7 +2186,7 @@
           <span class="service-tag">수익화 전략</span>
           <span class="service-tag">퍼스널 브랜딩</span>
         </div>
-        <a href="javascript:void(0)" class="service-link" onclick="openContactModal()">
+        <a href="#cta-section" class="service-link">
           코칭 신청 <span class="arrow">→</span>
         </a>
       </div>
@@ -2146,7 +2205,7 @@
           <span class="service-tag">교육 프로그램</span>
           <span class="service-tag">영상·콘텐츠</span>
         </div>
-        <a href="javascript:void(0)" class="service-link" onclick="openContactModal()">
+        <a href="#cta-section" class="service-link">
           기획 문의 <span class="arrow">→</span>
         </a>
       </div>
@@ -2165,7 +2224,7 @@
           <span class="service-tag">기획 실무 스터디</span>
           <span class="service-tag">기업 맞춤 강의</span>
         </div>
-        <a href="javascript:void(0)" class="service-link" onclick="openContactModal()">
+        <a href="#cta-section" class="service-link">
           사전 신청 <span class="arrow">→</span>
         </a>
       </div>
@@ -2427,7 +2486,7 @@
         무료 상담 신청하기 →
       </button>
       <!--email_off-->
-      <a href="#" class="btn-teal em-link" data-subject="datarts 데모 신청">
+      <a href="mailto:yeseul@artryangle.com?subject=datarts%20데모%20신청" class="btn-teal em-link" data-subject="datarts 데모 신청">
         이메일로 datarts 데모 신청
       </a>
       <!--email_on-->
@@ -2508,7 +2567,7 @@
           <li><a href="#datarts" class="footer-datarts-link">datarts ↗</a></li>
           <li><a href="#datarts">관객반응 SaaS</a></li>
           <li><a href="#datarts">K-IP 적합도 지수</a></li>
-          <!--email_off--><li><a class="em-link" data-subject="datarts IR" href="#">IR 자료 요청</a></li><!--email_on-->
+          <!--email_off--><li><a class="em-link" data-subject="datarts IR" href="mailto:yeseul@artryangle.com?subject=datarts%20IR">IR 자료 요청</a></li><!--email_on-->
         </ul>
       </div>
     </div>
@@ -2543,7 +2602,7 @@
       </div>
       <button type="submit" class="contact-form-submit" id="cf_submit">문의 보내기</button>
       <!--email_off-->
-      <p class="contact-form-alt">또는 직접 이메일 <a class="em-link" href="#"></a></p>
+      <p class="contact-form-alt">또는 직접 이메일 <a class="em-link" href="mailto:yeseul@artryangle.com">yeseul@artryangle.com</a></p>
       <!--email_on-->
     </form>
   </div>
@@ -2639,8 +2698,7 @@
   revealEls.forEach(el => revealObserver.observe(el));
 
   /* ── 숫자 카운트업 ── */
-  function animateCount(el, target, suffix = '') {
-    const duration = 1800;
+  function animateCount(el, target, suffix = '', duration = 2000) {
     const start = performance.now();
     const update = (now) => {
       const progress = Math.min((now - start) / duration, 1);
@@ -2652,34 +2710,49 @@
     requestAnimationFrame(update);
   }
 
+  function triggerCounter(el) {
+    if (el.dataset.counted === '1') return;
+    el.dataset.counted = '1';
+    if (el.dataset.count) {
+      const target = parseInt(el.dataset.count);
+      const orig = (el.textContent || '').trim();
+      const suffix = orig.includes('+') ? '+' : (orig.includes('%') ? '%' : '');
+      animateCount(el, target, suffix || (target >= 50 ? '+' : ''));
+    }
+    if (el.dataset.countNps) {
+      const target = parseInt(el.dataset.countNps);
+      const duration = 2000;
+      const start = performance.now();
+      const update = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = 'NPS ' + Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    }
+  }
+
   const countObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el = entry.target;
-
-      if (el.dataset.count) {
-        const target = parseInt(el.dataset.count);
-        const suffix = el.textContent.includes('+') ? '+' : (el.textContent.includes('%') ? '%' : '');
-        animateCount(el, target, suffix || (target >= 50 ? '+' : ''));
-      }
-      if (el.dataset.countNps) {
-        const target = parseInt(el.dataset.countNps);
-        const duration = 1800;
-        const start = performance.now();
-        const update = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = 'NPS ' + Math.round(eased * target);
-          if (progress < 1) requestAnimationFrame(update);
-        };
-        requestAnimationFrame(update);
-      }
-
-      countObserver.unobserve(el);
+      triggerCounter(entry.target);
+      countObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 
   document.querySelectorAll('[data-count], [data-count-nps]').forEach(el => countObserver.observe(el));
+
+  // 페이지 로드 시점에 이미 viewport 안에 있는 카운터는 즉시 트리거 (안전장치)
+  window.addEventListener('load', () => {
+    document.querySelectorAll('[data-count]:not([data-counted="1"]), [data-count-nps]:not([data-counted="1"])').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        triggerCounter(el);
+        countObserver.unobserve(el);
+      }
+    });
+  });
 
   /* ── 포트폴리오 필터 ── */
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -2900,7 +2973,7 @@
     const row = document.getElementById('insights-row');
     try {
       const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 8000);
+      const timer = setTimeout(() => ctrl.abort(), 5000);
       const r = await fetch(SUPA_URL + '/rest/v1/posts?published=eq.true&select=id,title,excerpt,slug,category,cover_url,created_at&order=created_at.desc&limit=12', {
         signal: ctrl.signal,
         headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + SUPA_KEY }
@@ -2910,12 +2983,12 @@
       const data = await r.json();
       allInsights = Array.isArray(data) ? data : [];
       if (!allInsights.length) {
-        row.innerHTML = '<div class="insight-empty">아직 게시된 아티클이 없습니다.</div>';
+        row.innerHTML = '<div class="insight-empty">아티클 준비 중입니다.</div>';
         return;
       }
       renderInsights();
     } catch (e) {
-      row.innerHTML = '<div class="insight-empty">아티클을 불러올 수 없습니다. 잠시 후 다시 시도해 주세요.</div>';
+      row.innerHTML = '<div class="insight-empty">아티클 준비 중입니다.</div>';
     }
   }
   loadInsights();
