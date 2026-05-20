@@ -444,21 +444,75 @@
       align-items: stretch;
       overflow: hidden;
     }
-    .philo-image-col {
+    /* 왼쪽 타이포그래피 비주얼 컬럼 */
+    .philo-visual-col {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 56px 32px;
+      background: linear-gradient(180deg, rgba(13,35,32,0.04) 0%, rgba(92,181,173,0.06) 100%);
+      border-right: 1px solid rgba(92,181,173,0.18);
       overflow: hidden;
     }
-    .philo-image-col img {
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      transition: transform 8s var(--ease-in-out);
-    }
-    .philo-image-col:hover img { transform: scale(1.04); }
-    .philo-image-overlay {
+    .philo-visual-col::before {
+      content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, transparent 60%, var(--cream) 100%);
+      background:
+        radial-gradient(circle at 20% 30%, rgba(123,232,216,0.08), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(45,122,112,0.06), transparent 50%);
+      pointer-events: none;
+    }
+    .philo-visual-col > * { position: relative; z-index: 1; }
+    .philo-visual-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      opacity: 0.55;
+      margin-bottom: 40px;
+    }
+    .philo-visual-main {
+      font-family: 'Playfair Display', 'Noto Serif KR', 'Noto Sans KR', serif;
+      font-size: clamp(56px, 6.5vw, 80px);
+      font-weight: 800;
+      color: var(--mint-primary);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+    .philo-visual-main em {
+      font-style: normal;
+      font-weight: 400;
+      color: var(--mint-dark);
+      margin: 0 14px;
+      opacity: 0.75;
+    }
+    .philo-visual-sub {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-mid);
+      letter-spacing: 0.04em;
+      margin-bottom: 36px;
+    }
+    .philo-visual-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(92,181,173,0.5);
+      margin: 0 auto 14px;
+    }
+    .philo-visual-tagline {
+      font-family: 'Playfair Display', 'Noto Serif KR', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--text-mid);
+      opacity: 0.65;
+      letter-spacing: 0.02em;
     }
     .philo-content-col {
       background: var(--cream);
@@ -1777,8 +1831,18 @@
       .hero-h1 { font-size: clamp(32px, 8vw, 52px); }
 
       #philosophy { grid-template-columns: 1fr; }
-      .philo-image-col { height: 180px; }
-      .philo-image-overlay { background: linear-gradient(to bottom, transparent, var(--cream) 90%); }
+      .philo-visual-col {
+        height: 200px;
+        padding: 22px 20px;
+        border-right: none;
+        border-bottom: 1px solid rgba(92,181,173,0.18);
+      }
+      .philo-visual-label { font-size: 10.5px; letter-spacing: 0.25em; margin-bottom: 14px; }
+      .philo-visual-main { font-size: clamp(38px, 11vw, 52px); margin-bottom: 8px; }
+      .philo-visual-main em { margin: 0 8px; }
+      .philo-visual-sub { font-size: 14px; margin-bottom: 14px; }
+      .philo-visual-divider { width: 32px; margin-bottom: 8px; }
+      .philo-visual-tagline { font-size: 12px; }
       .philo-content-col { padding: 24px 20px 28px; }
       .philo-pillars { grid-template-columns: 1fr; gap: 8px; margin-bottom: 18px; }
       .philo-pillar { padding: 12px 14px; text-align: left; display: flex; gap: 10px; align-items: flex-start; }
@@ -1933,9 +1997,12 @@
      모바일: 세로 스택, 이미지 상단 고정 높이
 =================================================== -->
 <section id="philosophy">
-  <div class="philo-image-col" data-reveal="left">
-    <img src="design-assets/198b4146f179dbb9b3bd0af1d0712c82.jpg" alt="아트라이앵글 브랜드 이미지" />
-    <div class="philo-image-overlay"></div>
+  <div class="philo-visual-col" data-reveal>
+    <p class="philo-visual-label">ARTRYANGLE PHILOSOPHY</p>
+    <div class="philo-visual-main">藝<em>×</em>業</div>
+    <p class="philo-visual-sub">예술 그리고 비즈니스</p>
+    <div class="philo-visual-divider" aria-hidden="true"></div>
+    <p class="philo-visual-tagline">Art meets Strategy.</p>
   </div>
   <div class="philo-content-col">
     <p class="philo-eyebrow" data-reveal data-delay="1">브랜드 철학</p>
