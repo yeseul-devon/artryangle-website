@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · 상담 신청 | 아트라이앵글</title>
+  <meta name="description" content="아트라이앵글 컨설팅·강연·datarts 데모·IR 자료 요청 — 무료 초기 상담 후 48시간 내 회신." />
+  <meta name="google-adsense-account" content="ca-pub-4523583722671291" />
+  <link rel="canonical" href="https://www.artryangle.kr/contact" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4523583722671291" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --mint-bright:#7be8d8; --mint-primary:#5cb5ad; --mint-dark:#2d7a70;
+      --teal-datarts:#2AABAA; --night:#0d2320; --night-mid:#1a3530;
+      --off-white:#f0f8f5; --cream:#f7f4ee;
+      --text-dark:#1a2e2a; --text-mid:#3d5550; --text-light:#8aada8;
+      --font-serif:'Playfair Display','Noto Serif KR',Georgia,serif;
+      --font-sans:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font-sans);color:var(--text-dark);background:var(--off-white);line-height:1.75}
+    a{color:var(--mint-dark);text-decoration:none}
+    a:hover{color:var(--mint-primary)}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(13,35,32,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(123,232,216,0.08)}
+    .nav-logo{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--font-serif);font-size:18px;font-weight:700}
+    .nav-logo img{height:30px;width:auto;object-fit:contain;filter:brightness(0) invert(1)}
+    .nav-back{font-size:13px;color:rgba(255,255,255,.7)}
+    .nav-back:hover{color:#fff}
+
+    .wrap{max-width:980px;margin:0 auto;padding:120px 24px 60px;word-break:keep-all}
+    .head{text-align:center;margin-bottom:48px}
+    .head .eyebrow{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--mint-primary);margin-bottom:14px}
+    .head h1{font-family:var(--font-serif);font-size:clamp(32px,5vw,48px);font-weight:800;line-height:1.2;color:var(--text-dark);margin-bottom:14px;letter-spacing:-.01em}
+    .head p{font-size:16px;color:var(--text-mid);max-width:520px;margin:0 auto}
+
+    .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+
+    /* form */
+    .form-card{background:#fff;border:1px solid rgba(92,181,173,.18);border-radius:14px;padding:36px;box-shadow:0 4px 24px rgba(45,122,112,.06)}
+    .form-card h2{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:8px}
+    .form-card .sub{font-size:14px;color:var(--text-mid);margin-bottom:26px}
+    .field{margin-bottom:16px}
+    .field label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mid);margin-bottom:7px}
+    .field input,.field textarea{width:100%;padding:13px 15px;border:1.5px solid rgba(13,35,32,.12);border-radius:8px;background:#fff;font-family:var(--font-sans);font-size:14.5px;color:var(--text-dark);outline:none;transition:border-color .2s}
+    .field input:focus,.field textarea:focus{border-color:var(--mint-primary)}
+    .field textarea{resize:vertical;min-height:130px;font-family:var(--font-sans);line-height:1.65}
+    .submit{width:100%;padding:14px;margin-top:6px;background:var(--mint-primary);color:#fff;border:none;border-radius:10px;font-size:14.5px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .25s,transform .2s}
+    .submit:hover:not(:disabled){background:var(--mint-bright);color:var(--night);transform:translateY(-2px)}
+    .submit:disabled{opacity:.55;cursor:wait}
+    .form-alt{margin-top:16px;font-size:13px;color:var(--text-mid);text-align:center;line-height:1.6}
+
+    /* aside */
+    .aside h3{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--text-dark);margin-bottom:14px}
+    .aside-block{margin-bottom:30px}
+    .aside-block p{font-size:14.5px;color:var(--text-mid);line-height:1.75;margin-bottom:10px}
+    .aside-block strong{color:var(--text-dark);font-weight:600}
+    .ic-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .ic-list li{font-size:14.5px;color:var(--text-mid);display:flex;gap:10px;align-items:center}
+    .ic-list li .ico{font-size:18px;flex-shrink:0}
+    .ic-list a{color:var(--mint-dark);font-weight:500}
+    .ic-list a:hover{color:var(--mint-primary)}
+
+    .topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .topic{padding:5px 11px;background:rgba(92,181,173,.1);border:1px solid rgba(92,181,173,.25);border-radius:999px;font-size:12.5px;color:var(--mint-dark);font-weight:500}
+
+    /* toast */
+    #toast{position:fixed;bottom:22px;right:22px;background:var(--night);color:#fff;padding:14px 20px;border-radius:8px;border-left:3px solid var(--mint-primary);font-size:14px;z-index:9000;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none;max-width:340px}
+    #toast.show{opacity:1;transform:translateY(0)}
+    #toast.err{border-left-color:#e74c3c}
+
+    footer{background:var(--night);color:rgba(255,255,255,.55);padding:48px 24px;font-size:13px;margin-top:60px}
+    .ft-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+    .ft-links{display:flex;gap:18px;flex-wrap:wrap}
+    .ft-links a{color:rgba(255,255,255,.55)}
+    .ft-links a:hover{color:#fff}
+    .ft-copy{color:rgba(255,255,255,.35);font-size:12px}
+
+    @media (max-width:780px){
+      nav{padding:0 16px;height:56px}
+      .wrap{padding:90px 18px 40px}
+      .grid{grid-template-columns:1fr;gap:32px}
+      .form-card{padding:24px 20px}
+      .head h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="아트라이앵글 홈">
+    <img src="https://kwhrwbnfwoybdmdzmmko.supabase.co/storage/v1/object/public/photos/artryangle-logo.png" alt="아트라이앵글 로고" />
+  </a>
+  <a href="/" class="nav-back">← 홈으로</a>
+</nav>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">Contact</p>
+    <h1>어떤 이야기든 환영합니다</h1>
+    <p>컨설팅·강연·datarts 데모·IR 자료 — 모두 같은 폼으로 접수받습니다. 무료 초기 상담 후 48시간 내 회신드립니다.</p>
+  </div>
+
+  <div class="grid">
+    <div class="form-card">
+      <h2>문의하기</h2>
+      <p class="sub">간단히 남겨주시면 회사 측에서 바로 회신드립니다.</p>
+
+      <form id="contactForm">
+        <div class="field">
+          <label for="cf_name">이름 *</label>
+          <input id="cf_name" name="name" type="text" placeholder="홍길동" required maxlength="60" />
+        </div>
+        <div class="field">
+          <label for="cf_email">이메일</label>
+          <input id="cf_email" name="email" type="email" placeholder="example&#64;email.com" maxlength="120" />
+        </div>
+        <div class="field">
+          <label for="cf_msg">문의 내용 *</label>
+          <textarea id="cf_msg" name="message" placeholder="컨설팅 / 강연 / datarts 데모 / IR — 자유롭게 작성해 주세요." required maxlength="2000"></textarea>
+        </div>
+        <button type="submit" class="submit" id="cf_submit">문의 보내기</button>
+        <p class="form-alt">또는 직접 이메일 <a href="mailto:yeseul@artryangle.com">yeseul@artryangle.com</a></p>
+      </form>
+    </div>
+
+    <aside class="aside">
+      <div class="aside-block">
+        <h3>연락처</h3>
+        <ul class="ic-list">
+          <li><span class="ico">✉️</span><a href="mailto:yeseul@artryangle.com">yeseul@artryangle.com</a></li>
+          <li><span class="ico">📷</span><a href="https://instagram.com/artryangle" target="_blank" rel="noopener">@artryangle</a></li>
+          <li><span class="ico">📷</span><a href="https://instagram.com/yeahseul_ss" target="_blank" rel="noopener">@yeahseul_ss</a></li>
+          <li><span class="ico">📍</span><span>경기도 광주시 · 세종특별자치시</span></li>
+        </ul>
+      </div>
+
+      <div class="aside-block">
+        <h3>이런 분께 추천</h3>
+        <p>· 예술단체·문화재단 운영 전략을 점검하고 싶은 분<br>· 공공기관·기업 강연/컨설팅을 의뢰하실 분<br>· datarts SaaS 파일럿/도입을 검토하시는 분<br>· 투자·IR 자료를 요청하시는 분</p>
+        <div class="topics">
+          <span class="topic">컨설팅</span>
+          <span class="topic">강연·강의</span>
+          <span class="topic">축제 기획</span>
+          <span class="topic">datarts 데모</span>
+          <span class="topic">IR 자료</span>
+        </div>
+      </div>
+
+      <div class="aside-block">
+        <h3>응답 시간</h3>
+        <p>평일 기준 <strong>48시간 이내</strong>에 회신드립니다. 주말·공휴일 접수 건은 다음 영업일에 순차적으로 답변드립니다.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-copy">© 2026 아트라이앵글 Artryangle. All rights reserved.</div>
+    <div class="ft-links">
+      <a href="/">홈</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showToast(msg, isErr) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show' + (isErr ? ' err' : '');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(function () { t.className = ''; }, 4200);
+}
+
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var btn = document.getElementById('cf_submit');
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+  try {
+    var r = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('cf_name').value.trim(),
+        email: document.getElementById('cf_email').value.trim(),
+        message: document.getElementById('cf_msg').value.trim()
+      })
+    });
+    var d = await r.json().catch(function () { return {}; });
+    if (r.ok && d.ok !== false) {
+      showToast('문의가 접수되었습니다. 48시간 내 회신드릴게요.');
+      this.reset();
+    } else {
+      showToast('전송 실패: ' + (d.error || '잠시 후 다시 시도해 주세요.'), true);
+    }
+  } catch (err) {
+    showToast('네트워크 오류로 전송에 실패했습니다.', true);
+  }
+  btn.disabled = false;
+  btn.textContent = '문의 보내기';
+});
+</script>
+
+</body>
+</html>

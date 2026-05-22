@@ -24,12 +24,11 @@ module.exports = async (req, res) => {
     const today = new Date().toISOString().split('T')[0];
 
     const staticPages = [
-      { loc: SITE_URL + '/',           priority: '1.0', changefreq: 'weekly',  lastmod: today },
-      { loc: SITE_URL + '/#about',     priority: '0.8', changefreq: 'monthly', lastmod: today },
-      { loc: SITE_URL + '/#services',  priority: '0.8', changefreq: 'monthly', lastmod: today },
-      { loc: SITE_URL + '/#portfolio', priority: '0.8', changefreq: 'monthly', lastmod: today },
-      { loc: SITE_URL + '/#blog',      priority: '0.9', changefreq: 'weekly',  lastmod: today },
-      { loc: SITE_URL + '/#contact',   priority: '0.7', changefreq: 'monthly', lastmod: today }
+      { loc: SITE_URL + '/',         priority: '1.0', changefreq: 'weekly',  lastmod: today },
+      { loc: SITE_URL + '/about',    priority: '0.9', changefreq: 'monthly', lastmod: today },
+      { loc: SITE_URL + '/contact',  priority: '0.8', changefreq: 'monthly', lastmod: today },
+      { loc: SITE_URL + '/privacy',  priority: '0.4', changefreq: 'yearly',  lastmod: today },
+      { loc: SITE_URL + '/terms',    priority: '0.4', changefreq: 'yearly',  lastmod: today }
     ];
 
     const postUrls = (posts || []).map(p => ({

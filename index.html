@@ -1640,6 +1640,23 @@
       font-size: 11px;
       color: rgba(255,255,255,0.15);
     }
+    .footer-legal {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-legal li { display: inline-flex; }
+    .footer-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.85); }
 
     /* =====================================================
        Insights — 동적 카드 (Supabase 연동)
@@ -2622,10 +2639,10 @@
       <div>
         <p class="footer-col-title">Studio</p>
         <ul class="footer-links">
-          <li><a href="#about">About</a></li>
+          <li><a href="/about">About</a></li>
           <li><a href="#work">Portfolio</a></li>
           <li><a href="#insights">Insights</a></li>
-          <li><a href="#cta-section">Contact</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -2639,8 +2656,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 아트라이앵글 Artryangle. All rights reserved.</p>
-      <p class="footer-patent">특허 출원중 (특허-2025-0016611) · 경기도 광주시 / 세종시</p>
+      <p class="footer-copy">© 2026 아트라이앵글 Artryangle. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="/privacy">개인정보처리방침</a></li>
+        <li><a href="/terms">이용약관</a></li>
+        <li><span class="footer-patent">특허 출원중 (특허-2025-0016611) · 등록특허 10-2944264</span></li>
+      </ul>
     </div>
   </div>
 </footer>
