@@ -774,11 +774,10 @@
       0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
     }
 
-    /* datarts stats row */
+    /* datarts stats row — single centered figure */
     .datarts-stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      display: flex;
+      justify-content: center;
       border-top: 1px solid rgba(42,171,170,0.15);
       border-bottom: 1px solid rgba(42,171,170,0.15);
       padding: 32px 0;
@@ -786,10 +785,9 @@
     }
     .datarts-stat {
       text-align: center;
-      border-right: 1px solid rgba(42,171,170,0.12);
+      max-width: 280px;
       padding: 0 16px;
     }
-    .datarts-stat:last-child { border-right: none; }
     .datarts-stat-num {
       font-family: var(--font-serif);
       font-size: 36px;
@@ -1662,12 +1660,20 @@
        Insights — 동적 카드 (Supabase 연동)
     ===================================================== */
     .insight-loading,
-    .insight-empty {
+    .insight-empty,
+    .insight-fallback {
       padding: 60px 24px;
       text-align: center;
       color: var(--text-light);
       font-size: 14px;
+      line-height: 1.7;
       width: 100%;
+    }
+    .insights-row.is-fallback { width: 100%; }
+    .insight-fallback a {
+      color: var(--mint-dark);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(45,122,112,0.35);
     }
     .insight-card-link {
       text-decoration: none;
@@ -1871,9 +1877,8 @@
       .datarts-inner { padding: 72px 24px; }
       .datarts-header { grid-template-columns: 1fr; gap: 20px; }
       .datarts-layers { grid-template-columns: 1fr; gap: 12px; }
-      .datarts-stats-row { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .datarts-stat { border-right: none; border-bottom: 1px solid rgba(42,171,170,0.12); padding-bottom: 16px; }
-      .datarts-stat:nth-child(2), .datarts-stat:nth-child(4) { border-bottom: none; }
+      .datarts-stats-row { display: flex; justify-content: center; }
+      .datarts-stat { padding-bottom: 0; }
 
       #services { padding: 72px 24px; }
       .section-header { grid-template-columns: 1fr; gap: 16px; }
@@ -1905,7 +1910,7 @@
       .philo-stat { border-right: none; border-bottom: 1px solid rgba(92,181,173,0.15); padding: 0 0 20px; }
       .philo-stat:last-child { border-bottom: none; padding: 0; }
       .footer-top { grid-template-columns: 1fr; }
-      .datarts-stats-row { grid-template-columns: 1fr 1fr; }
+      .datarts-stats-row { display: flex; justify-content: center; }
     }
   </style>
 </head>
@@ -1973,7 +1978,7 @@
       <em>비즈니스의 전략</em>
     </h1>
     <p class="hero-sub">
-      10년 현장 경험과 연세대 Global MBA.<br>
+      <span data-stat="years" data-stat-format="raw">10</span>년 현장 경험과 연세대 Global MBA.<br>
       문화예술 기획·컨설팅·강연부터 데이터 플랫폼까지,<br>
       아트라이앵글이 함께합니다.
     </p>
@@ -1983,17 +1988,18 @@
     </div>
   </div>
 
+  <!-- 숫자의 원본: data/site-stats.js (히어로·아래 카운터·datarts가 같은 값을 씁니다) -->
   <div class="hero-stats">
     <div>
-      <div class="hero-stat-num">50+</div>
+      <div class="hero-stat-num" data-stat="projects" data-stat-format="counter">50+</div>
       <div class="hero-stat-label">기획 프로젝트</div>
     </div>
     <div>
-      <div class="hero-stat-num">10+</div>
+      <div class="hero-stat-num" data-stat="years" data-stat-format="counter">10+</div>
       <div class="hero-stat-label">년 현장 경력</div>
     </div>
     <div>
-      <div class="hero-stat-num">200+</div>
+      <div class="hero-stat-num" data-stat="participants" data-stat-format="counter">200+</div>
       <div class="hero-stat-label">강연·교육 참가자</div>
     </div>
   </div>
@@ -2028,14 +2034,14 @@
       <em>둘 다 구사해야</em> 진짜입니다.
     </h2>
     <p class="philo-body" data-reveal data-delay="3">
-      예술과 비즈니스의 교차점에서, 현장 10년 경험과<br>
+      예술과 비즈니스의 교차점에서, 현장 <span data-stat="years" data-stat-format="raw">10</span>년 경험과<br>
       Global MBA 전략 역량으로 지속 가능한 성장을 돕습니다.
     </p>
     <div class="philo-pillars" data-reveal data-delay="3">
       <div class="philo-pillar">
         <div class="philo-pillar-icon" aria-hidden="true">🎭</div>
         <div class="philo-pillar-title">현장성</div>
-        <p class="philo-pillar-desc">기획서가 아닌 현장에서 검증된 10년의 실전 감각</p>
+        <p class="philo-pillar-desc">기획서가 아닌 현장에서 검증된 <span data-stat="years" data-stat-format="raw">10</span>년의 실전 감각</p>
       </div>
       <div class="philo-pillar">
         <div class="philo-pillar-icon" aria-hidden="true">📊</div>
@@ -2050,15 +2056,15 @@
     </div>
     <div class="philo-stats" data-reveal data-delay="4">
       <div class="philo-stat">
-        <div class="philo-stat-num" data-count="50">0</div>
+        <div class="philo-stat-num" data-stat="projects" data-stat-format="counter" data-count="50" data-count-suffix="+">50+</div>
         <div class="philo-stat-label">기획 프로젝트<br>완료</div>
       </div>
       <div class="philo-stat">
-        <div class="philo-stat-num" data-count="10">0</div>
+        <div class="philo-stat-num" data-stat="years" data-stat-format="counter" data-count="10" data-count-suffix="+">10+</div>
         <div class="philo-stat-label">년 현장<br>경력</div>
       </div>
       <div class="philo-stat">
-        <div class="philo-stat-num" data-count="200">0</div>
+        <div class="philo-stat-num" data-stat="participants" data-stat-format="counter" data-count="200" data-count-suffix="+">200+</div>
         <div class="philo-stat-label">강연·교육<br>참가자</div>
       </div>
     </div>
@@ -2085,8 +2091,10 @@
     </div>
 
     <div class="insights-scroll-wrap">
-      <div class="insights-row" id="insights-row">
-        <div class="insight-loading">아티클을 불러오는 중…</div>
+      <div class="insights-row is-fallback" id="insights-row">
+        <div class="insight-fallback">
+          <a href="/sitemap.xml">발행된 아티클 목록 보기</a>
+        </div>
       </div>
     </div>
   </div>
@@ -2172,20 +2180,8 @@
     <!-- 스탯 행 — 사업계획서 기반 실제 데이터 -->
     <div class="datarts-stats-row" data-reveal>
       <div class="datarts-stat">
-        <div class="datarts-stat-num" data-count="1247">0</div>
-        <div class="datarts-stat-label">누적 응답자<br>(허난설헌 문화제 파일럿)</div>
-      </div>
-      <div class="datarts-stat">
-        <div class="datarts-stat-num">3,500<span style="font-size:0.55em">만원</span></div>
-        <div class="datarts-stat-label">2026년 매출 목표<br>Layer 1 · SaaS 구독</div>
-      </div>
-      <div class="datarts-stat">
-        <div class="datarts-stat-num">2028<span style="font-size:0.55em">H2</span></div>
-        <div class="datarts-stat-label">BEP 달성 목표<br>3개 레이어 통합 기준</div>
-      </div>
-      <div class="datarts-stat">
-        <div class="datarts-stat-num">6.6<span style="font-size:0.55em">억</span></div>
-        <div class="datarts-stat-label">2029년 매출 전망<br>Layer 1+2+3 누적</div>
+        <div class="datarts-stat-num" data-stat="respondents" data-stat-format="counter" data-count="500" data-count-suffix="+">500+</div>
+        <div class="datarts-stat-label" data-stat="respondents" data-stat-format="label">기획프로젝트 누적 만족도조사 응답자</div>
       </div>
     </div>
 
@@ -2226,7 +2222,7 @@
       <div>
         <p class="section-eyebrow" data-reveal>Services</p>
         <h2 class="section-h2" data-reveal data-delay="1">
-          예술과 비즈니스를<br>잇는 4가지 방법
+          예술과 비즈니스를<br>잇는 <span data-stat="serviceCount" data-stat-format="raw">4</span>가지 방법
         </h2>
       </div>
       <p class="section-sub" data-reveal data-delay="2">
@@ -2299,13 +2295,11 @@
         <div class="service-icon">📖</div>
         <h3 class="service-title">교육 / 워크숍</h3>
         <p class="service-desc">
-          예술경영 독서모임(12주)과 문화기획 실무 스터디(8주).
-          이론과 현장을 함께 배우는 소그룹 커뮤니티로
-          실질적인 역량을 키웁니다.
+          공공기관·문화재단·대학·기업 대상
+          예술경영·문화기획 강연과
+          기업 맞춤 강의.
         </p>
         <div class="service-tags">
-          <span class="service-tag">예술경영 독서모임</span>
-          <span class="service-tag">기획 실무 스터디</span>
           <span class="service-tag">기업 맞춤 강의</span>
         </div>
         <a href="#cta-section" class="service-link">
@@ -2355,7 +2349,7 @@
           <span class="work-card-tag">Festival</span>
           <span class="work-card-tag datarts-tag" style="margin-left:4px;">datarts</span>
           <h3 class="work-card-title">허난설헌 문화제<br>기획·운영</h3>
-          <p class="work-card-sub">경기광주 대표 문화축제 · datarts 파일럿 적용 · 관객 1,247명 데이터 수집</p>
+          <p class="work-card-sub">경기광주 대표 문화축제 · datarts 파일럿 적용</p>
         </div>
       </div>
 
@@ -2432,7 +2426,7 @@
         <div class="work-card-overlay">
           <span class="work-card-tag">Education</span>
           <h3 class="work-card-title">세종학당<br>한국문화교육 해외 파견</h3>
-          <p class="work-card-sub">그리스·코스타리카·키르기스스탄·몽골 4개국 파견</p>
+          <p class="work-card-sub">그리스·코스타리카·키르기스스탄·몽골 <span data-stat="dispatchCountries" data-stat-format="raw">4</span>개국 파견</p>
         </div>
       </div>
     </div>
@@ -2444,7 +2438,7 @@
         <div class="work-card-overlay">
           <span class="work-card-tag">Festival</span>
           <h3 class="work-card-title">K-Wave Dance Festival</h3>
-          <p class="work-card-sub">한강 세빛둥둥섬 · 3년 연속 · Golden Wave 수상</p>
+          <p class="work-card-sub">한강 세빛둥둥섬 · <span data-stat="kwaveStreakYears" data-stat-format="raw">3</span>년 연속 · Golden Wave 수상</p>
         </div>
       </div>
       <div class="work-card" data-filter-cat="festival" data-reveal data-delay="2">
@@ -2488,7 +2482,7 @@
         <div class="about-image-placeholder">S</div>
       </div>
       <div class="about-badge">
-        <span class="num">10+</span>
+        <span class="num" data-stat="years" data-stat-format="counter">10+</span>
         년 현장 경력
       </div>
     </div>
@@ -2499,7 +2493,7 @@
       <p class="about-h2-sub" data-reveal data-delay="1">문화예술경영컨설턴트 · 아트라이앵글 대표</p>
       <p class="about-body" data-reveal data-delay="2">
         예술과 비즈니스의 교차점에서 일합니다.
-        안양예술고 한국무용과를 수석 졸업하고, 10년 이상 문화예술 현장에서
+        안양예술고 한국무용과를 수석 졸업하고, <span data-stat="years" data-stat-format="raw">10</span>년 이상 문화예술 현장에서
         공연·축제·교육을 직접 기획·운영했습니다.
       </p>
       <p class="about-body" data-reveal data-delay="2">
@@ -2513,13 +2507,14 @@
         <li><strong>연세대학교 경영전문대학원</strong> Global MBA 졸업</li>
         <li><strong>성신여자대학교</strong> 예술경영학 학사</li>
         <li><strong>안양예술고등학교</strong> 한국무용과 수석 입학·졸업</li>
-        <li><strong>한국무용 전문 무용수</strong> 15년 · 전문 MC/아나운서</li>
+        <li><strong>한국무용 전문 무용수</strong> <span data-stat="dancerYears" data-stat-format="raw">15</span>년 · 전문 MC/아나운서</li>
         <li><strong>허난설헌 문화제 · K-Wave Festival</strong> 등 대형 축제 기획·운영</li>
+        <li>2023년 창업 당시부터 <strong>경기 광주시 입주기업</strong></li>
       </ul>
 
       <p class="about-section-label" data-reveal data-delay="3">강연 · 강의 이력</p>
       <ul class="about-career" data-reveal data-delay="3">
-        <li><strong>세종학당재단</strong> 한국문화교육 해외 파견 강사 (4개국)</li>
+        <li><strong>세종학당재단</strong> 한국문화교육 해외 파견 강사 (<span data-stat="dispatchCountries" data-stat-format="raw">4</span>개국)</li>
         <li><strong>세종문화재단 STAR</strong> 양성과정 1·2기 강사</li>
         <li><strong>한글예술언</strong> 양성지원사업 강사</li>
         <li>공공기관 · 문화재단 · 대학 · 기업 대상 <strong>예술경영·문화기획 강연</strong> 다수</li>
@@ -2702,6 +2697,8 @@
 <!-- ===================================================
      JAVASCRIPT
 =================================================== -->
+<script src="/data/site-stats.js"></script>
+<script src="/js/site-stats.js"></script>
 <script>
   /* ── 커스텀 커서 ── */
   const dot  = document.getElementById('cursor-dot');
@@ -2785,62 +2782,87 @@
 
   revealEls.forEach(el => revealObserver.observe(el));
 
-  /* ── 숫자 카운트업 ── */
+  /* ── 숫자 카운트업 ──
+     목표 숫자는 HTML에 이미 적혀 있고, data/site-stats.js 가 같은 값으로 다시 채웁니다.
+     애니메이션이 시작되지 않거나(IntersectionObserver 미동작, reduced motion) 멈추면
+     그 목표 숫자를 유지합니다. 0에서 출발하는 글자는 쓰지 않습니다.
+  */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function counterSuffix(el) {
+    return el.hasAttribute('data-count-suffix') ? el.getAttribute('data-count-suffix') : '';
+  }
+
+  function showFinalCount(el) {
+    const key = el.dataset.stat;
+    const stat = key && window.SITE_STATS ? window.SITE_STATS[key] : null;
+    const format = el.dataset.statFormat || 'counter';
+    if (stat && typeof window.formatSiteStat === 'function' && format !== 'unit' && format !== 'label') {
+      el.textContent = window.formatSiteStat(stat, format);
+      return;
+    }
+    const target = parseInt(el.dataset.count, 10);
+    if (!Number.isFinite(target)) return;
+    el.textContent = target.toLocaleString('ko-KR') + counterSuffix(el);
+  }
+
   function animateCount(el, target, suffix = '', duration = 2000) {
     const start = performance.now();
+    let finished = false;
+    const paint = (val, progress) => {
+      if (progress >= 1) showFinalCount(el);
+      else el.textContent = val.toLocaleString('ko-KR') + suffix;
+    };
     const update = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const val = Math.round(eased * target);
-      el.textContent = val.toLocaleString() + suffix;
+      paint(Math.round(eased * target), progress);
       if (progress < 1) requestAnimationFrame(update);
+      else finished = true;
     };
-    requestAnimationFrame(update);
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(update);
+    else showFinalCount(el);
+    // rAF가 한 번도 안 돌거나 중간에 멈추면 목표 숫자로 되돌립니다.
+    setTimeout(() => { if (!finished) showFinalCount(el); }, duration + 500);
   }
 
   function triggerCounter(el) {
     if (el.dataset.counted === '1') return;
+    const target = parseInt(el.dataset.count, 10);
+    if (!Number.isFinite(target)) return;
     el.dataset.counted = '1';
-    if (el.dataset.count) {
-      const target = parseInt(el.dataset.count);
-      const orig = (el.textContent || '').trim();
-      const suffix = orig.includes('+') ? '+' : (orig.includes('%') ? '%' : '');
-      animateCount(el, target, suffix || (target >= 50 ? '+' : ''));
+    if (reduceMotion) {
+      showFinalCount(el);
+      return;
     }
-    if (el.dataset.countNps) {
-      const target = parseInt(el.dataset.countNps);
-      const duration = 2000;
-      const start = performance.now();
-      const update = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = 'NPS ' + Math.round(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
-      };
-      requestAnimationFrame(update);
+    try {
+      animateCount(el, target, counterSuffix(el));
+    } catch (err) {
+      showFinalCount(el);
     }
   }
 
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      triggerCounter(entry.target);
-      countObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+  if (typeof IntersectionObserver === 'function') {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        triggerCounter(entry.target);
+        countObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 
-  document.querySelectorAll('[data-count], [data-count-nps]').forEach(el => countObserver.observe(el));
+    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
-  // 페이지 로드 시점에 이미 viewport 안에 있는 카운터는 즉시 트리거 (안전장치)
-  window.addEventListener('load', () => {
-    document.querySelectorAll('[data-count]:not([data-counted="1"]), [data-count-nps]:not([data-counted="1"])').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) {
-        triggerCounter(el);
-        countObserver.unobserve(el);
-      }
+    window.addEventListener('load', () => {
+      document.querySelectorAll('[data-count]:not([data-counted="1"])').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          triggerCounter(el);
+          countObserver.unobserve(el);
+        }
+      });
     });
-  });
+  }
 
   /* ── 포트폴리오 필터 ── */
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -2863,25 +2885,6 @@
           card.style.pointerEvents = 'none';
         }
         card.style.transition = 'opacity 0.4s, transform 0.4s';
-      });
-    });
-  });
-
-  /* ── Insights 탭 필터 ── */
-  const insightTabs  = document.querySelectorAll('.insights-tab');
-  const insightCards = document.querySelectorAll('.insight-card');
-
-  insightTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      insightTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const filter = tab.dataset.tab;
-      insightCards.forEach(card => {
-        const cat = card.dataset.insight || '';
-        const show = filter === 'all' || cat === filter;
-        card.style.opacity    = show ? '1' : '0.25';
-        card.style.transform  = show ? '' : 'scale(0.96)';
-        card.style.transition = 'opacity 0.35s, transform 0.35s';
       });
     });
   });
@@ -2971,7 +2974,12 @@
     btn.textContent = '문의 보내기';
   });
 
-  /* ── Supabase Insights (블로그) ── */
+</script>
+<script>
+  /* ── Supabase Insights (블로그) ──
+     글 목록은 Supabase posts 에서 가져옵니다. 실패하면 같은 출처의 /api/notion-blog 를 봅니다.
+     둘 다 실패하면 HTML에 있는 안내(사이트맵 링크)를 유지합니다. "불러오는 중"으로 두지 않습니다.
+  */
   const SUPA_URL = 'https://kwhrwbnfwoybdmdzmmko.supabase.co';
   const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aHJ3Ym5md295YmRtZHptbWtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODUwODgsImV4cCI6MjA5MTE2MTA4OH0.CTOKTzCN2__PUa89pKDn5z9xU1kAlJCAxVRXEmjM0lA';
 
@@ -3011,6 +3019,21 @@
   let allInsights = [];
   let activeInsightTab = 'all';
 
+  function insightFallbackHtml(message) {
+    return ''
+      + '<div class="insight-fallback">'
+      +   '<p>' + message + '</p>'
+      +   '<a href="/sitemap.xml">발행된 아티클 목록 보기</a>'
+      + '</div>';
+  }
+
+  function showInsightsMessage(message) {
+    const row = document.getElementById('insights-row');
+    if (!row) return;
+    row.classList.add('is-fallback');
+    row.innerHTML = insightFallbackHtml(message);
+  }
+
   function renderInsights() {
     const row = document.getElementById('insights-row');
     if (!row) return;
@@ -3020,18 +3043,23 @@
       : allInsights.filter(p => normalizeCat(p.category) === activeInsightTab);
 
     if (!filtered.length) {
-      row.innerHTML = '<div class="insight-empty">해당 카테고리에 아티클이 아직 없습니다.</div>';
+      showInsightsMessage(activeInsightTab === 'all'
+        ? '아티클 준비 중입니다.'
+        : '해당 카테고리에 아티클이 아직 없습니다.');
       return;
     }
-    row.innerHTML = filtered.map((p, i) => {
+    row.classList.remove('is-fallback');
+    row.innerHTML = filtered.map((p) => {
       const cat = normalizeCat(p.category);
       const grad = cat === 'data' ? DATA_GRADS[(dataIdx++) % DATA_GRADS.length] : ART_GRADS[(artIdx++) % ART_GRADS.length];
-      const slug = encodeURIComponent(p.slug || p.id);
+      const slug = p.slug ? encodeURIComponent(p.slug) : '';
+      const href = slug ? ('/blog/' + slug) : (p.notion_url || '/sitemap.xml');
+      const external = !slug && p.notion_url ? ' target="_blank" rel="noopener"' : '';
       const thumb = p.cover_url
         ? '<img src="' + esc(p.cover_url) + '" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.remove();" />'
         : '';
       return ''
-        + '<a href="/blog/' + slug + '" class="insight-card-link" data-insight="' + cat + '">'
+        + '<a href="' + esc(href) + '" class="insight-card-link" data-insight="' + cat + '"' + external + '>'
         +   '<div class="insight-card" data-insight="' + cat + '">'
         +     '<div class="insight-thumb">'
         +       '<div class="insight-thumb-bg" style="background:' + grad + ';"></div>'
@@ -3057,26 +3085,50 @@
     });
   });
 
-  async function loadInsights() {
-    const row = document.getElementById('insights-row');
+  async function fetchJson(url, options, timeoutMs) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
     try {
-      const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 5000);
-      const r = await fetch(SUPA_URL + '/rest/v1/posts?published=eq.true&select=id,title,excerpt,slug,category,cover_url,created_at&order=created_at.desc&limit=12', {
-        signal: ctrl.signal,
-        headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + SUPA_KEY }
-      });
-      clearTimeout(timer);
+      const r = await fetch(url, Object.assign({ signal: ctrl.signal }, options || {}));
       if (!r.ok) throw new Error('http ' + r.status);
-      const data = await r.json();
-      allInsights = Array.isArray(data) ? data : [];
+      return await r.json();
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function loadInsights() {
+    try {
+      let posts = null;
+      try {
+        const data = await fetchJson(
+          SUPA_URL + '/rest/v1/posts?published=eq.true&select=id,title,excerpt,slug,category,cover_url,created_at&order=created_at.desc&limit=12',
+          { headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + SUPA_KEY, Accept: 'application/json' } },
+          8000
+        );
+        if (!Array.isArray(data)) throw new Error('bad payload');
+        posts = data;
+      } catch (supabaseErr) {
+        const data = await fetchJson('/api/notion-blog', { headers: { Accept: 'application/json' } }, 8000);
+        const list = data && Array.isArray(data.posts) ? data.posts : [];
+        posts = list.filter(p => p && p.title).map(p => ({
+          id: p.id,
+          title: p.title,
+          category: p.tag,
+          created_at: p.date,
+          slug: '',
+          notion_url: p.notion_url || '',
+          cover_url: ''
+        }));
+      }
+      allInsights = posts;
       if (!allInsights.length) {
-        row.innerHTML = '<div class="insight-empty">아티클 준비 중입니다.</div>';
+        showInsightsMessage('아티클 준비 중입니다.');
         return;
       }
       renderInsights();
     } catch (e) {
-      row.innerHTML = '<div class="insight-empty">아티클 준비 중입니다.</div>';
+      showInsightsMessage('아티클을 불러오지 못했습니다.');
     }
   }
   loadInsights();
