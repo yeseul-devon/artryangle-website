@@ -13,7 +13,7 @@
  *
  * value     : 세는 숫자. 카운터와 문장 속 숫자에 씁니다.
  * suffix    : 카운터 뒤에만 붙는 기호(+). 문장에는 붙지 않습니다.
- * text/unit : 세지 않고 그대로 보여주는 표기. 예) 3,500 + 만원
+ * text/unit : 세지 않고 그대로 보여주는 표기. 예) 2028 + H2
  * labelHtml : 숫자 아래 설명. 줄바꿈은 <br>만 사용합니다.
  */
 (function (root) {
@@ -34,27 +34,16 @@
       label: '강연·교육 참가자'
     },
     respondents: {
-      value: 1247,
-      suffix: '',
-      label: '누적 응답자 (허난설헌 문화제 파일럿)'
-    },
-    revenue2026: {
-      text: '3,500',
-      unit: '만원',
-      labelHtml: '2026년 매출 목표<br>Layer 1 · SaaS 구독',
-      label: '2026년 매출 목표'
+      value: 500,
+      suffix: '+',
+      label: '기획프로젝트 누적 만족도조사 응답자',
+      labelHtml: '기획프로젝트 누적 만족도조사 응답자'
     },
     bep: {
       text: '2028',
       unit: 'H2',
       labelHtml: 'BEP 달성 목표<br>3개 레이어 통합 기준',
       label: 'BEP 달성 목표'
-    },
-    revenue2029: {
-      text: '6.6',
-      unit: '억',
-      labelHtml: '2029년 매출 전망<br>Layer 1+2+3 누적',
-      label: '2029년 매출 전망'
     },
     dancerYears: {
       value: 15,
@@ -65,16 +54,6 @@
       value: 4,
       suffix: '',
       label: '세종학당 해외 파견 국가 수'
-    },
-    readingWeeks: {
-      value: 12,
-      suffix: '',
-      label: '예술경영 독서모임 기간 (주)'
-    },
-    studyWeeks: {
-      value: 8,
-      suffix: '',
-      label: '문화기획 실무 스터디 기간 (주)'
     },
     kwaveStreakYears: {
       value: 3,

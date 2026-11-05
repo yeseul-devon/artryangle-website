@@ -777,7 +777,7 @@
     /* datarts stats row */
     .datarts-stats-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 0;
       border-top: 1px solid rgba(42,171,170,0.15);
       border-bottom: 1px solid rgba(42,171,170,0.15);
@@ -1880,8 +1880,7 @@
       .datarts-header { grid-template-columns: 1fr; gap: 20px; }
       .datarts-layers { grid-template-columns: 1fr; gap: 12px; }
       .datarts-stats-row { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .datarts-stat { border-right: none; border-bottom: 1px solid rgba(42,171,170,0.12); padding-bottom: 16px; }
-      .datarts-stat:nth-child(2), .datarts-stat:nth-child(4) { border-bottom: none; }
+      .datarts-stat { border-bottom: none; padding-bottom: 0; }
 
       #services { padding: 72px 24px; }
       .section-header { grid-template-columns: 1fr; gap: 16px; }
@@ -2183,20 +2182,12 @@
     <!-- 스탯 행 — 사업계획서 기반 실제 데이터 -->
     <div class="datarts-stats-row" data-reveal>
       <div class="datarts-stat">
-        <div class="datarts-stat-num" data-stat="respondents" data-stat-format="counter" data-count="1247" data-count-suffix="">1,247</div>
-        <div class="datarts-stat-label">누적 응답자<br>(허난설헌 문화제 파일럿)</div>
-      </div>
-      <div class="datarts-stat">
-        <div class="datarts-stat-num" data-stat="revenue2026" data-stat-format="unit">3,500<span style="font-size:0.55em">만원</span></div>
-        <div class="datarts-stat-label" data-stat="revenue2026" data-stat-format="label">2026년 매출 목표<br>Layer 1 · SaaS 구독</div>
+        <div class="datarts-stat-num" data-stat="respondents" data-stat-format="counter" data-count="500" data-count-suffix="+">500+</div>
+        <div class="datarts-stat-label" data-stat="respondents" data-stat-format="label">기획프로젝트 누적 만족도조사 응답자</div>
       </div>
       <div class="datarts-stat">
         <div class="datarts-stat-num" data-stat="bep" data-stat-format="unit">2028<span style="font-size:0.55em">H2</span></div>
         <div class="datarts-stat-label" data-stat="bep" data-stat-format="label">BEP 달성 목표<br>3개 레이어 통합 기준</div>
-      </div>
-      <div class="datarts-stat">
-        <div class="datarts-stat-num" data-stat="revenue2029" data-stat-format="unit">6.6<span style="font-size:0.55em">억</span></div>
-        <div class="datarts-stat-label" data-stat="revenue2029" data-stat-format="label">2029년 매출 전망<br>Layer 1+2+3 누적</div>
       </div>
     </div>
 
@@ -2310,13 +2301,11 @@
         <div class="service-icon">📖</div>
         <h3 class="service-title">교육 / 워크숍</h3>
         <p class="service-desc">
-          예술경영 독서모임(<span data-stat="readingWeeks" data-stat-format="raw">12</span>주)과 문화기획 실무 스터디(<span data-stat="studyWeeks" data-stat-format="raw">8</span>주).
-          이론과 현장을 함께 배우는 소그룹 커뮤니티로
-          실질적인 역량을 키웁니다.
+          공공기관·문화재단·대학·기업 대상
+          예술경영·문화기획 강연과
+          기업 맞춤 강의.
         </p>
         <div class="service-tags">
-          <span class="service-tag">예술경영 독서모임</span>
-          <span class="service-tag">기획 실무 스터디</span>
           <span class="service-tag">기업 맞춤 강의</span>
         </div>
         <a href="#cta-section" class="service-link">
@@ -2366,7 +2355,7 @@
           <span class="work-card-tag">Festival</span>
           <span class="work-card-tag datarts-tag" style="margin-left:4px;">datarts</span>
           <h3 class="work-card-title">허난설헌 문화제<br>기획·운영</h3>
-          <p class="work-card-sub">경기광주 대표 문화축제 · datarts 파일럿 적용 · 관객 <span data-stat="respondents" data-stat-format="number">1,247</span>명 데이터 수집</p>
+          <p class="work-card-sub">경기광주 대표 문화축제 · datarts 파일럿 적용</p>
         </div>
       </div>
 
