@@ -774,11 +774,10 @@
       0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
     }
 
-    /* datarts stats row */
+    /* datarts stats row — single centered figure */
     .datarts-stats-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
+      display: flex;
+      justify-content: center;
       border-top: 1px solid rgba(42,171,170,0.15);
       border-bottom: 1px solid rgba(42,171,170,0.15);
       padding: 32px 0;
@@ -786,10 +785,9 @@
     }
     .datarts-stat {
       text-align: center;
-      border-right: 1px solid rgba(42,171,170,0.12);
+      max-width: 280px;
       padding: 0 16px;
     }
-    .datarts-stat:last-child { border-right: none; }
     .datarts-stat-num {
       font-family: var(--font-serif);
       font-size: 36px;
@@ -1879,8 +1877,8 @@
       .datarts-inner { padding: 72px 24px; }
       .datarts-header { grid-template-columns: 1fr; gap: 20px; }
       .datarts-layers { grid-template-columns: 1fr; gap: 12px; }
-      .datarts-stats-row { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .datarts-stat { border-bottom: none; padding-bottom: 0; }
+      .datarts-stats-row { display: flex; justify-content: center; }
+      .datarts-stat { padding-bottom: 0; }
 
       #services { padding: 72px 24px; }
       .section-header { grid-template-columns: 1fr; gap: 16px; }
@@ -1912,7 +1910,7 @@
       .philo-stat { border-right: none; border-bottom: 1px solid rgba(92,181,173,0.15); padding: 0 0 20px; }
       .philo-stat:last-child { border-bottom: none; padding: 0; }
       .footer-top { grid-template-columns: 1fr; }
-      .datarts-stats-row { grid-template-columns: 1fr 1fr; }
+      .datarts-stats-row { display: flex; justify-content: center; }
     }
   </style>
 </head>
@@ -2184,10 +2182,6 @@
       <div class="datarts-stat">
         <div class="datarts-stat-num" data-stat="respondents" data-stat-format="counter" data-count="500" data-count-suffix="+">500+</div>
         <div class="datarts-stat-label" data-stat="respondents" data-stat-format="label">기획프로젝트 누적 만족도조사 응답자</div>
-      </div>
-      <div class="datarts-stat">
-        <div class="datarts-stat-num" data-stat="bep" data-stat-format="unit">2028<span style="font-size:0.55em">H2</span></div>
-        <div class="datarts-stat-label" data-stat="bep" data-stat-format="label">BEP 달성 목표<br>3개 레이어 통합 기준</div>
       </div>
     </div>
 

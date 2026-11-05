@@ -13,7 +13,6 @@
  *
  * value     : 세는 숫자. 카운터와 문장 속 숫자에 씁니다.
  * suffix    : 카운터 뒤에만 붙는 기호(+). 문장에는 붙지 않습니다.
- * text/unit : 세지 않고 그대로 보여주는 표기. 예) 2028 + H2
  * labelHtml : 숫자 아래 설명. 줄바꿈은 <br>만 사용합니다.
  */
 (function (root) {
@@ -38,12 +37,6 @@
       suffix: '+',
       label: '기획프로젝트 누적 만족도조사 응답자',
       labelHtml: '기획프로젝트 누적 만족도조사 응답자'
-    },
-    bep: {
-      text: '2028',
-      unit: 'H2',
-      labelHtml: 'BEP 달성 목표<br>3개 레이어 통합 기준',
-      label: 'BEP 달성 목표'
     },
     dancerYears: {
       value: 15,
