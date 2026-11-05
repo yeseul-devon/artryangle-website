@@ -1172,6 +1172,28 @@
     .bg-edu       { background: linear-gradient(135deg, #3a2a50, #5a3a7a, #7a5a9a); }
     .bg-musical   { background: linear-gradient(135deg, #2a3a1a, #4a6a2a, #6a9a40); }
 
+    .work-year {
+      margin: 8px 0 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--mint-bright);
+    }
+    .work-grid + .work-year { margin-top: 36px; }
+    .work-grid.equal {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+    }
+    .work-grid.equal.pair {
+      grid-template-columns: 1fr 1fr;
+    }
+    .work-etc {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(123,232,216,0.16);
+    }
+    .work-etc .work-year { margin-top: 0; }
+
     /* =====================================================
        섹션 06 — ABOUT (대표 소개)
        목적: 인물 신뢰감 + datarts 탄생 스토리
@@ -1885,7 +1907,9 @@
       .services-grid { grid-template-columns: 1fr; }
 
       #work { padding: 72px 24px; }
-      .work-grid { grid-template-columns: 1fr; }
+      .work-grid,
+      .work-grid.equal,
+      .work-grid.equal.pair { grid-template-columns: 1fr; }
       .work-card.large { grid-row: span 1; }
       .work-card.large .work-card-img,
       .work-card.large .work-card-bg { min-height: 320px; }
@@ -2338,13 +2362,112 @@
       <button class="filter-btn" data-filter="education">Education</button>
       <button class="filter-btn" data-filter="performance">Performance</button>
       <button class="filter-btn" data-filter="datarts">datarts</button>
+      <button class="filter-btn" data-filter="etc">기타</button>
     </div>
 
+    <p class="work-year">2026</p>
     <div class="work-grid">
+      <div class="work-card large" data-filter-cat="performance" data-reveal="left">
+        <div class="work-card-bg bg-musical work-card-img"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Performance</span>
+          <span class="work-card-tag" style="margin-left:4px;">진행 중</span>
+          <h3 class="work-card-title">그린노트:<br>찾아가는 기후콘서트</h3>
+          <p class="work-card-sub">2026.10–11 · 학교·시청을 찾아가는 기후·환경 클래식 공연 4회 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="1">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1a3530,#2d7a70,#5cb5ad);"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Festival</span>
+          <h3 class="work-card-title">광주 3대잔치<br>별시</h3>
+          <p class="work-card-sub">2026.09 · 광주시문화재단 · 광주 3대 축제 연계 ‘과거시험’ 콘셉트 체험형 홍보 팝업 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="2">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1f3f2a,#3a6f4a,#5c9a6a);"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Performance</span>
+          <h3 class="work-card-title">어린이 환경뮤지컬<br>〈지구시계 수리공: 째깍째깍 원정대〉</h3>
+          <p class="work-card-sub">2026.07 · 만 3~5세 대상 친환경 미래교육 뮤지컬 · 2회 공연, 약 1,160명 관람</p>
+        </div>
+      </div>
+    </div>
 
-      <!-- 큰 카드 (왼쪽 전체) -->
-      <div class="work-card large" data-filter-cat="festival datarts" data-reveal="left">
-        <div class="work-card-bg bg-festival work-card-img"></div>
+    <div class="work-grid equal" style="margin-top:16px;">
+      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="1">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1a4a40,#2d7a6a,#3d9080); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Festival</span>
+          <h3 class="work-card-title">2026 환경의날<br>기념식</h3>
+          <p class="work-card-sub">2026.06 · 축하공연·기념식·환경체험교육을 잇는 시민 기념행사 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="2">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1e3a5f,#2a6a8f,#3a9aaa); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Performance</span>
+          <h3 class="work-card-title">SVC Seoul<br>개소식</h3>
+          <p class="work-card-sub">2026.05 · 창업진흥원 · 글로벌 창업 거점 개소 세레모니·네트워킹 기획·연출</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="education" data-reveal data-delay="3">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#3a2a50,#5a3a7a,#7a5a9a); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Education</span>
+          <h3 class="work-card-title">제629돌 세종대왕<br>나신 날 기념 문화행사</h3>
+          <p class="work-card-sub">2026.05 · 국립한글박물관 한글 체험부스·체험존 기획·운영</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-grid equal" style="margin-top:16px;">
+      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="1">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#2a1f3f,#4a3a6f,#6a5a9a); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Performance</span>
+          <h3 class="work-card-title">구립응암도서관<br>개관식</h3>
+          <p class="work-card-sub">2026.04 · 축하공연·제막·테이프커팅으로 꾸민 도서관 개관식 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="education" data-reveal data-delay="2">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#3f2a1f,#6f4a3a,#aa7a5c); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Education</span>
+          <h3 class="work-card-title">서울 청년<br>꿀팁버스</h3>
+          <p class="work-card-sub">2026.03–04 · 서울 청년을 찾아가는 이동형 프로그램 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="3">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1f2a3f,#3a4a6f,#5a6a9f); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Performance</span>
+          <h3 class="work-card-title">모두의 챌린지<br>AX Kick-off Day</h3>
+          <p class="work-card-sub">2026.03 · 스타트업·대기업 협업 성과 전시·발표 킥오프 행사 기획·운영</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="work-year">2025</p>
+    <div class="work-grid equal">
+      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="1">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1f2a3f,#3a4a6f,#5a6a9f); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Festival</span>
+          <h3 class="work-card-title">광주시 창업누림<br>네트워킹파티 SYNERGY</h3>
+          <p class="work-card-sub">2025.12 · 청년 창업자·예비창업자 50여 명이 모인 교류형 네트워킹 파티 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="education" data-reveal data-delay="2">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#2a3f1f,#4a6f3a,#7ab55c); min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Education</span>
+          <h3 class="work-card-title">탄소제로<br>환경캠프</h3>
+          <p class="work-card-sub">2025.10 · 가족 20팀 · 68명 · 1박 2일 캠핑형 환경축제 · 비건 요리·음악공연·업사이클링 아트 기획·운영</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="festival datarts" data-reveal data-delay="3">
+        <div class="work-card-bg bg-festival" style="min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Festival</span>
           <span class="work-card-tag datarts-tag" style="margin-left:4px;">datarts</span>
@@ -2352,32 +2475,26 @@
           <p class="work-card-sub">경기광주 대표 문화축제 · datarts 파일럿 적용</p>
         </div>
       </div>
+    </div>
 
-      <!-- 우측 상단 -->
+    <div class="work-grid equal" style="margin-top:16px;">
       <div class="work-card" data-filter-cat="education" data-reveal data-delay="1">
-        <div class="work-card-bg" style="background: linear-gradient(135deg,#1e3a5f,#2a6a8f,#3a9aaa);"></div>
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#1e3a5f,#2a6a8f,#3a9aaa); min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Education</span>
           <h3 class="work-card-title">세종 일상예술교육가<br>(STAR) 양성과정</h3>
           <p class="work-card-sub">세종문화재단 · 2025 · 시민 예술가 양성 1기·2기 연속 계약</p>
         </div>
       </div>
-
-      <!-- 우측 하단 -->
       <div class="work-card" data-filter-cat="performance" data-reveal data-delay="2">
-        <div class="work-card-bg" style="background: linear-gradient(135deg,#2a1f3f,#4a3a6f,#6a5a9a);"></div>
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#2a1f3f,#4a3a6f,#6a5a9a); min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Performance</span>
           <h3 class="work-card-title">고산문화누리센터<br>개관식</h3>
           <p class="work-card-sub">문화복합시설 개관 행사 기획·전체 운영</p>
         </div>
       </div>
-
-    </div>
-
-    <!-- 2행 -->
-    <div class="work-grid" style="margin-top:16px;">
-      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="1">
+      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="3">
         <div class="work-card-bg" style="background: linear-gradient(135deg,#1a3530,#2d7a70,#5cb5ad); min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Festival</span>
@@ -2385,27 +2502,18 @@
           <p class="work-card-sub">지역 주민 참여형 문화축제 기획·운영</p>
         </div>
       </div>
-      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="2">
+    </div>
+
+    <div class="work-grid equal" style="margin-top:16px;">
+      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="1">
         <div class="work-card-bg bg-musical" style="min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Performance</span>
-          <h3 class="work-card-title">아트예술31<br>〈나잇트마흔〉</h3>
+          <h3 class="work-card-title">모든예술31<br>〈나잇트마흔〉</h3>
           <p class="work-card-sub">성인 감성 퍼포먼스 공연 기획·제작</p>
         </div>
       </div>
-      <div class="work-card" data-filter-cat="education" data-reveal data-delay="3">
-        <div class="work-card-bg" style="background: linear-gradient(135deg,#2a3f1f,#4a6f3a,#7ab55c); min-height: 220px;"></div>
-        <div class="work-card-overlay">
-          <span class="work-card-tag">Education</span>
-          <h3 class="work-card-title">꿈을 지키는<br>탄소자립 가족탐험대</h3>
-          <p class="work-card-sub">환경×예술 융합 가족 체험 교육 프로그램</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3행 -->
-    <div class="work-grid" style="margin-top:16px;">
-      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="1">
+      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="2">
         <div class="work-card-bg" style="background: linear-gradient(135deg,#3f1f2a,#6f3a4a,#9a5c6a); min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Performance</span>
@@ -2413,35 +2521,7 @@
           <p class="work-card-sub">환경 주제 토크·공연 복합 행사 기획</p>
         </div>
       </div>
-      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="2">
-        <div class="work-card-bg" style="background: linear-gradient(135deg,#1f2a3f,#3a4a6f,#5a6a9f); min-height: 220px;"></div>
-        <div class="work-card-overlay">
-          <span class="work-card-tag">Festival</span>
-          <h3 class="work-card-title">광주시창업누림<br>네트워킹파티 SYNERGY</h3>
-          <p class="work-card-sub">창업 생태계 문화 네트워킹 행사 기획·진행</p>
-        </div>
-      </div>
-      <div class="work-card" data-filter-cat="education" data-reveal data-delay="3">
-        <div class="work-card-bg" style="background: linear-gradient(135deg,#3f2a1f,#6f4a3a,#aa7a5c); min-height: 220px;"></div>
-        <div class="work-card-overlay">
-          <span class="work-card-tag">Education</span>
-          <h3 class="work-card-title">세종학당<br>한국문화교육 해외 파견</h3>
-          <p class="work-card-sub">그리스·코스타리카·키르기스스탄·몽골 <span data-stat="dispatchCountries" data-stat-format="raw">4</span>개국 파견</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4행 -->
-    <div class="work-grid" style="margin-top:16px;">
-      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="1">
-        <div class="work-card-bg bg-dance" style="min-height: 220px;"></div>
-        <div class="work-card-overlay">
-          <span class="work-card-tag">Festival</span>
-          <h3 class="work-card-title">K-Wave Dance Festival</h3>
-          <p class="work-card-sub">한강 세빛둥둥섬 · <span data-stat="kwaveStreakYears" data-stat-format="raw">3</span>년 연속 · Golden Wave 수상</p>
-        </div>
-      </div>
-      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="2">
+      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="3">
         <div class="work-card-bg bg-edu" style="min-height: 220px;"></div>
         <div class="work-card-overlay">
           <span class="work-card-tag">Festival</span>
@@ -2449,12 +2529,45 @@
           <p class="work-card-sub">광주시 대규모 복지문화 박람회 기획 참여</p>
         </div>
       </div>
-      <div class="work-card" data-filter-cat="performance" data-reveal data-delay="3">
-        <div class="work-card-bg" style="background: linear-gradient(135deg,#1f3f2a,#3a6f4a,#5c9a6a); min-height: 220px;"></div>
+    </div>
+
+    <div class="work-grid equal pair" style="margin-top:16px;">
+      <div class="work-card" data-filter-cat="education" data-reveal data-delay="1">
+        <div class="work-card-bg" style="background: linear-gradient(135deg,#3f2a1f,#6f4a3a,#aa7a5c); min-height: 220px;"></div>
         <div class="work-card-overlay">
-          <span class="work-card-tag">Performance</span>
-          <h3 class="work-card-title">어린이 환경뮤지컬<br>〈지구시계수리공〉</h3>
-          <p class="work-card-sub">환경×예술 창작뮤지컬 제작</p>
+          <span class="work-card-tag">Education</span>
+          <h3 class="work-card-title">세종학당<br>한국문화교육 해외 파견</h3>
+          <p class="work-card-sub">그리스·코스타리카·키르기스스탄·몽골 <span data-stat="dispatchCountries" data-stat-format="raw">4</span>개국 파견</p>
+        </div>
+      </div>
+      <div class="work-card" data-filter-cat="festival" data-reveal data-delay="2">
+        <div class="work-card-bg bg-dance" style="min-height: 220px;"></div>
+        <div class="work-card-overlay">
+          <span class="work-card-tag">Festival</span>
+          <h3 class="work-card-title">K-Wave Dance Festival</h3>
+          <p class="work-card-sub">한강 세빛둥둥섬 · <span data-stat="kwaveStreakYears" data-stat-format="raw">3</span>년 연속 · Golden Wave 수상</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-etc">
+      <p class="work-year">기타</p>
+      <div class="work-grid equal pair">
+        <div class="work-card" data-filter-cat="etc" data-reveal data-delay="1">
+          <div class="work-card-bg" style="background: linear-gradient(135deg,#243e3a,#1a3530,#2d7a70); min-height: 200px;"></div>
+          <div class="work-card-overlay">
+            <span class="work-card-tag">기타</span>
+            <h3 class="work-card-title">정지 배수펌프장<br>준공식</h3>
+            <p class="work-card-sub">2025.12 · 광주시 정지 자연재해위험개선지구 정비사업 준공 기념식 기획·운영</p>
+          </div>
+        </div>
+        <div class="work-card" data-filter-cat="etc" data-reveal data-delay="2">
+          <div class="work-card-bg" style="background: linear-gradient(135deg,#1a3530,#3a5a40,#5cb58a); min-height: 200px;"></div>
+          <div class="work-card-overlay">
+            <span class="work-card-tag">기타</span>
+            <h3 class="work-card-title">너른골 자연휴양림<br>(힐링타운) 기공식</h3>
+            <p class="work-card-sub">2025.11 · 광주시 퇴촌 자연휴양림 조성사업 기공식 기획·운영</p>
+          </div>
         </div>
       </div>
     </div>
