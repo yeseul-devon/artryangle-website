@@ -140,6 +140,14 @@ const renderPage = (post) => {
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HDQ8J5N4F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2HDQ8J5N4F');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>${title} | 아트라이앵글</title>
@@ -284,6 +292,14 @@ ${cover ? `<meta name="twitter:image" content="${cover}">` : ''}
 const renderNotFound = (slug) => `<!DOCTYPE html>
 <html lang="ko"><head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HDQ8J5N4F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2HDQ8J5N4F');
+</script>
 <title>찾을 수 없는 글 | 아트라이앵글</title>
 <meta name="robots" content="noindex">
 <style>
