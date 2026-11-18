@@ -1180,6 +1180,134 @@
     .bg-edu       { background: linear-gradient(135deg, #3a2a50, #5a3a7a, #7a5a9a); }
     .bg-musical   { background: linear-gradient(135deg, #2a3a1a, #4a6a2a, #6a9a40); }
 
+    /* NBDA 소개 영상 + 리플릿 */
+    #nbda {
+      background: var(--cream);
+      padding: 88px 48px 72px;
+    }
+    .nbda-inner { max-width: 1100px; margin: 0 auto; }
+    .nbda-head { text-align: center; max-width: 720px; margin: 0 auto 28px; }
+    .nbda-en {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--mint-dark);
+      margin-top: 10px;
+      letter-spacing: -0.01em;
+    }
+    .nbda-line {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-mid);
+      letter-spacing: 0.04em;
+    }
+    .nbda-player {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--night);
+      box-shadow: 0 18px 40px rgba(13, 35, 32, 0.12);
+    }
+    .nbda-player video,
+    .about-shorts video,
+    .shorts-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--night);
+      cursor: auto;
+    }
+    .nbda-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .leaflet-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      border: 1px solid rgba(92, 181, 173, 0.22);
+      border-radius: 14px;
+      padding: 12px;
+      min-width: 0;
+    }
+    .leaflet-card img {
+      width: 92px;
+      height: 130px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .leaflet-card p {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .leaflet-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .leaflet-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .leaflet-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--mint-primary);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .leaflet-download:hover { background: var(--mint-bright); color: var(--night); }
+    .nbda-yt {
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--mint-dark);
+      letter-spacing: 0.02em;
+    }
+    .nbda-yt:hover { color: var(--mint-primary); }
+    .about-shorts {
+      position: relative;
+      z-index: 2;
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 0 48px 88px;
+      text-align: center;
+    }
+    .about-shorts .section-eyebrow { color: var(--mint-dark); }
+    .about-shorts h3 {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .about-shorts p {
+      color: var(--text-mid);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .about-shorts video {
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 16px;
+      box-shadow: 0 16px 36px rgba(13, 35, 32, 0.12);
+    }
+
     .work-year {
       margin: 8px 0 14px;
       font-size: 12px;
@@ -1213,7 +1341,9 @@
       padding: 0;
       min-height: 90vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
     .about-bg {
@@ -1231,6 +1361,7 @@
     .about-inner {
       position: relative;
       z-index: 2;
+      width: min(1100px, 100%);
       max-width: 1100px;
       margin: 0 auto;
       padding: 100px 48px;
@@ -1914,6 +2045,14 @@
       .section-header { grid-template-columns: 1fr; gap: 16px; }
       .services-grid { grid-template-columns: 1fr; }
 
+      #nbda { padding: 64px 24px; }
+      .nbda-foot { flex-direction: column; align-items: stretch; }
+      .leaflet-card { flex-direction: column; align-items: stretch; }
+      .leaflet-card img { width: 120px; height: 168px; }
+      .leaflet-actions { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .nbda-yt { align-self: flex-start; }
+      .about-shorts { padding: 0 24px 64px; }
+      .about-shorts video { max-width: none; }
       #work { padding: 72px 24px; }
       .work-grid,
       .work-grid.equal,
@@ -2039,6 +2178,47 @@
   <div class="hero-scroll-hint">
     <div class="scroll-line"></div>
     <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ===================================================
+     NBDA — 그런데… 그리고!
+=================================================== -->
+<section id="nbda">
+  <div class="nbda-inner">
+    <div class="nbda-head">
+      <p class="section-eyebrow">NBDA</p>
+      <h2 class="section-h2">그런데… 그리고!</h2>
+      <p class="nbda-en">No Big Deal, And!</p>
+      <p class="nbda-line">문화예술 · 교육 · 글로벌 · 로컬</p>
+    </div>
+    <div class="nbda-player">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="/assets/media/nbda-promo-poster.jpg"
+        width="1280"
+        height="720"
+        aria-label="아트라이앵글 NBDA 소개 영상. No Big Deal, And!">
+        <source src="/assets/media/nbda-promo.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="nbda-foot">
+      <div class="leaflet-card">
+        <img src="/assets/media/artryangle-leaflet-preview.jpg" alt="아트라이앵글 회사소개 리플릿 첫 페이지" />
+        <div>
+          <p>문화예술을 기획하고 제작하는 사람들.</p>
+          <p class="leaflet-heading">회사소개 리플릿 다운로드 (PDF)</p>
+          <div class="leaflet-actions">
+            <a class="leaflet-download" href="/assets/artryangle-leaflet.pdf" download="artryangle-leaflet.pdf">한국어</a>
+            <a class="leaflet-download" href="/assets/artryangle-leaflet-en.pdf" download="artryangle-leaflet-en.pdf">English</a>
+            <a class="leaflet-download" href="/assets/artryangle-leaflet-ja.pdf" download="artryangle-leaflet-ja.pdf">日本語</a>
+          </div>
+        </div>
+      </div>
+      <a class="nbda-yt" href="https://www.youtube.com/@artryangle" target="_blank" rel="noopener">YouTube 채널 보기 ↗</a>
+    </div>
   </div>
 </section>
 
@@ -2656,6 +2836,21 @@
       </a>
     </div>
 
+  </div>
+  <div class="about-shorts">
+    <p class="section-eyebrow">Shorts</p>
+    <h3>그런데… 그리고!</h3>
+    <p>No Big Deal, And!</p>
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster="/assets/media/nbda-shorts-poster.jpg"
+      width="720"
+      height="1280"
+      aria-label="아트라이앵글 NBDA 숏츠. No Big Deal, And!">
+      <source src="/assets/media/nbda-shorts.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
