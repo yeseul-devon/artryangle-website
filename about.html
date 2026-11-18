@@ -76,6 +76,16 @@
     .cta-box h3{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:10px}
     .cta-box p{font-size:14.5px;color:var(--text-mid);margin-bottom:22px}
 
+    .media-block{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+    .media-block video{width:100%;max-width:360px;height:auto;border-radius:16px;background:var(--night);display:block;cursor:auto}
+    .media-kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mint-primary)}
+    .media-title{font-family:var(--font-serif);font-size:28px;font-weight:800;color:var(--text-dark);line-height:1.2}
+    .leaflet-row{display:flex;align-items:center;gap:18px;text-align:left;background:#fff;border:1px solid rgba(92,181,173,.22);border-radius:14px;padding:14px;margin-top:8px}
+    .leaflet-row img{width:96px;height:136px;object-fit:cover;object-position:top;border-radius:6px;flex-shrink:0}
+    .leaflet-row p{font-size:14px;color:var(--text-mid);line-height:1.6;margin:0 0 12px}
+    .leaflet-download{display:inline-flex;background:var(--mint-primary);color:#fff;padding:11px 16px;border-radius:8px;font-size:14px;font-weight:700}
+    .leaflet-download:hover{background:var(--mint-bright);color:var(--night);text-decoration:none}
+
     footer{background:var(--night);color:rgba(255,255,255,.55);padding:48px 24px;font-size:13px}
     .ft-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
     .ft-links{display:flex;gap:18px;flex-wrap:wrap}
@@ -90,6 +100,8 @@
       .section{padding:52px 18px}
       .grid-2{grid-template-columns:1fr;gap:16px}
       .cta-box{padding:24px 18px}
+      .media-block video{max-width:none}
+      .leaflet-row{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
@@ -115,6 +127,31 @@
 </section>
 
 <main>
+  <section class="section">
+    <div class="media-block">
+      <p class="media-kicker">Shorts · NBDA</p>
+      <h2 class="media-title">그런데… 그리고!</h2>
+      <p>No Big Deal, And! · 문화예술 · 교육 · 글로벌 · 로컬</p>
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="/assets/media/nbda-shorts-poster.jpg"
+        width="720"
+        height="1280"
+        aria-label="아트라이앵글 NBDA 숏츠. No Big Deal, And!">
+        <source src="/assets/media/nbda-shorts.mp4" type="video/mp4" />
+      </video>
+      <div class="leaflet-row">
+        <img src="/assets/media/artryangle-leaflet-preview.jpg" alt="아트라이앵글 회사소개 리플릿 첫 페이지" />
+        <div>
+          <p>문화예술을 기획하고 제작하는 사람들.<br>회사소개 리플릿을 받아보세요.</p>
+          <a class="leaflet-download" href="/assets/artryangle-leaflet.pdf" download="artryangle-leaflet.pdf">회사소개 리플릿 다운로드 (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <h2>현장 <span data-stat="years" data-stat-format="raw">10</span>년, 그리고 데이터를 만났습니다</h2>
     <p>안양예술고등학교 한국무용과를 수석으로 졸업하고, <span data-stat="dancerYears" data-stat-format="raw">15</span>년간 한국무용 전문 무용수로 활동했습니다. 무대에 서는 사람의 시선에서 시작해, 무대를 만드는 기획자의 자리에 닿기까지 <span data-stat="years" data-stat-format="raw">10</span>년이 넘는 시간 동안 공연·축제·전시·교육을 직접 기획·운영했습니다.</p>
