@@ -1245,14 +1245,26 @@
       font-size: 13px;
       color: var(--text-mid);
       line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .leaflet-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
       margin-bottom: 10px;
+    }
+    .leaflet-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .leaflet-download {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       background: var(--mint-primary);
       color: #fff;
-      padding: 10px 16px;
+      padding: 10px 14px;
       border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
@@ -2035,7 +2047,9 @@
 
       #nbda { padding: 64px 24px; }
       .nbda-foot { flex-direction: column; align-items: stretch; }
-      .leaflet-card { align-items: flex-start; }
+      .leaflet-card { flex-direction: column; align-items: stretch; }
+      .leaflet-card img { width: 120px; height: 168px; }
+      .leaflet-actions { display: grid; grid-template-columns: repeat(3, 1fr); }
       .nbda-yt { align-self: flex-start; }
       .about-shorts { padding: 0 24px 64px; }
       .about-shorts video { max-width: none; }
@@ -2194,8 +2208,13 @@
       <div class="leaflet-card">
         <img src="/assets/media/artryangle-leaflet-preview.jpg" alt="아트라이앵글 회사소개 리플릿 첫 페이지" />
         <div>
-          <p>문화예술을 기획하고 제작하는 사람들.<br>회사소개 리플릿을 받아보세요.</p>
-          <a class="leaflet-download" href="/assets/artryangle-leaflet.pdf" download="artryangle-leaflet.pdf">회사소개 리플릿 다운로드 (PDF)</a>
+          <p>문화예술을 기획하고 제작하는 사람들.</p>
+          <p class="leaflet-heading">회사소개 리플릿 다운로드 (PDF)</p>
+          <div class="leaflet-actions">
+            <a class="leaflet-download" href="/assets/artryangle-leaflet.pdf" download="artryangle-leaflet.pdf">한국어</a>
+            <a class="leaflet-download" href="/assets/artryangle-leaflet-en.pdf" download="artryangle-leaflet-en.pdf">English</a>
+            <a class="leaflet-download" href="/assets/artryangle-leaflet-ja.pdf" download="artryangle-leaflet-ja.pdf">日本語</a>
+          </div>
         </div>
       </div>
       <a class="nbda-yt" href="https://www.youtube.com/@artryangle" target="_blank" rel="noopener">YouTube 채널 보기 ↗</a>

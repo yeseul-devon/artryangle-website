@@ -82,8 +82,10 @@
     .media-title{font-family:var(--font-serif);font-size:28px;font-weight:800;color:var(--text-dark);line-height:1.2}
     .leaflet-row{display:flex;align-items:center;gap:18px;text-align:left;background:#fff;border:1px solid rgba(92,181,173,.22);border-radius:14px;padding:14px;margin-top:8px}
     .leaflet-row img{width:96px;height:136px;object-fit:cover;object-position:top;border-radius:6px;flex-shrink:0}
-    .leaflet-row p{font-size:14px;color:var(--text-mid);line-height:1.6;margin:0 0 12px}
-    .leaflet-download{display:inline-flex;background:var(--mint-primary);color:#fff;padding:11px 16px;border-radius:8px;font-size:14px;font-weight:700}
+    .leaflet-row p{font-size:14px;color:var(--text-mid);line-height:1.6;margin:0 0 8px}
+    .leaflet-heading{font-size:14px;font-weight:700;color:var(--text-dark);margin:0 0 10px}
+    .leaflet-actions{display:flex;flex-wrap:wrap;gap:8px}
+    .leaflet-download{display:inline-flex;align-items:center;justify-content:center;background:var(--mint-primary);color:#fff;padding:11px 14px;border-radius:8px;font-size:14px;font-weight:700}
     .leaflet-download:hover{background:var(--mint-bright);color:var(--night);text-decoration:none}
 
     footer{background:var(--night);color:rgba(255,255,255,.55);padding:48px 24px;font-size:13px}
@@ -101,7 +103,8 @@
       .grid-2{grid-template-columns:1fr;gap:16px}
       .cta-box{padding:24px 18px}
       .media-block video{max-width:none}
-      .leaflet-row{flex-direction:column;align-items:flex-start}
+      .leaflet-row{flex-direction:column;align-items:stretch}
+      .leaflet-actions{display:grid;grid-template-columns:repeat(3,1fr)}
     }
   </style>
 </head>
@@ -145,8 +148,13 @@
       <div class="leaflet-row">
         <img src="/assets/media/artryangle-leaflet-preview.jpg" alt="아트라이앵글 회사소개 리플릿 첫 페이지" />
         <div>
-          <p>문화예술을 기획하고 제작하는 사람들.<br>회사소개 리플릿을 받아보세요.</p>
-          <a class="leaflet-download" href="/assets/artryangle-leaflet.pdf" download="artryangle-leaflet.pdf">회사소개 리플릿 다운로드 (PDF)</a>
+          <p>문화예술을 기획하고 제작하는 사람들.</p>
+          <p class="leaflet-heading">회사소개 리플릿 다운로드 (PDF)</p>
+          <div class="leaflet-actions">
+            <a class="leaflet-download" href="/assets/artryangle-leaflet.pdf" download="artryangle-leaflet.pdf">한국어</a>
+            <a class="leaflet-download" href="/assets/artryangle-leaflet-en.pdf" download="artryangle-leaflet-en.pdf">English</a>
+            <a class="leaflet-download" href="/assets/artryangle-leaflet-ja.pdf" download="artryangle-leaflet-ja.pdf">日本語</a>
+          </div>
         </div>
       </div>
     </div>
